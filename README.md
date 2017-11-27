@@ -106,7 +106,7 @@ stack-demo
 
 ### The Feature `index.js` files
 
-For the stack to know about each part of a feature it must be exported via the relevant `index.js` file. The folders that contain the api services, the app components and the api services all have a
+For the stack to know about each part of a feature it must be exported via the relevant `index.js` file. The folders that contain the api services, the app components and the app services all have a
 single index.js file and you must export your feature through these so the stack can discover them.
 
 ```

@@ -26,6 +26,7 @@ class component extends React.PureComponent {
                   <components.todos />
                   <components.gp />
                   <components.sphere />
+                  <components.shopping />
                 </Col>
               </Row>
             </Grid>
