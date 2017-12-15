@@ -1,11 +1,11 @@
 import db from './db'
 import cart from './cart'
 
-const initialiser = async () => {
+const initialiser = async (user) => {
   return {
     products: db.getProducts(),
     categories: db.getCategories(),
-    productsInCart: cart.getProductsInCart(),
+    productsInCart: cart.getCartForUser(user),
     priceRange: db.getPriceRange()
   }
 }
