@@ -1,7 +1,8 @@
+import { actionHub } from '../../loader'
 
 const defaultSelectors = ['a', 'button', 'input', 'textarea', 'option', 'video', 'audio', 'embed', 'object']
 
-export default function setupClickingAnalytics (extraSelectors, ignoreDefaults) {
+export default function setupClickingAnalytics (store, extraSelectors, ignoreDefaults) {
   var selectorArray = []
 
   if (extraSelectors !== undefined) {
@@ -21,7 +22,8 @@ export default function setupClickingAnalytics (extraSelectors, ignoreDefaults) 
   window.onclick = function (event) {
     for (var element of event.path) {
       if (selectors.match(element)) {
-        console.log(element)
+        store.dispatch(actionHub.ANALYTICS_CLICKED(getElementData(element)))
+        console.log(getElementData(element))
         return true
       }
     }
@@ -47,8 +49,8 @@ class Selectors {
   match (element) {
     var tagName = element.tagName
     if (!tagName) {
-      // an element without tag name is the document element
-      return false
+      // an element without tag name is probably the document element
+      if (element === document) return false
     } else if (this.tags.includes(tagName.toLowerCase())) {
       return true
     }
@@ -62,5 +64,27 @@ class Selectors {
     return false
   }
 
+}
+
+function getElementData (element) {
+  if (element.href) return { href: element.href }
+  if (element.id !== '') return { id: element.id }
+  // if (element.classList.value !== '') return element.classList.value
+  return { element: getTagHtml(element) }
+}
+
+function getTagHtml (element) {
+  var htmlText = element.outerHTML
+  var tagHtml = htmlText.substr(htmlText.search(/</), htmlText.search(/>/) + 1)
+
+  const partstoIgnore = ['style']
+  for (var attr of partstoIgnore) {
+    tagHtml = tagHtml.replace(
+      new RegExp(attr + '\\s*=\\s*["\'][^"\']*["\']', 'i'),
+      ''
+    )
+  }
+
+  return tagHtml
 }
 

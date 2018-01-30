@@ -7,6 +7,8 @@ import { stackReduxApp } from '@gp-technical/stack-pack-app'
 import App from './App'
 import { env, services } from './loader'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import setupClickingAnalytics from './component/analytics/clicking'
+
 injectTapEventPlugin()
 
 var opts = {
@@ -22,6 +24,8 @@ window.addEventListener("resize", function() {
 
 document.getElementsByTagName("body")[0].style["padding"] = "0";
 document.getElementsByTagName("body")[0].style["margin"] = "0";
+
+setupClickingAnalytics(store)
 
 const styleDiv = { height:`${window.innerHeight}px`, "overflow-y": "auto" };
 

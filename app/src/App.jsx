@@ -6,10 +6,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid/lib'
 import { muiTheme } from './theme'
 import styles from './index.scss'
 
-import clicking from './component/analytics/clicking'
-
-clicking()
-
 class component extends React.PureComponent {
   render () {
     const { user, branding } = this.props
