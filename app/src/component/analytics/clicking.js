@@ -22,7 +22,7 @@ export default function setupClickingAnalytics (store, extraSelectors, ignoreDef
   window.onclick = function (event) {
     for (var element of event.path) {
       if (selectors.match(element)) {
-        store.dispatch(actionHub.ANALYTICS_CLICKED(getElementData(element)))
+        setTimeout(() => { store.dispatch(actionHub.ANALYTICS_CLICKED(getElementData(element))) }, 0)
         console.log(getElementData(element))
         return true
       }
@@ -87,4 +87,3 @@ function getTagHtml (element) {
 
   return tagHtml
 }
-
