@@ -9,7 +9,6 @@ function visibilityDetectable (target, name, descriptor) {
   return target
 
   function decoratedRender() {
-    console.log(actionHub)
     return (
       <DecoratingComponent wrappedComponent={this}>
         {this._wrappedRender()}
@@ -35,7 +34,6 @@ class DecoratingComponent extends React.PureComponent {
       } else {
         this.props.hidden(this.props.wrappedComponent._analyticsContent())
       }
-      console.log('Element is now %s', isVisible ? 'visible' : 'hidden')
     }
     var container = document.getElementById('wrapper')
 
@@ -45,7 +43,6 @@ class DecoratingComponent extends React.PureComponent {
           containment={container}
           scrollCheck={true}
           scrollThrottle={100}
-          intervalDelay={8000}
           minTopValue={10}
           partialVisibility={true} >
         <div>
@@ -59,16 +56,10 @@ class DecoratingComponent extends React.PureComponent {
 function content (wildcardArg) {
     if (/*name && descriptor*/ false) {
     var targetObj = wildcardArg
-    console.log(targetObj)
-    console.log(name)
-    console.log(descriptor)
     return descriptor
   } else if (typeof mapObjectToContent === 'function') {
     var mapObjectToContent = wildcardArg
     return (target) => {
-      console.log(target)
-      console.log(target.prototype)
-
       target.prototype._analyticsContent = function () {
         return mapObjectToContent(this)
       }
@@ -78,13 +69,7 @@ function content (wildcardArg) {
   } else if (typeof wildcardArg === 'string') {
     var propertyExpression = wildcardArg
     return (target) => {
-      console.log(target)
-      console.log(target.prototype)
-
       target.prototype._analyticsContent = function () {
-        console.log("content")
-        console.log(this)
-        console.log(executeProp(this, propertyExpression))
         return executeProp(this, propertyExpression)
       }
 

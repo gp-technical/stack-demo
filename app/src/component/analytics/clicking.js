@@ -23,11 +23,9 @@ export default function setupClickingAnalytics (store, extraSelectors, ignoreDef
     for (var element of event.path) {
       if (selectors.match(element)) {
         setTimeout(() => { store.dispatch(actionHub.ANALYTICS_CLICKED(getElementData(element))) }, 0)
-        console.log(getElementData(element))
         return true
       }
     }
-    console.log(event)
     return true
   }
 }
