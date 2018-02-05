@@ -1,4 +1,3 @@
-import analytics from './analytics'
 import counter from './counter'
 import errors from './errors'
 import fetch from './fetch'
@@ -12,7 +11,6 @@ import dialogStepper from './dialogStepper'
 import shopping from './shopping'
 
 export default {
-  analytics,
   counter,
   errors,
   fetch,

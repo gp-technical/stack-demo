@@ -10,9 +10,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import { services, actionHub, components } from '../../loader'
 
-import VisibilityDetectable from '../analytics/visibilityDetectable'
+import { visibilityDetector } from '@gp-technical/stack-pack-app'
 
-@VisibilityDetectable("props.testAnalytics")
+@visibilityDetector("props.testAnalytics")
 class dialogStepper extends React.PureComponent {
   state = {
     canSubmit: false

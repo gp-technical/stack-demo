@@ -3,11 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { stackReduxApp } from '@gp-technical/stack-pack-app'
+import { stackReduxApp, setupClickDetector } from '@gp-technical/stack-pack-app'
 import App from './App'
 import { env, services } from './loader'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import setupClickingAnalytics from './component/analytics/clicking'
 
 injectTapEventPlugin()
 
@@ -18,21 +17,22 @@ var opts = {
 
 const store = createStore(services, stackReduxApp(opts))
 
-window.addEventListener("resize", function() {
-  document.getElementById("wrapper").style.height = `${window.innerHeight}px`;
+const container = document.getElementById('app')
+
+window.addEventListener('resize', function() {
+  container.style.height = `${window.innerHeight} px`;
 });
 
-document.getElementsByTagName("body")[0].style["padding"] = "0";
-document.getElementsByTagName("body")[0].style["margin"] = "0";
+document.getElementsByTagName('body')[0].style['padding'] = '0';
+document.getElementsByTagName('body')[0].style['margin'] = '0';
 
-setupClickingAnalytics(store)
+setupClickDetector(store)
 
-const styleDiv = { height:`${window.innerHeight}px`, "overflow-y": "auto" };
+container.style.overflowY = 'auto'
+container.style.height = `${window.innerHeight}px`
 
 ReactDOM.render(
-  <div id="wrapper" style={styleDiv}>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </div>,
-  document.getElementById('app'))
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  container)
