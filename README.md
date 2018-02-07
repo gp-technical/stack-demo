@@ -9,8 +9,8 @@ together take away much of the boilerplate and leave you with more time to creat
 
 The stack consists of the following two packages:
 
-* [stack-redux-app](https://github.com/gp-technical/stack-redux-app)
-* [stack-redux-api](https://github.com/gp-technical/stack-redux-api)
+* [stack-pack-app](https://github.com/gp-technical/stack-pack-app)
+* [stack-pack-api](https://github.com/gp-technical/stack-pack-api)
 
 The stack is deliberately opinionated. This means there _is_ a right way to do things and the packages have been designed to work best if they are used in the right way.
 
@@ -233,7 +233,7 @@ The first few are essential reading if you want to use the stack at all, the res
   * initialise a drop-down of content folders
   * populate a table with the contents of the selected folder
 
-  The table used is the shared table component supplied by the `stack-redux-app` package.
+  The table used is the shared table component supplied by the `stack-pack-app` package.
 
 ## Additional Features
 
@@ -398,7 +398,7 @@ Exports the unique feature name. This is used by other feature components and by
 
 ```javascript
 import name from './name'
-import { makeActions, makeTypes } from '@gp-technical/stack-redux-app'
+import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const api = makeTypes(name, ['fromApi'])
 const local = makeTypes(name, ['fromLocal'])
@@ -410,7 +410,7 @@ const types = { ...api, ...local, ...both }
 export { actions, types }
 ```
 
-Exports the generated REDUX `actions` and `types`. The `stack-redux-app` package provides the `makeActions` and `makeTypes` functions to remove nearly all of the REDUX boilerplate.
+Exports the generated REDUX `actions` and `types`. The `stack-pack-app` package provides the `makeActions` and `makeTypes` functions to remove nearly all of the REDUX boilerplate.
 
 Above you see two different types of action being generated. The actions marked with the `local` flag will only be dispatched to the reducers in the `app`, the `api` will not be involved.
 
@@ -561,7 +561,7 @@ above)
 ### _api/src/service/fetch/processor.js_
 
 ```javascript
-import { makeProcessor } from '@gp-technical/stack-redux-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 
 const processor = async action => {
   var { types, type, data } = action
@@ -654,13 +654,13 @@ The app component is written using the standardised style shown above. All stack
 
 * _services_
 
-  This contains all the app services plus any shared services supplied by the `stack-redux-app` package. Typically these will be used to gain access to a features `selector` and so to it's state tree.
+  This contains all the app services plus any shared services supplied by the `stack-pack-app` package. Typically these will be used to gain access to a features `selector` and so to it's state tree.
   These are used, in any combination from any service, as props for the component via the `mapStateToProps` function.
 
 * _components_
 
-  This contains all the app components you have exported via the `app/src/component/index.js` file plus any shared services supplied by the `stack-redux-app` package. In the code above the
-  `components.Box` is used. This is an example of a shared component that is supplied by the `stack-redux-app` package.
+  This contains all the app components you have exported via the `app/src/component/index.js` file plus any shared services supplied by the `stack-pack-app` package. In the code above the
+  `components.Box` is used. This is an example of a shared component that is supplied by the `stack-pack-app` package.
 
 # Feature: `counter`
 
@@ -688,7 +688,7 @@ In addition they have been further exposed as REST endpoints using the built in 
 
 ```javascript
 import name from './name'
-import { makeActions, makeTypes } from '@gp-technical/stack-redux-app'
+import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const types = makeTypes(name, ['getTotal', 'increment', 'decrement'])
 const actions = makeActions(types)
@@ -777,7 +777,7 @@ The initialiser calls out to the data-store to get the current value of the coun
 ### _api/src/service/counter/processor.js_
 
 ```javascript
-import { makeProcessor } from '@gp-technical/stack-redux-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 import db from './db'
 
 const processor = async action => {
@@ -943,7 +943,7 @@ baked into the stack. This means that although the feature still defines and dis
 
 ```javascript
 import name from './name'
-import { makeActions, makeTypes } from '@gp-technical/stack-redux-app'
+import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const types = makeTypes(name, ['throwFromApi'])
 const actions = makeActions(types)
@@ -958,7 +958,7 @@ The actions.js file defines a single action to be processed by the `api`
 ### _api/src/service/errors/processor.js_
 
 ```javascript
-import { makeProcessor } from '@gp-technical/stack-redux-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 
 const processor = async action => {
   var { types, type, data } = action
@@ -1021,7 +1021,7 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(component)
 ```
 
-Note that this feature has no state of its own. Instead the `mapStateToProps` function reaches into the state tree of the `errorMessage` shared feature provided as part of the `stack-redux-app`
+Note that this feature has no state of its own. Instead the `mapStateToProps` function reaches into the state tree of the `errorMessage` shared feature provided as part of the `stack-pack-app`
 package.
 
 The `errorMessage` feature will listen out for the internal error action that is automatically dispatched by the `api` when an error occurs in a processor and update the local state for you. It also
@@ -1033,7 +1033,7 @@ supplies the `selector.getText()` method you see being used to get the current e
 
 ```javascript
 import name from './name'
-import { makeActions, makeTypes } from '@gp-technical/stack-redux-app'
+import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 import { actionHub } from '../../loader'
 
 const types = makeTypes(name, ['getAnswer'])
@@ -1054,7 +1054,7 @@ export { actions, types }
 Here we see an example of how to customise an action that has been generated using the `makeActions` function.
 
 The `getAnswer` action is first generated. A copy of the generated action is stored as `thunksGetAnswer` and the `actions.thunksGetAnswer` is then reset to a multi-action sequence with the
-`thunksGetAnswer` action being sandwiched between a `SPINNER_ON` action and a `SPINNER_OFF` action, both of which have been defined via the shared `stack-redux-app` feature called `spinner`.
+`thunksGetAnswer` action being sandwiched between a `SPINNER_ON` action and a `SPINNER_OFF` action, both of which have been defined via the shared `stack-pack-app` feature called `spinner`.
 
 Because the action calls are asynchronous by default, and because the `thunksGetAnswer` invokes a long running, server-side process, the call to `thunksGetAnswer` is _awaited_ to make the sequence
 synchronous. Now the spinner state is set and it stays that way until the `thunksGetAnswer` completes before being unset.
@@ -1085,7 +1085,7 @@ Note that _awaiting_ the `thunksGetAnswer` in the thunk does not change the way 
 ### _api/src/service/thunk/processor.js_
 
 ```javascript
-import { makeProcessor } from '@gp-technical/stack-redux-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
@@ -1111,7 +1111,7 @@ The api processor listens for the `thunksGetAnswer` action and just sleeps for t
 
 ```javascript
 import name from './name'
-import { makeActions, makeTypes } from '@gp-technical/stack-redux-app'
+import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const types = makeTypes(name, ['getDocuments'])
 const actions = makeActions(types)
@@ -1172,7 +1172,7 @@ The currently selected folder id (`selectedFolderId`) could have been stored her
 ### _api/src/service/gp/initialiser.js_
 
 ```javascript
-import { gpapi } from '@gp-technical/stack-redux-api'
+import { gpapi } from '@gp-technical/stack-pack-api'
 
 // Folder: Responsive Toolkit for Leaders_dev1_auto/Leadership & Strategy
 const folderId = '46c2f86d-0655-009b-86cc-a3bf00ac087a'
@@ -1184,7 +1184,7 @@ const initialiser = async () => {
 export default initialiser
 ```
 
-The `gpapi` helper object is imported from the `gp-technical/stack-redux-api` package. It is then used to `get` a list of GP secondary-folders using a hard-coded primary-folder id for the parent
+The `gpapi` helper object is imported from the `gp-technical/stack-pack-api` package. It is then used to `get` a list of GP secondary-folders using a hard-coded primary-folder id for the parent
 location.
 
 Note that the `gpapi.get` is _awaitable_ which simplifies the code as it removes the need to for call-backs or explicit promise handling.
@@ -1192,7 +1192,7 @@ Note that the `gpapi.get` is _awaitable_ which simplifies the code as it removes
 ### _api/src/service/gp/processor.js_
 
 ```javascript
-import { gpapi, makeProcessor } from '@gp-technical/stack-redux-api'
+import { gpapi, makeProcessor } from '@gp-technical/stack-pack-api'
 
 const processor = async action => {
   var { types, type, data } = action
@@ -1290,7 +1290,7 @@ function.
 The `selectedFolderId` value is stored on local REACT state which is set when the `onFolderSelected` function is called whenever the user selects a new folder from the dropdown. This function also
 dispatches the `GP_GET_DOCUMENTS` action via the `getDocuments` function.
 
-The `components.Table` is a shared component supplied by the `stack-redux-app` package. The columns of this table are defined using a plain `js` object called `columns`. You can see here that the
+The `components.Table` is a shared component supplied by the `stack-pack-app` package. The columns of this table are defined using a plain `js` object called `columns`. You can see here that the
 table component supports custom column contents and the custom formatting of column values.
 
 ## Example API Environment file

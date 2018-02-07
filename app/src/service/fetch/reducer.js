@@ -6,8 +6,10 @@ const reducer = (state = {}, action) => {
       return { ...state, data, source: 'API' }
     case types.fetchFromLocal:
       return { ...state, data, source: 'APP' }
+
     case types.fetchFromApiResponse:
       return { ...state, data, source: 'API' }
+
     case types.fetchFromBoth:
       return { ...state, data, source: 'BOTH' }
     case types.fetchFromBothResponse:
