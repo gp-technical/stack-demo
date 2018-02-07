@@ -1,5 +1,15 @@
 
-- keeping track of mutable content, like editable entities from db (id only may be not enough)
-- evaluate better scrolling, specially to check if the user is not AFK
-- tracking clicking element using some sort of 'jquery selector', or similar
+- check if socket id is enough for client identification, or if a user id is better
+  -- the socket id is lost between sessions
+- better scrolling, specially to check if the user is not AFK
+- check if method signatures are good enough
+- use env file to configure server side persistence
+  -- study xAPI persistence
+- check if the visibility detector "delay" problem is really gone
+- store login event, with device identification
+- move timestamp from server to client
+  -- use UTC?
+- create visibility detector demo
+  -- maybe add other analytics as well
+- clicking selector for disabling analytics
 
