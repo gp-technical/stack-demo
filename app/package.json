@@ -34,8 +34,8 @@
     }
   },
   "dependencies": {
-    "@gp-technical/stack-pack-app": "1.1.3",
-    "@gp-technical/stack-pack-components": "1.1.2",
+    "@gp-technical/stack-pack-app": "file:../../stack-pack/stack-pack-app",
+    "@gp-technical/stack-pack-components": "file:../../stack-pack/stack-pack-components",
     "babel-polyfill": "^6.23.0",
     "fbjs": "^0.8.16",
     "formsy-material-ui": "^0.6.3",

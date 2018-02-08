@@ -34,6 +34,7 @@ class component extends React.PureComponent {
                   <components.dialogSimple />
                   <components.dialogForm />
                   <components.dialogStepper testAnalytics="testValue" />
+                  <components.analyticsDemo />
                   <components.shopping />
                 </Col>
               </Row>

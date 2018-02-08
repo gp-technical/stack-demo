@@ -12,6 +12,7 @@ import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import dialogSimple from './dialogSimple'
 import dialogForm from './dialogForm'
+import analyticsDemo from './analyticsDemo'
 import dialogStepper from './dialogStepper'
 
 export default {
@@ -29,5 +30,6 @@ export default {
   shopping,
   shoppingCart,
   shoppingFilter,
+  analyticsDemo,
   dialogStepper
 }
