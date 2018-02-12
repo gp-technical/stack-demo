@@ -20,12 +20,19 @@ class VisibilityDetected extends React.PureComponent {
       fontSize: '16px'
     }
 
+    console.log(this.props)
+    const onDivClick = () => {
+      this.props.dummyAction(this.props.name)
+      return false
+    }
+
     // This element is also clickable, due to its class name (click-check)
     // Check the 'setupClientAnalytics' call in 'src/index.jsx', with the class selector
     // Clicking analytics also work by default with interactive elements such as
     //   button, a, inputs, among others. check stack-pak-app for complete list
     return <div style={visibleDivStyle}
       className="click-check"
+      onClick={onDivClick}
       data-analytics-name={this.props.name}>
       {this.props.name}
     </div>
@@ -36,7 +43,9 @@ const mapStateToProps = state => ({
   log: services.analyticsDemo.selector.getLog(state)
 })
 
-const mapDispatchToProps = dispatch => { return {} }
+const mapDispatchToProps = dispatch => ({
+  dummyAction: (data) => dispatch(actionHub.ANALYTICS_DEMO_DUMMY_ACTION(data))
+})
 
 @connect(mapStateToProps, mapDispatchToProps)
 class analyticsDemo extends React.PureComponent {
@@ -54,9 +63,17 @@ class analyticsDemo extends React.PureComponent {
       display: 'table-cell',
     }
     var elements = [
-      <VisibilityDetected name='upper' visibilityContainer={this.innerScrollDiv}/>,
-      <div style={emptyDivStyle}><div style={emptyChildDivStyle}>Empty</div></div>,
-      <VisibilityDetected name='lower'  visibilityContainer={this.innerScrollDiv}/>
+      <VisibilityDetected
+        name='upper'
+        dummyAction={this.props.dummyAction}
+        visibilityContainer={this.innerScrollDiv} />,
+      <div style={emptyDivStyle}>
+        <div style={emptyChildDivStyle}>Empty</div>
+      </div>,
+      <VisibilityDetected
+        name='lower'
+        dummyAction={this.props.dummyAction}
+        visibilityContainer={this.innerScrollDiv} />
     ]
     this.setState({visibleChildren: elements})
   }
