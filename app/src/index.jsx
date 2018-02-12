@@ -26,7 +26,7 @@ window.addEventListener('resize', function() {
 document.getElementsByTagName('body')[0].style['padding'] = '0';
 document.getElementsByTagName('body')[0].style['margin'] = '0';
 
-setupClientAnalytics({ container: 'app', store})
+setupClientAnalytics({ container: 'app', store, clickingExtraSelectors: [".click-check"]})
 
 container.style.overflowY = 'auto'
 container.style.height = `${window.innerHeight}px`

@@ -8,7 +8,27 @@ import { visibilityDetector } from '@gp-technical/stack-pack-app'
 @visibilityDetector({content:'props.name', container: 'analyticsInnerContainer'})
 class VisibilityDetected extends React.PureComponent {
   render() {
-    return <RaisedButton label={'Visibility detected by name: ' + this.props.name} />
+    const visibleDivStyle = {
+      backgroundColor: '#4CAF50',
+      border: 'none',
+      color: 'white',
+      cursor: 'pointer',
+      padding: '15px 32px',
+      textAlign: 'center',
+      textDecoration: 'none',
+      display: 'inline-block',
+      fontSize: '16px'
+    }
+
+    // This element is also clickable, due to its class name (click-check)
+    // Check the 'setupClientAnalytics' call in 'src/index.jsx', with the class selector
+    // Clicking analytics also work by default with interactive elements such as
+    //   button, a, inputs, among others. check stack-pak-app for complete list
+    return <div style={visibleDivStyle}
+      className="click-check"
+      data-analytics-name={this.props.name}>
+      {this.props.name}
+    </div>
   }
 }
 
@@ -24,9 +44,18 @@ class analyticsDemo extends React.PureComponent {
   // The innerScrollDiv must be rendered first, and only then, its inner elements are added
   // The reference container must exist int the page DOM before the the visibility-detectable items are rendered
   componentDidMount() {
+    const emptyDivStyle = {
+      height: '160px',
+      display: 'table'
+    }
+    const emptyChildDivStyle = {
+      verticalAlign: 'middle',
+      textAlign: 'center',
+      display: 'table-cell',
+    }
     var elements = [
       <VisibilityDetected name='upper' visibilityContainer={this.innerScrollDiv}/>,
-      <div style={{height: '150px'}}></div>,
+      <div style={emptyDivStyle}><div style={emptyChildDivStyle}>Empty</div></div>,
       <VisibilityDetected name='lower'  visibilityContainer={this.innerScrollDiv}/>
     ]
     this.setState({visibleChildren: elements})
@@ -53,6 +82,15 @@ class analyticsDemo extends React.PureComponent {
       borderBottomLeftRadius: '3px'
     }
 
+    const innerScrollDivStyle = {
+      display: 'inline-block',
+      borderStyle: 'solid',
+      margin: '0 1.5em 1.5em 40%',
+      padding: '10px',
+      height: '100px',
+      overflowY: 'auto'
+    }
+
     const actionNameStyle = {
       color: '#45D40C'
     }
@@ -77,7 +115,7 @@ class analyticsDemo extends React.PureComponent {
         <h2>
           Feature: <i>Analytics demo</i>
         </h2>
-        <div ref={el => this.innerScrollDiv = el} style={{height: '100px', overflowY: 'auto'}}>
+        <div ref={el => this.innerScrollDiv = el} style={innerScrollDivStyle}>
           {this.state && this.state.visibleChildren}
         </div>
         {logDiv}
