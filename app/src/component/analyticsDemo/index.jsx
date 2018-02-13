@@ -17,6 +17,7 @@ class VisibilityDetected extends React.PureComponent {
       textAlign: 'center',
       textDecoration: 'none',
       display: 'inline-block',
+      width: '200px',
       fontSize: '16px'
     }
 
@@ -45,14 +46,10 @@ const mapDispatchToProps = dispatch => ({
 @connect(mapStateToProps, mapDispatchToProps)
 class analyticsDemo extends React.PureComponent {
 
-  // Visibility detection needs a reference container, with fixed size, to check if the target component is visible inside it
-  // In this example, "innerScrollDiv" (react ref name), used as the container, and must be rendered first, and only then its
-  // inner elements are added to the reference container
-  // To make it work, the component will be created in render(), and after that, componentDidMount() will run and
-  // add the visible inner components that are visibility-detectable
   componentDidMount() {
     const emptyDivStyle = {
-      height: '160px',
+      height: '320px',
+      width: '100%',
       display: 'table'
     }
     const emptyChildDivStyle = {
@@ -185,7 +182,7 @@ class analyticsDemo extends React.PureComponent {
       borderStyle: 'solid',
       margin: '0 1.5em 1.5em 40%',
       padding: '10px',
-      height: '100px',
+      height: '200px',
       overflowY: 'auto'
     }
 
