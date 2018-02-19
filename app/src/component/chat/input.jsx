@@ -1,13 +1,14 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
 
-const initialValue = ''
+const INITIAL_VALUE = ''
+const HINT_TEXT = 'Type message, hit enter to send'
 
 class component extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      value: initialValue
+      value: INITIAL_VALUE
     }
   }
 
@@ -20,9 +21,8 @@ class component extends React.PureComponent {
     const { key, target: { value } } = ev
     if (key === 'Enter') {
       ev.preventDefault()
-      console.log('Got an enter - broadcasting: ' + value)
       onBroadcast(value)
-      this.setState({ value: initialValue })
+      this.setState({ value: INITIAL_VALUE })
     }
   }
 
@@ -33,7 +33,7 @@ class component extends React.PureComponent {
         id="chat-input"
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
-        hintText="Enter message, return to send"
+        hintText={HINT_TEXT}
         value={value}
       />
     )

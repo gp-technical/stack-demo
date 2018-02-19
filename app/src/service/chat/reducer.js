@@ -5,7 +5,7 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case types.chat_init:
       return { ...state, messages: data.messages }
-    case types.chatBroadcastResponse:
+    case types.chatBroadcast:
       return { ...state, messages: [data, ...state.messages] }
     default:
       return state

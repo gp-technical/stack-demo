@@ -29,7 +29,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleBroadcast: content => dispatch(actionHub.CHAT_BROADCAST(content))
+  handleBroadcast: content => dispatch(actionHub.CHAT_SEND(content))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(component)
