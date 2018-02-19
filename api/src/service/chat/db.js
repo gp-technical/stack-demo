@@ -7,7 +7,7 @@ const createId = ({ firstname }, app) => {
 
 const add = (user, app, message) => {
   const newMessage = { id: createId(user, app), message }
-  messages.unshift(newMessage)
+  messages.push(newMessage)
   return newMessage
 }
 
