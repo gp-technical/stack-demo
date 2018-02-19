@@ -6,7 +6,7 @@ const reducer = (state = initialState, action) => {
     case types.chat_init:
       return { ...state, messages: data.messages }
     case types.chatBroadcast:
-      return { ...state, messages: [data, ...state.messages] }
+      return { ...state, messages: [...state.messages, data] }
     default:
       return state
   }
