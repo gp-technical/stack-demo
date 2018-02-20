@@ -1,9 +1,10 @@
 import React from 'react'
+import getColorStyle from './colorPicker'
 
 const style = {
   container: {
     display: 'flex',
-    width: '90%'
+    margin: '5px'
   },
   id: {
     padding: '5px',
@@ -20,8 +21,10 @@ const style = {
 class component extends React.PureComponent {
   render () {
     const { message: { id, message } = {} } = this.props
+    const bgColor = getColorStyle(id)
+    const containerStyle = { ...style.container, ...bgColor }
     return (
-      <div style={style.container}>
+      <div style={containerStyle}>
         <div style={style.id}>{id}</div>
         <div style={style.message}>{message}</div>
       </div>
