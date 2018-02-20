@@ -34,6 +34,7 @@ class component extends React.PureComponent {
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
         hintText={HINT_TEXT}
+        multiLine={true}
         value={value}
       />
     )
