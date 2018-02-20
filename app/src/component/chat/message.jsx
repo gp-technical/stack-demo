@@ -1,14 +1,13 @@
 import React from 'react'
+import { Card, CardHeader, CardText } from 'material-ui/Card'
 import getColorStyle from './colorPicker'
 
 const style = {
   container: {
-    display: 'flex',
     margin: '5px'
   },
   id: {
-    padding: '5px',
-    whiteSpace: 'nowrap'
+    padding: '5px'
   },
   message: {
     minWidth: 0, // allows overflowWrap to work in FireFox
@@ -21,13 +20,12 @@ const style = {
 class component extends React.PureComponent {
   render () {
     const { message: { id, message } = {} } = this.props
-    const bgColor = getColorStyle(id)
-    const containerStyle = { ...style.container, ...bgColor }
+    const containerStyle = { ...style.container, ...getColorStyle(id) }
     return (
-      <div style={containerStyle}>
-        <div style={style.id}>{id}</div>
-        <div style={style.message}>{message}</div>
-      </div>
+      <Card initiallyExpanded={true} style={containerStyle}>
+        <CardHeader title={id} style={style.id} />
+        <CardText style={style.message}>{message}</CardText>
+      </Card>
     )
   }
 }

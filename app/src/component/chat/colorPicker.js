@@ -2,7 +2,7 @@ const userColorMap = new Map()
 
 const hueFactory = () => {
   let nextHueValue = 0
-  let hueIncrement = 40
+  let hueIncrement = 200
   return () => {
     const hue = nextHueValue
     nextHueValue += hueIncrement
@@ -12,9 +12,9 @@ const hueFactory = () => {
 
 const getHue = hueFactory()
 
-const getSaturation = () => 35
+const getSaturation = () => 40
 
-const getLightness = () => 50
+const getLightness = () => 70
 
 const getAlpha = () => 0.1
 
@@ -25,7 +25,6 @@ const newColor = () => {
 const getColor = user => {
   let color = userColorMap.get(user)
   if (!color) {
-    console.log(`Generating new color for: ${user}`)
     color = newColor()
     userColorMap.set(user, color)
   }
