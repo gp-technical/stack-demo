@@ -1,11 +1,10 @@
 import React from 'react'
+import Message from './message'
 
 class component extends React.PureComponent {
-  renderMessages (messages) {
-    return messages.map(({ id, message }, index) => (
-      <div key={index}>
-        {id}: {message}
-      </div>
+  renderMessages (messages = []) {
+    return messages.map((message, index) => (
+      <Message message={message} key={index} />
     ))
   }
 
