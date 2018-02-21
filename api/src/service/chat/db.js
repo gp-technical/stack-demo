@@ -1,12 +1,11 @@
 const messages = []
 
-const createId = ({ firstname }, app) => {
+const createUser = ({ firstname }) => {
   return firstname
-  // return `${firstname}-${app}`
 }
 
-const add = (user, app, message) => {
-  const newMessage = { id: createId(user, app), message }
+const add = (user, message) => {
+  const newMessage = { user: createUser(user), message }
   messages.push(newMessage)
   return newMessage
 }
@@ -15,4 +14,4 @@ const get = () => {
   return messages
 }
 
-export { add, createId, get }
+export { add, get }

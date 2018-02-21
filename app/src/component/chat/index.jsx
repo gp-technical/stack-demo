@@ -7,7 +7,7 @@ import Messages from './messages'
 
 class component extends React.PureComponent {
   render () {
-    const { id, messages, handleBroadcast } = this.props
+    const { messages, handleBroadcast } = this.props
     return (
       <components.Box>
         <h2>
@@ -15,7 +15,6 @@ class component extends React.PureComponent {
         </h2>
         <p>Simple chat functionality</p>
         <Divider />
-        <div>{id}</div>
         <Messages messages={messages} />
         <Input onBroadcast={handleBroadcast} />
       </components.Box>
@@ -24,7 +23,6 @@ class component extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  id: services.chat.selector.getId(state),
   messages: services.chat.selector.getMessages(state)
 })
 

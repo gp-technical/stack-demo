@@ -8,8 +8,4 @@ const getMessages = state => {
   return get(state).messages
 }
 
-const getId = state => {
-  return get(state).id
-}
-
-export default { getId, getMessages }
+export default { getMessages }

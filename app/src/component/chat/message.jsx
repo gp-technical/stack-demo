@@ -19,11 +19,11 @@ const style = {
 
 class component extends React.PureComponent {
   render () {
-    const { message: { id, message } = {} } = this.props
-    const containerStyle = { ...style.container, ...getColorStyle(id) }
+    const { message: { user, message } = {} } = this.props
+    const containerStyle = { ...style.container, ...getColorStyle(user) }
     return (
       <Card initiallyExpanded={true} style={containerStyle}>
-        <CardHeader title={id} style={style.id} />
+        <CardHeader title={user} style={style.id} />
         <CardText style={style.message}>{message}</CardText>
       </Card>
     )
