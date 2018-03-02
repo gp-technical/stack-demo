@@ -1,9 +1,9 @@
 import React from 'react'
-import { Card, CardTitle, CardMedia, CardActions } from 'material-ui/Card'
+import { Card, CardTitle, CardText, CardMedia, CardActions } from 'material-ui/Card'
 import Snackbar from 'material-ui/Snackbar'
 import FlatButton from 'material-ui/FlatButton'
 import { connect } from 'react-redux'
-
+import {components} from '../../loader'
 import { services, actionHub } from '../../loader'
 
 const style = {
@@ -44,8 +44,14 @@ class component extends React.PureComponent {
     }
   }
 
+  onRatingChange = ({product, value}) => {
+    if(value >=0){
+		 console.log(product + ' ' + value)
+		}
+  }
+
   render () {
-    var { products, isSnackBarOpen } = this.props
+    var { products, isSnackBarOpen, rating=0} = this.props
     if (products && products.length > 0) {
       return (
         <div style={style.productWrapper}>
@@ -55,6 +61,17 @@ class component extends React.PureComponent {
               <CardMedia>
                 <img src={product.imageURL} style={{display: 'block', margin: 'auto'}} />
               </CardMedia>
+              <CardText>
+                 <components.ratingBar
+                   iconNumber={5}
+                   title='Rate this item'
+                   onMouseMove={this.onRatingChange}
+                   rating={rating}
+                   description={product}
+                   onClick={this.onRatingChange}
+                   symbolContainerStyle={{width:300}}
+                  />
+               </CardText>
               <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
               <CardActions>
                 <FlatButton label="Add to Cart" onClick={() => { this.onProductCartAdd(product) }} />

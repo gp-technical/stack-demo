@@ -14,6 +14,7 @@ import dialogSimple from './dialogSimple'
 import dialogForm from './dialogForm'
 import dialogStepper from './dialogStepper'
 import chat from './chat'
+import ratingBar from './ratingBar'
 
 export default {
   counter,
@@ -31,5 +32,6 @@ export default {
   shoppingCart,
   shoppingFilter,
   dialogStepper,
-  chat
+  chat,
+  ratingBar
 }
