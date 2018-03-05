@@ -2,18 +2,20 @@ import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
+import FlatButton from 'material-ui/FlatButton';
 
 const {func, number, object, oneOf, oneOfType, string} = propTypes
 const defaultDirection = 'left'
 const ratedStyle = {
-  display: 'block',
-  fontSize: '0.25em',
+  fontSize: '0.65em',
   fontStyle: 'italic'
 }
+
 class component extends Component {
 
-  shouldComponentUpdate({rating}, nextState) {
-    return this.props.rating !== rating
+  constructor(props){
+    super(props)
+    this.state = { rating: 0}
   }
 
   componentWillMount(){
@@ -26,26 +28,27 @@ class component extends Component {
     this.mousePosition = this.symbolBoundingClientRec
   }
 
+  _onContainerMouseLeave = (e) => {
+      this.mousePosition = e.target.getBoundingClientRect()
+      this._setRating(0)
+  }
   _onContainerMouseMove = (e) => {
-    let {onMouseMove} = this.props
-    this.mousePosition = e.target.getBoundingClientRect()
-
-     if(!this._isValid() && onMouseMove){
-       onMouseMove(0)
-     }
+      this.mousePosition = e.target.getBoundingClientRect()
   }
 
-   _handleMouseMove = (newValue) => {
-     let {mousePosition, symbolBoundingClientRec} = this
-     let {rating, onMouseMove, direction} = this.props
-      if(onMouseMove){
-          this._isValid() ? onMouseMove(newValue) : onMouseMove({value: 0 , description: null })
-      }
-   }
+  _handleMouseMove = (value) => {
+    let {rating} = this.state
 
-   _handleOnClick = (newValue) => {
+    if(value !== rating ){
 
-     let{disabled, onClick} = this.props
+      this._setRating(value)
+    }
+  }
+
+   _handleOnClick = () => {
+
+     let {rating} = this.state
+     let {description, disabled, onClick} = this.props
 
      if (disabled) {
        e.stopPropagation()
@@ -54,27 +57,29 @@ class component extends Component {
 
      } else {
          if(onClick){
-           this._isValid(newValue) ? onClick(newValue) : onClick({value: 0 , description: null })
+           onClick({rating, description})
          }
      }
    }
 
-   _isValid = (value) => {
+   _setRating = (value) => {
+      this._isValid() ? this.setState({rating: value}):this.setState({rating:0})
+   }
+
+   _isValid = () => {
      let {direction} = this.props
      let {mousePosition, symbolBoundingClientRec} = this
-     return direction === defaultDirection ? mousePosition.left > symbolBoundingClientRec.left  :mousePosition.right <  symbolBoundingClientRec.right
+     return direction === defaultDirection ? (mousePosition.left) > symbolBoundingClientRec.left  : (mousePosition.right) <  symbolBoundingClientRec.right
    }
 
    _generateIcons = (number) => {
 
-       let {rating, description, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
-
+       let {description, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
+       let {rating} = this.state
        let refIndex = direction === defaultDirection ? 0 : iconNumber-1
-
        return Array(number).fill(null).map((n, index) => {
-
-        let active = rating === 0 ? false  : index <= rating
         let value = index + 1
+        let active = rating === 0 ? false  : value <= rating
 
         const defaultProps = {
            key: index,
@@ -103,50 +108,51 @@ class component extends Component {
 
    render() {
 
-     let {iconNumber, title, titleStyle, rating} = this.props
+     let {disabled, iconNumber, btnLabel, btnLabelStyle} = this.props
+     let {rating} = this.state
 
      return (
-      <div onMouseMove={this._onContainerMouseMove} style={{marginLeft:'0.25em'}}>
-        {
-          title &&
-          <span>{ title }</span>
-        }
-        <div style={{display: 'flex', 'flexDirection': 'row'}}>
-          { iconNumber > 0 &&
-            this._generateIcons(iconNumber)
+      <div ref={(container) => {this.symbolContainer = container}} style={{marginLeft: 5 , marginRight: 5}} onMouseLeave={this._onContainerMouseLeave}>
+          <div onMouseMove={this._onContainerMouseMove} >
+          {
+            btnLabel &&
+            <FlatButton label={btnLabel} disabled={disabled} onClick={this._handleOnClick} labelStyle={btnLabelStyle}/>
+          }
+          <div style={{display: 'flex', 'flexDirection': 'row', marginLeft: 5 , marginRight: 5}}>
+            { iconNumber > 0 &&
+              this._generateIcons(iconNumber)
+            }
+          </div>
+          {
+            rating > 0 ?
+            <span style={ratedStyle}>{`${rating} people have rated this item`}</span>
+            :
+            <span style={ratedStyle}>{'Be the first to rate this item'}</span>
           }
         </div>
-        {
-          rating > 0 ?
-          <span style={{ratedStyle}}>{`${rating} people have rated this item`}</span>
-          :
-          <span style={{fontSize: '0.65em', fontStyle: 'italic'}}>{'Be the first to rate this item'}</span>
-        }
       </div>
      );
    }
  }
 
 component.propTypes = {
+  btnLabel: string,
+  btnLabelStyle: object,
   description: oneOfType([object, string]),
   direction: oneOf(['right', 'left']),
   onClick: func,
   onMouseMove: func,
-  rating: number,
   symbolContainerStyle: object,
-  symbolStyle: object,
-  title: string,
-  value:number,
-
+  symbolStyle: object
 }
 
 component.defaultProps = {
+  btnLabel: string.isRequired,
+  onClick: func.isRequired,
+  btnLabelStyle: {fontSize: 10},
   direction: 'left',
-  rating: 0,
-  value: 0,
-  symbolContainerStyle: {},
-  symbolStyle: {},
-  titleStyle: {textAlign: 'center'}
+  symbolContainerStyle: {width: 20},
+  symbolStyle: {}
 }
 
 export default component

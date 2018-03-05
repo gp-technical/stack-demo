@@ -1,7 +1,7 @@
 import React, {Component,isValidElement,PropTypes} from 'react';
 import propTypes from 'prop-types'
 
-const {bool, element, number, object, oneOfType, string} = propTypes
+const {bool, element, object, oneOfType, string} = propTypes
 
 const defaultContainerStyle = {
   display: 'inline-block',
@@ -22,46 +22,39 @@ class RatingSymbol extends Component {
     return this.props.active !== nextProps.active
   }
 
-_makeIcon(icon, isActive) {
+  _makeSymbol = () => {
 
-  if(!icon){
-    return <div style={isActive ? {color: 'yellow'} : {color: 'grey'}}>★</div>
-  }
-// valid react element just return it
-   if(isValidElement(icon)){
-     return icon
-   }
-   // If it is an object, try to use it as a CSS style object.
-  if (typeof icon === 'object' && icon !== null) {
-    return <span style={icon} />;
-  }
-  // If it is a string, use it as class names.
-  if (Object.prototype.toString.call(icon) === '[object String]') {
-    return <span className={icon} />;
-  }
-}
+    let {active, disabled, icon} = this.props
 
-_handleMouseMove = (e) => {
-  let {onMouseMove, value, description} = this.props
+    let isActive = disabled ? false: active
+
+    if(!icon){
+      return <div style={isActive ? {color: 'yellow'} : {color: 'grey'}}>★</div>
+    }
+  // valid react element just return it
+     if(isValidElement(icon)){
+       return icon
+     }
+     // If it is an object, try to use it as a CSS style object.
+    if (typeof icon === 'object' && icon !== null) {
+      return <span style={icon} />;
+    }
+    // If it is a string, use it as class names.
+    if (Object.prototype.toString.call(icon) === '[object String]') {
+      return <span className={icon} />;
+    }
+  }
+
+_handleMouseAction = (e) => {
+  let {onMouseMove, value} = this.props
   if (onMouseMove) {
-    onMouseMove({value, description});
+    onMouseMove(value);
   }
 }
-
-_handleOnClick = (e) => {
-    let {onClick, value, description} = this.props
-  if (onClick) {
-    // [Supporting both TouchEvent and MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent)
-    // We must prevent firing click event twice on touch devices.
-    e.preventDefault();
-    onClick({value, description});
-  }
-}
-
 
   render() {
 
-    let {icon, disabled, active, symbolContainerStyle, symbolStyle} = this.props
+    let {symbolContainerStyle, symbolStyle, disabled, onMouseLeave} = this.props
     let iStyle ={...defaultIconStyle, ...symbolStyle}
     let containerStyle ={ ...defaultContainerStyle, ...{cursor: !disabled ? 'pointer' : 'auto'}, ...symbolContainerStyle}
 
@@ -69,12 +62,13 @@ _handleOnClick = (e) => {
       <div style={containerStyle}>
           <div
             style={iStyle}
-            onClick={this._handleOnClick}
-            onMouseMove={this._handleMouseMove}
-            onTouchMove={this._handleOnClick}
-            onTouchEnd={this._handleOnClick}
+            onMouseLeave={onMouseLeave ? onMouseLeave : ()=>{}}
+            onClick={this._handleMouseAction}
+            onMouseMove={this._handleMouseAction}
+            onTouchMove={this._handleMouseAction}
+            onTouchEnd={this._handleMouseAction}
           >
-            {this._makeIcon(icon, active)}
+            {this._makeSymbol()}
           </div>
       </div>
     );
@@ -84,7 +78,6 @@ _handleOnClick = (e) => {
 RatingSymbol.defaultProps = {
   disabled: false,
   active: false,
-  rating: 0,
   symbolContainerStyle: {},
   symbolStyle: {}
 }
@@ -92,8 +85,6 @@ RatingSymbol.defaultProps = {
 RatingSymbol.propTypes = {
   disabled: bool,
   active: bool,
-  rating: number,
-  description: oneOfType([object, string]),
   icon: oneOfType([element, object, string]),
   symbolContainerStyle: object,
   symbolStyle: object
