@@ -3,7 +3,7 @@ import {findDOMNode} from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
 
-const {func, number, object, oneOf, string} = propTypes
+const {func, number, object, oneOf, oneOfType, string} = propTypes
 const defaultDirection = 'left'
 const ratedStyle = {
   display: 'block',
@@ -12,8 +12,8 @@ const ratedStyle = {
 }
 class component extends Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.value !== nextProps.value
+  shouldComponentUpdate({rating}, nextState) {
+    return this.props.rating !== rating
   }
 
   componentWillMount(){
@@ -38,14 +38,9 @@ class component extends Component {
    _handleMouseMove = (newValue) => {
      let {mousePosition, symbolBoundingClientRec} = this
      let {rating, onMouseMove, direction} = this.props
-
-     if(newValue.hasOwnProperty('rating') && rating !== newValue.rating){
-
-       if(onMouseMove){
-         this._isValid() ? onMouseMove(newValue) : onMouseMove(0)
-       }
-     }
-
+      if(onMouseMove){
+          this._isValid() ? onMouseMove(newValue) : onMouseMove({value: 0 , description: null })
+      }
    }
 
    _handleOnClick = (newValue) => {
@@ -59,7 +54,7 @@ class component extends Component {
 
      } else {
          if(onClick){
-           this._isValid(newValue) ? onClick(newValue) : onClick(0)
+           this._isValid(newValue) ? onClick(newValue) : onClick({value: 0 , description: null })
          }
      }
    }
@@ -72,28 +67,29 @@ class component extends Component {
 
    _generateIcons = (number) => {
 
-       let {rating, description, direction, symbolContainerStyle, symbolStyle} = this.props
+       let {rating, description, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
 
-       let refIndex = direction === defaultDirection ? 0 : number-1
+       let refIndex = direction === defaultDirection ? 0 : iconNumber-1
 
        return Array(number).fill(null).map((n, index) => {
 
         let active = rating === 0 ? false  : index <= rating
+        let value = index + 1
 
         const defaultProps = {
-          key: index,
+           key: index,
            active,
-           rating,
            description,
+           value,
            symbolContainerStyle,
            symbolStyle,
-           onClick: () => {this._handleOnClick({rating, description})},
-           onMouseMove: () => {this._handleMouseMove({rating, description})}
+           onClick: this._handleOnClick,
+           onMouseMove: this._handleMouseMove
          }
 
          return (index === refIndex ?
            <RatingSymbol
-             ref={(symbol) => {console.log(symbol); this.thresholdSymbol = symbol}}
+             ref={(symbol) => {this.thresholdSymbol = symbol}}
              {...defaultProps}
              />
              :
@@ -108,6 +104,7 @@ class component extends Component {
    render() {
 
      let {iconNumber, title, titleStyle, rating} = this.props
+
      return (
       <div onMouseMove={this._onContainerMouseMove} style={{marginLeft:'0.25em'}}>
         {
@@ -131,7 +128,7 @@ class component extends Component {
  }
 
 component.propTypes = {
-  description:oneOf([string, object]),
+  description: oneOfType([object, string]),
   direction: oneOf(['right', 'left']),
   onClick: func,
   onMouseMove: func,

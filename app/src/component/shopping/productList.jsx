@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import {components} from '../../loader'
 import { services, actionHub } from '../../loader'
 
+
 const style = {
   productWrapper: {
     display: 'flex',
@@ -44,14 +45,14 @@ class component extends React.PureComponent {
     }
   }
 
-  onRatingChange = ({product, value}) => {
-    if(value >=0){
-		 console.log(product + ' ' + value)
-		}
+  onRatingChange = (rating) => {
+    console.log(rating)
+    this.props.rateProduct(rating)
   }
 
   render () {
     var { products, isSnackBarOpen, rating=0} = this.props
+
     if (products && products.length > 0) {
       return (
         <div style={style.productWrapper}>
@@ -69,7 +70,8 @@ class component extends React.PureComponent {
                    rating={rating}
                    description={product}
                    onClick={this.onRatingChange}
-                   symbolContainerStyle={{width:300}}
+                   onMouseMove={this.onRatingChange}
+                   symbolContainerStyle={{width:30}}
                   />
                </CardText>
               <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
@@ -101,9 +103,14 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
-  productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
-  snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE())
-})
+    productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
+    productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
+    snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE()),
+    rateProduct: actionHub.RATING_BAR_RATE_PRODUCT
+
+  }
+)
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(component)

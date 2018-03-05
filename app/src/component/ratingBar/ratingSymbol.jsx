@@ -42,31 +42,31 @@ _makeIcon(icon, isActive) {
 }
 
 _handleMouseMove = (e) => {
-  let {onMouseMove, rating, description} = this.props
+  let {onMouseMove, value, description} = this.props
   if (onMouseMove) {
-    onMouseMove({rating, description});
+    onMouseMove({value, description});
   }
 }
 
 _handleOnClick = (e) => {
-    let {onClick, rating, description} = this.props
+    let {onClick, value, description} = this.props
   if (onClick) {
     // [Supporting both TouchEvent and MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent)
     // We must prevent firing click event twice on touch devices.
     e.preventDefault();
-    onClick({rating, description});
+    onClick({value, description});
   }
 }
 
 
   render() {
 
-    let {icon, disabled, active, symbolContainerStyle, symbolStyle, title} = this.props
+    let {icon, disabled, active, symbolContainerStyle, symbolStyle} = this.props
     let iStyle ={...defaultIconStyle, ...symbolStyle}
     let containerStyle ={ ...defaultContainerStyle, ...{cursor: !disabled ? 'pointer' : 'auto'}, ...symbolContainerStyle}
 
     return (
-      <div style={containerStyle} title={title}>
+      <div style={containerStyle}>
           <div
             style={iStyle}
             onClick={this._handleOnClick}
