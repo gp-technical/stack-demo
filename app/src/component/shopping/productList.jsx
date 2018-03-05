@@ -45,13 +45,12 @@ class component extends React.PureComponent {
     }
   }
 
-  onRatingChange = (rating) => {
-    console.log(rating)
+  submitRating = (rating) => {
     this.props.rateProduct(rating)
   }
 
   render () {
-    var { products, isSnackBarOpen, rating=0} = this.props
+    var { products, isSnackBarOpen, ratedProducts, numberOfReviews} = this.props
 
     if (products && products.length > 0) {
       return (
@@ -65,12 +64,9 @@ class component extends React.PureComponent {
               <CardText>
                  <components.ratingBar
                    iconNumber={5}
-                   title='Rate this item'
-                   onMouseMove={this.onRatingChange}
-                   rating={rating}
+                   btnLabel='Rate this item'
                    description={product}
-                   onClick={this.onRatingChange}
-                   onMouseMove={this.onRatingChange}
+                   onClick={this.submitRating}
                    symbolContainerStyle={{width:30}}
                   />
                </CardText>
@@ -86,6 +82,8 @@ class component extends React.PureComponent {
            message={this.productAddedSnackText()}
            autoHideDuration={4000}
            onRequestClose={this.onSnackbarClose}
+           ratedroducts={ratedProducts}
+           numberOfReviews={numberOfReviews}
            onActionTouchTap={this.onProductAddedRemove}
          />
         </div>
@@ -96,11 +94,16 @@ class component extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  products: services.shopping.selector.getProducts(state),
-  productAdded: services.shopping.selector.getProductAdded(state),
-  isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state)
-})
+const mapStateToProps = (state) => {
+  let {shopping:{products=[]}} = state
+  return{
+    products: products,
+    productAdded: services.shopping.selector.getProductAdded(state),
+    isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state),
+    ratedProducts: services.ratingBar.selector.getProductRatingScores(state, products),
+    numberOfReviews: services.ratingBar.selector.getNumberOfProductReviewers(state, products),
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
     productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
