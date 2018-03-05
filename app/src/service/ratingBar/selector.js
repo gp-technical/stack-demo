@@ -67,4 +67,4 @@ const getMedianScore = (ratingObj) => {
 }
 
 
-export {getProductRatingScores, getNumberOfProductReviewers, getMedianProductScores }
+export default {getProductRatingScores, getNumberOfProductReviewers, getMedianProductScores }
