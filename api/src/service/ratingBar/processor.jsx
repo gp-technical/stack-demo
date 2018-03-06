@@ -6,12 +6,13 @@ const processor = async ({types, type, data})=> {
 
   switch (type) {
     case types.ratingBarAddRating:
-    console.log('Add RATINGg')
-
-      let{rating, product: {id} = null} = data
-      let updatedRatings = addProductRating(rating, id)
+    console.log(types)
+    console.log('###################')
+console.log(data)
+console.log(data.rating, data.description.id)
+      let updatedRatings = addProductRating(data.rating, data.description.id)
       //message.custom('chatBroadcast', msg)
-      return {...state, ...updatedRatings}
+      return updatedRatings
   }
 }
 
