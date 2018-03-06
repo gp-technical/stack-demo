@@ -2,43 +2,55 @@ import name from './name'
 
 const getProductRatingScores = (state, products) => {
   let ratedProducts = getRatedProducts(state)
-  return products.reduce((acc, {id}) => {
-    if (id) {
-      acc[id] = ratedProducts[id] ? getRatingScore(ratedProducts[id]) : 0
-    }
-    return acc
-  }, {})
+  if(hasKeys(ratedProducts)){
+    return products.reduce((acc, {id}) => {
+      if (id) {
+        acc[id] = ratedProducts[id] ? getRatingScore(ratedProducts[id]) : 0
+      }
+      return acc
+    }, {})
+  }
+  return {}
 }
 
 const getNumberOfProductReviewers = (state, products) => {
   let ratedProducts = getRatedProducts(state)
-  return products.reduce((acc, {id}) => {
-    if (id) {
-      acc[id] = ratedProducts[id] ? getNumberReviewers(ratedProducts[id]) : 0
-    }
-    return acc
-  }, {})
+  if(hasKeys(ratedProducts)){
+    return products.reduce((acc, {id}) => {
+      if (id) {
+        acc[id] = ratedProducts[id] ? getNumberReviewers(ratedProducts[id]) : 0
+      }
+      return acc
+    }, {})
+  }
+  return {}
 }
 
 const getMedianProductScores = (state, products) => {
   let ratedProducts = getRatedProducts(state)
-  return products.reduce((acc, {id}) => {
-    if (id) {
-      acc[id] = ratedProducts[id] ? getMedianScore(ratedProducts[id]) : 0
+    if(hasKeys(ratedProducts)){
+      return products.reduce((acc, {id}) => {
+        if (id) {
+          acc[id] = ratedProducts[id] ? getMedianScore(ratedProducts[id]) : 0
+        }
+        return acc
+      }, {})
     }
-    return acc
-  }, {})
+    return {}
 }
 
 const getRatedProducts = (state) => (state[name])
 
+const hasKeys = (obj) => (Object.keys(obj).length > 0)
+
 const getRatingScore = (ratingObj) => {
   let count = 0
-  let sum = Object.values(ratingObj).reduce((acc, next, index) => {
-    count += index
-    return acc + next * (index + 1)
+
+  let sum = Object.keys(ratingObj).reduce((acc, next, index) => {
+    count += ratingObj[next];
+    return acc += ratingObj[next] * Number(next)
   }, 0)
-  return sum / count
+  return sum /count
 }
 
 const getNumberReviewers = (ratingObj) => {
