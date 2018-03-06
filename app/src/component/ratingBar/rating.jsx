@@ -5,17 +5,22 @@ import RatingSymbol from './RatingSymbol'
 import FlatButton from 'material-ui/FlatButton';
 
 const {func, number, object, oneOf, oneOfType, string} = propTypes
+
 const defaultDirection = 'left'
+
 const ratedStyle = {
   fontSize: '0.65em',
   fontStyle: 'italic'
 }
 
+const personStr = 'person has rated this item'
+const peopleStr = 'people have rated this item'
+
 class Rating extends Component {
 
   constructor(props){
     super(props)
-    this.state = { rating: 0}
+    this.state = { rating: 0, rated: props.reviews > 0}
   }
 
   componentWillMount(){
@@ -26,6 +31,13 @@ class Rating extends Component {
     let symbol = findDOMNode(this.thresholdSymbol)
     this.symbolBoundingClientRec = symbol.getBoundingClientRect()
     this.mousePosition = this.symbolBoundingClientRec
+  }
+
+  componentWillReceiveProps(nextProps){
+    let{reviews} = nextProps
+    if(reviews  !== this.props.reviews){
+      this.setState({rated: true})
+    }
   }
 
   _onContainerMouseLeave = (e) => {
@@ -40,7 +52,6 @@ class Rating extends Component {
     let {rating} = this.state
 
     if(value !== rating ){
-
       this._setRating(value)
     }
   }
@@ -48,7 +59,7 @@ class Rating extends Component {
    _handleOnClick = () => {
 
      let {rating} = this.state
-     let {description, disabled, onClick} = this.props
+     let {id, disabled, onClick} = this.props
 
      if (disabled) {
        e.stopPropagation()
@@ -57,7 +68,7 @@ class Rating extends Component {
 
      } else {
          if(onClick){
-           onClick({rating, description})
+           onClick({rating, id})
          }
      }
    }
@@ -74,7 +85,7 @@ class Rating extends Component {
 
    _generateIcons = (number) => {
 
-       let {description, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
+       let {id, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
        let {rating} = this.state
        let refIndex = direction === defaultDirection ? 0 : iconNumber-1
        return Array(number).fill(null).map((n, index) => {
@@ -84,7 +95,7 @@ class Rating extends Component {
         const defaultProps = {
            key: index,
            active,
-           description,
+           id,
            value,
            symbolContainerStyle,
            symbolStyle,
@@ -108,8 +119,8 @@ class Rating extends Component {
 
    render() {
 
-     let {disabled, iconNumber, btnLabel, btnLabelStyle} = this.props
-     let {rating} = this.state
+     let {disabled, iconNumber, btnLabel, btnLabelStyle, reviews, medianRating} = this.props
+     let {rated} = this.state
 
      return (
       <div ref={(container) => {this.symbolContainer = container}} style={{marginLeft: 5 , marginRight: 5}} onMouseLeave={this._onContainerMouseLeave}>
@@ -124,8 +135,15 @@ class Rating extends Component {
             }
           </div>
           {
-            rating > 0 ?
-            <span style={ratedStyle}>{`${rating} people have rated this item`}</span>
+            rated ?
+            <div>
+              <div>
+                <span style={ratedStyle}>{reviews && reviews > 1 ? `${reviews} ${peopleStr}` : `${reviews} ${personStr}` }</span>
+              </div>
+              <div>
+                <span style={ratedStyle}>{`Current rating ${medianRating}`}</span>
+              </div>
+            </div>
             :
             <span style={ratedStyle}>{'Be the first to rate this item'}</span>
           }
@@ -138,12 +156,14 @@ class Rating extends Component {
 Rating.propTypes = {
   btnLabel: string,
   btnLabelStyle: object,
-  description: oneOfType([object, string]),
+  id: oneOfType([number, string]),
   direction: oneOf(['right', 'left']),
   onClick: func,
   onMouseMove: func,
   symbolContainerStyle: object,
-  symbolStyle: object
+  symbolStyle: object,
+  avgRating: number,
+  reviews: number
 }
 
 Rating.defaultProps = {
