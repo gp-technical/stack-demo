@@ -1,11 +1,10 @@
 import React from 'react'
-import { Card, CardTitle, CardText, CardMedia, CardActions } from 'material-ui/Card'
+import { Card, CardTitle, CardMedia, CardActions } from 'material-ui/Card'
 import Snackbar from 'material-ui/Snackbar'
 import FlatButton from 'material-ui/FlatButton'
 import { connect } from 'react-redux'
-import {components} from '../../loader'
-import { services, actionHub } from '../../loader'
 
+import { services, actionHub } from '../../loader'
 
 const style = {
   productWrapper: {
@@ -45,13 +44,8 @@ class component extends React.PureComponent {
     }
   }
 
-  submitRating = (rating) => {
-    this.props.rateProduct(rating)
-  }
-
   render () {
-    var { products, isSnackBarOpen, ratedProducts, numberOfReviews} = this.props
-
+    var { products, isSnackBarOpen } = this.props
     if (products && products.length > 0) {
       return (
         <div style={style.productWrapper}>
@@ -61,15 +55,6 @@ class component extends React.PureComponent {
               <CardMedia>
                 <img src={product.imageURL} style={{display: 'block', margin: 'auto'}} />
               </CardMedia>
-              <CardText>
-                 <components.ratingBar
-                   iconNumber={5}
-                   btnLabel='Rate this item'
-                   description={product}
-                   onClick={this.submitRating}
-                   symbolContainerStyle={{width:30}}
-                  />
-               </CardText>
               <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
               <CardActions>
                 <FlatButton label="Add to Cart" onClick={() => { this.onProductCartAdd(product) }} />
@@ -82,8 +67,6 @@ class component extends React.PureComponent {
            message={this.productAddedSnackText()}
            autoHideDuration={4000}
            onRequestClose={this.onSnackbarClose}
-           ratedroducts={ratedProducts}
-           numberOfReviews={numberOfReviews}
            onActionTouchTap={this.onProductAddedRemove}
          />
         </div>
@@ -94,26 +77,16 @@ class component extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
-  let {shopping:{products=[]}} = state
-  return{
-    products: products,
-    productAdded: services.shopping.selector.getProductAdded(state),
-    isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state),
-    ratedProducts: services.ratingBar.selector.getProductRatingScores(state, products),
-    numberOfReviews: services.ratingBar.selector.getNumberOfProductReviewers(state, products),
-  }
-}
+const mapStateToProps = (state) => ({
+  products: services.shopping.selector.getProducts(state),
+  productAdded: services.shopping.selector.getProductAdded(state),
+  isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state)
+})
 
 const mapDispatchToProps = (dispatch) => ({
-    productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
-    productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
-    snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE()),
-    rateProduct: actionHub.RATING_BAR_RATE_PRODUCT
-
-  }
-)
-
-
+  productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
+  productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
+  snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(component)

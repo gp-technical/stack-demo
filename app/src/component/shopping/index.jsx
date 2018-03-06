@@ -17,10 +17,9 @@ class component extends React.PureComponent {
     this.props.productSearch(e.target.value)
   }
 
-
   render () {
     const { productsInCart, isCartOpen } = this.props
-  //  const {shoppingCart, productList, shoppingFilter} = components
+
     return (
       <components.Box>
         <h2>
