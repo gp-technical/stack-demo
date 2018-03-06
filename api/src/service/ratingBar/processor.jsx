@@ -3,9 +3,10 @@ import { addProductRating } from './ratingUtils'
 
 
 const processor = async ({types, type, data})=> {
-console.log(types)
+
   switch (type) {
-    case types.addRating:
+    case types.ratingBarAddRating:
+    console.log('Add RATINGg')
 
       let{rating, product: {id} = null} = data
       let updatedRatings = addProductRating(rating, id)
