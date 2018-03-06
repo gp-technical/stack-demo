@@ -15,12 +15,12 @@ const styles = {
   }
 }
 
-const product  =  {
+const product = {
   id: 1,
-     imageURL:'https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg',
-     name: 'BB8 Star Wars Ep VII',
-     price: 10
-   }
+  imageURL:'https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg',
+  name: 'BB8 Star Wars Ep VII',
+  price: 10
+}
 
 class component extends Component {
 
@@ -32,22 +32,22 @@ class component extends Component {
 
      const {ratingWrapper, ratingCard} = styles
      let{ ratedProducts, numberOfReviews} = this.props
-
+     let {id, imageURL, name, price} = product
      return (
        <div style={ratingWrapper}>
          <Card style={ratingCard}>
-           <CardTitle title={product.name} />
+           <CardTitle title={name} />
            <CardMedia>
-             <img src={product.imageURL} style={{display: 'block', margin: 'auto'}} />
+             <img src={imageURL} style={{display: 'block', margin: 'auto'}} />
             </CardMedia>
-            <CardTitle title={`$ ${product.price}`} />
+            <CardTitle title={`$ ${price}`} />
             <CardText>
               <components.rating
                 iconNumber={5}
                 btnLabel='Rate this item'
-                description={product}
-                ratedProducts={ratedProducts}
-                numberOfReviews={numberOfReviews}
+                id={id}
+                reviews={numberOfReviews[id]}
+                medianRating={ratedProducts[id]}
                 onClick={this.submitRating}
                 symbolContainerStyle={{width:30}} />
             </CardText>
@@ -68,9 +68,8 @@ class component extends Component {
 
  const mapDispatchToProps = (dispatch) => {
    const {RATING_BAR_ADD_RATING} = actionHub
-   console.log(actionHub)
    return{
-     rateProduct: RATING_BAR_ADD_RATING
+     rateProduct:(rating) => dispatch(RATING_BAR_ADD_RATING(rating)),
    }
  }
 
