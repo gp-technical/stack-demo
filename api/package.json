@@ -33,7 +33,7 @@
         "@gp-technical/stack-pack-file": "1.1.2",
         "@gp-technical/stack-pack-mongo": "1.1.9",
         "@gp-technical/stack-pack-util": "1.1.2",
-        "stack-pack-gpapi": "1.1.6"
+        "stack-pack-gpapi": "1.1.8"
       },
       "dev": {}
     }
@@ -48,7 +48,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "le_node": "^1.7.0",
-    "stack-pack-gpapi": "1.1.6",
+    "stack-pack-gpapi": "1.1.8",
     "winston": "^2.3.1"
   },
   "devDependencies": {
