@@ -1,48 +1,42 @@
 import { setupAnalyticsPersistence } from '@gp-technical/stack-pack-api'
 import unirest from 'unirest'
 
-export default () => {
-  setupAnalyticsPersistence((payload) => {
-    const req = unirest.post().headers({
-      'Authorization': 'Basic ZWZmMWMwYTJjOGM3Mzg4NjE5YzA0ZGQyNmVlNGFiNzQ4YzkzZmJhMzpmOTkwNTI3M2VkNzcyMWU1NmJlZDE1MGNmN2E5YjE3NWI4NjRjMGZj',
-      'X-Experience-API-Version': '1.0.1'
-    })
+const persistAnalyticsImpl = ({ user, time, type, data }) => {
 
-    const json = {
-      'actor': {
-        'name': 'Example User',
-        'account': {
-          'homePage': 'http://www.example.org',
-          'name': 'example_user_id'
-        }
-      },
-      'verb': {
-        'id': 'http://example.com/analytics/viewed',
-        'display': {
-          'en': 'analytics_viewed'
-        }
-      },
-      'object': {
-        'id': 'http://www.example.org',
-        'definition': {
-          'type': 'http://activitystrea.ms/schema/1.0/application',
-          'name': {
-            'en': 'Example Application'
+  const req = unirest.post().headers({
+    //TODO: add this Auth header to the env file
+    'Authorization': 'Basic ZWZmMWMwYTJjOGM3Mzg4NjE5YzA0ZGQyNmVlNGFiNzQ4YzkzZmJhMzpmOTkwNTI3M2VkNzcyMWU1NmJlZDE1MGNmN2E5YjE3NWI4NjRjMGZj',
+    'X-Experience-API-Version': '1.0.1'
+  })
+
+  const json = {
+    actor: {
+      mbox: `mailto:${user.email}`
+    },
+    verb: {
+      id: 'http://example.com/analytics/' + type.toLowerCase(),
+    },
+    'object': {
+      id: 'http://example.com/analytics/object',
+      definition: {
+        extensions: {
+          'http://example.com/analytics/payload': {
+            timestamp: time,
+            payload: data
           }
         }
-      },
-      'context': {
-        'extensions':{}
       }
     }
+  }
 
-    if (payload) {
-      json.context.extensions['http://example.com/analytics'] = payload
-    }
-    send({req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements'}).then((resp) => {
-      console.log(resp)
-    })
+  //console.log(JSON.stringify(json))
+  send({req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements'}).then((resp) => {
+    console.log(resp)
   })
+}
+
+export default () => {
+  setupAnalyticsPersistence(persistAnalyticsImpl)
 }
 
 const send = ({ req, url, timeout, serverPath, payload, json, file }) => {
