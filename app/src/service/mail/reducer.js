@@ -1,14 +1,15 @@
 const reducer = (state = {}, action) => {
-	const {type, types, data} = action
-
-	switch (type) {
-		case types.send:
-			return {...state, message: data}
-		case types.getEmail:
-			return {...state, email: data}
-		default:
-			return state
-	}
+  const {type, types, data} = action
+  switch (type) {
+    case types.mailChange:
+      return {...state, email: data}
+    case types.mailValidate:
+      return {...state, isValid: data}
+    case types.mailMessage:
+      return {...state, message: data}
+    default:
+      return state
+  }
 }
 
 export default reducer

@@ -12,16 +12,16 @@ import dialogForm from './dialogForm'
 import dialogStepper from './dialogStepper'
 
 export default {
-	counter,
-	errors,
-	fetch,
-	gp,
-	thunks,
-	mail,
-	todos,
-	sphere,
-	dialogSimple,
-	dialogForm,
-	shopping,
-	dialogStepper
+  counter,
+  errors,
+  fetch,
+  gp,
+  thunks,
+  mail,
+  todos,
+  sphere,
+  dialogSimple,
+  dialogForm,
+  shopping,
+  dialogStepper
 }

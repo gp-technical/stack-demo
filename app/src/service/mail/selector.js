@@ -4,12 +4,16 @@ const get = state => {
   return state[name]
 }
 
-const getData = state => {
-  return get(state).data
+const getMessage = state => {
+  return get(state).message
 }
 
-const getSource = state => {
-  return get(state).source
+const getEmail = state => {
+  return get(state).email
 }
 
-export default { getData, getSource }
+const getIsValid = state => {
+  return get(state).isValid
+}
+
+export default {getMessage, getEmail, getIsValid}
