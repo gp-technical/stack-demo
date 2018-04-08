@@ -1,4 +1,5 @@
 const SparkPost = require('sparkpost')
+//43a7d7c56574c2846141526e8707cfd9b517cec1
 const client = new SparkPost('43a7d7c56574c2846141526e8707cfd9b517cec1')
 export default async (email) => {
   try {
@@ -16,9 +17,11 @@ export default async (email) => {
       ]
     })
     console.log(result)
-    return "Sent"
+    return 'Sent'
   } catch (error) {
     console.log(error)
-    return "Error"
+    return 'Error -> see logs'
   }
 }
+
+//() => new Promise((resolve, reject) => setTimeout(() => resolve('Error -> see logs'),3000))
