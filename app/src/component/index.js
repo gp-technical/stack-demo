@@ -3,6 +3,7 @@ import errors from './errors'
 import fetch from './fetch'
 import gp from './gp'
 import hello from './hello'
+import mail from './mail'
 import thunks from './thunks'
 import todos from './todos'
 import sphere from './sphere'
@@ -20,6 +21,7 @@ export default {
   fetch,
   gp,
   hello,
+  mail,
   thunks,
   todos,
   sphere,

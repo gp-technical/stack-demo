@@ -48,6 +48,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "le_node": "^1.7.0",
+    "sparkpost": "^2.1.2",
     "stack-pack-gpapi": "1.1.8",
     "winston": "^2.3.1"
   },
