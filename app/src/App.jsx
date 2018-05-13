@@ -35,6 +35,7 @@ class component extends React.PureComponent {
                   <components.dialogForm />
                   <components.dialogStepper />
                   <components.shopping />
+                  <components.chat />
                 </Col>
               </Row>
             </Grid>

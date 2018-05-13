@@ -13,6 +13,7 @@ import shoppingFilter from './shopping/shoppingFilter'
 import dialogSimple from './dialogSimple'
 import dialogForm from './dialogForm'
 import dialogStepper from './dialogStepper'
+import chat from './chat'
 
 export default {
   counter,
@@ -29,5 +30,6 @@ export default {
   shopping,
   shoppingCart,
   shoppingFilter,
-  dialogStepper
+  dialogStepper,
+  chat
 }
