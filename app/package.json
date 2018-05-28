@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
-    "babel": "babel --presets latest,stage-2 src --out-dir build",
+    "babel": "babel --presets latest,stage-2 --plugins=transform-decorators-legacy src --out-dir build",
     "build": "npm run lint && npm run babel",
     "start": "npm run build && webpack-dev-server",
     "production": "webpack -p --config ./webpack.config.js"
@@ -55,6 +55,7 @@
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-react-require": "^3.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
@@ -74,6 +75,7 @@
     "open-browser-webpack-plugin": "0.0.3",
     "postcss-loader": "^1.3.0",
     "react-css-modules": "^4.1.0",
+    "react-visibility-sensor": "^3.11.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",

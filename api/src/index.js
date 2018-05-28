@@ -8,7 +8,11 @@ import winston from 'winston'
 import Logger from 'le_node' // eslint-disable-line no-unused-vars
 import util from 'util'
 
+import setupAnalytics from './setupAnalytics'
+
 const services = { ...localServices, ...sharedServices }
+
+setupAnalytics()
 
 winston.add(winston.transports.Logentries, { token: process.env.API_LOGENTRIES_TOKEN })
 winston.info('---------------------------')

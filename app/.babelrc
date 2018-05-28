@@ -1,6 +1,6 @@
 {
   "presets": ["latest", "stage-2", "react"],
-  "plugins": ["react-require"],
+  "plugins": ["react-require", "transform-decorators-legacy"],
   "env": {
     "start": {
       "presets": ["react-hmre"]

@@ -12,6 +12,7 @@ import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import dialogSimple from './dialogSimple'
 import dialogForm from './dialogForm'
+import analyticsDemo from './analyticsDemo'
 import dialogStepper from './dialogStepper'
 import chat from './chat'
 import ratingBar from './ratingBar'
@@ -35,5 +36,6 @@ export default {
   dialogStepper,
   chat,
   rating,
-  ratingBar
+  ratingBar,
+  analyticsDemo
 }

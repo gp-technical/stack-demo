@@ -8,6 +8,7 @@ import sphere from './sphere'
 import shopping from './shopping'
 import dialogSimple from './dialogSimple'
 import dialogForm from './dialogForm'
+import analyticsDemo from './analyticsDemo'
 import dialogStepper from './dialogStepper'
 import chat from './chat'
 import ratingBar from './ratingBar'
@@ -25,5 +26,6 @@ export default {
   shopping,
   dialogStepper,
   chat,
-  ratingBar
+  ratingBar,
+  analyticsDemo
 }
