@@ -10,6 +10,7 @@ import dialogForm from './dialogForm'
 import dialogStepper from './dialogStepper'
 import shopping from './shopping'
 import chat from './chat'
+import ratingBar from './ratingBar'
 
 export default {
   counter,
@@ -23,5 +24,6 @@ export default {
   dialogForm,
   shopping,
   dialogStepper,
-  chat
+  chat,
+  ratingBar
 }
