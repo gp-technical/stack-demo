@@ -38,6 +38,7 @@ class component extends React.PureComponent {
                   <components.shopping />
                   <components.chat />
                   <components.ratingBar />
+                  <components.mail />
                 </Col>
               </Row>
             </Grid>

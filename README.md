@@ -250,6 +250,11 @@ Recreates the canonical REDUX demo application. This feature allows you to add /
 
 Calculates the volume of a sphere. This feature shows simple `app` <-> `api` communication as well as a neat _debounce_ text box that throttles the user input to prevent excessive calls to the api
 
+* ## mail
+
+Uses goodpractice email provider to send mail
+
+
 # Feature: `hello`
 
 This is the simplest feature in the demo. It is just a dumb REACT app component and too simple to require an api or app service. It is here to show you that you don't need to do anything special if
