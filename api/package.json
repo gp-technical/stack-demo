@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-api",
   "description": "The API component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-api/readme",
@@ -11,9 +11,12 @@
   },
   "main": "src/index.js",
   "scripts": {
+    "lint": "sp-lint",
+    "precommit": "sp-lint-staged",
     "start": "env-cmd .env babel-node src/index.js --silent",
-    "production": "babel --presets latest,stage-2 src --out-dir /build"
+    "production": "babel --presets env,stage-2 src --out-dir /build"
   },
+  "standard-engine": "@gp-technical/stack-pack-standard",
   "swapDep": {
     "local": {
       "dep": {
@@ -49,20 +52,15 @@
     "express": "^4.13.4",
     "le_node": "^1.7.0",
     "sparkpost": "^2.1.2",
-    "stack-pack-gpapi": "1.1.8",
+    "stack-pack-gpapi": "file:../../stack-pack/stack-pack-gpapi",
     "winston": "^2.3.1"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-dev": "file:../../stack-pack/stack-pack-dev",
+    "@gp-technical/stack-pack-standard": "^1.1.0",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^7.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.16.0",
-    "env-cmd": "^7.0.0",
-    "eslint": "^3.6.1",
-    "eslint-config-standard": "^6.1.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^2.0.0"
+    "env-cmd": "^7.0.0"
   }
 }
