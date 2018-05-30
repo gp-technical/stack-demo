@@ -1,8 +1,8 @@
-import {makeProcessor} from '@gp-technical/stack-pack-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 import db from './db'
 
-const processor = async (action) => {
-  var {types, type, data} = action
+const processor = async action => {
+  var { types, type, data } = action
 
   switch (type) {
     case types.todosCreate:

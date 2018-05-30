@@ -1,11 +1,13 @@
+// TODO Check that this import is right...
+import fs from 'fs'
 import { setupAnalyticsPersistence } from '@gp-technical/stack-pack-api'
 import unirest from 'unirest'
 
 const persistAnalyticsImpl = ({ user, time, type, data }) => {
-
   const req = unirest.post().headers({
-    //TODO: add this Auth header to the env file
-    'Authorization': 'Basic ZWZmMWMwYTJjOGM3Mzg4NjE5YzA0ZGQyNmVlNGFiNzQ4YzkzZmJhMzpmOTkwNTI3M2VkNzcyMWU1NmJlZDE1MGNmN2E5YjE3NWI4NjRjMGZj',
+    // TODO: add this Auth header to the env file
+    Authorization:
+      'Basic ZWZmMWMwYTJjOGM3Mzg4NjE5YzA0ZGQyNmVlNGFiNzQ4YzkzZmJhMzpmOTkwNTI3M2VkNzcyMWU1NmJlZDE1MGNmN2E5YjE3NWI4NjRjMGZj',
     'X-Experience-API-Version': '1.0.1'
   })
 
@@ -14,9 +16,9 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
       mbox: `mailto:${user.email}`
     },
     verb: {
-      id: 'http://example.com/analytics/' + type.toLowerCase(),
+      id: 'http://example.com/analytics/' + type.toLowerCase()
     },
-    'object': {
+    object: {
       id: 'http://example.com/analytics/object',
       definition: {
         extensions: {
@@ -29,8 +31,8 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
     }
   }
 
-  //console.log(JSON.stringify(json))
-  send({req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements'}).then((resp) => {
+  // console.log(JSON.stringify(json))
+  send({ req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements' }).then(resp => {
     console.log(resp)
   })
 }

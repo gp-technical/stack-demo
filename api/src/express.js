@@ -17,11 +17,14 @@ const start = async () => {
 
     // During development the NODE_TLS_REJECT_UNAUTHORIZED=0 environment variable is set to allow for self-signed TLS certs
     // You will need a cert authority (ca) certificate to use non-self-signed certs
-    const tls = https.createServer({
-      // ca: x509.formatPrivateKey(process.env.TLS_CA),
-      key: x509.formatPrivateKey(process.env.TLS_KEY),
-      cert: x509.formatPublicCertificate(process.env.TLS_CERT)
-    }, app)
+    const tls = https.createServer(
+      {
+        // ca: x509.formatPrivateKey(process.env.TLS_CA),
+        key: x509.formatPrivateKey(process.env.TLS_KEY),
+        cert: x509.formatPublicCertificate(process.env.TLS_CERT)
+      },
+      app
+    )
 
     app.get('/', (req, res) => {
       res.sendFile(path.resolve('index.html'))
@@ -32,9 +35,13 @@ const start = async () => {
     })
 
     await tls.listen(process.env.API_PORT)
-    winston.info(`Express TLS server started. The ${process.env.API_NAME} API is listening at ${process.env.API_ROOT}`)
+    winston.info(
+      `Express TLS server started. The ${process.env.API_NAME} API is listening at ${
+        process.env.API_ROOT
+      }`
+    )
 
-    return {tls, app}
+    return { tls, app }
   } catch (inner) {
     const err = new Error('An error occurred while starting the Express TLS Server')
     err.inner = inner
@@ -42,4 +49,4 @@ const start = async () => {
   }
 }
 
-export default { start}
+export default { start }

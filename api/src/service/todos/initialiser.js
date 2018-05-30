@@ -1,7 +1,7 @@
 import db from './db'
 
 const initialiser = async () => {
-    return db.getTodos()
+  return db.getTodos()
 }
 
 export default initialiser

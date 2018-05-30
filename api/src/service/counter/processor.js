@@ -1,8 +1,9 @@
-import { makeProcessor, message } from '@gp-technical/stack-pack-api'
+import { makeProcessor } from '@gp-technical/stack-pack-api'
 import db from './db'
 
 const processor = async action => {
-  var { types, type, data, user } = action
+  // eslint-disable-next-line no-unused-vars
+  var { types, type, user, data } = action
 
   switch (type) {
     case types.counterIncrement:
