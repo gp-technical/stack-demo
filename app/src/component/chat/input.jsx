@@ -5,7 +5,7 @@ const INITIAL_VALUE = ''
 const HINT_TEXT = 'Type message, hit enter to send'
 
 class component extends React.PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { value: INITIAL_VALUE }
   }
@@ -16,7 +16,10 @@ class component extends React.PureComponent {
 
   handleKeyPress = ev => {
     const { onBroadcast } = this.props
-    const { key, target: { value } } = ev
+    const {
+      key,
+      target: { value }
+    } = ev
     if (key === 'Enter') {
       ev.preventDefault()
       onBroadcast(value)
@@ -24,7 +27,7 @@ class component extends React.PureComponent {
     }
   }
 
-  render () {
+  render() {
     const { value } = this.state
     return (
       <TextField
@@ -32,7 +35,7 @@ class component extends React.PureComponent {
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
         hintText={HINT_TEXT}
-        multiLine={true}
+        multiLine
         value={value}
       />
     )

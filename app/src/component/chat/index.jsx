@@ -6,7 +6,7 @@ import Input from './input'
 import Messages from './messages'
 
 class component extends React.PureComponent {
-  render () {
+  render() {
     const { messages, handleBroadcast } = this.props
     return (
       <components.Box>
@@ -30,4 +30,7 @@ const mapDispatchToProps = dispatch => ({
   handleBroadcast: content => dispatch(actionHub.CHAT_SEND(content))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

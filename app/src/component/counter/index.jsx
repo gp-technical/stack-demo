@@ -31,7 +31,7 @@ class component extends React.PureComponent {
   onGetTotalRest = () => {
     window.open(url('total'), '_blank')
   }
-  render () {
+  render() {
     var { total } = this.props
 
     return (
@@ -41,32 +41,19 @@ class component extends React.PureComponent {
         </h2>
         <h3>Working with an API Service</h3>
         <p>
-          Demonstrates how to update your local state by dispatching REDUX
-          actions that are processed by the API.
+          Demonstrates how to update your local state by dispatching REDUX actions that are
+          processed by the API.
         </p>
         <p>
-          It also shows how to expose selected aspects of the API service though
-          REST endpoints.
+          It also shows how to expose selected aspects of the API service though REST endpoints.
         </p>
         <Divider />
         <h1>Total = {total}</h1>
         <Divider />
         <h3>Dispatch REDUX Actions</h3>
-        <RaisedButton
-          label="Increment ++"
-          onClick={this.onIncrementRedux}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Decrement --"
-          onClick={this.onDecrementRedux}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Get Total"
-          onClick={this.onGetTotalRedux}
-          style={buttonStyle}
-        />
+        <RaisedButton label="Increment ++" onClick={this.onIncrementRedux} style={buttonStyle} />
+        <RaisedButton label="Decrement --" onClick={this.onDecrementRedux} style={buttonStyle} />
+        <RaisedButton label="Get Total" onClick={this.onGetTotalRedux} style={buttonStyle} />
         <Divider />
         <h3>Access the Equivalent REST Endpoints</h3>
         <ul>
@@ -101,4 +88,7 @@ const mapDispatchToProps = dispatch => ({
   decrement: () => dispatch(actionHub.COUNTER_DECREMENT())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

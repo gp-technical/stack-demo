@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
-import Dialog from 'material-ui/Dialog'
 import { actionHub, services, components } from '../../loader'
 import { visibilityDetector } from '@gp-technical/stack-pack-app'
 
-@visibilityDetector({content:'props.name'})
+@visibilityDetector({ content: 'props.name' })
 class VisibilityDetected extends React.PureComponent {
   render() {
     const visibleDivStyle = {
@@ -26,12 +25,16 @@ class VisibilityDetected extends React.PureComponent {
       return false
     }
 
-    return <div style={visibleDivStyle}
-      className="click-check"
-      onClick={onDivClick}
-      data-analytics-name={this.props.name}>
-      {this.props.name}
-    </div>
+    return (
+      <div
+        style={visibleDivStyle}
+        className="click-check"
+        onClick={onDivClick}
+        data-analytics-name={this.props.name}
+      >
+        {this.props.name}
+      </div>
+    )
   }
 }
 
@@ -40,12 +43,14 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  dummyAction: (data) => dispatch(actionHub.ANALYTICS_DEMO_DUMMY_ACTION(data))
+  dummyAction: data => dispatch(actionHub.ANALYTICS_DEMO_DUMMY_ACTION(data))
 })
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(
+  mapStateToProps,
+  mapDispatchToProps
+)
 class analyticsDemo extends React.PureComponent {
-
   componentDidMount() {
     const emptyDivStyle = {
       height: '320px',
@@ -55,59 +60,59 @@ class analyticsDemo extends React.PureComponent {
     const emptyChildDivStyle = {
       verticalAlign: 'middle',
       textAlign: 'center',
-      display: 'table-cell',
+      display: 'table-cell'
     }
     var elements = [
       <VisibilityDetected
-        name='upper'
+        name="upper"
         dummyAction={this.props.dummyAction}
-        visibilityContainer={this.innerScrollDiv} />,
+        visibilityContainer={this.innerScrollDiv}
+      />,
       <div style={emptyDivStyle}>
         <div style={emptyChildDivStyle}>Empty</div>
       </div>,
       <VisibilityDetected
-        name='lower'
+        name="lower"
         dummyAction={this.props.dummyAction}
-        visibilityContainer={this.innerScrollDiv} />
+        visibilityContainer={this.innerScrollDiv}
+      />
     ]
-    this.setState({visibleChildren: elements})
+    this.setState({ visibleChildren: elements })
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.messages.scrollTop = this.messages.scrollHeight
   }
 
-  renderDocumentation () {
+  renderDocumentation() {
     return (
       <div>
         <h3>Setup</h3>
-        <p>
-          setupClientAnalytics(config)
-        </p>
-        <h4>
-          Config object
-        </h4>
+        <p>setupClientAnalytics(config)</p>
+        <h4>Config object</h4>
         <p>
           <b>store </b>
           Mandatory. Needed to dispatch actions
         </p>
         <p>
           <b>container </b>
-          Visibility detection needs a reference container, with fixed size, to check if the
-          target component is visible inside it. Components may override (see below).
+          Visibility detection needs a reference container, with fixed size, to check if the target
+          component is visible inside it. Components may override (see below).
         </p>
         <p>
-          In this example, "innerScrollDiv" (react ref name), used as the container, and must
-          be rendered first,  in render(), and after that, componentDidMount() will run and add
-          the visible inner components that are visibility-detectable
+          In this example, "innerScrollDiv" (react ref name), used as the container, and must be
+          rendered first, in render(), and after that, componentDidMount() will run and add the
+          visible inner components that are visibility-detectable
         </p>
         <p>
           <b>clickingExtraSelectors </b>
-          Extra selectors to capture clicks, by tag name or by css class (using dot-className, .classname)
+          Extra selectors to capture clicks, by tag name or by css class (using dot-className,
+          .classname)
         </p>
         <p>
-          It defaults to interactive tags, like buttons, links, inputs. Check <i> defaultSelectors</i> in
-          stack-pack-app <i> component/analytics/clickDetector.js</i> for a complete list.
+          It defaults to interactive tags, like buttons, links, inputs. Check{' '}
+          <i> defaultSelectors</i> in stack-pack-app <i> component/analytics/clickDetector.js</i>{' '}
+          for a complete list.
         </p>
         <p>
           <b>enableClickingAnalytics </b>
@@ -122,8 +127,9 @@ class analyticsDemo extends React.PureComponent {
           buttons, links, inputs, among others (check stack-pak-app for complete list).
         </p>
         <p>
-          In this example, the elements labeled <i>upper</i> and <i>lower</i> clicks are captured because their class name
-          (<i>click-check</i>) was added to the <i>setupClientAnalytics</i> call in <i>src/index.jsx</i> file
+          In this example, the elements labeled <i>upper</i> and <i>lower</i> clicks are captured
+          because their class name (<i>click-check</i>) was added to the <i>setupClientAnalytics</i>{' '}
+          call in <i>src/index.jsx</i> file
         </p>
         <Divider />
 
@@ -142,25 +148,26 @@ class analyticsDemo extends React.PureComponent {
           Additional content added to the payload
         </p>
         <p>
-          May also be overriden by a the <i> visibilityContainer</i> prop in component instances, used in this example
+          May also be overriden by a the <i> visibilityContainer</i> prop in component instances,
+          used in this example
         </p>
 
         <p>
           <b>ignoreInnerDiv </b>
-          The VisibilitySensor library requires only one component to inside it to be observed correctly.
-          One div is added, as a wrapper, to make sure only one element is inside the sensor.
+          The VisibilitySensor library requires only one component to inside it to be observed
+          correctly. One div is added, as a wrapper, to make sure only one element is inside the
+          sensor.
         </p>
         <p>
           Defaults to <i> false</i>. Changing to <i> true </i> is not recommended.
         </p>
 
         <Divider />
-
       </div>
     )
   }
 
-  render () {
+  render() {
     const terminalStyle = {
       height: '200px',
       width: '100%',
@@ -198,11 +205,16 @@ class analyticsDemo extends React.PureComponent {
 
         {this.renderDocumentation()}
 
-        <div ref={el => this.innerScrollDiv = el} style={innerScrollDivStyle}>
+        <div ref={el => (this.innerScrollDiv = el)} style={innerScrollDivStyle}>
           {this.state && this.state.visibleChildren}
         </div>
-        <div style={terminalStyle} ref={(el) => { this.messages = el; }}>
-          <ul style={{listStyleType: 'none'}}>
+        <div
+          style={terminalStyle}
+          ref={el => {
+            this.messages = el
+          }}
+        >
+          <ul style={{ listStyleType: 'none' }}>
             {this.props.log.map(i => (
               <li>
                 <span style={actionNameStyle}>{i.type} :: </span>
@@ -210,9 +222,12 @@ class analyticsDemo extends React.PureComponent {
               </li>
             ))}
           </ul>
-          <div style={{ float:'left', clear: 'both' }}
-               ref={(el) => { this.messagesEnd = el; }}>
-          </div>
+          <div
+            style={{ float: 'left', clear: 'both' }}
+            ref={el => {
+              this.messagesEnd = el
+            }}
+          />
         </div>
       </components.Box>
     )

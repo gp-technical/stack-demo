@@ -66,35 +66,25 @@ class dialogStepper extends React.PureComponent {
     console.error('Form error:', data)
   }
 
-  render () {
-    const {
-      isStepOpen,
-      stepIndex,
-      errorMessages,
-      submitted,
-      stepperInput
-    } = this.props
+  render() {
+    const { isStepOpen, stepIndex, errorMessages, submitted, stepperInput } = this.props
     const { wordsError, numericError, emailError } = errorMessages
     const marginStyle = {
       marginRight: 12
     }
     const actions = [
-      <RaisedButton
-        label="Cancel"
-        onClick={this.props.close}
-        style={marginStyle}
-      />,
+      <RaisedButton label="Cancel" onClick={this.props.close} style={marginStyle} />,
       <RaisedButton
         label="Back"
         disabled={stepIndex === 0}
         style={marginStyle}
-        primary={true}
+        primary
         onClick={this.props.previous}
       />,
       <RaisedButton
         label={stepIndex === 2 ? 'Submit' : 'Next'}
         style={marginStyle}
-        primary={true}
+        primary
         onClick={stepIndex === 2 ? this.submitStepper : this.props.next}
       />
     ]
@@ -105,10 +95,7 @@ class dialogStepper extends React.PureComponent {
           Feature: <i>Stepper Dialog</i>
         </h2>
         <h2>The Stepper dialog with different actions</h2>
-        <p>
-          This is a wizard dialogs with stepper actions such as next, previous,
-          submit...
-        </p>
+        <p>This is a wizard dialogs with stepper actions such as next, previous, submit...</p>
         <p>
           Wizard: {submitted}
           <br />
@@ -131,7 +118,7 @@ class dialogStepper extends React.PureComponent {
         </p>
         <RaisedButton
           label="Open Stepper Dialog"
-          primary={true}
+          primary
           onClick={this.props.open}
           style={marginStyle}
         />
@@ -202,11 +189,7 @@ class dialogStepper extends React.PureComponent {
                 <Step>
                   <StepLabel>Step 3</StepLabel>
                   <StepContent>
-                    <FormsyRadioGroup
-                      name="sex"
-                      onChange={this.handleChange}
-                      required
-                    >
+                    <FormsyRadioGroup name="sex" onChange={this.handleChange} required>
                       <FormsyRadio value="Male" label="Male" />
                       <FormsyRadio value="Female" label="Female" />
                     </FormsyRadioGroup>
@@ -244,4 +227,7 @@ const mapDispatchToProps = dispatch => ({
   submit: data => dispatch(actionHub.DIALOG_STEPPER_SUBMIT(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(dialogStepper)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(dialogStepper)

@@ -1,157 +1,169 @@
-import React, {Component} from 'react'
-import {findDOMNode} from 'react-dom'
+// TODO Fix the issues in here...
+
+import React, { Component } from 'react'
+import { findDOMNode } from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
-import FlatButton from 'material-ui/FlatButton';
+// import FlatButton from 'material-ui/FlatButton'
 
-const {func, number, object, oneOf, oneOfType, string} = propTypes
+const { func, number, object, oneOf, oneOfType, string } = propTypes
 
 const defaultDirection = 'left'
 
-const ratedStyle = {
-  fontSize: '0.65em',
-  fontStyle: 'italic'
-}
+// const ratedStyle = {
+//   fontSize: '0.65em',
+//   fontStyle: 'italic'
+// }
 
-const personStr = 'person has rated this item'
-const peopleStr = 'people have rated this item'
+// const personStr = 'person has rated this item'
+// const peopleStr = 'people have rated this item'
 
 class Rating extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state = { rating: 0, rated: props.reviews > 0}
+    this.state = { rating: 0, rated: props.reviews > 0 }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.thresholdSymbol = null
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let symbol = findDOMNode(this.thresholdSymbol)
     this.symbolBoundingClientRec = symbol.getBoundingClientRect()
     this.mousePosition = this.symbolBoundingClientRec
   }
 
-  componentWillReceiveProps(nextProps){
-    let{reviews} = nextProps
-    if(reviews  !== this.props.reviews){
-      this.setState({rated: true})
+  componentWillReceiveProps(nextProps) {
+    let { reviews } = nextProps
+    if (reviews !== this.props.reviews) {
+      this.setState({ rated: true })
     }
   }
 
-  _onContainerMouseLeave = (e) => {
-      this.mousePosition = e.target.getBoundingClientRect()
-      this._setRating(0)
+  _onContainerMouseLeave = e => {
+    this.mousePosition = e.target.getBoundingClientRect()
+    this._setRating(0)
   }
-  _onContainerMouseMove = (e) => {
-      this.mousePosition = e.target.getBoundingClientRect()
+  _onContainerMouseMove = e => {
+    this.mousePosition = e.target.getBoundingClientRect()
   }
 
-  _handleMouseMove = (value) => {
-    let {rating} = this.state
+  _handleMouseMove = value => {
+    let { rating } = this.state
 
-    if(value !== rating ){
+    if (value !== rating) {
       this._setRating(value)
     }
   }
 
-   _handleOnClick = () => {
+  _handleOnClick = () => {
+    let { rating } = this.state
+    let { id, disabled, onClick } = this.props
 
-     let {rating} = this.state
-     let {id, disabled, onClick} = this.props
+    if (disabled) {
+      // e.stopPropagation()
+      // e.preventDefault()
+      return false
+    } else {
+      if (onClick) {
+        onClick({ rating, id })
+      }
+    }
+  }
 
-     if (disabled) {
-       e.stopPropagation()
-       e.preventDefault()
-       return false
+  _setRating = value => {
+    this._isValid() ? this.setState({ rating: value }) : this.setState({ rating: 0 })
+  }
 
-     } else {
-         if(onClick){
-           onClick({rating, id})
-         }
-     }
-   }
+  _isValid = () => {
+    let { direction } = this.props
+    let { mousePosition, symbolBoundingClientRec } = this
+    return direction === defaultDirection
+      ? mousePosition.left > symbolBoundingClientRec.left
+      : mousePosition.right < symbolBoundingClientRec.right
+  }
 
-   _setRating = (value) => {
-      this._isValid() ? this.setState({rating: value}):this.setState({rating:0})
-   }
-
-   _isValid = () => {
-     let {direction} = this.props
-     let {mousePosition, symbolBoundingClientRec} = this
-     return direction === defaultDirection ? (mousePosition.left) > symbolBoundingClientRec.left  : (mousePosition.right) <  symbolBoundingClientRec.right
-   }
-
-   _generateIcons = (number) => {
-
-       let {id, direction, iconNumber, symbolContainerStyle, symbolStyle} = this.props
-       let {rating} = this.state
-       let refIndex = direction === defaultDirection ? 0 : iconNumber-1
-       return Array(number).fill(null).map((n, index) => {
+  _generateIcons = number => {
+    let { id, direction, iconNumber, symbolContainerStyle, symbolStyle } = this.props
+    let { rating } = this.state
+    let refIndex = direction === defaultDirection ? 0 : iconNumber - 1
+    return Array(number)
+      .fill(null)
+      .map((n, index) => {
         let value = index + 1
-        let active = rating === 0 ? false  : value <= rating
+        let active = rating === 0 ? false : value <= rating
 
         const defaultProps = {
-           key: index,
-           active,
-           id,
-           value,
-           symbolContainerStyle,
-           symbolStyle,
-           onClick: this._handleOnClick,
-           onMouseMove: this._handleMouseMove
-         }
+          key: index,
+          active,
+          id,
+          value,
+          symbolContainerStyle,
+          symbolStyle,
+          onClick: this._handleOnClick,
+          onMouseMove: this._handleMouseMove
+        }
 
-         return (index === refIndex ?
-           <RatingSymbol
-             ref={(symbol) => {this.thresholdSymbol = symbol}}
-             {...defaultProps}
-             />
-             :
-             <RatingSymbol
-               {...defaultProps}
-               />
-             )
-           }
-         )
-       }
+        return index === refIndex ? (
+          <RatingSymbol
+            ref={symbol => {
+              this.thresholdSymbol = symbol
+            }}
+            {...defaultProps}
+          />
+        ) : (
+          <RatingSymbol {...defaultProps} />
+        )
+      })
+  }
 
-   render() {
-
-     let {disabled, iconNumber, btnLabel, btnLabelStyle, reviews, medianRating} = this.props
-     let {rated} = this.state
-
-     return (
-      <div ref={(container) => {this.symbolContainer = container}} style={{marginLeft: 5 , marginRight: 5}} onMouseLeave={this._onContainerMouseLeave}>
-          <div onMouseMove={this._onContainerMouseMove} >
-          {
-            btnLabel &&
-            <FlatButton label={btnLabel} disabled={disabled} onClick={this._handleOnClick} labelStyle={btnLabelStyle}/>
-          }
-          <div style={{display: 'flex', 'flexDirection': 'row', marginLeft: 5 , marginRight: 5}}>
-            { iconNumber > 0 &&
-              this._generateIcons(iconNumber)
-            }
-          </div>
-          {
-            rated ?
-            <div>
-              <div>
-                <span style={ratedStyle}>{reviews && reviews > 1 ? `${reviews} ${peopleStr}` : `${reviews} ${personStr}` }</span>
-              </div>
-              <div>
-                <span style={ratedStyle}>{`Current rating ${medianRating}`}</span>
-              </div>
-            </div>
-            :
-            <span style={ratedStyle}>{'Be the first to rate this item'}</span>
-          }
-        </div>
-      </div>
-     );
-   }
- }
+  render() {
+    return <div>Fix ratingBar/rating.jsx</div>
+  }
+}
+//   render() {
+//     let { disabled, iconNumber, btnLabel, btnLabelStyle, reviews, medianRating } = this.props
+//     let { rated } = this.state
+//
+//     return (
+//        <div
+//         ref={container => {
+//           this.symbolContainer = container
+//         }}
+//         style={{ marginLeft: 5, marginRight: 5 }}
+//         onMouseLeave={this._onContainerMouseLeave}
+//         <div onMouseMove={this._onContainerMouseMove} >
+//             {btnLabel && (
+//             <FlatButton
+//               label={btnLabel}
+//               disabled={disabled}
+//               onClick={this._handleOnClick}
+//               labelStyle={btnLabelStyle}
+//             />
+//           )}
+//             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
+//             {iconNumber > 0 && this._generateIcons(iconNumber)}
+//           </div>
+//             {rated ? (
+//               <div>
+//               <div>
+//                 <span style={ratedStyle}>
+//                   {reviews && reviews > 1 ? `${reviews} ${peopleStr}` : `${reviews} ${personStr}`}
+//                 </span>
+//               </div>
+//               <div>
+//                 <span style={ratedStyle}>{`Current rating ${medianRating}`}</span>
+//               </div>
+//             </div>
+//           ) : (
+//             <span style={ratedStyle}>{'Be the first to rate this item'}</span>
+//           )}
+//           </div>
+//       </div>
+//     )
+//   }
+// }
 
 Rating.propTypes = {
   btnLabel: string,
@@ -169,9 +181,9 @@ Rating.propTypes = {
 Rating.defaultProps = {
   btnLabel: string.isRequired,
   onClick: func.isRequired,
-  btnLabelStyle: {fontSize: 10},
+  btnLabelStyle: { fontSize: 10 },
   direction: 'left',
-  symbolContainerStyle: {width: 20},
+  symbolContainerStyle: { width: 20 },
   symbolStyle: {}
 }
 

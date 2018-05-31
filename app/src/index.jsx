@@ -14,19 +14,22 @@ var opts = {
   websocketUrl: env.websocketUrl,
   devTools: true
 }
-const store = createStore(services, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  stackReduxApp(opts))
+const store = createStore(
+  services,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  stackReduxApp(opts)
+)
 
 const container = document.getElementById('app')
 
 window.addEventListener('resize', function() {
-  container.style.height = `${window.innerHeight}px`;
-});
+  container.style.height = `${window.innerHeight}px`
+})
 
-document.getElementsByTagName('body')[0].style['padding'] = '0';
-document.getElementsByTagName('body')[0].style['margin'] = '0';
+document.getElementsByTagName('body')[0].style['padding'] = '0'
+document.getElementsByTagName('body')[0].style['margin'] = '0'
 
-setupClientAnalytics({ container: 'app', store, clickingExtraSelectors: [".click-check"]})
+setupClientAnalytics({ container: 'app', store, clickingExtraSelectors: ['.click-check'] })
 
 container.style.overflowY = 'auto'
 container.style.height = `${window.innerHeight}px`
@@ -35,4 +38,5 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  container)
+  container
+)

@@ -8,11 +8,7 @@ const api = makeTypes(name, [
   'productCartRemove'
 ])
 
-const local = makeTypes(name, [
-  'snackbarClose',
-  'cartOpen',
-  'cartClose'
-])
+const local = makeTypes(name, ['snackbarClose', 'cartOpen', 'cartClose'])
 
 const both = makeTypes(name, ['cartCheckout', 'productSearch'])
 

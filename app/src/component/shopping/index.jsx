@@ -8,16 +8,15 @@ import { DebounceInput } from 'react-debounce-input'
 import { services, components, actionHub } from '../../loader'
 
 class component extends React.PureComponent {
-
-  handleCart = e => {
-    this.props.open === false ? this.props.cartOpen : this.props.cartClose
-  }
+  // handleCart = e => {
+  //   this.props.open === false ? this.props.cartOpen : this.props.cartClose
+  // }
 
   onSearchInput = e => {
     this.props.productSearch(e.target.value)
   }
 
-  render () {
+  render() {
     const { productsInCart, isCartOpen } = this.props
 
     return (
@@ -26,13 +25,10 @@ class component extends React.PureComponent {
           Feature: <i>Shopping</i>
         </h2>
         <Toolbar style={{ background: '#e0e0e0' }}>
-          <ToolbarGroup firstChild={true}>
-            <ToolbarTitle
-              style={{ color: '#54647a', marginLeft: 20 }}
-              text="Products"
-            />
+          <ToolbarGroup firstChild>
+            <ToolbarTitle style={{ color: '#54647a', marginLeft: 20 }} text="Products" />
           </ToolbarGroup>
-          <ToolbarGroup firstChild={true}>
+          <ToolbarGroup firstChild>
             <DebounceInput
               element={TextField}
               minLength={0}
@@ -43,32 +39,32 @@ class component extends React.PureComponent {
           </ToolbarGroup>
           <ToolbarGroup>
             <FlatButton
-              style={{color: '#54647a'}}
-              label={`Cart(${(productsInCart) ? productsInCart.length : 0})`}
+              style={{ color: '#54647a' }}
+              label={`Cart(${productsInCart ? productsInCart.length : 0})`}
               onClick={this.props.cartOpen}
             />
           </ToolbarGroup>
         </Toolbar>
         <components.shoppingFilter />
         <components.productList />
-        <components.shoppingCart
-          isCartOpen={ isCartOpen }
-          onCartClose={this.props.cartClose}
-        />
+        <components.shoppingCart isCartOpen={isCartOpen} onCartClose={this.props.cartClose} />
       </components.Box>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isCartOpen: services.shopping.selector.getCartOpen(state),
   productsInCart: services.shopping.selector.getProductsInCart(state)
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   cartOpen: () => dispatch(actionHub.SHOPPING_CART_OPEN()),
   cartClose: () => dispatch(actionHub.SHOPPING_CART_CLOSE()),
-  productSearch: (query) => dispatch(actionHub.SHOPPING_PRODUCT_SEARCH(query))
+  productSearch: query => dispatch(actionHub.SHOPPING_PRODUCT_SEARCH(query))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

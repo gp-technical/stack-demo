@@ -5,25 +5,15 @@ import Dialog from 'material-ui/Dialog'
 import { actionHub, services, components } from '../../loader'
 
 class dialogSimple extends React.PureComponent {
-  render () {
+  render() {
     const marginStyle = {
       marginLeft: 12
     }
     const { open, answer, closeDialog, submit, openDialog } = this.props
     const actions = [
       <RaisedButton label="Cancel" onClick={closeDialog} style={marginStyle} />,
-      <RaisedButton
-        label="Delete"
-        secondary={true}
-        style={marginStyle}
-        onClick={this.props.delete}
-      />,
-      <RaisedButton
-        label="Submit"
-        primary={true}
-        style={marginStyle}
-        onClick={submit}
-      />
+      <RaisedButton label="Delete" secondary style={marginStyle} onClick={this.props.delete} />,
+      <RaisedButton label="Submit" primary style={marginStyle} onClick={submit} />
     ]
 
     return (
@@ -33,15 +23,15 @@ class dialogSimple extends React.PureComponent {
         </h2>
         <h2>Simple Dialog with straightforward actions</h2>
         <p>
-          This a simple dialog feature that provides straightforward actions
-          such as submit or delete....
+          This a simple dialog feature that provides straightforward actions such as submit or
+          delete....
         </p>
         <p>
           Data : {answer}
           <br />
           Dialog : {open === true ? 'Opened' : 'Closed'}
         </p>
-        <RaisedButton label="Open Dialog" primary={true} onClick={openDialog} />
+        <RaisedButton label="Open Dialog" primary onClick={openDialog} />
         <Dialog
           title="Dialog With Straightforward Actions"
           actions={actions}
@@ -68,4 +58,7 @@ const mapDispatchToProps = dispatch => ({
   submit: () => dispatch(actionHub.DIALOG_SIMPLE_SUBMIT())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(dialogSimple)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(dialogSimple)

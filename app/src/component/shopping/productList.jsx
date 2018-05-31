@@ -19,12 +19,11 @@ const style = {
 }
 
 class component extends React.PureComponent {
-
-  onProductCartAdd = (product) => {
+  onProductCartAdd = product => {
     this.props.productCartAdd(product)
   }
 
-  onProductCartRemove = (product) => {
+  onProductCartRemove = product => {
     this.props.productCartRemove(product)
   }
 
@@ -32,7 +31,7 @@ class component extends React.PureComponent {
     this.props.productCartRemove(this.props.productAdded)
   }
 
-  onSnackbarClose = (product) => {
+  onSnackbarClose = product => {
     this.props.snackbarClose()
   }
 
@@ -44,7 +43,7 @@ class component extends React.PureComponent {
     }
   }
 
-  render () {
+  render() {
     var { products, isSnackBarOpen } = this.props
     if (products && products.length > 0) {
       return (
@@ -53,40 +52,48 @@ class component extends React.PureComponent {
             <Card key={index} style={style.productCard}>
               <CardTitle title={product.name} subtitle={product.description} />
               <CardMedia>
-                <img src={product.imageURL} style={{display: 'block', margin: 'auto'}} />
+                <img src={product.imageURL} style={{ display: 'block', margin: 'auto' }} />
               </CardMedia>
               <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
               <CardActions>
-                <FlatButton label="Add to Cart" onClick={() => { this.onProductCartAdd(product) }} />
+                <FlatButton
+                  label="Add to Cart"
+                  onClick={() => {
+                    this.onProductCartAdd(product)
+                  }}
+                />
               </CardActions>
             </Card>
-         ))}
-         <Snackbar
-           open={ isSnackBarOpen }
-           action="Remove"
-           message={this.productAddedSnackText()}
-           autoHideDuration={4000}
-           onRequestClose={this.onSnackbarClose}
-           onActionTouchTap={this.onProductAddedRemove}
-         />
+          ))}
+          <Snackbar
+            open={isSnackBarOpen}
+            action="Remove"
+            message={this.productAddedSnackText()}
+            autoHideDuration={4000}
+            onRequestClose={this.onSnackbarClose}
+            onActionTouchTap={this.onProductAddedRemove}
+          />
         </div>
       )
     } else {
-      return (<div> No product in the store </div>)
+      return <div> No product in the store </div>
     }
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: services.shopping.selector.getProducts(state),
   productAdded: services.shopping.selector.getProductAdded(state),
   isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state)
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
-  productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
+const mapDispatchToProps = dispatch => ({
+  productCartAdd: product => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
+  productCartRemove: product => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
   snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

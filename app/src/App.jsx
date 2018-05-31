@@ -7,7 +7,7 @@ import { muiTheme } from './theme'
 import styles from './index.scss'
 
 class component extends React.PureComponent {
-  render () {
+  render() {
     const { user, branding } = this.props
 
     return (

@@ -15,9 +15,7 @@ const PATHS = {
 }
 
 const common = {
-  entry: [
-    PATHS.app
-  ],
+  entry: [PATHS.app],
   module: {
     loaders: [
       {
@@ -52,10 +50,7 @@ const common = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ],
+    modulesDirectories: ['node_modules', path.resolve(__dirname, './node_modules')],
     packageMains: ['browser', 'web', 'browserify', 'main', 'style']
   }
 }
@@ -103,7 +98,7 @@ if (TARGET === 'production') {
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': "'production'"
+          NODE_ENV: "'production'"
         }
       })
     ],

@@ -45,7 +45,7 @@ class dialogForm extends React.PureComponent {
     console.error('Form error:', data)
   }
 
-  render () {
+  render() {
     const marginStyle = {
       marginLeft: 12
     }
@@ -53,15 +53,11 @@ class dialogForm extends React.PureComponent {
     const { wordsError, numericError, emailError } = errorMessages
 
     const actions = [
-      <RaisedButton
-        label="Cancel"
-        onClick={this.props.closeDialog}
-        style={marginStyle}
-      />,
+      <RaisedButton label="Cancel" onClick={this.props.closeDialog} style={marginStyle} />,
       <RaisedButton
         label="Submit"
         disabled={!this.state.canSubmit}
-        primary={true}
+        primary
         style={marginStyle}
         onClick={this.onSubmit}
       />
@@ -72,10 +68,7 @@ class dialogForm extends React.PureComponent {
           Feature: <i>Form Dialog</i>
         </h2>
         <h2>Form Dialog with form actions</h2>
-        <p>
-          This a form dialog feature that provides form actions such as
-          submit...
-        </p>
+        <p>This a form dialog feature that provides form actions such as submit...</p>
         <p>
           Form : {submitted}
           <br />
@@ -93,14 +86,10 @@ class dialogForm extends React.PureComponent {
         <RaisedButton
           label="Open Form Dialog"
           disabled={open}
-          primary={true}
+          primary
           onClick={this.props.openDialog}
         />
-        <RaisedButton
-          label="Check State"
-          style={marginStyle}
-          onClick={this.handleState}
-        />
+        <RaisedButton label="Check State" style={marginStyle} onClick={this.handleState} />
         <Dialog
           title="Form Dialog"
           actions={actions}
@@ -175,4 +164,7 @@ const mapDispatchToProps = dispatch => ({
   submit: data => dispatch(actionHub.DIALOG_FORM_SUBMIT(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(dialogForm)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(dialogForm)

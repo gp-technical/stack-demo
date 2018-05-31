@@ -10,7 +10,7 @@ const style = {
 }
 
 class component extends React.PureComponent {
-  render () {
+  render() {
     return (
       <div style={style}>
         <h2>Hello World</h2>
