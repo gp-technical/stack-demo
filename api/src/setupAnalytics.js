@@ -1,8 +1,10 @@
 // TODO Check that this import is right...
 import fs from 'fs'
+// eslint-disable-next-line
 import { setupAnalyticsPersistence } from '@gp-technical/stack-pack-api'
 import unirest from 'unirest'
 
+// eslint-disable-next-line
 const persistAnalyticsImpl = ({ user, time, type, data }) => {
   const req = unirest.post().headers({
     // TODO: add this Auth header to the env file
@@ -38,7 +40,7 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
 }
 
 export default () => {
-  setupAnalyticsPersistence(persistAnalyticsImpl)
+  // setupAnalyticsPersistence(persistAnalyticsImpl)
 }
 
 const send = ({ req, url, timeout, serverPath, payload, json, file }) => {

@@ -13,46 +13,24 @@
   "scripts": {
     "lint": "sp-lint",
     "precommit": "sp-lint-staged",
+    "start:debug": "env-cmd .env babel-node src/index.js --silent --inspect-brk --source-maps inline",
     "start": "env-cmd .env babel-node src/index.js --silent",
     "production": "babel --presets env,stage-2 src --out-dir /build"
   },
   "standard-engine": "@gp-technical/stack-pack-standard",
-  "swapDep": {
-    "local": {
-      "dep": {
-        "@gp-technical/stack-pack-api": "file:../../stack-pack/stack-pack-api",
-        "@gp-technical/stack-pack-aws": "file:../../stack-pack/stack-pack-aws",
-        "@gp-technical/stack-pack-file": "file:../../stack-pack/stack-pack-file",
-        "@gp-technical/stack-pack-mongo": "file:../../stack-pack/stack-pack-mongo",
-        "@gp-technical/stack-pack-util": "file:../../stack-pack/stack-pack-util",
-        "stack-pack-gpapi": "file:../../stack-pack/stack-pack-gpapi"
-      },
-      "dev": {}
-    },
-    "published": {
-      "dep": {
-        "@gp-technical/stack-pack-api": "1.1.10",
-        "@gp-technical/stack-pack-aws": "1.1.2",
-        "@gp-technical/stack-pack-file": "1.1.2",
-        "@gp-technical/stack-pack-mongo": "1.1.9",
-        "@gp-technical/stack-pack-util": "1.1.2",
-        "stack-pack-gpapi": "1.1.8"
-      },
-      "dev": {}
-    }
-  },
   "dependencies": {
-    "@gp-technical/stack-pack-api": "file:../../stack-pack/stack-pack-api",
-    "@gp-technical/stack-pack-aws": "file:../../stack-pack/stack-pack-aws",
-    "@gp-technical/stack-pack-file": "file:../../stack-pack/stack-pack-file",
-    "@gp-technical/stack-pack-mongo": "file:../../stack-pack/stack-pack-mongo",
-    "@gp-technical/stack-pack-util": "file:../../stack-pack/stack-pack-util",
+    "@gp-technical/stack-pack-api": "1.1.15",
+    "@gp-technical/stack-pack-aws": "1.1.2",
+    "@gp-technical/stack-pack-file": "1.2.1",
+    "@gp-technical/stack-pack-mongo": "1.1.9",
+    "@gp-technical/stack-pack-util": "1.1.2",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "le_node": "^1.7.0",
     "sparkpost": "^2.1.2",
-    "stack-pack-gpapi": "file:../../stack-pack/stack-pack-gpapi",
+    "stack-pack-gpapi": "1.1.10",
+    "unirest": "^0.5.1",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -61,6 +39,6 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.16.0",
-    "env-cmd": "^7.0.0"
+    "env-cmd": "^8.0.0"
   }
 }
