@@ -1,8 +1,7 @@
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
-const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = require('./src/env.js')
 const TARGET = process.env.npm_lifecycle_event
@@ -17,7 +16,7 @@ const PATHS = {
 const common = {
   entry: [PATHS.app],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.json$/,
         loader: 'json-loader'
@@ -26,17 +25,21 @@ const common = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         include: PATHS.app,
-        loaders: ['babel']
+        loaders: ['babel-loader']
       },
       {
-        test: /.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1'),
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { modules: true } }],
         include: /flexboxgrid/
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!sass?sourceMap'),
-        exclude: /flexboxgrid/
+        exclude: /flexboxgrid/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { modules: true } },
+          'sass-loader'
+        ]
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
@@ -49,17 +52,14 @@ const common = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ['node_modules', path.resolve(__dirname, './node_modules')],
-    packageMains: ['browser', 'web', 'browserify', 'main', 'style']
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules', path.resolve(__dirname, './node_modules')],
+    mainFields: ['browser', 'web', 'browserify', 'main', 'style']
   }
 }
 
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
-    watchOptions: {
-      poll: true
-    },
     devtool: 'eval-source-map',
     devServer: {
       contentBase: PATHS.build,
@@ -70,15 +70,17 @@ if (TARGET === 'start' || !TARGET) {
       stats: 'errors-only',
       https: true,
       host: env.host,
-      port: env.port
+      port: env.port,
+      overlay: {
+        errors: true
+      },
+      watchOptions: {
+        watch: true
+      }
     },
     plugins: [
-      new ExtractTextPlugin('assets/style.css', { allChunks: true }),
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new MiniCssExtractPlugin({ filename: 'assets/style.css' }),
       new webpack.HotModuleReplacementPlugin(),
-      new OpenBrowserPlugin({
-        url: `https://${env.host}:${env.port}/`
-      }),
       new HtmlWebpackPlugin({
         template: PATHS.app + '/index.html',
         inject: 'body'
@@ -94,7 +96,7 @@ if (TARGET === 'start' || !TARGET) {
 if (TARGET === 'production') {
   module.exports = merge(common, {
     plugins: [
-      new ExtractTextPlugin('style.css', { allChunks: true }),
+      new MiniCssExtractPlugin({ filename: 'style.css' }),
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
