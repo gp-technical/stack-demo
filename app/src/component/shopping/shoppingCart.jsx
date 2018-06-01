@@ -1,9 +1,9 @@
 import React from 'react'
 import Dialog from '@material-ui/core/Dialog'
 import { connect } from 'react-redux'
-import FlatButton from '@material-ui/core/FlatButton'
-import FontIcon from '@material-ui/core/FontIcon'
-import { red500 } from '@material-ui/core/styles/colors'
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
+import red from '@material-ui/core/colors/red'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import {
   Table,
@@ -16,6 +16,8 @@ import {
 } from '@material-ui/core/Table'
 
 import { services, actionHub } from '../../loader'
+
+const red500 = red[500]
 
 const style = {
   noProduct: {
@@ -43,17 +45,22 @@ class component extends React.PureComponent {
     var { productsInCart } = this.props
     if (productsInCart && productsInCart.length > 0) {
       return [
-        <FlatButton label="Back Shopping" onClick={this.props.cartClose} />,
-        <FlatButton
-          label="Checkout"
+        <Button onClick={this.props.cartClose}>Back Shopping</Button>,
+        <Button
           primary
           onClick={() => {
             this.onCartCheckout()
           }}
-        />
+        >
+          Checkout
+        </Button>
       ]
     } else {
-      return [<FlatButton label="Back Shopping" primary onClick={this.props.cartClose} />]
+      return [
+        <Button primary onClick={this.props.cartClose}>
+          Back Shopping
+        </Button>
+      ]
     }
   }
 
@@ -77,15 +84,15 @@ class component extends React.PureComponent {
                 <TableRowColumn>$ {product.price}</TableRowColumn>
                 <TableRowColumn>{product.description}</TableRowColumn>
                 <TableRowColumn>
-                  <FlatButton
+                  <Button
                     onClick={() => {
                       this.onProductCartRemove(product)
                     }}
                   >
-                    <FontIcon className="material-icons" color={red500}>
+                    <Icon className="material-icons" color={red500}>
                       delete
-                    </FontIcon>
-                  </FlatButton>
+                    </Icon>
+                  </Button>
                 </TableRowColumn>
               </TableRow>
             ))}

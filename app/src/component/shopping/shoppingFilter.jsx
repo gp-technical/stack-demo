@@ -1,9 +1,9 @@
 import React from 'react'
 import { services, actionHub } from '../../loader'
 import { connect } from 'react-redux'
-import SelectField from '@material-ui/core/SelectField'
+import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 
 const buttonStyle = {
   margin: 12
@@ -28,20 +28,21 @@ class component extends React.PureComponent {
         <MenuItem value={index} key={index} primaryText={category} />
       ))
       const buttons = priceRange.map((range, index) => (
-        <RaisedButton
-          label={range.label}
+        <Button
           key={index}
           style={buttonStyle}
           onClick={() => {
             this.onFilterPriceRange(range)
           }}
-        />
+        >
+          {range.label}
+        </Button>
       ))
       return (
         <div>
-          <SelectField floatingLabelText="Filter by category" onChange={this.onFilterByCategory}>
+          <Select floatingLabelText="Filter by category" onChange={this.onFilterByCategory}>
             {menuItems}
-          </SelectField>
+          </Select>
           <p>Filter by price range</p>
           {buttons}
         </div>

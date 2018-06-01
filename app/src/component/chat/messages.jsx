@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from './message'
 
-class component extends React.PureComponent {
+class Messages extends React.PureComponent {
   renderMessages(messages = []) {
     return messages.map((message, index) => <Message message={message} key={index} />)
   }
@@ -12,4 +12,4 @@ class component extends React.PureComponent {
   }
 }
 
-export default component
+export default Messages

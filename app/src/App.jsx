@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { components, services } from './loader'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 import { Grid, Row, Col } from 'react-flexbox-grid/lib'
 import { muiTheme } from './theme'
 import styles from './index.scss'
+
+// TODO fix the gp Feature. Many warnings at present.
 
 class component extends React.PureComponent {
   render() {
@@ -12,7 +14,7 @@ class component extends React.PureComponent {
 
     return (
       <components.Loader show={!!user} branding={branding}>
-        <MuiThemeProvider muiTheme={muiTheme}>
+        <MuiThemeProvider theme={muiTheme}>
           <div>
             <components.App
               title="stack-demo"
@@ -29,15 +31,10 @@ class component extends React.PureComponent {
                   <components.errors />
                   <components.thunks />
                   <components.todos />
-                  <components.gp />
                   <components.sphere />
-                  <components.dialogSimple />
                   <components.dialogForm />
                   <components.dialogStepper />
-                  <components.analyticsDemo />
-                  <components.shopping />
                   <components.chat />
-                  <components.ratingBar />
                   <components.mail />
                 </Col>
               </Row>
@@ -55,3 +52,14 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(component)
+
+// TODO issues with gp and dialogSimple
+// <components.todos />
+// <components.gp />
+// <components.sphere />
+// <components.dialogSimple />
+
+// Goes after dialogStepper
+//       <components.analyticsDemo />
+// <components.shopping />
+// <components.ratingBar />

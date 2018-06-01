@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import { actionHub, services, components, helper } from '../../loader'
 import TextField from '@material-ui/core/TextField'
 import Divider from '@material-ui/core/Divider'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { List, ListItem } from '@material-ui/core/List'
 import IconButton from '@material-ui/core/IconButton'
 import Dialog from '@material-ui/core/Dialog'
-import FlatButton from '@material-ui/core/FlatButton'
 
 const fieldStyle = {
   margin: 12
@@ -63,7 +62,7 @@ class component extends React.PureComponent {
           data-id={id}
           iconClassName="material-icons"
           tooltip="edit"
-          onTouchTap={this.handleOpen}
+          onClick={this.handleOpen}
         >
           create
         </IconButton>
@@ -71,7 +70,7 @@ class component extends React.PureComponent {
           data-id={id}
           iconClassName="material-icons"
           tooltip="delete"
-          onTouchTap={this.onDelete}
+          onClick={this.onDelete}
         >
           delete
         </IconButton>
@@ -83,7 +82,11 @@ class component extends React.PureComponent {
     const { create, edit, openModal } = this.state
     const { todos } = this.props
 
-    const actions = [<FlatButton label="Cancel" primary onTouchTap={this.handleClose} />]
+    const actions = [
+      <Button primary onClick={this.handleClose}>
+        Cancel
+      </Button>
+    ]
 
     return (
       <components.Box>
@@ -101,7 +104,9 @@ class component extends React.PureComponent {
             data-status="create"
             onChange={this.handleChange}
           />
-          <RaisedButton label="Add" onTouchTap={this.onAdd} />
+          <Button variant="raised" onClick={this.onAdd}>
+            Add
+          </Button>
         </div>
         {todos &&
           todos.length > 0 && (
@@ -125,7 +130,9 @@ class component extends React.PureComponent {
             data-status="edit"
             onChange={this.handleChange}
           />
-          <RaisedButton label="Update" onTouchTap={this.onEdit} />
+          <Button variant="raised" onClick={this.onEdit}>
+            Update
+          </Button>
         </Dialog>
       </components.Box>
     )

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
-// import FlatButton from '@material-ui/core/FlatButton'
+// import Button from '@material-ui/core/Button'
 
 const { func, number, object, oneOf, oneOfType, string } = propTypes
 
@@ -135,12 +135,12 @@ class Rating extends Component {
 //         onMouseLeave={this._onContainerMouseLeave}
 //         <div onMouseMove={this._onContainerMouseMove} >
 //             {btnLabel && (
-//             <FlatButton
-//               label={btnLabel}
+//             <Button
+//               label=
 //               disabled={disabled}
 //               onClick={this._handleOnClick}
 //               labelStyle={btnLabelStyle}
-//             />
+//             >{btnLabel}</Button>
 //           )}
 //             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
 //             {iconNumber > 0 && this._generateIcons(iconNumber)}

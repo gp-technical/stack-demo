@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { env, actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
@@ -51,9 +51,15 @@ class component extends React.PureComponent {
         <h1>Total = {total}</h1>
         <Divider />
         <h3>Dispatch REDUX Actions</h3>
-        <RaisedButton label="Increment ++" onClick={this.onIncrementRedux} style={buttonStyle} />
-        <RaisedButton label="Decrement --" onClick={this.onDecrementRedux} style={buttonStyle} />
-        <RaisedButton label="Get Total" onClick={this.onGetTotalRedux} style={buttonStyle} />
+        <Button variant="raised" onClick={this.onIncrementRedux} style={buttonStyle}>
+          Increment ++
+        </Button>
+        <Button variant="raised" onClick={this.onDecrementRedux} style={buttonStyle}>
+          Decrement --
+        </Button>
+        <Button variant="raised" onClick={this.onGetTotalRedux} style={buttonStyle}>
+          Get Total
+        </Button>
         <Divider />
         <h3>Access the Equivalent REST Endpoints</h3>
         <ul>

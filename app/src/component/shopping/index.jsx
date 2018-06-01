@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Toolbar, ToolbarGroup, ToolbarTitle } from '@material-ui/core/Toolbar'
-import FlatButton from '@material-ui/core/FlatButton'
+import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { DebounceInput } from 'react-debounce-input'
 
@@ -33,16 +33,14 @@ class component extends React.PureComponent {
               element={TextField}
               minLength={0}
               debounceTimeout={500}
-              hintText="Search by name, category..."
+              placeholder="Search by name, category..."
               onChange={this.onSearchInput}
             />
           </ToolbarGroup>
           <ToolbarGroup>
-            <FlatButton
-              style={{ color: '#54647a' }}
-              label={`Cart(${productsInCart ? productsInCart.length : 0})`}
-              onClick={this.props.cartOpen}
-            />
+            <Button style={{ color: '#54647a' }} onClick={this.props.cartOpen}>{`Cart(${
+              productsInCart ? productsInCart.length : 0
+            })`}</Button>
           </ToolbarGroup>
         </Toolbar>
         <components.shoppingFilter />

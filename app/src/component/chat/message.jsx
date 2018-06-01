@@ -1,5 +1,7 @@
 import React from 'react'
-import { Card, CardHeader, CardText } from '@material-ui/core/Card'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 import getColorStyle from './colorPicker'
 
 const style = {
@@ -17,17 +19,19 @@ const style = {
   }
 }
 
-class component extends React.PureComponent {
+class Message extends React.PureComponent {
   render() {
     const { message: { user, message } = {} } = this.props
     const containerStyle = { ...style.container, ...getColorStyle(user) }
     return (
-      <Card initiallyExpanded style={containerStyle}>
-        <CardHeader title={user} style={style.id} />
-        <CardText style={style.message}>{message}</CardText>
+      <Card style={containerStyle}>
+        <Typography variant="subheading" style={style.id}>
+          {user}
+        </Typography>
+        <CardContent style={style.message}>{message}</CardContent>
       </Card>
     )
   }
 }
 
-export default component
+export default Message

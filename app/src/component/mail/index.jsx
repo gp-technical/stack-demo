@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { actionHub, components, services } from '../../loader'
-import { TextField } from 'material-ui'
+import TextField from '@material-ui/core/TextField'
 
 const component = ({ email, isValid, status, sendMail, onChangeMail, validEmail, loading }) => {
   const onChangeEmail = e => {
@@ -36,7 +36,9 @@ const component = ({ email, isValid, status, sendMail, onChangeMail, validEmail,
               style={{ marginRight: '10px' }}
               onChange={onChangeEmail}
             />
-            <RaisedButton label="Send" onClick={onSendMail} disabled={!isValid} />
+            <Button variant="raised" onClick={onSendMail} disabled={!isValid}>
+              Send
+            </Button>
           </form>
         </div>
         <div>

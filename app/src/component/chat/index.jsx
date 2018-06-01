@@ -5,7 +5,7 @@ import { actionHub, components, services } from '../../loader'
 import Input from './input'
 import Messages from './messages'
 
-class component extends React.PureComponent {
+class Chat extends React.PureComponent {
   render() {
     const { messages, handleBroadcast } = this.props
     return (
@@ -33,4 +33,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(component)
+)(Chat)

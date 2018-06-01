@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import { actionHub, services, components } from '../../loader'
 
@@ -11,9 +11,15 @@ class dialogSimple extends React.PureComponent {
     }
     const { open, answer, closeDialog, submit, openDialog } = this.props
     const actions = [
-      <RaisedButton label="Cancel" onClick={closeDialog} style={marginStyle} />,
-      <RaisedButton label="Delete" secondary style={marginStyle} onClick={this.props.delete} />,
-      <RaisedButton label="Submit" primary style={marginStyle} onClick={submit} />
+      <Button variant="raised" onClick={closeDialog} style={marginStyle}>
+        Cancel
+      </Button>,
+      <Button variant="raised" secondary style={marginStyle} onClick={this.props.delete}>
+        Delete
+      </Button>,
+      <Button variant="raised" primary style={marginStyle} onClick={submit}>
+        Submit
+      </Button>
     ]
 
     return (
@@ -31,7 +37,9 @@ class dialogSimple extends React.PureComponent {
           <br />
           Dialog : {open === true ? 'Opened' : 'Closed'}
         </p>
-        <RaisedButton label="Open Dialog" primary onClick={openDialog} />
+        <Button variant="raised" primary onClick={openDialog}>
+          Open Dialog
+        </Button>
         <Dialog
           title="Dialog With Straightforward Actions"
           actions={actions}

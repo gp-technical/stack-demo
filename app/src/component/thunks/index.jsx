@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
@@ -33,7 +33,9 @@ class component extends React.PureComponent {
         <h1>{answer}</h1>
         <Divider />
         <h3>Dispatch a Synchronouse Sequence of REDUX Actions</h3>
-        <RaisedButton label="Get The Answer" onClick={this.onGetAnswer} style={buttonStyle} />
+        <Button variant="raised" onClick={this.onGetAnswer} style={buttonStyle}>
+          Get The Answer
+        </Button>
       </components.Box>
     )
   }

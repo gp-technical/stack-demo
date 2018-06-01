@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, CardTitle, CardText, CardMedia } from '@material-ui/core/Card'
+// import { Card, CardTitle, CardText, CardMedia } from '@material-ui/core/Card'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
 import { services, components, actionHub } from '../../loader'
 
 const styles = {
@@ -34,12 +38,10 @@ class component extends Component {
     return (
       <div style={ratingWrapper}>
         <Card style={ratingCard}>
-          <CardTitle title={name} />
-          <CardMedia>
-            <img src={imageURL} style={{ display: 'block', margin: 'auto' }} />
-          </CardMedia>
-          <CardTitle title={`$ ${price}`} />
-          <CardText>
+          <CardHeader title={name} />
+          <CardMedia image={imageURL} style={{ display: 'block', margin: 'auto' }} />
+          <CardHeader title={`$ ${price}`} />
+          <CardContent>
             <components.rating
               iconNumber={5}
               btnLabel="Rate this item"
@@ -49,12 +51,16 @@ class component extends Component {
               onClick={this.submitRating}
               symbolContainerStyle={{ width: 30 }}
             />
-          </CardText>
+          </CardContent>
         </Card>
       </div>
     )
   }
 }
+
+// <CardMedia>
+//   <img src={imageURL} style={{ display: 'block', margin: 'auto' }} />
+// </CardMedia>
 
 const mapStateToProps = state => {
   let {

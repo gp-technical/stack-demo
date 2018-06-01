@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
@@ -60,22 +60,18 @@ class component extends React.PureComponent {
           </li>
         </ul>
         <Divider />
-        <RaisedButton
-          label="Fetch Data Locally"
-          onClick={this.onFetchFromLocal}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Fetch Data from the API"
-          onClick={this.onFetchFromApi}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Fetch Data from Both"
-          onClick={this.onFetchFromBoth}
-          style={buttonStyle}
-        />
-        <RaisedButton label="Restart the App" onClick={this.onReload} style={buttonStyle} />
+        <Button onClick={this.onFetchFromLocal} style={buttonStyle}>
+          Fetch Data Locally
+        </Button>
+        <Button onClick={this.onFetchFromApi} style={buttonStyle}>
+          Fetch Data from the API
+        </Button>
+        <Button onClick={this.onFetchFromBoth} style={buttonStyle}>
+          Fetch Data from Both
+        </Button>
+        <Button variant="raised" onClick={this.onReload} style={buttonStyle}>
+          Restart the App
+        </Button>
       </components.Box>
     )
   }

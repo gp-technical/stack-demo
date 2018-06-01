@@ -5,10 +5,7 @@ const INITIAL_VALUE = ''
 const HINT_TEXT = 'Type message, hit enter to send'
 
 class component extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = { value: INITIAL_VALUE }
-  }
+  state = { value: INITIAL_VALUE }
 
   handleChange = ({ target: { value } = {} }) => {
     this.setState({ value })
@@ -34,8 +31,8 @@ class component extends React.PureComponent {
         id="chat-input"
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
-        hintText={HINT_TEXT}
-        multiLine
+        placeholder={HINT_TEXT}
+        multiline
         value={value}
       />
     )

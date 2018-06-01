@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
-import RaisedButton from '@material-ui/core/RaisedButton'
+import Button from '@material-ui/core/Button'
 import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
@@ -35,11 +35,9 @@ class component extends React.PureComponent {
           <components.ErrorMsg text={errorMessage} />
         </h3>
         <Divider />
-        <RaisedButton
-          label="Thrown an API Error"
-          onClick={this.onThrowFromApi}
-          style={buttonStyle}
-        />
+        <Button onClick={this.onThrowFromApi} style={buttonStyle}>
+          Thrown an API Error
+        </Button>
       </components.Box>
     )
   }

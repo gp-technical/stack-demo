@@ -37,7 +37,7 @@ class component extends React.PureComponent {
           element={TextField}
           minLength={1}
           debounceTimeout={500}
-          hintText="Enter a Radius"
+          placeholder="Enter a Radius"
           defaultValue={radius}
           onChange={this.onRadiusChange}
         />

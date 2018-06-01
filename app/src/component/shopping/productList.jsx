@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardTitle, CardMedia, CardActions } from '@material-ui/core/Card'
 import Snackbar from '@material-ui/core/Snackbar'
-import FlatButton from '@material-ui/core/FlatButton'
+import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 
 import { services, actionHub } from '../../loader'
@@ -56,12 +56,13 @@ class component extends React.PureComponent {
               </CardMedia>
               <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
               <CardActions>
-                <FlatButton
-                  label="Add to Cart"
+                <Button
                   onClick={() => {
                     this.onProductCartAdd(product)
                   }}
-                />
+                >
+                  Add to Cart
+                </Button>
               </CardActions>
             </Card>
           ))}
@@ -71,7 +72,7 @@ class component extends React.PureComponent {
             message={this.productAddedSnackText()}
             autoHideDuration={4000}
             onRequestClose={this.onSnackbarClose}
-            onActionTouchTap={this.onProductAddedRemove}
+            onActionClick={this.onProductAddedRemove}
           />
         </div>
       )

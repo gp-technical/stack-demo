@@ -2,21 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
 import MenuItem from '@material-ui/core/MenuItem'
-import SelectField from '@material-ui/core/SelectField'
+import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/InputLabel'
 import { actionHub, services, components } from '../../loader'
 
 class component extends React.PureComponent {
   state = {
-    selectedFolderId: null
+    selectedFolderId: ''
   }
   getMenuItems = list => {
     if (list) {
-      return list.map(i => <MenuItem value={i.Id} key={i.Id} primaryText={i.Name} />)
+      return list.map(i => (
+        <MenuItem value={i.Id} key={i.Id}>
+          {i.Name}
+        </MenuItem>
+      ))
     }
-    return <MenuItem value={null} primaryText="" />
+    return <MenuItem value={null} />
   }
 
-  onFolderSelected = (e, i, folderId) => {
+  onFolderSelected = ({ target: { value: folderId } }) => {
     this.setState({ selectedFolderId: folderId })
     this.props.getDocuments(folderId)
   }
@@ -74,14 +79,10 @@ class component extends React.PureComponent {
           <li>Custom cell value formatting. In the example below the created date is formatted</li>
         </ul>
         <Divider />
-        <SelectField
-          floatingLabelText="Select a Folder"
-          value={selectedFolderId}
-          onChange={this.onFolderSelected}
-        >
+        <InputLabel>Select a Folder</InputLabel>
+        <Select value={selectedFolderId} onChange={this.onFolderSelected}>
           {this.getMenuItems(folders)}
-        </SelectField>
-
+        </Select>
         <components.Table rows={documents} columns={this.columns} />
       </components.Box>
     )
