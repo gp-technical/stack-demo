@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { components, services } from './loader'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import { Grid, Row, Col } from 'react-flexbox-grid/lib'
 import { muiTheme } from './theme'
 import styles from './index.scss'

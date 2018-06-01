@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, CardTitle, CardMedia, CardActions } from 'material-ui/Card'
-import Snackbar from 'material-ui/Snackbar'
-import FlatButton from 'material-ui/FlatButton'
+import { Card, CardTitle, CardMedia, CardActions } from '@material-ui/core/Card'
+import Snackbar from '@material-ui/core/Snackbar'
+import FlatButton from '@material-ui/core/FlatButton'
 import { connect } from 'react-redux'
 
 import { services, actionHub } from '../../loader'

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
-import MenuItem from 'material-ui/MenuItem'
-import SelectField from 'material-ui/SelectField'
+import Divider from '@material-ui/core/Divider'
+import MenuItem from '@material-ui/core/MenuItem'
+import SelectField from '@material-ui/core/SelectField'
 import { actionHub, services, components } from '../../loader'
 
 class component extends React.PureComponent {

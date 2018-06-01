@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
+import Divider from '@material-ui/core/Divider'
 import { actionHub, services, components } from '../../loader'
 import { visibilityDetector } from '@gp-technical/stack-pack-app'
 

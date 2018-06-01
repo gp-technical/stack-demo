@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
-import TextField from 'material-ui/TextField'
+import Divider from '@material-ui/core/Divider'
+import TextField from '@material-ui/core/TextField'
 import { actionHub, services, components } from '../../loader'
 import { DebounceInput } from 'react-debounce-input'
 

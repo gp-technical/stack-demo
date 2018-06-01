@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Formsy from 'formsy-react'
 import FormsyText from 'formsy-material-ui/lib/FormsyText'
-import RaisedButton from 'material-ui/RaisedButton'
-import Dialog from 'material-ui/Dialog'
+import RaisedButton from '@material-ui/core/RaisedButton'
+import Dialog from '@material-ui/core/Dialog'
 import { actionHub, services, components } from '../../loader'
 
 class dialogForm extends React.PureComponent {

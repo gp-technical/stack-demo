@@ -5,9 +5,9 @@ import FormsyText from 'formsy-material-ui/lib/FormsyText'
 import FormsyCheckbox from 'formsy-material-ui/lib/FormsyCheckbox'
 import FormsyRadioGroup from 'formsy-material-ui/lib/FormsyRadioGroup'
 import FormsyRadio from 'formsy-material-ui/lib/FormsyRadio'
-import { Step, Stepper, StepLabel, StepContent } from 'material-ui/Stepper'
-import RaisedButton from 'material-ui/RaisedButton'
-import Dialog from 'material-ui/Dialog'
+import { Step, Stepper, StepLabel, StepContent } from '@material-ui/core/Stepper'
+import RaisedButton from '@material-ui/core/RaisedButton'
+import Dialog from '@material-ui/core/Dialog'
 import { services, actionHub, components } from '../../loader'
 
 class dialogStepper extends React.PureComponent {

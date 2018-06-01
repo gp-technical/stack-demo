@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { actionHub, services, components, helper } from '../../loader'
-import TextField from 'material-ui/TextField'
-import Divider from 'material-ui/Divider'
-import RaisedButton from 'material-ui/RaisedButton'
-import { List, ListItem } from 'material-ui/List'
-import IconButton from 'material-ui/IconButton'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
+import TextField from '@material-ui/core/TextField'
+import Divider from '@material-ui/core/Divider'
+import RaisedButton from '@material-ui/core/RaisedButton'
+import { List, ListItem } from '@material-ui/core/List'
+import IconButton from '@material-ui/core/IconButton'
+import Dialog from '@material-ui/core/Dialog'
+import FlatButton from '@material-ui/core/FlatButton'
 
 const fieldStyle = {
   margin: 12

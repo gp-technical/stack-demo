@@ -1,10 +1,10 @@
 import React from 'react'
-import Dialog from 'material-ui/Dialog'
+import Dialog from '@material-ui/core/Dialog'
 import { connect } from 'react-redux'
-import FlatButton from 'material-ui/FlatButton'
-import FontIcon from 'material-ui/FontIcon'
-import { red500 } from 'material-ui/styles/colors'
-import CircularProgress from 'material-ui/CircularProgress'
+import FlatButton from '@material-ui/core/FlatButton'
+import FontIcon from '@material-ui/core/FontIcon'
+import { red500 } from '@material-ui/core/styles/colors'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableRow,
   TableRowColumn,
   TableFooter
-} from 'material-ui/Table'
+} from '@material-ui/core/Table'
 
 import { services, actionHub } from '../../loader'
 

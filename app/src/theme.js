@@ -1,6 +1,6 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import typography from 'material-ui/styles/typography'
-import { fade } from 'material-ui/utils/colorManipulator'
+import getMuiTheme from '@material-ui/core/styles/getMuiTheme'
+import typography from '@material-ui/core/styles/typography'
+import { fade } from '@material-ui/core/utils/colorManipulator'
 import {
   blueGrey600,
   blueGrey50,
@@ -12,7 +12,7 @@ import {
   darkBlack,
   fullBlack,
   red700
-} from 'material-ui/styles/colors'
+} from '@material-ui/core/styles/colors'
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',

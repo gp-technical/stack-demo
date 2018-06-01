@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar'
-import FlatButton from 'material-ui/FlatButton'
-import TextField from 'material-ui/TextField'
+import { Toolbar, ToolbarGroup, ToolbarTitle } from '@material-ui/core/Toolbar'
+import FlatButton from '@material-ui/core/FlatButton'
+import TextField from '@material-ui/core/TextField'
 import { DebounceInput } from 'react-debounce-input'
 
 import { services, components, actionHub } from '../../loader'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
+import Divider from '@material-ui/core/Divider'
 import { actionHub, components, services } from '../../loader'
 import Input from './input'
 import Messages from './messages'

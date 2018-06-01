@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
-import RaisedButton from 'material-ui/RaisedButton'
+import Divider from '@material-ui/core/Divider'
+import RaisedButton from '@material-ui/core/RaisedButton'
 import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {

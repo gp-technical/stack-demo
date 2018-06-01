@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, CardTitle, CardText, CardMedia } from 'material-ui/Card'
+import { Card, CardTitle, CardText, CardMedia } from '@material-ui/core/Card'
 import { services, components, actionHub } from '../../loader'
 
 const styles = {

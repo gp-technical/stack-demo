@@ -1,9 +1,9 @@
 import React from 'react'
 import { services, actionHub } from '../../loader'
 import { connect } from 'react-redux'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import RaisedButton from 'material-ui/RaisedButton'
+import SelectField from '@material-ui/core/SelectField'
+import MenuItem from '@material-ui/core/MenuItem'
+import RaisedButton from '@material-ui/core/RaisedButton'
 
 const buttonStyle = {
   margin: 12

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import RaisedButton from 'material-ui/RaisedButton'
-import Dialog from 'material-ui/Dialog'
+import RaisedButton from '@material-ui/core/RaisedButton'
+import Dialog from '@material-ui/core/Dialog'
 import { actionHub, services, components } from '../../loader'
 
 class dialogSimple extends React.PureComponent {

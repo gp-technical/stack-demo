@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
-// import FlatButton from 'material-ui/FlatButton'
+// import FlatButton from '@material-ui/core/FlatButton'
 
 const { func, number, object, oneOf, oneOfType, string } = propTypes
 
