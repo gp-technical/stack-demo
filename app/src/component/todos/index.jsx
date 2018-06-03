@@ -4,9 +4,13 @@ import { actionHub, services, components, helper } from '../../loader'
 import TextField from '@material-ui/core/TextField'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
-import { List, ListItem } from '@material-ui/core/List'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import Dialog from '@material-ui/core/Dialog'
+import Create from '@material-ui/icons/Create'
+import Delete from '@material-ui/icons/Delete'
 
 const fieldStyle = {
   margin: 12
@@ -64,7 +68,7 @@ class component extends React.PureComponent {
           tooltip="edit"
           onClick={this.handleOpen}
         >
-          create
+          <Create />
         </IconButton>
         <IconButton
           data-id={id}
@@ -72,7 +76,7 @@ class component extends React.PureComponent {
           tooltip="delete"
           onClick={this.onDelete}
         >
-          delete
+          <Delete />
         </IconButton>
       </div>
     )
@@ -112,7 +116,10 @@ class component extends React.PureComponent {
           todos.length > 0 && (
             <List>
               {todos.map((todo, index) => (
-                <ListItem key={index} primaryText={todo} rightIcon={this.renderIcons(index)} />
+                <ListItem key={index}>
+                  <ListItemText>{todo}</ListItemText>
+                  {this.renderIcons(index)}
+                </ListItem>
               ))}
             </List>
           )}
