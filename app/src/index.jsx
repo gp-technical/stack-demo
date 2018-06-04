@@ -14,11 +14,7 @@ var opts = {
   websocketUrl: env.websocketUrl,
   devTools: true
 }
-const store = createStore(
-  services,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  stackReduxApp(opts)
-)
+const store = createStore(services, stackReduxApp(opts))
 
 const container = document.getElementById('app')
 

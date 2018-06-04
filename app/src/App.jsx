@@ -32,10 +32,9 @@ class component extends React.PureComponent {
                   <components.errors />
                   <components.thunks />
                   <components.todos />
+                  <components.gp />
                   <components.sphere />
                   <components.dialogSimple />
-                  <components.dialogForm />
-                  <components.dialogStepper />
                   <components.chat />
                   <components.mail />
                 </Col>
@@ -54,12 +53,6 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(component)
-
-// TODO issues with gp and dialogSimple
-// <components.todos />
-// <components.gp />
-// <components.sphere />
-// <components.dialogSimple />
 
 // Goes after dialogStepper
 //       <components.analyticsDemo />

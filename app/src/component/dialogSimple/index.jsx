@@ -3,25 +3,23 @@ import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
-import Typography from '@material-ui/core/Typography'
 import { actionHub, services, components } from '../../loader'
 
-class dialogSimple extends React.PureComponent {
+class DialogSimple extends React.PureComponent {
   render() {
-    const marginStyle = {
-      marginLeft: 12
-    }
-    const { open, answer, closeDialog, submit, openDialog } = this.props
+    const { open, answer, closeDialog, submit, openDialog, delete: fireDelete } = this.props
     const actions = (
       <DialogActions>
-        <Button variant="raised" onClick={closeDialog} style={marginStyle}>
+        <Button variant="raised" onClick={closeDialog}>
           Cancel
         </Button>,
-        <Button variant="raised" secondary style={marginStyle} onClick={this.props.delete}>
+        <Button variant="raised" color="secondary" onClick={fireDelete}>
           Delete
         </Button>,
-        <Button variant="raised" primary style={marginStyle} onClick={submit}>
+        <Button variant="raised" color="primary" onClick={submit}>
           Submit
         </Button>
       </DialogActions>
@@ -42,13 +40,15 @@ class dialogSimple extends React.PureComponent {
           <br />
           Dialog : {open === true ? 'Opened' : 'Closed'}
         </p>
-        <Button variant="raised" primary onClick={openDialog}>
+        <Button variant="raised" color="primary" onClick={openDialog}>
           Open Dialog
         </Button>
         <Dialog open={open} onClose={closeDialog} disableBackdropClick>
           <DialogTitle>Dialog With Straightforward Actions</DialogTitle>
-          <Typography variant="subheading">Hello World</Typography>
-          {actions}
+          <DialogContent>
+            <DialogContentText>Hello World</DialogContentText>
+            {actions}
+          </DialogContent>
         </Dialog>
       </components.Box>
     )
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(dialogSimple)
+)(DialogSimple)

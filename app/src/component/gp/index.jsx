@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import { actionHub, services, components } from '../../loader'
 
-class component extends React.PureComponent {
+class GpApi extends React.PureComponent {
   state = {
     selectedFolderId: ''
   }
@@ -68,7 +68,7 @@ class component extends React.PureComponent {
         <h3>Reuse the shared Table component</h3>
         <p>
           This component also shows how to use a shared stack Table component. This is a modified
-          version of the material-ui Table that adds some addiotnal features such as:
+          version of the material-ui Table that adds some additional features such as:
         </p>
         <ul>
           <li>A simple, plain object definition for the row structure</li>
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(component)
+)(GpApi)
