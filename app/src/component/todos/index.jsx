@@ -62,20 +62,10 @@ class component extends React.PureComponent {
   renderIcons = id => {
     return (
       <div style={{ height: '100%', margin: '0 12px', width: 'initial' }}>
-        <IconButton
-          data-id={id}
-          iconClassName="material-icons"
-          tooltip="edit"
-          onClick={this.handleOpen}
-        >
+        <IconButton data-id={id} tooltip="edit" onClick={this.handleOpen}>
           <Create />
         </IconButton>
-        <IconButton
-          data-id={id}
-          iconClassName="material-icons"
-          tooltip="delete"
-          onClick={this.onDelete}
-        >
+        <IconButton data-id={id} tooltip="delete" onClick={this.onDelete}>
           <Delete />
         </IconButton>
       </div>

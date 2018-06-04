@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogActions from '@material-ui/core/DialogActions'
+import Typography from '@material-ui/core/Typography'
 import { actionHub, services, components } from '../../loader'
 
 class dialogSimple extends React.PureComponent {
@@ -10,17 +13,19 @@ class dialogSimple extends React.PureComponent {
       marginLeft: 12
     }
     const { open, answer, closeDialog, submit, openDialog } = this.props
-    const actions = [
-      <Button variant="raised" onClick={closeDialog} style={marginStyle}>
-        Cancel
-      </Button>,
-      <Button variant="raised" secondary style={marginStyle} onClick={this.props.delete}>
-        Delete
-      </Button>,
-      <Button variant="raised" primary style={marginStyle} onClick={submit}>
-        Submit
-      </Button>
-    ]
+    const actions = (
+      <DialogActions>
+        <Button variant="raised" onClick={closeDialog} style={marginStyle}>
+          Cancel
+        </Button>,
+        <Button variant="raised" secondary style={marginStyle} onClick={this.props.delete}>
+          Delete
+        </Button>,
+        <Button variant="raised" primary style={marginStyle} onClick={submit}>
+          Submit
+        </Button>
+      </DialogActions>
+    )
 
     return (
       <components.Box>
@@ -40,14 +45,10 @@ class dialogSimple extends React.PureComponent {
         <Button variant="raised" primary onClick={openDialog}>
           Open Dialog
         </Button>
-        <Dialog
-          title="Dialog With Straightforward Actions"
-          actions={actions}
-          modal={false}
-          open={open}
-          onRequestClose={closeDialog}
-        >
-          <h1>Hello World</h1>
+        <Dialog open={open} onClose={closeDialog} disableBackdropClick>
+          <DialogTitle>Dialog With Straightforward Actions</DialogTitle>
+          <Typography variant="subheading">Hello World</Typography>
+          {actions}
         </Dialog>
       </components.Box>
     )

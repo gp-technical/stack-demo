@@ -21,6 +21,7 @@ class component extends React.PureComponent {
               color={muiTheme.app.color}
               user={user}
               style={styles}
+              showFloatingButton
             />
             <Grid>
               <Row className={styles.main}>
@@ -32,6 +33,7 @@ class component extends React.PureComponent {
                   <components.thunks />
                   <components.todos />
                   <components.sphere />
+                  <components.dialogSimple />
                   <components.dialogForm />
                   <components.dialogStepper />
                   <components.chat />
