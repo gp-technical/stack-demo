@@ -1,11 +1,9 @@
-// TODO Check that this import is right...
-import fs from 'fs'
-// eslint-disable-next-line
+import * as fs from 'fs'
 import { setupAnalyticsPersistence } from '@gp-technical/stack-pack-api'
 import unirest from 'unirest'
 
-// eslint-disable-next-line
 const persistAnalyticsImpl = ({ user, time, type, data }) => {
+  // eslint-disable-next-line
   const req = unirest.post().headers({
     // TODO: add this Auth header to the env file
     Authorization:
@@ -33,16 +31,17 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
     }
   }
 
-  // console.log(JSON.stringify(json))
-  send({ req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements' }).then(resp => {
-    console.log(resp)
-  })
+  console.log(`Analytics: ${JSON.stringify(json)}`)
+  // send({ req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements' }).then(resp => {
+  //   console.log(resp)
+  // })
 }
 
 export default () => {
-  // setupAnalyticsPersistence(persistAnalyticsImpl)
+  setupAnalyticsPersistence(persistAnalyticsImpl)
 }
 
+// eslint-disable-next-line
 const send = ({ req, url, timeout, serverPath, payload, json, file }) => {
   return new Promise((resolve, reject) => {
     req.url(url)

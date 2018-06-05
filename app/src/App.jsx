@@ -35,6 +35,7 @@ class component extends React.PureComponent {
                   <components.gp />
                   <components.sphere />
                   <components.dialogSimple />
+                  <components.analyticsDemo />
                   <components.chat />
                   <components.mail />
                 </Col>
