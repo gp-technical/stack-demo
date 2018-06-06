@@ -5,16 +5,12 @@ import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 import red from '@material-ui/core/colors/red'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-  TableFooter
-} from '@material-ui/core/Table'
-
+import Table from '@material-ui/core/Table'
+import TableHeader from '@material-ui/core/TableHead'
+import TableBody from '@material-ui/core/TableBody'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
+import TableFooter from '@material-ui/core/TableFooter'
 import { services, actionHub } from '../../loader'
 
 const red500 = red[500]
@@ -71,19 +67,19 @@ class component extends React.PureComponent {
         <Table selectable={false}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false} enableSelectAll={false}>
             <TableRow>
-              <TableHeaderColumn>Name</TableHeaderColumn>
-              <TableHeaderColumn>Price</TableHeaderColumn>
-              <TableHeaderColumn>Description</TableHeaderColumn>
-              <TableHeaderColumn>Acions</TableHeaderColumn>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Acions</TableCell>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {productsInCart.map((product, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{product.name}</TableRowColumn>
-                <TableRowColumn>$ {product.price}</TableRowColumn>
-                <TableRowColumn>{product.description}</TableRowColumn>
-                <TableRowColumn>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>$ {product.price}</TableCell>
+                <TableCell>{product.description}</TableCell>
+                <TableCell>
                   <Button
                     onClick={() => {
                       this.onProductCartRemove(product)
@@ -93,15 +89,15 @@ class component extends React.PureComponent {
                       delete
                     </Icon>
                   </Button>
-                </TableRowColumn>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter adjustForCheckbox={false}>
             <TableRow>
-              <TableRowColumn colSpan="4" style={{ textAlign: 'right' }}>
+              <TableCell colSpan="4" style={{ textAlign: 'right' }}>
                 Total: ${this.cartTotal()}
-              </TableRowColumn>
+              </TableCell>
             </TableRow>
           </TableFooter>
         </Table>

@@ -1,19 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import Toolbar from '@material-ui/core/Toolbar'
-// import ToolbarGroup, ToolbarTitle } from '@material-ui/core/Toolbar'
-import { Toolbar, ToolbarGroup, ToolbarTitle } from '@material-ui/core/Toolbar'
+import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 import { DebounceInput } from 'react-debounce-input'
 
 import { services, components, actionHub } from '../../loader'
 
-class component extends React.PureComponent {
-  // handleCart = e => {
-  //   this.props.open === false ? this.props.cartOpen : this.props.cartClose
-  // }
-
+class Shopping extends React.PureComponent {
   onSearchInput = e => {
     this.props.productSearch(e.target.value)
   }
@@ -27,23 +22,17 @@ class component extends React.PureComponent {
           Feature: <i>Shopping</i>
         </h2>
         <Toolbar style={{ background: '#e0e0e0' }}>
-          <ToolbarGroup firstChild>
-            <ToolbarTitle style={{ color: '#54647a', marginLeft: 20 }} text="Products" />
-          </ToolbarGroup>
-          <ToolbarGroup firstChild>
-            <DebounceInput
-              element={TextField}
-              minLength={0}
-              debounceTimeout={500}
-              placeholder="Search by name, category..."
-              onChange={this.onSearchInput}
-            />
-          </ToolbarGroup>
-          <ToolbarGroup>
-            <Button style={{ color: '#54647a' }} onClick={this.props.cartOpen}>{`Cart(${
-              productsInCart ? productsInCart.length : 0
-            })`}</Button>
-          </ToolbarGroup>
+          <Typography style={{ color: '#54647a', marginLeft: 20 }}>Products</Typography>
+          <DebounceInput
+            element={TextField}
+            minLength={0}
+            debounceTimeout={500}
+            placeholder="Search by name, category..."
+            onChange={this.onSearchInput}
+          />
+          <Button style={{ color: '#54647a' }} onClick={this.props.cartOpen}>{`Cart(${
+            productsInCart ? productsInCart.length : 0
+          })`}</Button>
         </Toolbar>
         <components.shoppingFilter />
         <components.productList />
@@ -67,4 +56,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(component)
+)(Shopping)

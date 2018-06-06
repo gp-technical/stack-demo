@@ -3,6 +3,7 @@ import { services, actionHub } from '../../loader'
 import { connect } from 'react-redux'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel'
 import Button from '@material-ui/core/Button'
 
 const buttonStyle = {
@@ -10,6 +11,8 @@ const buttonStyle = {
 }
 
 class component extends React.PureComponent {
+  state = { value: '' }
+
   onFilterByCategory = (event, index, value) => {
     this.setState({ value })
     const category = value === 0 ? '' : this.props.categories[index]
@@ -25,7 +28,9 @@ class component extends React.PureComponent {
     if (categories && categories.length > 0) {
       if (!categories.includes('All')) categories.unshift('All')
       const menuItems = categories.map((category, index) => (
-        <MenuItem value={index} key={index} primaryText={category} />
+        <MenuItem value={index} key={index}>
+          {category}
+        </MenuItem>
       ))
       const buttons = priceRange.map((range, index) => (
         <Button
@@ -40,7 +45,8 @@ class component extends React.PureComponent {
       ))
       return (
         <div>
-          <Select floatingLabelText="Filter by category" onChange={this.onFilterByCategory}>
+          <InputLabel htmlFor="items">Filter by Category</InputLabel>
+          <Select onChange={this.onFilterByCategory} id="items" value={this.state.value}>
             {menuItems}
           </Select>
           <p>Filter by price range</p>
@@ -52,6 +58,7 @@ class component extends React.PureComponent {
     }
   }
 }
+
 const mapStateToProps = state => ({
   categories: services.shopping.selector.getCategories(state),
   priceRange: services.shopping.selector.getPriceRange(state)

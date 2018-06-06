@@ -67,14 +67,16 @@ class analyticsDemo extends React.PureComponent {
         name="upper"
         dummyAction={this.props.dummyAction}
         visibilityContainer={this.innerScrollDiv}
+        key={1}
       />,
-      <div style={emptyDivStyle}>
+      <div style={emptyDivStyle} key={2}>
         <div style={emptyChildDivStyle}>Empty</div>
       </div>,
       <VisibilityDetected
         name="lower"
         dummyAction={this.props.dummyAction}
         visibilityContainer={this.innerScrollDiv}
+        key={3}
       />
     ]
     this.setState({ visibleChildren: elements })
@@ -215,8 +217,8 @@ class analyticsDemo extends React.PureComponent {
           }}
         >
           <ul style={{ listStyleType: 'none' }}>
-            {this.props.log.map(i => (
-              <li>
+            {this.props.log.map((i, index) => (
+              <li key={index}>
                 <span style={actionNameStyle}>{i.type} :: </span>
                 <span>{JSON.stringify(i.data)}</span>
               </li>

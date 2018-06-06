@@ -1,7 +1,12 @@
 import React from 'react'
-import { Card, CardTitle, CardMedia, CardActions } from '@material-ui/core/Card'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardActions from '@material-ui/core/CardActions'
 import Snackbar from '@material-ui/core/Snackbar'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import { connect } from 'react-redux'
 
 import { services, actionHub } from '../../loader'
@@ -50,11 +55,17 @@ class component extends React.PureComponent {
         <div style={style.productWrapper}>
           {products.map((product, index) => (
             <Card key={index} style={style.productCard}>
-              <CardTitle title={product.name} subtitle={product.description} />
-              <CardMedia>
-                <img src={product.imageURL} style={{ display: 'block', margin: 'auto' }} />
-              </CardMedia>
-              <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
+              <CardHeader title={product.name} subheader={product.description} />
+              <CardContent>
+                <CardMedia
+                  title={product.name}
+                  image={product.imageURL}
+                  style={{ display: 'block', margin: 'auto' }}
+                  component="img"
+                />
+                <Typography variant="title">{`$ ${product.price}`}</Typography>
+                <Typography variant="subheading">{product.categories.join()}</Typography>
+              </CardContent>
               <CardActions>
                 <Button
                   onClick={() => {
