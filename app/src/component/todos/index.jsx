@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
+import Tooltip from '@material-ui/core/Tooltip'
 import Dialog from '@material-ui/core/Dialog'
 import Create from '@material-ui/icons/Create'
 import Delete from '@material-ui/icons/Delete'
@@ -61,14 +63,18 @@ class component extends React.PureComponent {
 
   renderIcons = id => {
     return (
-      <div style={{ height: '100%', margin: '0 12px', width: 'initial' }}>
-        <IconButton data-id={id} tooltip="edit" onClick={this.handleOpen}>
-          <Create />
-        </IconButton>
-        <IconButton data-id={id} tooltip="delete" onClick={this.onDelete}>
-          <Delete />
-        </IconButton>
-      </div>
+      <ListItemSecondaryAction>
+        <Tooltip title="edit">
+          <IconButton data-id={id} onClick={this.handleOpen}>
+            <Create />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="delete">
+          <IconButton data-id={id} onClick={this.onDelete}>
+            <Delete />
+          </IconButton>
+        </Tooltip>
+      </ListItemSecondaryAction>
     )
   }
 
@@ -113,13 +119,7 @@ class component extends React.PureComponent {
               ))}
             </List>
           )}
-        <Dialog
-          title="Edit Todo"
-          actions={actions}
-          modal={false}
-          open={openModal}
-          onRequestClose={this.handleClose}
-        >
+        <Dialog title="Edit Todo" actions={actions} open={openModal} onClose={this.handleClose}>
           <TextField
             name="editValue"
             style={fieldStyle}
