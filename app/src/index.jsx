@@ -36,3 +36,7 @@ ReactDOM.render(
   </Provider>,
   container
 )
+
+if (module.hot) {
+  module.hot.accept()
+}

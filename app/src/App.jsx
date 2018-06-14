@@ -20,7 +20,7 @@ class component extends React.PureComponent {
         <MuiThemeProvider theme={muiTheme}>
           <div>
             <components.App
-              title="stack-demo"
+              title={branding.appName}
               color={muiTheme.app.color}
               user={user}
               style={styles}
@@ -36,7 +36,6 @@ class component extends React.PureComponent {
                 <components.gp />
                 <components.sphere />
                 <components.dialogSimple />
-                <components.analyticsDemo />
                 <components.shopping />
                 <components.chat />
                 <components.mail />
@@ -56,4 +55,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(component)
 
+// after dialog.simple: <components.analyticsDemo />
 // <components.ratingBar />

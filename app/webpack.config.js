@@ -60,6 +60,15 @@ const common = {
 
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          use: ['source-map-loader'],
+          enforce: 'pre'
+        }
+      ]
+    },
     devtool: 'eval-source-map',
     devServer: {
       contentBase: PATHS.build,
