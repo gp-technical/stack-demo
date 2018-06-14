@@ -7,7 +7,6 @@ const processor = async action => {
 
   switch (type) {
     case types.counterIncrement:
-      console.info('user', user)
       db.increment()
       return { total: db.getTotal() }
     case types.counterDecrement:

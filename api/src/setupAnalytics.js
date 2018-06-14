@@ -11,6 +11,7 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
     'X-Experience-API-Version': '1.0.1'
   })
 
+  // eslint-disable-next-line no-unused-vars
   const json = {
     actor: {
       mbox: `mailto:${user.email}`
@@ -31,7 +32,7 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
     }
   }
 
-  console.log(`Analytics: ${JSON.stringify(json)}`)
+  // console.log(`Analytics: ${JSON.stringify(json)}`)
   // send({ req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements' }).then(resp => {
   //   console.log(resp)
   // })

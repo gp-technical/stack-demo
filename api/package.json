@@ -13,17 +13,27 @@
   "scripts": {
     "lint": "sp-lint",
     "precommit": "sp-lint-staged",
-    "start:debug": "env-cmd .env babel-node src/index.js --silent --inspect-brk --source-maps inline",
+    "start:watch": "nodemon --exec yarn start --inspect --source-maps",
     "start": "env-cmd .env babel-node src/index.js --silent",
     "production": "babel --presets env,stage-2 src --out-dir /build"
   },
   "standard-engine": "@gp-technical/stack-pack-standard",
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ignoreRoot": [
+      "yarn.lock",
+      "package.json"
+    ]
+  },
   "dependencies": {
     "@gp-technical/stack-pack-api": "2.0.0-beta.2",
     "@gp-technical/stack-pack-aws": "2.0.0-beta.1",
     "@gp-technical/stack-pack-file": "2.0.0-beta.1",
     "@gp-technical/stack-pack-mongo": "2.0.0-beta.1",
     "@gp-technical/stack-pack-util": "2.0.0-beta.1",
+    "babel-polyfill": "^6.26.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
@@ -39,6 +49,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.16.0",
-    "env-cmd": "^8.0.0"
+    "env-cmd": "^8.0.0",
+    "nodemon": "^1.17.5"
   }
 }
