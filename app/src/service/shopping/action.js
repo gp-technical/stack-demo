@@ -14,8 +14,8 @@ const both = makeTypes(name, ['cartCheckout', 'productSearch'])
 
 const actions = {
   ...makeActions(both),
-  ...makeActions(local, { local: true }),
-  ...makeActions(api, { local: false })
+  ...makeActions(local),
+  ...makeActions(api)
 }
 
 const types = {

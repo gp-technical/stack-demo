@@ -3,6 +3,6 @@ import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const types = makeTypes(name, ['dummyAction'])
 
-const actions = makeActions(types, { local: true })
+const actions = makeActions(types)
 
 export { actions, types }

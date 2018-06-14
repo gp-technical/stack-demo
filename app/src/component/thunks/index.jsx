@@ -14,8 +14,7 @@ class component extends React.PureComponent {
   }
 
   render() {
-    var { answer, isRunning, action } = this.props
-    console.info('action', action)
+    var { answer, isRunning } = this.props
     if (isRunning) answer = 'Calculating answer, this will take 3 seconds ...'
     return (
       <components.Box>
@@ -44,7 +43,6 @@ class component extends React.PureComponent {
 const mapStateToProps = state => ({
   answer: services.thunks.selector.getAnswer(state),
   isRunning: services.thunks.selector.getIsRunning(state)
-  // action: services.busy.selector.getAction(state)
 })
 
 const mapDispatchToProps = dispatch => ({

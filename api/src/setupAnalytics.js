@@ -32,7 +32,7 @@ const persistAnalyticsImpl = ({ user, time, type, data }) => {
     }
   }
 
-  // console.log(`Analytics: ${JSON.stringify(json)}`)
+  console.log(`Analytics: ${JSON.stringify(json, null, 2)}`)
   // send({ req, json, url: 'https://saas.learninglocker.net/data/xAPI/statements' }).then(resp => {
   //   console.log(resp)
   // })

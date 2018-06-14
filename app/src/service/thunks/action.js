@@ -5,7 +5,7 @@ import { actionHub } from '../../loader'
 const api = makeTypes(name, ['getAnswer'])
 const local = makeTypes(name, ['start', 'finish'])
 
-const actions = { ...makeActions(api, { local: false }), ...makeActions(local, { local: true }) }
+const actions = { ...makeActions(api), ...makeActions(local) }
 const types = { ...api, ...local }
 
 const thunksGetAnswer = actions.thunksGetAnswer

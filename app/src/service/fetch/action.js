@@ -6,8 +6,8 @@ const local = makeTypes(name, ['fromLocal'])
 const both = makeTypes(name, ['fromBoth'])
 
 const actions = {
-  ...makeActions(api, { local: false }),
-  ...makeActions(local, { local: true }),
+  ...makeActions(api),
+  ...makeActions(local),
   ...makeActions(both)
 }
 const types = { ...api, ...local, ...both }

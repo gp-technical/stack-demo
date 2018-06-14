@@ -5,8 +5,8 @@ const api = makeTypes(name, ['delete', 'submit'])
 const local = makeTypes(name, ['openDialog', 'closeDialog'])
 
 const actions = {
-  ...makeActions(api, { local: false }),
-  ...makeActions(local, { local: true })
+  ...makeActions(api),
+  ...makeActions(local)
 }
 const types = { ...api, ...local }
 
