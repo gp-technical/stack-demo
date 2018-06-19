@@ -78,11 +78,11 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-pack-api@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.2.tgz#5b3c3aed37db0067070dc6c79d2e94ab37dbf610"
+"@gp-technical/stack-pack-api@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.3.tgz#f2b298f3418b105fb3c6ce85137cca691a71022a"
   dependencies:
-    "@gp-technical/stack-pack-util" "2.0.0-beta.1"
+    "@gp-technical/stack-pack-util" "2.0.0-beta.2"
     cookie-parser "^1.4.3"
     eidetic "^1.0.0"
     express "^4.13.4"
@@ -90,8 +90,8 @@
     lodash.isfunction "^3.0.9"
     socket.io "^2.1.1"
     socket.io-client "^2.1.1"
-    stack-pack-gpapi "2.0.0-beta.2"
-    stack-pack-request "2.0.0-beta.1"
+    stack-pack-gpapi "2.0.0-beta.3"
+    stack-pack-request "2.0.0-beta.2"
     uuid "^3.1.0"
     winston "^2.4.0"
     xml-crypto "^0.10.1"
@@ -100,15 +100,15 @@
     xmlbuilder "^10.0.0"
     xpath "0.0.27"
 
-"@gp-technical/stack-pack-aws@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-aws/-/stack-pack-aws-2.0.0-beta.1.tgz#c0b8bb609eece7caddbbb2bbfe776f0de2522b07"
+"@gp-technical/stack-pack-aws@2.0.0-beta.2":
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-aws/-/stack-pack-aws-2.0.0-beta.2.tgz#306618fff6a0df52c57f53c9dbe7e849fa8a3599"
   dependencies:
     aws-sdk "^2.252.1"
 
-"@gp-technical/stack-pack-file@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-file/-/stack-pack-file-2.0.0-beta.1.tgz#f8aa69c972084c078f45fb0239026872c641ba81"
+"@gp-technical/stack-pack-file@2.0.0-beta.2":
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-file/-/stack-pack-file-2.0.0-beta.2.tgz#b7abfef125f292a4194cdaef39700526d6932f12"
   dependencies:
     filesize "^3.5.10"
     fs-extra "^6.0.1"
@@ -116,9 +116,9 @@
     path "^0.12.7"
     serialijse "^0.1.1"
 
-"@gp-technical/stack-pack-mongo@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-mongo/-/stack-pack-mongo-2.0.0-beta.1.tgz#13fd4ef4efe992fa7c5a8e00c2b025a734d0a38d"
+"@gp-technical/stack-pack-mongo@2.0.0-beta.2":
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-mongo/-/stack-pack-mongo-2.0.0-beta.2.tgz#8ae767daf2ca42971bd64a903af9e3fbdfe9ab0a"
   dependencies:
     mongodb "2.2.35"
     mongoskin "^2.1.0"
@@ -145,9 +145,9 @@
     standard "^11.0.1"
     standard-engine "^9.0.0"
 
-"@gp-technical/stack-pack-util@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-util/-/stack-pack-util-2.0.0-beta.1.tgz#dfa4d5905ee78c24f09454b92e3fe7a9822b68ec"
+"@gp-technical/stack-pack-util@2.0.0-beta.2":
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-util/-/stack-pack-util-2.0.0-beta.2.tgz#1a8fccd429f72f3444246cc5dd8aebc34504184c"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -4755,16 +4755,16 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-stack-pack-gpapi@2.0.0-beta.2:
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.0.0-beta.2.tgz#9c70ee46b14839ca23d74730a1c1942c4f4d5462"
+stack-pack-gpapi@2.0.0-beta.3:
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.0.0-beta.3.tgz#4542cf7f85124be780cec784413d4be3ef8515e0"
   dependencies:
-    stack-pack-request "^2.0.0-beta.1"
+    stack-pack-request "2.0.0-beta.2"
     winston "^2.3.1"
 
-stack-pack-request@2.0.0-beta.1, stack-pack-request@^2.0.0-beta.1:
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.0.0-beta.1.tgz#f1ed29ad6d379f3f30e6958b659f313e0b0be39f"
+stack-pack-request@2.0.0-beta.2:
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.0.0-beta.2.tgz#3ea2ac49d55024ab895c69ba0cba29c52131ddb2"
   dependencies:
     unirest "^0.5.1"
     winston "^2.3.1"
