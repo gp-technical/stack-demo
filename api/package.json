@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-api",
   "description": "The API component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-api/readme",
@@ -20,7 +20,8 @@
   "standard-engine": "@gp-technical/stack-pack-standard",
   "nodemonConfig": {
     "watch": [
-      "src"
+      "src",
+      "node_modules/@gp-technical"
     ],
     "ignoreRoot": [
       "yarn.lock",
@@ -28,18 +29,18 @@
     ]
   },
   "dependencies": {
-    "@gp-technical/stack-pack-api": "2.0.0-beta.2",
-    "@gp-technical/stack-pack-aws": "2.0.0-beta.1",
-    "@gp-technical/stack-pack-file": "2.0.0-beta.1",
-    "@gp-technical/stack-pack-mongo": "2.0.0-beta.1",
-    "@gp-technical/stack-pack-util": "2.0.0-beta.1",
+    "@gp-technical/stack-pack-api": "2.0.0-beta.3",
+    "@gp-technical/stack-pack-aws": "2.0.0-beta.2",
+    "@gp-technical/stack-pack-file": "2.0.0-beta.2",
+    "@gp-technical/stack-pack-mongo": "2.0.0-beta.2",
+    "@gp-technical/stack-pack-util": "2.0.0-beta.2",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "le_node": "^1.7.0",
     "sparkpost": "^2.1.2",
-    "stack-pack-gpapi": "2.0.0-beta.2",
+    "stack-pack-gpapi": "2.0.0-beta.3",
     "unirest": "^0.5.1",
     "winston": "^2.3.1"
   },
