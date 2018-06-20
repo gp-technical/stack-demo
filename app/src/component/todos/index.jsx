@@ -9,7 +9,6 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
 import Dialog from '@material-ui/core/Dialog'
 import Create from '@material-ui/icons/Create'
 import Delete from '@material-ui/icons/Delete'
@@ -64,16 +63,12 @@ class component extends React.PureComponent {
   renderIcons = id => {
     return (
       <ListItemSecondaryAction>
-        <Tooltip title="edit">
-          <IconButton data-id={id} onClick={this.handleOpen}>
-            <Create />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="delete">
-          <IconButton data-id={id} onClick={this.onDelete}>
-            <Delete />
-          </IconButton>
-        </Tooltip>
+        <IconButton data-id={id} onClick={this.handleOpen}>
+          <Create />
+        </IconButton>
+        <IconButton data-id={id} onClick={this.onDelete}>
+          <Delete />
+        </IconButton>
       </ListItemSecondaryAction>
     )
   }
