@@ -48,6 +48,7 @@ class component extends Component {
             <CardMedia
               image="https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg"
               style={{ display: 'block', margin: 'auto' }}
+              component="img"
             />
             <CardContent>
               <Rating
