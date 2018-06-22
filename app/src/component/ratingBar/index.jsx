@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
-import { services, actionHub } from '../../loader'
+import { services, components, actionHub } from '../../loader'
 import Rating from './rating'
 
 const styles = {
@@ -37,29 +37,32 @@ class component extends Component {
     let { submitRating } = this
     let { id, name, price } = product
     return (
-      <div style={ratingWrapper}>
-        <Card style={ratingCard}>
-          <CardHeader title={name} />
-          <CardHeader title={`$ ${price}`} />
-          <CardMedia>
-            <img
-              src="https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg"
+      <components.Box>
+        <h2>
+          Feature: <i>Rating Bar</i>
+        </h2>
+        <div style={ratingWrapper}>
+          <Card style={ratingCard}>
+            <CardHeader title={name} />
+            <CardHeader title={`$ ${price}`} />
+            <CardMedia
+              image="https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg"
               style={{ display: 'block', margin: 'auto' }}
             />
-          </CardMedia>
-          <CardContent>
-            <Rating
-              iconNumber={5}
-              btnLabel="Rate this item"
-              id={id}
-              reviews={numberOfReviews[id]}
-              medianRating={ratedProducts[id]}
-              onClick={submitRating}
-              symbolContainerStyle={{ width: 30 }}
-            />
-          </CardContent>
-        </Card>
-      </div>
+            <CardContent>
+              <Rating
+                iconNumber={5}
+                btnLabel="Rate this item"
+                id={id}
+                reviews={numberOfReviews[id]}
+                medianRating={ratedProducts[id]}
+                onClick={submitRating}
+                symbolContainerStyle={{ width: 30 }}
+              />
+            </CardContent>
+          </Card>
+        </div>
+      </components.Box>
     )
   }
 }
