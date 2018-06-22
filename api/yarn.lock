@@ -78,9 +78,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-pack-api@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.3.tgz#f2b298f3418b105fb3c6ce85137cca691a71022a"
+"@gp-technical/stack-pack-api@2.0.0-beta.4":
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.4.tgz#19e2194ec25d3a78d77ce8bd8ad73ee9da37b8e2"
   dependencies:
     "@gp-technical/stack-pack-util" "2.0.0-beta.2"
     cookie-parser "^1.4.3"
