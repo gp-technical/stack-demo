@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-api",
   "description": "The API component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.5",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-api/readme",
@@ -21,6 +21,7 @@
   "nodemonConfig": {
     "watch": [
       "src",
+      ".env",
       "node_modules/@gp-technical"
     ],
     "ignoreRoot": [

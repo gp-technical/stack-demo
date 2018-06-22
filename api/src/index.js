@@ -7,6 +7,7 @@ import express from './express'
 import winston from 'winston'
 import Logger from 'le_node' // eslint-disable-line no-unused-vars
 import util from 'util'
+import initialiser from './initialiser'
 
 import setupAnalytics from './setupAnalytics'
 
@@ -51,7 +52,8 @@ winston.info('---------------------------')
     // Connects the socket to receive and broadcast REDUX actions to and from the app
     socket.connect({
       services,
-      tls
+      tls,
+      initialiser
     })
   } catch (inner) {
     const err = new Error(`An error occurred whilst starting the ${process.env.API_NAME} API`)

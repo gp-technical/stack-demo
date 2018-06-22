@@ -40,6 +40,7 @@ class component extends React.PureComponent {
                 <components.shopping />
                 <components.chat />
                 <components.mail />
+                <components.appInitialiser />
               </Grid>
             </Grid>
           </div>

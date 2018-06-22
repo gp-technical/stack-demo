@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-app",
   "description": "The React application component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.5",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-app/readme",
@@ -15,12 +15,13 @@
     "precommit": "sp-lint-staged",
     "babel": "babel --presets env,stage-2 --plugins=transform-decorators-legacy src --out-dir build",
     "build": "npm run lint && npm run babel",
+    "start:debug": "yarn start",
     "start": "npm run build && webpack-dev-server --mode development --color --open",
     "production": "webpack -p --config ./webpack.config.js"
   },
   "standard-engine": "@gp-technical/stack-pack-standard",
   "dependencies": {
-    "@gp-technical/stack-pack-app": "^2.0.0-beta.4",
+    "@gp-technical/stack-pack-app": "^2.0.0-beta.5",
     "@gp-technical/stack-pack-components": "^2.0.0-beta.4",
     "@material-ui/core": "^1.2.2",
     "@material-ui/icons": "^1.1.0",

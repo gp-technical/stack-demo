@@ -1,3 +1,5 @@
+/* global location */
+
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -12,6 +14,7 @@ import { env, services } from './loader'
 
 var opts = {
   websocketUrl: env.websocketUrl,
+  websocketOpts: { query: location.search },
   devTools: true
 }
 const store = createStore(services, stackReduxApp(opts))
