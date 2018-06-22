@@ -38,6 +38,7 @@ class component extends React.PureComponent {
                 <components.dialogSimple />
                 <components.analyticsDemo />
                 <components.shopping />
+                <components.ratingBar />
                 <components.chat />
                 <components.mail />
                 <components.appInitialiser />
