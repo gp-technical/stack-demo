@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { Card, CardTitle, CardText, CardMedia } from '@material-ui/core/Card'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -34,13 +33,19 @@ class component extends Component {
   render() {
     const { ratingWrapper, ratingCard } = styles
     let { ratedProducts, numberOfReviews } = this.props
-    let { id, imageURL, name, price } = product
+    let { submitRating } = this
+    let { id, name, price } = product
     return (
       <div style={ratingWrapper}>
         <Card style={ratingCard}>
           <CardHeader title={name} />
-          <CardMedia image={imageURL} style={{ display: 'block', margin: 'auto' }} />
           <CardHeader title={`$ ${price}`} />
+          <CardMedia>
+            <img
+              src="https://i.ebayimg.com/images/g/pJoAAOSwx~JWE2t0/s-l300.jpg"
+              style={{ display: 'block', margin: 'auto' }}
+            />
+          </CardMedia>
           <CardContent>
             <components.rating
               iconNumber={5}
@@ -48,7 +53,7 @@ class component extends Component {
               id={id}
               reviews={numberOfReviews[id]}
               medianRating={ratedProducts[id]}
-              onClick={this.submitRating}
+              onClick={submitRating}
               symbolContainerStyle={{ width: 30 }}
             />
           </CardContent>
@@ -57,10 +62,6 @@ class component extends Component {
     )
   }
 }
-
-// <CardMedia>
-//   <img src={imageURL} style={{ display: 'block', margin: 'auto' }} />
-// </CardMedia>
 
 const mapStateToProps = state => {
   let {

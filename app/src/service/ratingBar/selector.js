@@ -50,7 +50,7 @@ const getRatingScore = ratingObj => {
     count += ratingObj[next]
     return (acc += ratingObj[next] * Number(next))
   }, 0)
-  return sum / count
+  return Math.ceil(sum / count)
 }
 
 const getNumberReviewers = ratingObj => {

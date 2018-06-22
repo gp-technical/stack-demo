@@ -1,22 +1,20 @@
-// TODO Fix the issues in here...
-
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import propTypes from 'prop-types'
 import RatingSymbol from './RatingSymbol'
-// import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button'
 
 const { func, number, object, oneOf, oneOfType, string } = propTypes
 
 const defaultDirection = 'left'
 
-// const ratedStyle = {
-//   fontSize: '0.65em',
-//   fontStyle: 'italic'
-// }
+const ratedStyle = {
+  fontSize: '0.65em',
+  fontStyle: 'italic'
+}
 
-// const personStr = 'person has rated this item'
-// const peopleStr = 'people have rated this item'
+const personStr = 'person has rated this item'
+const peopleStr = 'people have rated this item'
 
 class Rating extends Component {
   constructor(props) {
@@ -24,18 +22,13 @@ class Rating extends Component {
     this.state = { rating: 0, rated: props.reviews > 0 }
   }
 
-  componentWillMount() {
-    this.thresholdSymbol = null
-  }
-
   componentDidMount() {
-    let symbol = findDOMNode(this.thresholdSymbol)
+    let symbol = findDOMNode(this.refs.symbol)
     this.symbolBoundingClientRec = symbol.getBoundingClientRect()
     this.mousePosition = this.symbolBoundingClientRec
   }
 
-  componentWillReceiveProps(nextProps) {
-    let { reviews } = nextProps
+  componentWillReceiveProps({ reviews }) {
     if (reviews !== this.props.reviews) {
       this.setState({ rated: true })
     }
@@ -62,8 +55,6 @@ class Rating extends Component {
     let { id, disabled, onClick } = this.props
 
     if (disabled) {
-      // e.stopPropagation()
-      // e.preventDefault()
       return false
     } else {
       if (onClick) {
@@ -72,8 +63,8 @@ class Rating extends Component {
     }
   }
 
-  _setRating = value => {
-    this._isValid() ? this.setState({ rating: value }) : this.setState({ rating: 0 })
+  _setRating = rating => {
+    this._isValid() ? this.setState({ rating }) : this.setState({ rating: 0 })
   }
 
   _isValid = () => {
@@ -106,12 +97,7 @@ class Rating extends Component {
         }
 
         return index === refIndex ? (
-          <RatingSymbol
-            ref={symbol => {
-              this.thresholdSymbol = symbol
-            }}
-            {...defaultProps}
-          />
+          <RatingSymbol ref="symbol" {...defaultProps} />
         ) : (
           <RatingSymbol {...defaultProps} />
         )
@@ -119,51 +105,39 @@ class Rating extends Component {
   }
 
   render() {
-    return <div>Fix ratingBar/rating.jsx</div>
+    let { disabled, iconNumber, btnLabel, btnLabelStyle, reviews, medianRating } = this.props
+    let { rated } = this.state
+
+    return (
+      <div style={{ marginLeft: 5, marginRight: 5 }} onMouseLeave={this._onContainerMouseLeave}>
+        <div onMouseMove={this._onContainerMouseMove}>
+          {btnLabel && (
+            <Button disabled={disabled} onClick={this._handleOnClick} labelstyle={btnLabelStyle}>
+              {btnLabel}
+            </Button>
+          )}
+          <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
+            {iconNumber > 0 && this._generateIcons(iconNumber)}
+          </div>
+          {rated ? (
+            <div>
+              <div>
+                <span style={ratedStyle}>
+                  {reviews && reviews > 1 ? `${reviews} ${peopleStr}` : `${reviews} ${personStr}`}
+                </span>
+              </div>
+              <div>
+                <span style={ratedStyle}>{`Current rating ${medianRating}`}</span>
+              </div>
+            </div>
+          ) : (
+            <span style={ratedStyle}>{'Be the first to rate this item'}</span>
+          )}
+        </div>
+      </div>
+    )
   }
 }
-//   render() {
-//     let { disabled, iconNumber, btnLabel, btnLabelStyle, reviews, medianRating } = this.props
-//     let { rated } = this.state
-//
-//     return (
-//        <div
-//         ref={container => {
-//           this.symbolContainer = container
-//         }}
-//         style={{ marginLeft: 5, marginRight: 5 }}
-//         onMouseLeave={this._onContainerMouseLeave}
-//         <div onMouseMove={this._onContainerMouseMove} >
-//             {btnLabel && (
-//             <Button
-//               label=
-//               disabled={disabled}
-//               onClick={this._handleOnClick}
-//               labelStyle={btnLabelStyle}
-//             >{btnLabel}</Button>
-//           )}
-//             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 5, marginRight: 5 }}>
-//             {iconNumber > 0 && this._generateIcons(iconNumber)}
-//           </div>
-//             {rated ? (
-//               <div>
-//               <div>
-//                 <span style={ratedStyle}>
-//                   {reviews && reviews > 1 ? `${reviews} ${peopleStr}` : `${reviews} ${personStr}`}
-//                 </span>
-//               </div>
-//               <div>
-//                 <span style={ratedStyle}>{`Current rating ${medianRating}`}</span>
-//               </div>
-//             </div>
-//           ) : (
-//             <span style={ratedStyle}>{'Be the first to rate this item'}</span>
-//           )}
-//           </div>
-//       </div>
-//     )
-//   }
-// }
 
 Rating.propTypes = {
   btnLabel: string,
