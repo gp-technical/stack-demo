@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-app",
   "description": "The React application component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.5",
+  "version": "2.0.0-beta.7",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-app/readme",
@@ -21,8 +21,8 @@
   },
   "standard-engine": "@gp-technical/stack-pack-standard",
   "dependencies": {
-    "@gp-technical/stack-pack-app": "^2.0.0-beta.6",
-    "@gp-technical/stack-pack-components": "^2.0.0-beta.5",
+    "@gp-technical/stack-pack-app": "^2.0.0-beta.7",
+    "@gp-technical/stack-pack-components": "^2.0.0-beta.6",
     "@material-ui/core": "^1.2.3",
     "@material-ui/icons": "^1.1.0",
     "babel-polyfill": "^6.23.0",
@@ -34,7 +34,7 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-standard": "^1.2.0",
+    "@gp-technical/stack-pack-standard": "^2.1.0-beta.4",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.16.0",
     "babel-loader": "^7.1.4",
@@ -54,7 +54,7 @@
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.12.0",
+    "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3"
