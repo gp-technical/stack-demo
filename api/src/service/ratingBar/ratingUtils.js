@@ -18,9 +18,11 @@ const productRating = () => {
 }
 
 const getPropByKey = (obj, key) => obj[String(key)]
-const incrementRating = (product, key, rating) => (product[String(key)][rating] = product[String(key)][String(rating)] + 1)
+const incrementRating = (product, key, rating) =>
+  (product[String(key)][rating] = product[String(key)][String(rating)] + 1)
 const createRating = (product, key, rating) => (product[String(key)][String(rating)] = 1)
-const createRatedProduct = (product, key, rating) => (product[String(key)] = { [String(rating)]: 1 })
+const createRatedProduct = (product, key, rating) =>
+  (product[String(key)] = { [String(rating)]: 1 })
 const addProductRating = productRating()
 
 export { addProductRating }
