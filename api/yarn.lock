@@ -123,9 +123,9 @@
     mongodb "2.2.35"
     mongoskin "^2.1.0"
 
-"@gp-technical/stack-pack-standard@^2.1.0-beta.4":
-  version "2.1.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.1.0-beta.4.tgz#f8c1368ed03c0e7b9175a1f4c1949f35f890c5c0"
+"@gp-technical/stack-pack-standard@^2.1.0-beta.5":
+  version "2.1.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.1.0-beta.5.tgz#b638a6c12a9cae31bb849f006afcee9c815a9f12"
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.3"

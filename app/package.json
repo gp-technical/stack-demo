@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-app",
   "description": "The React application component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.7",
+  "version": "2.0.0-beta.8",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-app/readme",
@@ -34,7 +34,7 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-standard": "^2.1.0-beta.4",
+    "@gp-technical/stack-pack-standard": "^2.1.0-beta.5",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.16.0",
     "babel-loader": "^7.1.4",
