@@ -1,7 +1,5 @@
 # stack-demo
 
-a change
-
 Get started with the GP stack using this introductory demo application
 
 ## What is the stack?
