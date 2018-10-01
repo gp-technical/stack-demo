@@ -102,9 +102,9 @@ class analyticsDemo extends React.PureComponent {
           component is visible inside it. Components may override (see below).
         </p>
         <p>
-          In this example, "innerScrollDiv" (react ref name), used as the container, and must be
-          rendered first, in render(), and after that, componentDidMount() will run and add the
-          visible inner components that are visibility-detectable
+          In this example, &quot;innerScrollDiv&quot; (react ref name), used as the container, and
+          must be rendered first, in render(), and after that, componentDidMount() will run and add
+          the visible inner components that are visibility-detectable
         </p>
         <p>
           <b>clickingExtraSelectors </b>

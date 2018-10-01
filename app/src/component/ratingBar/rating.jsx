@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import propTypes from 'prop-types'
-import RatingSymbol from './RatingSymbol'
+import RatingSymbol from './ratingSymbol'
 import Button from '@material-ui/core/Button'
 
 const { func, number, object, oneOf, oneOfType, string } = propTypes
@@ -23,12 +23,15 @@ class Rating extends Component {
   }
 
   componentDidMount() {
+    // react/no-string-refs and react/no-find-dom-node
+    // eslint-disable-next-line
     let symbol = findDOMNode(this.refs.symbol)
     this.symbolBoundingClientRec = symbol.getBoundingClientRect()
     this.mousePosition = this.symbolBoundingClientRec
   }
 
-  componentWillReceiveProps({ reviews }) {
+  // eslint-disable-next-line
+  UNSAFE_componentWillReceiveProps({ reviews }) {
     if (reviews !== this.props.reviews) {
       this.setState({ rated: true })
     }
@@ -97,6 +100,7 @@ class Rating extends Component {
         }
 
         return index === refIndex ? (
+          // eslint-disable-next-line
           <RatingSymbol ref="symbol" {...defaultProps} />
         ) : (
           <RatingSymbol {...defaultProps} />

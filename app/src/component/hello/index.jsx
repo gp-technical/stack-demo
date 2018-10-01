@@ -14,7 +14,11 @@ class component extends React.PureComponent {
     return (
       <div style={style}>
         <h2>Hello World</h2>
-        <a href="https://github.com/gp-technical/stack-demo" target="_blank">
+        <a
+          href="https://github.com/gp-technical/stack-demo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View The Full stack-demo Documention on GitHub
         </a>
       </div>

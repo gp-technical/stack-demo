@@ -42,7 +42,7 @@ const AppInitialiser = ({ backgroundColor = 'white' }) => {
           <code>api/src/initialiser.js</code>. The initialiser module should have a default export
           that is a function with a signature like:
         </p>
-        <code>const initialiser = (user, websocketOpts) => ...</code>
+        <code>const initialiser = (user, websocketOpts) =&gt; ...</code>
         <p>
           The value returned by the app initialiser will be passed into each of the service
           initialisers as their second argument.

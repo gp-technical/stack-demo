@@ -29,7 +29,7 @@ class component extends React.PureComponent {
           as a default state
         </p>
         <Divider />
-        <h4>Formula of a sphere's volume:</h4>
+        <h4>Formula of a sphere&apos;s volume:</h4>
         <p>
           V=(4/3)π r<i style={sup}>3</i>
         </p>
@@ -44,7 +44,8 @@ class component extends React.PureComponent {
         <span>Km</span>
         <p>
           The volume is : {volume}
-          &nbsp;Km<i style={sup}>3</i>
+          &nbsp;Km
+          <i style={sup}>3</i>
         </p>
       </components.Box>
     )

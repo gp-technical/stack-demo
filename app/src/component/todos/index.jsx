@@ -78,7 +78,7 @@ class component extends React.PureComponent {
     const { todos } = this.props
 
     const actions = [
-      <Button primary onClick={this.handleClose}>
+      <Button primary onClick={this.handleClose} key={1}>
         Cancel
       </Button>
     ]

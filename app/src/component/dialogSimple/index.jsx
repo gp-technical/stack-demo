@@ -15,10 +15,12 @@ class DialogSimple extends React.PureComponent {
       <DialogActions>
         <Button variant="raised" onClick={closeDialog}>
           Cancel
-        </Button>,
+        </Button>
+        ,
         <Button variant="raised" color="secondary" onClick={fireDelete}>
           Delete
-        </Button>,
+        </Button>
+        ,
         <Button variant="raised" color="primary" onClick={submit}>
           Submit
         </Button>

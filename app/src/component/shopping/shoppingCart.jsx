@@ -41,19 +41,22 @@ class component extends React.PureComponent {
     var { productsInCart } = this.props
     if (productsInCart && productsInCart.length > 0) {
       return [
-        <Button onClick={this.props.cartClose}>Back Shopping</Button>,
+        <Button onClick={this.props.cartClose} key={1}>
+          Back Shopping
+        </Button>,
         <Button
           primary
           onClick={() => {
             this.onCartCheckout()
           }}
+          key={2}
         >
           Checkout
         </Button>
       ]
     } else {
       return [
-        <Button primary onClick={this.props.cartClose}>
+        <Button primary onClick={this.props.cartClose} key={1}>
           Back Shopping
         </Button>
       ]
