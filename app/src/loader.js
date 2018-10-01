@@ -1,21 +1,26 @@
 import {
   makeActionHub,
   sharedServices,
-  sharedComponents,
+  // sharedComponents,
   sharedHelper
 } from '@gp-technical/stack-pack-app'
-import { Box, FileUpload, Table } from '@gp-technical/stack-pack-components'
+import { featureServices, featureComponents } from '@gp-technical/stack-feature-app'
+// import { Box, FileUpload, Table } from '@gp-technical/stack-pack-components'
 import localComponents from './component'
 import localServices from './service'
 import env from './env'
 
-const services = { ...localServices, ...sharedServices }
+const { Assets, Components, ...otherComponents } = featureComponents
+const services = { ...localServices, ...featureServices, ...sharedServices }
 const actionHub = makeActionHub(services)
 
 const components = {
   ...localComponents,
-  ...sharedComponents,
-  ...{ Box, FileUpload, Table }
+  // ...sharedComponents,
+  ...Assets,
+  ...Components,
+  ...otherComponents
+  // ...{ Box, FileUpload, Table }
 }
 const helper = { ...sharedHelper }
 
