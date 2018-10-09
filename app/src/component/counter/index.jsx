@@ -9,7 +9,7 @@ const buttonStyle = {
 }
 
 const url = path => {
-  return `${env.apiUrl}/rest/counter/${path}`
+  return `${env.apiUrl}/counter/${path}`
 }
 
 class component extends React.PureComponent {

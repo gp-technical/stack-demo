@@ -184,10 +184,10 @@
     redux-thunk "^2.3.0"
     socket.io-client "2.1.1"
 
-"@gp-technical/stack-pack-standard@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.1.2.tgz#7270859ef4cea503e4049332f6cb302e53e47477"
-  integrity sha512-yWcsWzVlkuGTgzmIbeDEBUdjDV1XZ/KpGD0wDf9S6TA/Ef0EK8Zf64TBrPI4sPGRCiznmhGIC8pLSy5KaS1veQ==
+"@gp-technical/stack-pack-standard@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.3.4.tgz#a32c25cdcf64561c1564b177dec93c019fff1664"
+  integrity sha512-j0De5FzfY8I3QBjQgcqmbFyPpRMMcPo1d67f0Zrty9uWe/Zc0g4cLQjrnClmruovscIKObz8AVml7trmaYC4dA==
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.3"
@@ -206,6 +206,7 @@
     eslint-plugin-promise "^4.0.0"
     eslint-plugin-react "^7.11.1"
     eslint-plugin-standard "^4.0.0"
+    find-root "^1.1.0"
     husky "^0.14.3"
     lint-staged "^7.2.2"
     prettier "^1.14.2"
@@ -1042,6 +1043,11 @@ babel-plugin-react-require@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.0.tgz#2e4e7b4496b93a654a1c80042276de4e4eeb20e3"
   integrity sha1-Lk57RJa5OmVKHIAEInbeTk7rIOM=
+
+babel-plugin-react-require@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.1.tgz#bd052971cc32a3a4450234ae0a252402e7394900"
+  integrity sha512-NAOj+5m+2Y125igiveyBzvSTz8Mv21idmYkmkxFX6aUVRXEmGGaFpuQ347GwSoZgrYmyal3aFw4F6/F6ZmIzUg==
 
 babel-plugin-react-transform@^2.0.2:
   version "2.0.2"
@@ -7940,13 +7946,13 @@ strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
 
-style-loader@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.23.0.tgz#8377fefab68416a2e05f1cabd8c3a3acfcce74f1"
-  integrity sha512-uCcN7XWHkqwGVt7skpInW6IGO1tG6ReyFQ1Cseh0VcN6VdcFQi62aG/2F3Y9ueA8x4IVlfaSUxpmQXQD9QrEuQ==
+style-loader@^0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.23.1.tgz#cb9154606f3e771ab6c4ab637026a1049174d925"
+  integrity sha512-XK+uv9kWwhZMZ1y7mysB+zoihsEj4wneFWAS5qoiLwzW0WzSqMrrsIy+a3zkQJq0ipFtBpX5W3MqyRIBF/WFGg==
   dependencies:
     loader-utils "^1.1.0"
-    schema-utils "^0.4.5"
+    schema-utils "^1.0.0"
 
 stylis-rule-sheet@^0.0.10:
   version "0.0.10"

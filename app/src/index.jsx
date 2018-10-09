@@ -9,13 +9,15 @@ import { createStore } from 'redux'
 import { stackReduxApp } from '@gp-technical/stack-pack-app'
 import App from './App'
 import { env, services } from './loader'
+import { saml } from '@gp-technical/stack-auth-app'
 
 // TODO - add the analytics back in
 
 var opts = {
   websocketUrl: env.websocketUrl,
   websocketOpts: { query: location.search },
-  devTools: true
+  devTools: true,
+  authenticator: saml
 }
 const store = createStore(services, stackReduxApp(opts))
 

@@ -10,6 +10,8 @@ import localComponents from './component'
 import localServices from './service'
 import env from './env'
 
+// @@@ Boilerplate shouldn't be needed in every app.
+// Try to move this up into the framework
 const { Assets, Components, ...otherComponents } = featureComponents
 const services = { ...localServices, ...featureServices, ...sharedServices }
 const actionHub = makeActionHub(services)
@@ -17,7 +19,7 @@ const actionHub = makeActionHub(services)
 const components = {
   ...localComponents,
   // ...sharedComponents,
-  ...Assets,
+  // ...Assets,
   ...Components,
   ...otherComponents
   // ...{ Box, FileUpload, Table }
