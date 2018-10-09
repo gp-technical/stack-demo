@@ -34,7 +34,7 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-standard": "^2.3.4",
+    "@gp-technical/stack-pack-standard": "^2.3.5",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.16.0",
     "babel-loader": "7.1.5",

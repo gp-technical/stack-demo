@@ -149,10 +149,10 @@
     mongodb "2.2.35"
     mongoskin "^2.1.0"
 
-"@gp-technical/stack-pack-standard@^2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.3.4.tgz#a32c25cdcf64561c1564b177dec93c019fff1664"
-  integrity sha512-j0De5FzfY8I3QBjQgcqmbFyPpRMMcPo1d67f0Zrty9uWe/Zc0g4cLQjrnClmruovscIKObz8AVml7trmaYC4dA==
+"@gp-technical/stack-pack-standard@^2.3.5":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.3.5.tgz#b3ecde868b45956407e6985ed921289f9b5f6b45"
+  integrity sha512-yVghv5Oth6JD59dQrPkinsFxtMMdL7pcsEnWQ7S3ah7Voy0cDPPHXV8+7IPZXd8zAzNtXdBahtwfdHEbd65oLw==
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.3"

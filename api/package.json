@@ -47,7 +47,7 @@
     "winston": "2.4.3"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-standard": "^2.3.4",
+    "@gp-technical/stack-pack-standard": "^2.3.5",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
