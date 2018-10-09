@@ -149,10 +149,10 @@
     mongodb "2.2.35"
     mongoskin "^2.1.0"
 
-"@gp-technical/stack-pack-standard@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.1.2.tgz#7270859ef4cea503e4049332f6cb302e53e47477"
-  integrity sha512-yWcsWzVlkuGTgzmIbeDEBUdjDV1XZ/KpGD0wDf9S6TA/Ef0EK8Zf64TBrPI4sPGRCiznmhGIC8pLSy5KaS1veQ==
+"@gp-technical/stack-pack-standard@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-standard/-/stack-pack-standard-2.3.4.tgz#a32c25cdcf64561c1564b177dec93c019fff1664"
+  integrity sha512-j0De5FzfY8I3QBjQgcqmbFyPpRMMcPo1d67f0Zrty9uWe/Zc0g4cLQjrnClmruovscIKObz8AVml7trmaYC4dA==
   dependencies:
     babel-cli "^6.26.0"
     babel-core "^6.26.3"
@@ -171,6 +171,7 @@
     eslint-plugin-promise "^4.0.0"
     eslint-plugin-react "^7.11.1"
     eslint-plugin-standard "^4.0.0"
+    find-root "^1.1.0"
     husky "^0.14.3"
     lint-staged "^7.2.2"
     prettier "^1.14.2"
@@ -2733,7 +2734,7 @@ find-parent-dir@^0.3.0:
   resolved "https://registry.yarnpkg.com/find-parent-dir/-/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
   integrity sha1-M8RLQpqysvBkYpnF+fcY83b/jVQ=
 
-find-root@^1.0.0:
+find-root@^1.0.0, find-root@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/find-root/-/find-root-1.1.0.tgz#abcfc8ba76f708c42a97b3d685b7e9450bfb9ce4"
   integrity sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==
