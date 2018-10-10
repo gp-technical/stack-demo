@@ -90,38 +90,46 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-feature-api@^2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-api/-/stack-feature-api-2.0.0-beta.2.tgz#3d890ded7c9b436843abe5532713d8ebe9a972b7"
-  integrity sha512-jy+K+sD7nGCGvatb2/2EFJTmESC7FaIyiQHkemPilp4MR2NJ7WpTzQaSbmOqSq3WWkS1hqvxwb0XkxXoLcgzXA==
+"@gp-technical/stack-auth-api@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-1.0.0-beta.2.tgz#979fbea7fd1d48d8ad37c58b74f5248aa58fd14f"
+  integrity sha512-rlRLinJDpV65P95hDgOV2ai5xYwjnPLC/fg5bm97CYDXQBPbt0atZw213eqndFivY7OyMUWeMvVSvdb4CIsDCg==
   dependencies:
-    aws-sdk "^2.311.0"
-    imgix-core-js "^1.2.0"
-    moment "^2.22.2"
-    mongodb "^3.1.4"
-
-"@gp-technical/stack-pack-api@2.0.0-beta.10":
-  version "2.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.10.tgz#7600f8f752afdd6a3685bed6793d4ffebd67318f"
-  integrity sha512-QdW4g/k2UFTSAHXi4PSrWQqs8qx58YblZdVfJLf7B7FnEdI6aKXELgwowHBLH8m6n5pRukkrnGv8cvs+xBISQA==
-  dependencies:
-    "@gp-technical/stack-pack-util" "2.0.0-beta.3"
+    "@gp-technical/stack-pack-util" "2.0.0"
     cookie-parser "^1.4.3"
     eidetic "^1.0.0"
-    express "^4.13.4"
-    humps "^2.0.1"
-    lodash.isfunction "^3.0.9"
-    socket.io "^2.1.1"
-    socket.io-client "^2.1.1"
-    stack-pack-gpapi "2.0.0-beta.4"
-    stack-pack-request "2.0.0-beta.3"
+    stack-pack-gpapi "2.0.2"
+    stack-pack-request "2.0.1"
     uuid "^3.1.0"
-    winston "2.4.3"
     xml-crypto "^0.10.1"
     xml-encryption "^0.11.0"
     xml2js "^0.4.17"
     xmlbuilder "^10.0.0"
     xpath "0.0.27"
+
+"@gp-technical/stack-feature-api@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-api/-/stack-feature-api-2.0.0-beta.3.tgz#551056259de354f907b46f86a324295e50e7c7e7"
+  integrity sha512-UyCQbQe47Vp4PUdpbgEAaikx+6M2XakxTdbNWKTt18sEDAfkmanh7qJU/oQcfdJXW2ULaOkFswL3JBsG/BcTGA==
+  dependencies:
+    aws-sdk "^2.331.0"
+    imgix-core-js "^1.2.0"
+    moment "^2.22.2"
+    mongodb "^3.1.7"
+
+"@gp-technical/stack-pack-api@2.0.0-beta.12":
+  version "2.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.12.tgz#a70307030494e5516a6d2826bd3ec7bf9a6feaf4"
+  integrity sha512-OLJJz7NGoHu4YBrlFIAeyDWVlzQAunThPkHrXA41oYqTd8fqrQGV1vK0RWMnCXZjFESPAAVCLLMcv6sASesweA==
+  dependencies:
+    "@gp-technical/stack-pack-util" "2.0.0"
+    cookie-parser "^1.4.3"
+    express "^4.13.4"
+    humps "^2.0.1"
+    lodash.isfunction "^3.0.9"
+    socket.io "^2.1.1"
+    socket.io-client "^2.1.1"
+    stack-pack-gpapi "2.0.2"
 
 "@gp-technical/stack-pack-aws@2.0.0-beta.3":
   version "2.0.0-beta.3"
@@ -179,17 +187,13 @@
     standard "^12.0.1"
     standard-engine "^10.0.0"
 
-"@gp-technical/stack-pack-util@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-util/-/stack-pack-util-2.0.0-beta.3.tgz#0bc338ea39e5cec87b9db1c4919875c8cdea6b08"
-  integrity sha1-C8M46jnlzsh7nbHEkZh1yM3qawg=
-
-"@gp-technical/stack-pack-util@2.0.0-beta.4":
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-util/-/stack-pack-util-2.0.0-beta.4.tgz#b71ddf3e973e718995b05b06158fb99e70f152a0"
-  integrity sha512-tpeS4R925wZ7tK2Q2zjf6DqH5yZdC8yZAdMROgK+QgSeFBcUenqAVko5oNpbdmGYye4gfBuWLFJFvW2Tms54bg==
+"@gp-technical/stack-pack-util@2.0.0", "@gp-technical/stack-pack-util@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-util/-/stack-pack-util-2.0.0.tgz#515d44f701d129191baa6fbcfc43562b3fff572b"
+  integrity sha512-QDIxVNMYNGVtsAqz1r4yKl9++KSeb3uXUXsCEaZb6N5d+IE3dm8N4GDkLBa8MTJ1AcCm+hnbZL3HgRuIWwrPZg==
   dependencies:
-    winston "^2.4.4"
+    le_node "^1.7.1"
+    winston "2.4.4"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -472,10 +476,10 @@ aws-sdk@^2.263.1:
     uuid "3.1.0"
     xml2js "0.4.17"
 
-aws-sdk@^2.311.0:
-  version "2.325.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.325.0.tgz#bea29d4d1f4fafded3021b797e879104bb7664a7"
-  integrity sha512-26V/4vzInQ5EO/+HCoZaXO5YB6XWo4sRXbNtc3bFEcUfMZ5Psin2M8McY/zasJyYbZuNisK608kjio+AXm8vig==
+aws-sdk@^2.331.0:
+  version "2.331.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.331.0.tgz#39cf61040a33c2e4a576fe4d5ec15259a89f9bbe"
+  integrity sha512-+Kd0wUxoLFUOM3+pbKcPLSGIXsXCaFBaneUe6xFr/Nkn8YAwkH05ufSVdK6Q1AjdNnc1sR0HNV8R18dM8riXOQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -3886,7 +3890,7 @@ latest-version@^3.0.0:
   dependencies:
     package-json "^4.0.0"
 
-le_node@^1.7.0:
+le_node@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/le_node/-/le_node-1.7.1.tgz#8316409dada82b9f29657ca4060663f8f11551d1"
   integrity sha1-gxZAna2oK58pZXykBgZj+PEVUdE=
@@ -4270,10 +4274,10 @@ mongodb-core@2.1.19:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb-core@3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.1.5.tgz#59ca67d7f6cea570d5437624a7afec8d752d477a"
-  integrity sha512-emT/tM4ZBinqd6RZok+EzDdtN4LjYJIckv71qQVOEFmvXgT5cperZegVmTgox/1cx4XQu6LJ5ZuIwipP/eKdQg==
+mongodb-core@3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.1.6.tgz#60a6d137b30ef8bb0675379b5215bee46aee0aae"
+  integrity sha512-IlkPXuOn1mDPBLCafL5FEfHg/bYJdCrLXsbLOsMMYkIJD5ce7nnrsyCqLeOL5ejHt7vjQ43RXxcVNlchT9umUA==
   dependencies:
     bson "^1.1.0"
     require_optional "^1.0.1"
@@ -4290,12 +4294,12 @@ mongodb@2.2.35:
     mongodb-core "2.1.19"
     readable-stream "2.2.7"
 
-mongodb@^3.1.4:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.1.6.tgz#6054641973b5bf5b5ae1c67dcbcf8fa88280273d"
-  integrity sha512-E5QJuXQoMlT7KyCYqNNMfAkhfQD79AT4F8Xd+6x37OX+8BL17GyXyWvfm6wuyx4wnzCCPoCSLeMeUN2S7dU9yw==
+mongodb@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.1.7.tgz#2e89f41777c6ea49065d83126cdc9af9f7e9381a"
+  integrity sha512-Jl4KAnaRTEJaxtvClhvfMvsxtjuZxdrDU7uR4e/dDzMRpnUML0WgreBosVGa9S8sze+PvdFPh2C/H2TWNbIRtg==
   dependencies:
-    mongodb-core "3.1.5"
+    mongodb-core "3.1.6"
     safe-buffer "^5.1.2"
 
 mongoskin@^2.1.0:
@@ -4366,9 +4370,9 @@ nice-try@^1.0.4:
   integrity sha512-2NpiFHqC87y/zFke0fC0spBXL3bBsoh/p5H1EFhshxjCR5+0g2d6BiXbUFz9v1sAcxsk2htp2eQnNIci2dIYcA==
 
 node-forge@^0.7.0:
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.7.5.tgz#6c152c345ce11c52f465c2abd957e8639cd674df"
-  integrity sha512-MmbQJ2MTESTjt3Gi/3yG1wGpIMhUfcIypUCGtTizFR9IiccFwxSpfp0vtIZlkFclEqERemxfnSdZEMR9VqqEFQ==
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.7.6.tgz#fdf3b418aee1f94f0ef642cd63486c77ca9724ac"
+  integrity sha512-sol30LUpz1jQFBjOKwbjxijiE3b6pjd74YwfD0fJOKPjF+fONKb2Yg8rYgS6+bK6VDl+/wfr4IYpC7jDzLUIfw==
 
 node-pre-gyp@^0.10.0:
   version "0.10.0"
@@ -5724,37 +5728,20 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-stack-pack-gpapi@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.0.0.tgz#104db0febbbea483be5a34375393d8b348b76e9f"
-  integrity sha512-hbdcAPKn0aWicj4h9b79FQw7vK/NiWNsIkeSHBTTjRP9gsf3xFlLK9b+Ym3LJiHEW65HMcXFPfSKgRmUQtzILg==
+stack-pack-gpapi@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.0.2.tgz#0a413411c69f502b42b89cd96839acc199fb161e"
+  integrity sha512-kEEBkJXCzmYzC8U8ne+LPgDhokQVEs6TWn3Hv4Oe2ROW7oiZ8Nj0maHusu9WBOFpyeWzgGPMdDumNQv/ZtnrzA==
   dependencies:
-    stack-pack-request "2.0.0"
-    winston "2.4.3"
+    "@gp-technical/stack-pack-util" "^2.0.0"
+    stack-pack-request "2.0.1"
 
-stack-pack-gpapi@2.0.0-beta.4:
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.0.0-beta.4.tgz#c8bc7308a6c3ed0fc99c7389bc581ac01a6ee049"
-  integrity sha1-yLxzCKbD7Q/JnHOJvFgawBpu4Ek=
-  dependencies:
-    stack-pack-request "2.0.0-beta.3"
-    winston "2.4.3"
-
-stack-pack-request@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.0.0.tgz#1baea94c39ff2f681ec0a5b9d8a8173d6854d468"
-  integrity sha512-zsX5y9cfMsc8ROzx73hWJhmVX0vQhRJWwmptCHLKPPC2n4T0wPHLw8hAAqV2I5a0MuqzCG4ZG0U3L5KITDjzlw==
+stack-pack-request@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.0.1.tgz#1eef45765f5b70be64566bcfc0d23b54dfb67d3e"
+  integrity sha512-XK4ZNJTOvIsHCVg9ExVNgEDEUMIteCclp7s6NmvDtteUNN7Vo5P8MSgYyCcfXePe8GG4Z5DumZWTwJyGfY7bmA==
   dependencies:
     unirest "^0.5.1"
-    winston "2.4.3"
-
-stack-pack-request@2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.0.0-beta.3.tgz#e9256251b3ed4672ad49280014fd32e728e36653"
-  integrity sha1-6SViUbPtRnKtSSgAFP0y5yjjZlM=
-  dependencies:
-    unirest "^0.5.1"
-    winston "2.4.3"
 
 stack-trace@0.0.x:
   version "0.0.10"
@@ -6290,19 +6277,7 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
-winston@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.3.tgz#7a9fdab371b6d3d9b63a592947846d856948c517"
-  integrity sha512-GYKuysPz2pxYAVJD2NPsDLP5Z79SDEzPm9/j4tCjkF/n89iBNGBMJcR+dMUqxgPNgoSs6fVygPi+Vl2oxIpBuw==
-  dependencies:
-    async "~1.0.0"
-    colors "1.0.x"
-    cycle "1.0.x"
-    eyes "0.1.x"
-    isstream "0.1.x"
-    stack-trace "0.0.x"
-
-winston@^2.4.4:
+winston@2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.4.tgz#a01e4d1d0a103cf4eada6fc1f886b3110d71c34b"
   integrity sha512-NBo2Pepn4hK4V01UfcWcDlmiVTs7VTB1h7bgnB0rgP146bYhMxX0ypCz3lBOfNxCO4Zuek7yeT+y/zM1OfMw4Q==
@@ -6363,15 +6338,15 @@ xml-crypto@^0.10.1:
     xpath.js ">=0.0.3"
 
 xml-encryption@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/xml-encryption/-/xml-encryption-0.11.1.tgz#ff1f937dc062d4f67b8254d80da1c0a891427f05"
-  integrity sha1-/x+TfcBi1PZ7glTYDaHAqJFCfwU=
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/xml-encryption/-/xml-encryption-0.11.2.tgz#c217f5509547e34b500b829f2c0bca85cca73a21"
+  integrity sha512-jVvES7i5ovdO7N+NjgncA326xYKjhqeAnnvIgRnY7ROLCfFqEDLwP0Sxp/30SHG0AXQV1048T5yinOFyvwGFzg==
   dependencies:
     async "^2.1.5"
     ejs "^2.5.6"
     node-forge "^0.7.0"
     xmldom "~0.1.15"
-    xpath "0.0.24"
+    xpath "0.0.27"
 
 xml2js@0.4.17:
   version "0.4.17"
@@ -6425,11 +6400,6 @@ xpath.js@>=0.0.3:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/xpath.js/-/xpath.js-1.1.0.tgz#3816a44ed4bb352091083d002a383dd5104a5ff1"
   integrity sha512-jg+qkfS4K8E7965sqaUl8mRngXiKb3WZGfONgE18pr03FUQiuSV6G+Ej4tS55B+rIQSFEIw3phdVAQ4pPqNWfQ==
-
-xpath@0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/xpath/-/xpath-0.0.24.tgz#1ade162e1cc523c8d39fc7d06afc16ea216f29fb"
-  integrity sha1-Gt4WLhzFI8jTn8fQavwW6iFvKfs=
 
 xpath@0.0.27:
   version "0.0.27"
