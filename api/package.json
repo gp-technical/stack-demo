@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@gp-technical/stack-auth-api": "^1.0.0-beta.2",
+    "@gp-technical/stack-auth-api": "^1.0.0-beta.3",
     "@gp-technical/stack-feature-api": "^2.0.0-beta.3",
     "@gp-technical/stack-pack-api": "2.0.0-beta.12",
     "@gp-technical/stack-pack-aws": "2.0.0-beta.3",
@@ -40,7 +40,7 @@
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
-    "express": "^4.13.4",
+    "express": "^4.16.4",
     "sparkpost": "^2.1.2",
     "stack-pack-gpapi": "2.0.2",
     "unirest": "^0.5.1"
