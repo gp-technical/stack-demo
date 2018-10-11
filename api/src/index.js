@@ -8,8 +8,7 @@ import { log } from '@gp-technical/stack-pack-util'
 const { branding } = featureServices
 const services = { branding, ...localServices }
 
-log.logger().warn('@@@ this is for the logs')
-;(async () => {
+const run = async () => {
   try {
     await stack.connect({
       dir: __dirname, // @@@ make this less crap
@@ -20,4 +19,6 @@ log.logger().warn('@@@ this is for the logs')
   } catch (inner) {
     log.error(inner, `An error occurred whilst starting the ${process.env.API_NAME} API`)
   }
-})()
+}
+
+run()
