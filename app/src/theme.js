@@ -102,6 +102,9 @@ const muiTheme = createMuiTheme({
       color: white,
       backgroundColor: indigo800
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 })
 

@@ -72,7 +72,7 @@ class component extends React.PureComponent {
         <Button onClick={this.onFetchFromBoth} style={buttonStyle}>
           Fetch Data from Both
         </Button>
-        <Button variant="raised" onClick={this.onReload} style={buttonStyle}>
+        <Button variant="contained" onClick={this.onReload} style={buttonStyle}>
           Restart the App
         </Button>
       </components.Box>

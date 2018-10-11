@@ -36,7 +36,7 @@ const component = ({ email, isValid, status, sendMail, onChangeMail, validEmail,
               style={{ marginRight: '10px' }}
               onChange={onChangeEmail}
             />
-            <Button variant="raised" onClick={onSendMail} disabled={!isValid}>
+            <Button variant="contained" onClick={onSendMail} disabled={!isValid}>
               Send
             </Button>
           </form>

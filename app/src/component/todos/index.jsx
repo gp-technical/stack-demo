@@ -99,7 +99,7 @@ class component extends React.PureComponent {
             data-status="create"
             onChange={this.handleChange}
           />
-          <Button variant="raised" onClick={this.onAdd}>
+          <Button variant="contained" onClick={this.onAdd}>
             Add
           </Button>
         </div>
@@ -122,7 +122,7 @@ class component extends React.PureComponent {
             data-status="edit"
             onChange={this.handleChange}
           />
-          <Button variant="raised" onClick={this.onEdit}>
+          <Button variant="contained" onClick={this.onEdit}>
             Update
           </Button>
         </Dialog>

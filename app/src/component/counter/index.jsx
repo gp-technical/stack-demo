@@ -51,13 +51,13 @@ class component extends React.PureComponent {
         <h1>Total = {total}</h1>
         <Divider />
         <h3>Dispatch REDUX Actions</h3>
-        <Button variant="raised" onClick={this.onIncrementRedux} style={buttonStyle}>
+        <Button variant="contained" onClick={this.onIncrementRedux} style={buttonStyle}>
           Increment ++
         </Button>
-        <Button variant="raised" onClick={this.onDecrementRedux} style={buttonStyle}>
+        <Button variant="contained" onClick={this.onDecrementRedux} style={buttonStyle}>
           Decrement --
         </Button>
-        <Button variant="raised" onClick={this.onGetTotalRedux} style={buttonStyle}>
+        <Button variant="contained" onClick={this.onGetTotalRedux} style={buttonStyle}>
           Get Total
         </Button>
         <Divider />

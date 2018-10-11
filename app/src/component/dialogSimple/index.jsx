@@ -13,15 +13,15 @@ class DialogSimple extends React.PureComponent {
     const { open, answer, closeDialog, submit, openDialog, delete: fireDelete } = this.props
     const actions = (
       <DialogActions>
-        <Button variant="raised" onClick={closeDialog}>
+        <Button variant="contained" onClick={closeDialog}>
           Cancel
         </Button>
         ,
-        <Button variant="raised" color="secondary" onClick={fireDelete}>
+        <Button variant="contained" color="secondary" onClick={fireDelete}>
           Delete
         </Button>
         ,
-        <Button variant="raised" color="primary" onClick={submit}>
+        <Button variant="contained" color="primary" onClick={submit}>
           Submit
         </Button>
       </DialogActions>
@@ -42,7 +42,7 @@ class DialogSimple extends React.PureComponent {
           <br />
           Dialog : {open === true ? 'Opened' : 'Closed'}
         </p>
-        <Button variant="raised" color="primary" onClick={openDialog}>
+        <Button variant="contained" color="primary" onClick={openDialog}>
           Open Dialog
         </Button>
         <Dialog open={open} onClose={closeDialog} disableBackdropClick>

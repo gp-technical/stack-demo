@@ -63,8 +63,8 @@ class component extends React.PureComponent {
                   style={{ display: 'block', margin: 'auto' }}
                   component="img"
                 />
-                <Typography variant="title">{`$ ${product.price}`}</Typography>
-                <Typography variant="subheading">{product.categories.join()}</Typography>
+                <Typography variant="h6">{`$ ${product.price}`}</Typography>
+                <Typography variant="subtitle1">{product.categories.join()}</Typography>
               </CardContent>
               <CardActions>
                 <Button

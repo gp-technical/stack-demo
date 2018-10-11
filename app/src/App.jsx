@@ -57,6 +57,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(component)
-
-// after dialog.simple: <components.analyticsDemo />
-// <components.ratingBar />

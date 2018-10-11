@@ -25,7 +25,7 @@ class Message extends React.PureComponent {
     const containerStyle = { ...style.container, ...getColorStyle(user) }
     return (
       <Card style={containerStyle}>
-        <Typography variant="subheading" style={style.id}>
+        <Typography variant="subtitle1" style={style.id}>
           {user}
         </Typography>
         <CardContent style={style.message}>{message}</CardContent>
