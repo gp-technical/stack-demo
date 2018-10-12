@@ -165,10 +165,10 @@
   dependencies:
     js-cookie "^2.2.0"
 
-"@gp-technical/stack-feature-app@^2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.6.tgz#2792c1d4842a41827688b3a7cc39ce615a6db9b6"
-  integrity sha512-9jOoPOEgVUKf7lhlRMledHw8hTfKsFkQbk8Jj1vvxmkEQaeCeVNfWG6wTzQN4PTaB8nFTViJIU5+VZ0TXvrp8Q==
+"@gp-technical/stack-feature-app@^2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.7.tgz#4836fc1b04f785487ba2c797413300726cb061a9"
+  integrity sha512-o4ywawRmD4KEqLxcTk9NASDWBaO7JAWJoeyCgM45kLb4aDe6JbnQn+LSLbi5vIg7UN8MEEm+Kvr+OZ0l6HiJ8w==
   dependencies:
     react-copy-to-clipboard "^5.0.1"
     react-debounce-input "^3.2.0"
