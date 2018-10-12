@@ -14,7 +14,6 @@ const styling = {
 class component extends React.PureComponent {
   render() {
     const { user, branding } = this.props
-
     return (
       <components.Loader show={!!user} branding={branding}>
         <MuiThemeProvider theme={muiTheme}>
@@ -41,7 +40,7 @@ class component extends React.PureComponent {
                 <components.ratingBar />
                 <components.chat />
                 <components.mail />
-                <components.appInitialiser />
+                <components.componentError />
               </Grid>
             </Grid>
           </div>

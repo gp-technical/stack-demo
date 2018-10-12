@@ -12,7 +12,6 @@ import dialogStepper from './dialogStepper'
 import shopping from './shopping'
 import chat from './chat'
 import ratingBar from './ratingBar'
-import appInitialiser from './appInitialiser'
 
 export default {
   counter,
@@ -28,6 +27,5 @@ export default {
   shopping,
   dialogStepper,
   chat,
-  ratingBar,
-  appInitialiser
+  ratingBar
 }

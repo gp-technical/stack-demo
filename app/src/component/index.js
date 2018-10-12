@@ -15,8 +15,7 @@ import dialogSimple from './dialogSimple'
 import analyticsDemo from './analyticsDemo'
 import chat from './chat'
 import ratingBar from './ratingBar'
-// import rating from './ratingBar/rating',
-import appInitialiser from './appInitialiser'
+import componentError from './componentError'
 
 export default {
   counter,
@@ -34,8 +33,7 @@ export default {
   shoppingCart,
   shoppingFilter,
   chat,
-  // rating,
   ratingBar,
   analyticsDemo,
-  appInitialiser
+  componentError
 }
