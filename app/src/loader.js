@@ -1,28 +1,20 @@
-import {
-  makeActionHub,
-  sharedServices,
-  // sharedComponents,
-  sharedHelper
-} from '@gp-technical/stack-pack-app'
+import { makeActionHub, sharedServices, sharedHelper } from '@gp-technical/stack-pack-app'
 import { featureServices, featureComponents } from '@gp-technical/stack-feature-app'
-// import { Box, FileUpload, Table } from '@gp-technical/stack-pack-components'
 import localComponents from './component'
 import localServices from './service'
 import env from './env'
 
-// @@@ Boilerplate shouldn't be needed in every app.
-// Try to move this up into the framework
+// Want everything other than Assets
 const { Assets, Components, ...otherComponents } = featureComponents
+
 const services = { ...localServices, ...featureServices, ...sharedServices }
+
 const actionHub = makeActionHub(services)
 
 const components = {
   ...localComponents,
-  // ...sharedComponents,
-  // ...Assets,
   ...Components,
   ...otherComponents
-  // ...{ Box, FileUpload, Table }
 }
 const helper = { ...sharedHelper }
 
