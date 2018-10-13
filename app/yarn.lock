@@ -158,12 +158,12 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@gp-technical/stack-auth-app@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-1.0.0-beta.1.tgz#e2abb96c1dc3c8774868ae18572e66321771ac0d"
-  integrity sha512-RP/yLguj50J2kKnJqePrj0Qc/14Haea6es23oyRciK5408abhcLdMd/9y1+yDFeRZa4sEskRo3irlgTde8awog==
+"@gp-technical/stack-auth-app@^2.0.0-beta.1":
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-2.0.0-beta.1.tgz#767e6e277d037946f996ca384c291148b52ede37"
+  integrity sha512-1ps6gUvybidtI//6WE4gcQ2w4d/wjzovPVrPuhemj8w60F/limyxBYqeCieZZJT6m7RoRTlYwph+P40U+JyN5g==
   dependencies:
-    js-cookie "^2.2.0"
+    "@gp-technical/stack-pack-app" "^2.0.0-beta.14"
 
 "@gp-technical/stack-feature-app@^2.0.0-beta.7":
   version "2.0.0-beta.7"
@@ -175,14 +175,15 @@
     react-flexbox-grid "^2.1.2"
     react-select "^2.1.0"
 
-"@gp-technical/stack-pack-app@^2.0.0-beta.13":
-  version "2.0.0-beta.13"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.0-beta.13.tgz#9c455f7c2d7b3bbb944aaeb1c72347cc17ee03e9"
-  integrity sha512-IzSaTdziDsUzA7mZT7r0gjB8KUGMQLNq7aJb+FDUJwi/wh4pGMvumDJCSuX7J7/il/RviMUXqOaCkiQhSp86IQ==
+"@gp-technical/stack-pack-app@^2.0.0-beta.14":
+  version "2.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.0-beta.14.tgz#379fdc264ab94b8e47d2ecfac463a4eced3dc894"
+  integrity sha512-MNO6jDXx6lC5eLpvtDq7ogRZsN5i36mYbYfdlqeeSpFjS96vbAqXGCKDXZZxkm5ljFad4DBwLEwe/HhRdFbWuA==
   dependencies:
     blob-util "^2.0.2"
     file-saver "^1.3.3"
     humps "^2.0.1"
+    js-cookie "^2.2.0"
     lodash "^4.17.11"
     redux-devtools-extension "^2.13.5"
     redux-localstorage-simple "^2.1.4"
@@ -4811,7 +4812,7 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-tokens@^4.0.0:
+"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
@@ -5240,6 +5241,13 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
   integrity sha1-0aitM/qc4OcT1l/dCsi3SNR4yEg=
   dependencies:
     js-tokens "^3.0.0"
+
+loose-envify@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -6898,12 +6906,12 @@ redux-thunk@^2.3.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.0.tgz#aa698a92b729315d22b34a0553d7e6533555cc03"
-  integrity sha512-NnnHF0h0WVE/hXyrB6OlX67LYRuaf/rJcbWvnHHEPCF/Xa/AZpwhs/20WyqzQae5x4SD2F9nPObgBh2rxAgLiA==
+redux@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
+  integrity sha512-R7bAtSkk7nY6O/OYMVR9RiBI+XghjF9rlbl5806HJbQph0LJVHZrU5oaO4q70eUKiqMRqm4y07KLTlMZ2BlVmg==
   dependencies:
-    loose-envify "^1.1.0"
+    loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
 regenerate@^1.2.1:

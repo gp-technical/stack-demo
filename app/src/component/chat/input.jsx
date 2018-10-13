@@ -4,6 +4,11 @@ import TextField from '@material-ui/core/TextField'
 const INITIAL_VALUE = ''
 const HINT_TEXT = 'Type message, hit enter to send'
 
+const style = {
+  width: '100%',
+  paddingTop: 20
+}
+
 class component extends React.PureComponent {
   state = { value: INITIAL_VALUE }
 
@@ -32,8 +37,8 @@ class component extends React.PureComponent {
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
         placeholder={HINT_TEXT}
-        multiline
         value={value}
+        style={style}
       />
     )
   }

@@ -90,21 +90,19 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-auth-api@^1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-1.0.0-beta.3.tgz#8f0501beaab5c073b9f6021217019719225be383"
-  integrity sha512-lOwS59HoxXISeYB2fXeNCMyuJZVqF4YTGfum6GLowfA8xTfzxrW4jCD7gaTN+cfR9AF7RDPVPeMwajrAT9CuvQ==
+"@gp-technical/stack-auth-api@^2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.0.0-beta.3.tgz#16b6465e727d35136c2484780c5499b48075c1cd"
+  integrity sha512-zUbD9+xRVAB9nzpJ96k9zThHrTKAdC1I3VjB8xP1CKhJRlz6wFb/w/bndNDAgekQddyiFh1XHvJKOySuGIejww==
   dependencies:
+    "@gp-technical/stack-pack-api" "^2.0.0-beta.13"
     "@gp-technical/stack-pack-util" "2.0.0"
-    cookie-parser "^1.4.3"
-    eidetic "^1.0.0"
-    stack-pack-gpapi "2.0.2"
     stack-pack-request "2.0.1"
     uuid "^3.1.0"
     xml-crypto "^0.10.1"
     xml-encryption "^0.11.0"
     xml2js "^0.4.17"
-    xmlbuilder "^10.0.0"
+    xmlbuilder "^10.1.0"
     xpath "0.0.27"
 
 "@gp-technical/stack-feature-api@^2.0.0-beta.3":
@@ -117,19 +115,21 @@
     moment "^2.22.2"
     mongodb "^3.1.7"
 
-"@gp-technical/stack-pack-api@2.0.0-beta.12":
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.12.tgz#a70307030494e5516a6d2826bd3ec7bf9a6feaf4"
-  integrity sha512-OLJJz7NGoHu4YBrlFIAeyDWVlzQAunThPkHrXA41oYqTd8fqrQGV1vK0RWMnCXZjFESPAAVCLLMcv6sASesweA==
+"@gp-technical/stack-pack-api@2.0.0-beta.13", "@gp-technical/stack-pack-api@^2.0.0-beta.13":
+  version "2.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.13.tgz#b49e4ade2c4dfcae9224ac06b747b641de338869"
+  integrity sha512-8Wi3rtf/xEyRt2lhViMOLSYWYnHC9NDXfGtc0CJODsyLSz6jFwW+lKBgvSzC3glmPfYsfg8e8Tjq1tOZVDehHA==
   dependencies:
     "@gp-technical/stack-pack-util" "2.0.0"
     cookie-parser "^1.4.3"
+    eidetic "^1.0.0"
     express "^4.13.4"
     humps "^2.0.1"
     lodash.isfunction "^3.0.9"
     socket.io "^2.1.1"
     socket.io-client "^2.1.1"
     stack-pack-gpapi "2.0.2"
+    uuid "^3.3.2"
 
 "@gp-technical/stack-pack-aws@2.0.0-beta.3":
   version "2.0.0-beta.3"
@@ -6276,6 +6276,11 @@ uuid@^3.1.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
   integrity sha512-jZnMwlb9Iku/O3smGWvZhauCf6cvvpKi4BKRiliS3cxnI+Gz9j5MEpTz2UFuXiKPJocb7gnsLHwiS05ige5BEA==
 
+uuid@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+  integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
 v8flags@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-2.1.1.tgz#aab1a1fa30d45f88dd321148875ac02c0b55e5b4"
@@ -6413,10 +6418,10 @@ xml2js@0.4.19, xml2js@^0.4.17:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
 
-xmlbuilder@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-10.0.0.tgz#c64e52f8ae097fe5fd46d1c38adaade071ee1b55"
-  integrity sha512-7RWHlmF1yU/E++BZkRQTEv8ZFAhZ+YHINUAxiZ5LQTKRQq//igpiY8rh7dJqPzgb/IzeC5jH9P7OaCERfM9DwA==
+xmlbuilder@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-10.1.0.tgz#62418e950123398140db8150e6e4019329cf3fe4"
+  integrity sha512-In21jFWiaulS7Cmw1fPT1Lm7g7L6ml/uwZNAaKlDZc78szm3pn5oH9gizH7sh1h2GGRb3OkL5kLCeMEENEnZwA==
 
 xmlbuilder@^4.1.0:
   version "4.2.1"
