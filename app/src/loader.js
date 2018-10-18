@@ -7,15 +7,16 @@ import env from './env'
 // Want everything other than Assets
 const { Assets, Components, ...otherComponents } = featureComponents
 
-const services = { ...localServices, ...featureServices, ...sharedServices }
-
-const actionHub = makeActionHub(services)
-
 const components = {
   ...localComponents,
   ...Components,
   ...otherComponents
 }
+
+const services = { ...localServices, ...featureServices, ...sharedServices }
+
+const actionHub = makeActionHub(services)
+
 const helper = { ...sharedHelper }
 
 export { actionHub, env, components, services, helper }
