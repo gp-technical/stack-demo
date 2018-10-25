@@ -106,7 +106,7 @@ if (TARGET === 'production') {
   module.exports = merge(common, {
     plugins: [
       new MiniCssExtractPlugin({ filename: 'style.css' }),
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: "'production'"
