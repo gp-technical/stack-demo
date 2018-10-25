@@ -1,0 +1,95 @@
+#version: CURRENT_VERSION
+image: registry.gitlab.com/goodpractice/devops-tools:latest
+stages:
+  - check
+  - build
+  - release
+  - deploy
+check:
+  stage: check
+  script:
+    - gp ci:check
+  allow_failure: true
+build:
+  stage: build
+  script:
+    - gp login
+    - gp ci:build -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+release:
+  stage: release
+  script:
+    - gp login
+    - gp ci:release -a $CI_PROJECT_NAME -e dev
+    - gp ci:release -a $CI_PROJECT_NAME -e stg
+    - gp ci:release -a $CI_PROJECT_NAME -e live
+  artifacts:
+    paths:
+      - VAULT_VERSION_DEV
+      - VAULT_VERSION_STG
+      - VAULT_VERSION_LIVE
+dev:manual:
+  stage: deploy
+  script:
+    - gp login
+    - gp ci:deploy -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+  environment:
+    name: dev
+    url: https://$CI_PROJECT_NAME.development.goodpractice.net
+  when: manual
+  except:
+    - develop
+  tags:
+    - dev
+dev:
+  stage: deploy
+  script:
+    - gp login
+    - gp ci:deploy -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+  environment:
+    name: dev
+    url: https://$CI_PROJECT_NAME.development.goodpractice.net
+  only:
+    - develop
+  tags:
+    - dev
+stg:manual:
+  stage: deploy
+  script:
+    - gp login
+    - gp ci:deploy -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+  environment:
+    name: stg
+    url: https://$CI_PROJECT_NAME.staging.goodpractice.net
+  when: manual
+  only:
+    - /^hotfix\/*/
+    - master
+    - tags
+  tags:
+    - stg
+stg:
+  stage: deploy
+  script:
+    - gp login
+    - gp ci:deploy -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+  environment:
+    name: stg
+    url: https://$CI_PROJECT_NAME.staging.goodpractice.net
+  only:
+    - /^release\/*/
+  tags:
+    - stg
+live:
+  stage: deploy
+  script:
+    - gp login
+    - gp ci:deploy -e live -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+  environment:
+    name: live
+    url: https://$CI_PROJECT_NAME.live.goodpractice.net
+  when: manual
+  only:
+    - master
+    - tags
+  tags:
+    - live
