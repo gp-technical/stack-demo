@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+import babel from 'babel-polyfill' // eslint-disable-line no-unused-vars
 import { stack } from '@gp-technical/stack-pack-api'
 import { featureServices } from '@gp-technical/stack-feature-api'
 import localServices from './service'

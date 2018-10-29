@@ -2,3 +2,4 @@
 README.md
 .gitignore
 *.swp
+**/save-commands.json
