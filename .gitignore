@@ -6,3 +6,4 @@ node_modules/
 .DS_Store
 .idea
 save-commands.json
+VAULT_VERSION_LOCAL
