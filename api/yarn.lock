@@ -90,19 +90,19 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-auth-api@^2.0.0-beta.4":
-  version "2.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.0.0-beta.4.tgz#1ab298dfab0912032f5fd93b4c8cb7f48e90c614"
-  integrity sha512-A1caUPYUF1smFTDjw5h8ovTrNT2B0rDQ7Gmo6Six0HfFXRmMII3KgVepm1U5J5vXkqM+a4aP6l417hG8cRbJIw==
+"@gp-technical/stack-auth-api@^2.0.0-beta.5":
+  version "2.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.0.0-beta.5.tgz#ddd650698da07b7321fc977b301846322362d141"
+  integrity sha512-pipa8Nkr/JI20y66JUn1MjXXvhdpIM8IoHyqe2rEkJF5z+HqeWDoZB2RqIS/YpPZ77MNRfHWu+lAYaKXgZeR6g==
   dependencies:
-    "@gp-technical/stack-pack-api" "^2.0.0-beta.14"
+    "@gp-technical/stack-pack-api" "^2.0.0-beta.15"
     "@gp-technical/stack-pack-util" "2.0.0"
     stack-pack-request "2.1.0"
     uuid "^3.1.0"
     xml-crypto "^0.10.1"
     xml-encryption "^0.11.0"
     xml2js "^0.4.17"
-    xmlbuilder "^10.1.0"
+    xmlbuilder "^10.1.1"
     xpath "0.0.27"
 
 "@gp-technical/stack-feature-api@^2.0.0-beta.3":
@@ -115,7 +115,7 @@
     moment "^2.22.2"
     mongodb "^3.1.7"
 
-"@gp-technical/stack-pack-api@2.0.0-beta.15", "@gp-technical/stack-pack-api@^2.0.0-beta.14":
+"@gp-technical/stack-pack-api@2.0.0-beta.15", "@gp-technical/stack-pack-api@^2.0.0-beta.15":
   version "2.0.0-beta.15"
   resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.0-beta.15.tgz#cf24c5c0a447881b88788702f79b93defb0fdc1d"
   integrity sha512-p0haJj+iF+FAuyqiieqzaJriiGwh5T0quinlWizCOEnuopUql2j0FBEM+4vtf3aui4ylzTdul90TSo0AYh/6eQ==
@@ -1547,7 +1547,7 @@ chokidar@^1.6.1:
   optionalDependencies:
     fsevents "^1.0.0"
 
-chokidar@^2.0.2:
+chokidar@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
   integrity sha512-z9n7yt9rOvIJrMhvDtDictKrkFHeihkNl6uWMmZlmL6tJtX9Cs+87oK+teBx+JIgzvbX3yZHT3eF8vpbDxHJXQ==
@@ -4439,12 +4439,12 @@ node-uuid@~1.4.7:
   resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
   integrity sha1-sEDrCSOWivq/jTL7HxfxFn/auQc=
 
-nodemon@^1.18.4:
-  version "1.18.4"
-  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.18.4.tgz#873f65fdb53220eb166180cf106b1354ac5d714d"
-  integrity sha512-hyK6vl65IPnky/ee+D3IWvVGgJa/m3No2/Xc/3wanS6Ce1MWjCzH6NnhPJ/vZM+6JFym16jtHx51lmCMB9HDtg==
+nodemon@^1.18.5:
+  version "1.18.5"
+  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.18.5.tgz#3d3924df23d06806952e8b6d3de052f2a3351807"
+  integrity sha512-8806dC8dfBlbxQmqNOSEeay/qlbddKvFzxIGNxnPtxUlTtH77xsrC66RnA3M47HCSgMgE5bj+U586o50RowXBg==
   dependencies:
-    chokidar "^2.0.2"
+    chokidar "^2.0.4"
     debug "^3.1.0"
     ignore-by-default "^1.0.1"
     minimatch "^3.0.4"
@@ -5663,10 +5663,10 @@ source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
-sparkpost@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/sparkpost/-/sparkpost-2.1.2.tgz#efeee98fa091598b4d6d72b32e487d7a86c7e95c"
-  integrity sha1-7+7pj6CRWYtNbXKzLkh9eobH6Vw=
+sparkpost@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/sparkpost/-/sparkpost-2.1.3.tgz#9e5311398397cc465caf85f41b9db9104260bad9"
+  integrity sha512-/Xc+e457Aortj2uUmCCeiNhdPca1FR8ONgACMglj5ZGYzpRgOAbsG8kjIC69Ir5El8tWnehjaSuKyC0EMcrwWA==
   dependencies:
     lodash "^4.17.2"
     request "^2.79.0"
@@ -6408,7 +6408,7 @@ xml2js@0.4.19, xml2js@^0.4.17:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
 
-xmlbuilder@^10.1.0:
+xmlbuilder@^10.1.1:
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-10.1.1.tgz#8cae6688cc9b38d850b7c8d3c0a4161dcaf475b0"
   integrity sha512-OyzrcFLL/nb6fMGHbiRDuPup9ljBycsdCypwuyg5AAHvyWzGfChJpCXMG88AGTIMFhGZ9RccFN1e6lhg3hkwKg==

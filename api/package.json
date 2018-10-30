@@ -1,7 +1,7 @@
 {
   "name": "stack-demo-api",
   "description": "The API component of stack-demo, an application designed to get you started with the GP stack",
-  "version": "2.0.0-beta.9",
+  "version": "2.0.0-beta.10",
   "author": "GoodPractice",
   "license": "UNLICENSED",
   "homepage": "https://github.com/gp-technical/stack-demo-api/readme",
@@ -30,7 +30,7 @@
     ]
   },
   "dependencies": {
-    "@gp-technical/stack-auth-api": "^2.0.0-beta.4",
+    "@gp-technical/stack-auth-api": "^2.0.0-beta.5",
     "@gp-technical/stack-feature-api": "^2.0.0-beta.3",
     "@gp-technical/stack-pack-api": "2.0.0-beta.15",
     "@gp-technical/stack-pack-aws": "2.0.0-beta.3",
@@ -41,7 +41,7 @@
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
-    "sparkpost": "^2.1.2",
+    "sparkpost": "^2.1.3",
     "stack-pack-gpapi": "2.1.1"
   },
   "devDependencies": {
@@ -51,6 +51,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.16.0",
     "env-cmd": "^8.0.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.5"
   }
 }
