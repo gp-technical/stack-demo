@@ -14,9 +14,9 @@
     "lint": "sp-lint",
     "precommit": "sp-lint-staged",
     "babel": "babel --presets env,stage-2 --plugins=transform-decorators-legacy src --out-dir build",
-    "build": "npm run lint && npm run babel",
+    "build": "yarn lint && yarn babel",
     "start:debug": "yarn start",
-    "start": "npm run build && webpack-dev-server --mode development --color --open",
+    "start": "yarn build && webpack-dev-server --mode development --color",
     "production": "webpack -p --config ./webpack.config.js"
   },
   "standard-engine": "@gp-technical/stack-pack-standard",

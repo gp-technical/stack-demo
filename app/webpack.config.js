@@ -1,11 +1,16 @@
+const fs = require('fs')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = require('./src/env.js')
+const { createCertFiles, generateFilename } = require('./cert')
+
 const TARGET = process.env.npm_lifecycle_event
 process.env.BABEL_ENV = TARGET
+
+createCertFiles()
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
@@ -77,7 +82,10 @@ if (TARGET === 'start' || !TARGET) {
       inline: true,
       progress: true,
       stats: 'errors-only',
-      https: true,
+      https: {
+        cert: fs.readFileSync(generateFilename('cert')),
+        key: fs.readFileSync(generateFilename('key'))
+      },
       host: env.host,
       port: env.port,
       overlay: {
@@ -85,7 +93,9 @@ if (TARGET === 'start' || !TARGET) {
       },
       watchOptions: {
         watch: true
-      }
+      },
+      public: `${env.host}:${env.port}`,
+      open: true
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: 'assets/style.css' }),
