@@ -30,9 +30,9 @@
     ]
   },
   "dependencies": {
-    "@gp-technical/stack-auth-api": "^2.0.0-beta.6",
-    "@gp-technical/stack-feature-api": "^2.0.0-beta.3",
-    "@gp-technical/stack-pack-api": "2.0.0-beta.16",
+    "@gp-technical/stack-auth-api": "^2.0.0-beta.7",
+    "@gp-technical/stack-feature-api": "^2.0.0-beta.4",
+    "@gp-technical/stack-pack-api": "2.0.0-beta.17",
     "@gp-technical/stack-pack-aws": "2.0.0-beta.3",
     "@gp-technical/stack-pack-file": "2.0.0-beta.3",
     "@gp-technical/stack-pack-mongo": "2.0.0-beta.3",
@@ -51,6 +51,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.16.0",
     "env-cmd": "^8.0.0",
-    "nodemon": "^1.18.5"
+    "nodemon": "^1.18.6"
   }
 }
