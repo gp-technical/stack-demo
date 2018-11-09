@@ -2,17 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
-import { env, actionHub, services, components } from '../../loader'
+import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
   margin: 12
 }
 
-const url = path => {
-  return `${env.apiUrl}/counter/${path}`
-}
-
 class component extends React.PureComponent {
+  url = path => {
+    return `${this.props.api.url}/counter/${path}`
+  }
   onIncrementRedux = () => {
     this.props.increment()
   }
@@ -23,13 +22,13 @@ class component extends React.PureComponent {
     this.props.getTotal()
   }
   onIncrementRest = () => {
-    window.open(url('increment'), '_blank')
+    window.open(this.url('increment'), '_blank')
   }
   onDecrementRest = () => {
-    window.open(url('decrement'), '_blank')
+    window.open(this.url('decrement'), '_blank')
   }
   onGetTotalRest = () => {
-    window.open(url('total'), '_blank')
+    window.open(this.url('total'), '_blank')
   }
   render() {
     var { total } = this.props
@@ -85,7 +84,8 @@ class component extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  total: services.counter.selector.getTotal(state)
+  total: services.counter.selector.getTotal(state),
+  api: services.api.selector.getApi(state)
 })
 
 const mapDispatchToProps = dispatch => ({
