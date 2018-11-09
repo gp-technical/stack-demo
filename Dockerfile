@@ -1,27 +1,39 @@
-FROM goodpractice/npm-docker
+FROM node as build
 
-COPY ./ /source
+ARG NPM_TOKEN
 
-WORKDIR /source
+RUN mkdir -p /build/bundle
 
-RUN npm install -g pm2 && \
-    mkdir -p /build && \
-    cd /source/app && \
-    mv .npmrc_docker .npmrc && \
-    mv src/index.live.html /build/index.html && \
-    npm install && \
-    npm run production && \
-    cd /source/api && \
-    mv .npmrc_docker .npmrc && \
-    npm install && \
-    npm run production && \
+COPY ./app /source/app
+
+WORKDIR /source/app
+
+RUN mv src/index.live.html /build/index.html && \
+    echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc && \
+    yarn install && \
+    yarn run production
+
+COPY ./api /source/api
+
+WORKDIR /source/api
+
+RUN echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc && \
+    yarn install && \
+    yarn run production && \
     mv node_modules /build && \
-    mv /source/process.json /build && \
-    mv /source/app-runner.sh /build && \
-    cd /build && \
-    chmod u+x app-runner.sh && \
-    rm -rf /source
+    mv /source/api/package.json /build
+
+FROM node
+
+COPY --from=build /build /build
+COPY ./app-runner.sh /build/app-runner.sh
+COPY ./process.json /build/process.json
 
 WORKDIR /build
 
-CMD ["./app-runner.sh"]
+RUN yarn global add pm2 && \
+    chmod +x app-runner.sh
+
+WORKDIR /build
+
+CMD ["/build/app-runner.sh"]

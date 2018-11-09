@@ -1,20 +1,18 @@
-/* global location */
-
 import 'babel-polyfill'
+import env from './env'
+import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import { services } from './loader'
 import { createStore } from 'redux'
-import { stackReduxApp } from '@gp-technical/stack-pack-app'
-import App from './App'
-import { env, services } from './loader'
+import { Provider } from 'react-redux'
 import { saml } from '@gp-technical/stack-auth-app'
+import { stackReduxApp } from '@gp-technical/stack-pack-app'
 
 var opts = {
   websocketUrl: env.websocketUrl,
-  websocketOpts: { query: location.search }, // for the app initialiser
-  devTools: true,
-  authenticator: saml
+  authenticator: saml,
+  devTools: true
 }
 const store = createStore(services, stackReduxApp(opts))
 

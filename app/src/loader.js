@@ -2,14 +2,13 @@ import { makeActionHub, sharedServices, sharedHelper } from '@gp-technical/stack
 import { featureServices, featureComponents } from '@gp-technical/stack-feature-app'
 import localComponents from './component'
 import localServices from './service'
-import env from './env'
 
-// Want everything other than Assets
-const { Assets, Components, ...otherComponents } = featureComponents
+// Want everything other than assets
+const { assets, uiComponents, ...otherComponents } = featureComponents
 
 const components = {
   ...localComponents,
-  ...Components,
+  ...uiComponents,
   ...otherComponents
 }
 
@@ -19,4 +18,4 @@ const actionHub = makeActionHub(services)
 
 const helper = { ...sharedHelper }
 
-export { actionHub, env, components, services, helper }
+export { actionHub, components, services, helper }
