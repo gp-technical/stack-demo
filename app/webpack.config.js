@@ -10,7 +10,7 @@ const { createCertFiles, generateFilename } = require('./cert')
 const TARGET = process.env.npm_lifecycle_event
 process.env.BABEL_ENV = TARGET
 
-createCertFiles()
+if (TARGET !== 'production') createCertFiles()
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
