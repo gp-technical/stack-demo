@@ -33,16 +33,16 @@
     "@gp-technical/stack-auth-api": "^2.0.0-beta.7",
     "@gp-technical/stack-feature-api": "^2.0.0-beta.4",
     "@gp-technical/stack-pack-api": "2.0.0-beta.17",
-    "@gp-technical/stack-pack-aws": "2.0.0-beta.3",
-    "@gp-technical/stack-pack-file": "2.0.0-beta.3",
-    "@gp-technical/stack-pack-mongo": "2.0.0-beta.3",
-    "@gp-technical/stack-pack-util": "2.0.0",
+    "@gp-technical/stack-pack-aws": "2.0.0",
+    "@gp-technical/stack-pack-file": "2.0.0",
+    "@gp-technical/stack-pack-mongo": "2.0.0",
+    "@gp-technical/stack-pack-util": "2.0.1",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "sparkpost": "^2.1.3",
-    "stack-pack-gpapi": "2.1.2"
+    "stack-pack-gpapi": "2.1.3"
   },
   "devDependencies": {
     "@gp-technical/stack-pack-standard": "^2.3.6",
