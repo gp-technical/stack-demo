@@ -158,27 +158,27 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@gp-technical/stack-auth-app@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-2.0.0.tgz#07cbe71009d89065fa4b37c240e8fff0c18bb020"
-  integrity sha512-fdkTySWjoFnBY7Qsq5YkSv1bHGcM3Rj8NG2YxfilkhDE9qGSCEnK4aF0ljvmXRaiBSmC9IF3JmFnHtEsO30cew==
+"@gp-technical/stack-auth-app@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-2.0.1.tgz#7363f501da3a7a7b42019f9318ddfb37e55f5d20"
+  integrity sha512-VyeHsCXD7r32OcpbJz1M3CLPylKKfRfmtjtgIYNd2bnUQ7jKC+Esg/J8Vy8Wyd4annrAKILpGO36OOqGknpq3Q==
   dependencies:
-    "@gp-technical/stack-pack-app" "^2.0.0"
+    "@gp-technical/stack-pack-app" "^2.0.1"
 
-"@gp-technical/stack-feature-app@^2.0.0-beta.8":
-  version "2.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.8.tgz#495632003de1b4de1384b880d9ddeb2213f86117"
-  integrity sha512-DaBhCZSYM4szARXPhQTYWHOs6PCJMhShfnJopA9I9cUTNOYA5yYCitTxPnL7JIuwKnwIS0n9ghlA/bbKRRrHcQ==
+"@gp-technical/stack-feature-app@^2.0.0-beta.9":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.9.tgz#7d4f5dcd1aee2acac985460130d72a40f3467f63"
+  integrity sha512-Atq/rJ+Au9yjWra2A/DmkmLukj0JQoZPwNEYOSBthBxgbfibO4mb6EHLRCNrJRwM5Aj/LXNnAW3voKTMuI3zAw==
   dependencies:
     react-copy-to-clipboard "^5.0.1"
     react-debounce-input "^3.2.0"
     react-flexbox-grid "^2.1.2"
     react-select "^2.1.1"
 
-"@gp-technical/stack-pack-app@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.0.tgz#23eac681f67ec18c9670c985ed823635f68cc1f8"
-  integrity sha512-EdekNBVwQiPlevooq+OIDyHc+RU+kM5yA/qXyOGGvAwB80JfszsUqINjzbPFQ5Ui3oWGroikFOfGrOBNm7fyAw==
+"@gp-technical/stack-pack-app@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.1.tgz#9212eb4b87f1ae68c7d30ab4a44bf7c7cc357588"
+  integrity sha512-1CE/k9tIkQEpafx/CQ1mYhc+JC+S/LbtU/mmh4q/sLnVkqE6sK3wQF6kBbmdhtAlr/mh48a+FBScp/GwRwhNhA==
   dependencies:
     blob-util "^2.0.2"
     file-saver "^1.3.3"
@@ -4079,7 +4079,7 @@ hoist-non-react-statics@^2.3.1:
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
 
-hoist-non-react-statics@^3.0.0:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.1.0.tgz#42414ccdfff019cd2168168be998c7b3bd5245c0"
   integrity sha512-MYcYuROh7SBM69xHGqXEwQqDux34s9tz+sCnxJmN18kgWh6JFdTw/5YdZtqsOdZJXddE/wUpCzfEdDrJj8p0Iw==
@@ -6704,13 +6704,13 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-redux@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.0.tgz#948b1e2686473d1999092bcfb32d0dc43d33f667"
-  integrity sha512-CRMpEx8+ccpoVxQrQDkG1obExNYpj6dZ1Ni7lUNFB9wcxOhy02tIqpFo4IUXc0kYvCGMu6ABj9A4imEX2VGZJQ==
+react-redux@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.1.tgz#88e368682c7fa80e34e055cd7ac56f5936b0f52f"
+  integrity sha512-LE7Ned+cv5qe7tMV5BPYkGQ5Lpg8gzgItK07c67yHvJ8t0iaD9kPFPAli/mYkiyJYrs2pJgExR2ZgsGqlrOApg==
   dependencies:
     "@babel/runtime" "^7.1.2"
-    hoist-non-react-statics "^3.0.0"
+    hoist-non-react-statics "^3.1.0"
     invariant "^2.2.4"
     loose-envify "^1.1.0"
     prop-types "^15.6.1"

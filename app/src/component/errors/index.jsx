@@ -2,19 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button'
-import { actionHub, services, components } from '../../loader'
+import { actions, actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
   margin: 12
 }
 
 class component extends React.PureComponent {
-  onThrowFromApi = () => {
+  fireClearError = () => {
+    this.props.clearError()
+  }
+
+  fireThrowFromApi = () => {
     this.props.throwFromApi()
   }
 
   render() {
-    var { errorMessage } = this.props
+    var { actionType, errorMessage } = this.props
     return (
       <components.Box>
         <h2>
@@ -32,11 +36,15 @@ class component extends React.PureComponent {
         </p>
         <Divider />
         <h3>
-          <components.ErrorMsg text={errorMessage} />
+          <components.ErrorMsg msg={errorMessage} actionType={actionType} />
         </h3>
         <Divider />
-        <Button onClick={this.onThrowFromApi} style={buttonStyle}>
+
+        <Button onClick={this.fireThrowFromApi} style={buttonStyle}>
           Thrown an API Error
+        </Button>
+        <Button onClick={this.fireClearError} style={buttonStyle}>
+          Clear error
         </Button>
       </components.Box>
     )
@@ -44,11 +52,13 @@ class component extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  errorMessage: services.errorMsg.selector.getText(state)
+  errorMessage: services.errorMsg.selector.getMsg(state),
+  actionType: services.errorMsg.selector.getActionType(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-  throwFromApi: () => dispatch(actionHub.ERRORS_THROW_FROM_API())
+  throwFromApi: () => dispatch(actionHub.ERRORS_THROW_FROM_API()),
+  clearError: () => dispatch(actions.clearError())
 })
 
 export default connect(
