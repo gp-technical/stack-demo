@@ -115,10 +115,10 @@
     moment "^2.22.2"
     mongodb "^3.1.9"
 
-"@gp-technical/stack-pack-api@2.0.1", "@gp-technical/stack-pack-api@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.1.tgz#d134b9053a8a183ad4d77b0818c22b557ba9bf57"
-  integrity sha512-3SACp3fWmndTI22zgyUIlp3gJFseapKzQOyrnLlIlk+khcsD076n3R9alS+0XbtcgRgtVmRoy5MS6Xdgg0RVog==
+"@gp-technical/stack-pack-api@2.0.2", "@gp-technical/stack-pack-api@^2.0.1":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.2.tgz#44952ca707b1d1a243df5ff00f4b13025f205a1e"
+  integrity sha512-OURiWMiBzlPO4zTtdHCkMcCv10nTS7wHr6xnOn5tGXC1ds3I3M2jyHKmbLXQmWLgKqKPZaSIVLOjveX/5jbouw==
   dependencies:
     "@gp-technical/stack-pack-util" "2.0.1"
     cookie-parser "^1.4.3"
@@ -449,9 +449,9 @@ atob@^2.1.1:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 aws-sdk@^2.353.0:
-  version "2.353.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.353.0.tgz#3c809d2b02834d892a3f5c3f1171273b336e5692"
-  integrity sha512-c5MwJhfcHwA2lC1Wq9csQvP9gz8dVGpZ64s5j9f/sWY6eZiDCQ6OWjxj+VJfpnCmfxyC/pdZO7JDGwems7dqIQ==
+  version "2.354.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.354.0.tgz#4c5a8d7b1a77b52dfb8724136656339e2cca3f5e"
+  integrity sha512-5X3Iz2sm+oC1pgJ5mgCBVo1zzQtXR0GGUhHRats43GTVoMmH9UyHWqPPifPwDHtwbU2qO1J/Up8ks6mJLdKNUw==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -5548,9 +5548,9 @@ shebang-regex@^1.0.0:
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
 shelljs@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.2.tgz#345b7df7763f4c2340d584abb532c5f752ca9e35"
-  integrity sha512-pRXeNrCA2Wd9itwhvLp5LZQvPJ0wU6bcjaTMywHHGX5XWhVN2nzSu7WV0q+oUY7mGK3mgSkDDzP3MgjqdyIgbQ==
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
+  integrity sha512-fc0BKlAWiLpwZljmOvAOTE/gXawtCoNrP5oaY7KIaQbbyHeQVg01pSEuEGvGh3HEdBU4baCD7wQBwADmM/7f7A==
   dependencies:
     glob "^7.0.0"
     interpret "^1.0.0"

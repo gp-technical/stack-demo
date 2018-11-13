@@ -32,7 +32,7 @@
   "dependencies": {
     "@gp-technical/stack-auth-api": "^2.0.1",
     "@gp-technical/stack-feature-api": "^2.0.0-beta.6",
-    "@gp-technical/stack-pack-api": "2.0.1",
+    "@gp-technical/stack-pack-api": "2.0.2",
     "@gp-technical/stack-pack-aws": "2.0.0",
     "@gp-technical/stack-pack-file": "2.0.0",
     "@gp-technical/stack-pack-mongo": "2.0.0",
