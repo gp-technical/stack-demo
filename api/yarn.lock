@@ -90,12 +90,12 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@gp-technical/stack-auth-api@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.0.1.tgz#c25236b45e23aefd85ccf707f78082b4dc44a802"
-  integrity sha512-O44ZJPBAt7bT96iOVb/2Y8djnasklX3LnMa92wwBHR5g+zFkOLje3zF/AbqJ5bK/ziQaK+yvaeDl6NP2hFbklg==
+"@gp-technical/stack-auth-api@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.0.2.tgz#68e1203945d010892bfbcd5dcd9adc2b2bdd5c57"
+  integrity sha512-43qqPwOGAdsA5PrUTtz7zZ+UkgifmHXb3kd4YYI4qN0iy+bXmwVcikbFm7IjRTBMv1atNiVpjLOaySqenKs5Wg==
   dependencies:
-    "@gp-technical/stack-pack-api" "^2.0.1"
+    "@gp-technical/stack-pack-api" "^2.0.2"
     "@gp-technical/stack-pack-util" "2.0.1"
     stack-pack-request "2.1.4"
     uuid "^3.1.0"
@@ -105,17 +105,17 @@
     xmlbuilder "^10.1.1"
     xpath "0.0.27"
 
-"@gp-technical/stack-feature-api@^2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-api/-/stack-feature-api-2.0.0-beta.6.tgz#00d8e607baa214de3ba2844ae2175c8c64e18315"
-  integrity sha512-/Po8ht8KYQ8PxGZm9TR/0k60SKKguSVF0rhCdzroIhZWwcOfdPQwY8gBVK4e+rTKMgGf8AY7nsKBKBcYjUX4hg==
+"@gp-technical/stack-feature-api@^2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-api/-/stack-feature-api-2.0.0-beta.7.tgz#4230664f2f708f61e9f67f129c5f728796c4c4ef"
+  integrity sha512-iIXpNr/t3/FT0cvY7RA3igOZdjpspKN3gnQtFukhzJa0pjWXr6mrl37xqfr6GmhnhrlR32RxXU1zGFANW+Sygg==
   dependencies:
-    aws-sdk "^2.353.0"
+    aws-sdk "^2.354.0"
     imgix-core-js "^1.2.0"
     moment "^2.22.2"
     mongodb "^3.1.9"
 
-"@gp-technical/stack-pack-api@2.0.2", "@gp-technical/stack-pack-api@^2.0.1":
+"@gp-technical/stack-pack-api@2.0.2", "@gp-technical/stack-pack-api@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.0.2.tgz#44952ca707b1d1a243df5ff00f4b13025f205a1e"
   integrity sha512-OURiWMiBzlPO4zTtdHCkMcCv10nTS7wHr6xnOn5tGXC1ds3I3M2jyHKmbLXQmWLgKqKPZaSIVLOjveX/5jbouw==
@@ -448,7 +448,7 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.353.0:
+aws-sdk@^2.353.0, aws-sdk@^2.354.0:
   version "2.354.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.354.0.tgz#4c5a8d7b1a77b52dfb8724136656339e2cca3f5e"
   integrity sha512-5X3Iz2sm+oC1pgJ5mgCBVo1zzQtXR0GGUhHRats43GTVoMmH9UyHWqPPifPwDHtwbU2qO1J/Up8ks6mJLdKNUw==
