@@ -1,4 +1,4 @@
-#version: 0.11.0
+#version: 0.12.35099028
 image: registry.gitlab.com/goodpractice/devops-tools:latest
 stages:
   - check
@@ -44,7 +44,7 @@ dev:manual:
   stage: deploy
   script:
     - gp login
-    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n isolated
+    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n $CI_DEV_NETWORK_NAME
     - gp slack:deploy
   artifacts:
     paths:
@@ -62,7 +62,7 @@ dev:
   stage: deploy
   script:
     - gp login
-    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n isolated
+    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e dev -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n $CI_DEV_NETWORK_NAME
     - gp slack:deploy
   artifacts:
     paths:
@@ -79,7 +79,7 @@ stg:manual:
   stage: deploy
   script:
     - gp login
-    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n isolated
+    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n $CI_STG_NETWORK_NAME
     - gp slack:deploy
   artifacts:
     paths:
@@ -99,7 +99,7 @@ stg:
   stage: deploy
   script:
     - gp login
-    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n isolated
+    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e stg -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n $CI_STG_NETWORK_NAME
     - gp slack:deploy
   artifacts:
     paths:
@@ -116,7 +116,7 @@ live:manual:
   stage: deploy
   script:
     - gp login
-    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e live -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
+    - gp ci:deploy -s docker-app -a $CI_PROJECT_NAME -e live -t $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA -n $CI_LIVE_NETWORK_NAME
     - gp slack:deploy
   artifacts:
     paths:
@@ -124,7 +124,7 @@ live:manual:
     when: on_failure
   environment:
     name: live
-    url: https://$CI_PROJECT_NAME.live.goodpractice.net
+    url: https://$CI_PROJECT_NAME.goodpractice.net
   when: manual
   only:
     - master
