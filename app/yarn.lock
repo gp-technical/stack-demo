@@ -158,27 +158,27 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@gp-technical/stack-auth-app@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-2.0.1.tgz#7363f501da3a7a7b42019f9318ddfb37e55f5d20"
-  integrity sha512-VyeHsCXD7r32OcpbJz1M3CLPylKKfRfmtjtgIYNd2bnUQ7jKC+Esg/J8Vy8Wyd4annrAKILpGO36OOqGknpq3Q==
+"@gp-technical/stack-auth-app@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-app/-/stack-auth-app-2.0.2.tgz#babb6f12f762e66567f4aab8d38e3a4ef3bfbb60"
+  integrity sha512-W0rL2G+sDp5LVe0pvyi7mNWMYagQvGitHeAtyABOzC6gSWN5kAkmnmnYGDY/kiuKNeRnK4Sh6EMRJ/2McVJBEQ==
   dependencies:
-    "@gp-technical/stack-pack-app" "^2.0.1"
+    "@gp-technical/stack-pack-app" "^2.0.2"
 
-"@gp-technical/stack-feature-app@^2.0.0-beta.9":
-  version "2.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.9.tgz#7d4f5dcd1aee2acac985460130d72a40f3467f63"
-  integrity sha512-Atq/rJ+Au9yjWra2A/DmkmLukj0JQoZPwNEYOSBthBxgbfibO4mb6EHLRCNrJRwM5Aj/LXNnAW3voKTMuI3zAw==
+"@gp-technical/stack-feature-app@^2.0.0-beta.10":
+  version "2.0.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.10.tgz#9817c77b37def834eb9ea6d3824a3492451c0faa"
+  integrity sha512-QwGzgg3kcKof70J5sGipDM+9L9IzHkqvUqJ7Tjy/6N3knDXaHE33abGzyVeJcv7Vnt9jcTl0nzP9yKWX5usk1w==
   dependencies:
     react-copy-to-clipboard "^5.0.1"
     react-debounce-input "^3.2.0"
     react-flexbox-grid "^2.1.2"
     react-select "^2.1.1"
 
-"@gp-technical/stack-pack-app@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.1.tgz#9212eb4b87f1ae68c7d30ab4a44bf7c7cc357588"
-  integrity sha512-1CE/k9tIkQEpafx/CQ1mYhc+JC+S/LbtU/mmh4q/sLnVkqE6sK3wQF6kBbmdhtAlr/mh48a+FBScp/GwRwhNhA==
+"@gp-technical/stack-pack-app@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-app/-/stack-pack-app-2.0.2.tgz#2aee1997cdfd6578b6f8a69b4fc731084659b9fd"
+  integrity sha512-cjLjDYN9exr4YNHNfgVCvJ3WlYT6en/eN9wci7RyYZuak/2zrz9xdFUIu+vAfWf+9IZy4FX4k3NI5k8B7tSbaQ==
   dependencies:
     blob-util "^2.0.2"
     file-saver "^1.3.3"
