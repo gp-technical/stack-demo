@@ -48,11 +48,11 @@ const common = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'url?name=[name].[ext]'
+        loader: 'url-loader?name=[name].[ext]'
       },
       {
         test: /\.otf$|\.eot$|\.svg$|\.ttf|\.woff|\.woff2$/,
-        loader: 'url?name=[name].[ext]'
+        loader: 'url-loader?name=[name].[ext]'
       }
     ]
   },

@@ -165,15 +165,18 @@
   dependencies:
     "@gp-technical/stack-pack-app" "^2.0.2"
 
-"@gp-technical/stack-feature-app@^2.0.0-beta.10":
-  version "2.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0-beta.10.tgz#9817c77b37def834eb9ea6d3824a3492451c0faa"
-  integrity sha512-QwGzgg3kcKof70J5sGipDM+9L9IzHkqvUqJ7Tjy/6N3knDXaHE33abGzyVeJcv7Vnt9jcTl0nzP9yKWX5usk1w==
+"@gp-technical/stack-feature-app@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-feature-app/-/stack-feature-app-2.0.0.tgz#5a514042d0a844c11864d9e231e7476c206c56c2"
+  integrity sha512-xiDe+xReTYh/nCYTWT0N12HtThQFVeSBeSaZ+mQlX39dwgDYBoyErtYf1ukwId4CM+0NfODvBuPZFPv20wDA6Q==
   dependencies:
+    moment "^2.22.2"
     react-copy-to-clipboard "^5.0.1"
     react-debounce-input "^3.2.0"
+    react-dotdotdot "^1.2.3"
     react-flexbox-grid "^2.1.2"
     react-select "^2.1.1"
+    uuid "^3.3.2"
 
 "@gp-technical/stack-pack-app@^2.0.2":
   version "2.0.2"
@@ -5558,6 +5561,11 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -6669,6 +6677,13 @@ react-dom@^16.6.3:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.11.2"
+
+react-dotdotdot@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.2.3.tgz#45bb264153cee73471f55c51c8d1542f4880a34f"
+  integrity sha512-lYCHCegi76+kqmgqkii/ma2QqsfA1Slf5jTJYWKgnT3uz8EkPaO9hRDPMDEsDHEBua2qOXSxWCHxVf4N740W1w==
+  dependencies:
+    object.pick "^1.3.0"
 
 react-event-listener@^0.6.2:
   version "0.6.4"
