@@ -1,4 +1,4 @@
-#version: 0.12.35099028
+#version: 0.12.36708044
 image: registry.gitlab.com/goodpractice/devops-tools:latest
 stages:
   - check
