@@ -1279,7 +1279,7 @@ The `components.Table` is a shared component supplied by the `stack-pack-app` pa
 table component supports custom column contents and the custom formatting of column values.
 
 
-# Feature: Shopping
+# Feature: `shopping`
 Now that you have seen how to implement the simple generic features, feel free to explore the `shopping` feature, which provides a bigger picture view into the capabilities of the stack.
 
 ## Example API Environment file
