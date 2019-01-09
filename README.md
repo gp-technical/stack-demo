@@ -1278,6 +1278,10 @@ dispatches the `GP_GET_DOCUMENTS` action via the `getDocuments` function.
 The `components.Table` is a shared component supplied by the `stack-pack-app` package. The columns of this table are defined using a plain `js` object called `columns`. You can see here that the
 table component supports custom column contents and the custom formatting of column values.
 
+
+# Feature: Shopping
+Now that you have seen how to implement the simple generic features, feel free to explore the `shopping` feature, which provides a bigger picture view into the capabilities of the stack.
+
 ## Example API Environment file
 
 The `api` component of a stack application requires a set of environment values to be supplied via the `./api/.env` file. The file is _not_ included in the github repository as it contains sensitive
