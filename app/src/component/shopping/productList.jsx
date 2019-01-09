@@ -1,7 +1,12 @@
 import React from 'react'
-import { Card, CardTitle, CardMedia, CardActions } from 'material-ui/Card'
-import Snackbar from 'material-ui/Snackbar'
-import FlatButton from 'material-ui/FlatButton'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardActions from '@material-ui/core/CardActions'
+import Snackbar from '@material-ui/core/Snackbar'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import { connect } from 'react-redux'
 
 import { services, actionHub } from '../../loader'
@@ -19,12 +24,11 @@ const style = {
 }
 
 class component extends React.PureComponent {
-
-  onProductCartAdd = (product) => {
+  onProductCartAdd = product => {
     this.props.productCartAdd(product)
   }
 
-  onProductCartRemove = (product) => {
+  onProductCartRemove = product => {
     this.props.productCartRemove(product)
   }
 
@@ -32,7 +36,7 @@ class component extends React.PureComponent {
     this.props.productCartRemove(this.props.productAdded)
   }
 
-  onSnackbarClose = (product) => {
+  onSnackbarClose = product => {
     this.props.snackbarClose()
   }
 
@@ -44,49 +48,64 @@ class component extends React.PureComponent {
     }
   }
 
-  render () {
+  render() {
     var { products, isSnackBarOpen } = this.props
     if (products && products.length > 0) {
       return (
         <div style={style.productWrapper}>
           {products.map((product, index) => (
             <Card key={index} style={style.productCard}>
-              <CardTitle title={product.name} subtitle={product.description} />
-              <CardMedia>
-                <img src={product.imageURL} style={{display: 'block', margin: 'auto'}} />
-              </CardMedia>
-              <CardTitle title={`$ ${product.price}`} subtitle={product.categories.join()} />
+              <CardHeader title={product.name} subheader={product.description} />
+              <CardContent>
+                <CardMedia
+                  title={product.name}
+                  image={product.imageURL}
+                  style={{ display: 'block', margin: 'auto' }}
+                  component="img"
+                />
+                <Typography variant="h6">{`$ ${product.price}`}</Typography>
+                <Typography variant="subtitle1">{product.categories.join()}</Typography>
+              </CardContent>
               <CardActions>
-                <FlatButton label="Add to Cart" onClick={() => { this.onProductCartAdd(product) }} />
+                <Button
+                  onClick={() => {
+                    this.onProductCartAdd(product)
+                  }}
+                >
+                  Add to Cart
+                </Button>
               </CardActions>
             </Card>
-         ))}
-         <Snackbar
-           open={ isSnackBarOpen }
-           action="Remove"
-           message={this.productAddedSnackText()}
-           autoHideDuration={4000}
-           onRequestClose={this.onSnackbarClose}
-           onActionTouchTap={this.onProductAddedRemove}
-         />
+          ))}
+          <Snackbar
+            open={isSnackBarOpen}
+            action="Remove"
+            message={this.productAddedSnackText()}
+            autoHideDuration={4000}
+            onRequestClose={this.onSnackbarClose}
+            onActionClick={this.onProductAddedRemove}
+          />
         </div>
       )
     } else {
-      return (<div> No product in the store </div>)
+      return <div> No product in the store </div>
     }
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: services.shopping.selector.getProducts(state),
   productAdded: services.shopping.selector.getProductAdded(state),
   isSnackBarOpen: services.shopping.selector.getIsSnackbarOpen(state)
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  productCartAdd: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
-  productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
+const mapDispatchToProps = dispatch => ({
+  productCartAdd: product => dispatch(actionHub.SHOPPING_PRODUCT_CART_ADD(product)),
+  productCartRemove: product => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product)),
   snackbarClose: () => dispatch(actionHub.SHOPPING_SNACKBAR_CLOSE())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

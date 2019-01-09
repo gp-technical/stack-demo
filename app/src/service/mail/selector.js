@@ -20,4 +20,4 @@ const getLoading = state => {
   return get(state).loading
 }
 
-export default {getEmail, getIsValid, getStatus, getLoading}
+export default { getEmail, getIsValid, getStatus, getLoading }

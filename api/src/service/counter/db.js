@@ -1,12 +1,12 @@
 class db {
   static total = 0
-  static increment () {
+  static increment() {
     this.total++
   }
-  static decrement () {
+  static decrement() {
     this.total--
   }
-  static getTotal () {
+  static getTotal() {
     return this.total
   }
 }

@@ -1,12 +1,16 @@
+const fs = require('fs')
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
-const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = require('./src/env.js')
+const { createCertFiles, generateFilename } = require('./cert')
+
 const TARGET = process.env.npm_lifecycle_event
 process.env.BABEL_ENV = TARGET
+
+if (TARGET !== 'production') createCertFiles()
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
@@ -15,11 +19,9 @@ const PATHS = {
 }
 
 const common = {
-  entry: [
-    PATHS.app
-  ],
+  entry: [PATHS.app],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.json$/,
         loader: 'json-loader'
@@ -28,44 +30,51 @@ const common = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         include: PATHS.app,
-        loaders: ['babel']
+        loaders: ['babel-loader']
       },
       {
-        test: /.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1'),
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { modules: true } }],
         include: /flexboxgrid/
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!sass?sourceMap'),
-        exclude: /flexboxgrid/
+        exclude: /flexboxgrid/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { modules: true } },
+          'sass-loader'
+        ]
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'url?name=[name].[ext]'
+        loader: 'url-loader?name=[name].[ext]'
       },
       {
         test: /\.otf$|\.eot$|\.svg$|\.ttf|\.woff|\.woff2$/,
-        loader: 'url?name=[name].[ext]'
+        loader: 'url-loader?name=[name].[ext]'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ],
-    packageMains: ['browser', 'web', 'browserify', 'main', 'style']
+    extensions: ['.js', '.jsx'],
+    modules: ['node_modules', path.resolve(__dirname, './node_modules')],
+    mainFields: ['browser', 'web', 'browserify', 'main', 'style']
   }
 }
 
 if (TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
-    watchOptions: {
-      poll: true
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          use: ['source-map-loader'],
+          enforce: 'pre'
+        }
+      ]
     },
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     devServer: {
       contentBase: PATHS.build,
       historyApiFallback: true,
@@ -73,17 +82,24 @@ if (TARGET === 'start' || !TARGET) {
       inline: true,
       progress: true,
       stats: 'errors-only',
-      https: true,
+      https: {
+        cert: fs.readFileSync(generateFilename('cert')),
+        key: fs.readFileSync(generateFilename('key'))
+      },
       host: env.host,
-      port: env.port
+      port: env.port,
+      overlay: {
+        errors: true
+      },
+      watchOptions: {
+        watch: true
+      },
+      public: `${env.host}:${env.port}`,
+      open: true
     },
     plugins: [
-      new ExtractTextPlugin('assets/style.css', { allChunks: true }),
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new MiniCssExtractPlugin({ filename: 'assets/style.css' }),
       new webpack.HotModuleReplacementPlugin(),
-      new OpenBrowserPlugin({
-        url: `https://${env.host}:${env.port}/`
-      }),
       new HtmlWebpackPlugin({
         template: PATHS.app + '/index.html',
         inject: 'body'
@@ -99,11 +115,11 @@ if (TARGET === 'start' || !TARGET) {
 if (TARGET === 'production') {
   module.exports = merge(common, {
     plugins: [
-      new ExtractTextPlugin('style.css', { allChunks: true }),
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new MiniCssExtractPlugin({ filename: 'style.css' }),
+      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': "'production'"
+          NODE_ENV: "'production'"
         }
       })
     ],

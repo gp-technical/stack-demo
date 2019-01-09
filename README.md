@@ -855,17 +855,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
-import { env, actionHub, services, components } from '../../loader'
+import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
   margin: 12
 }
 
-const url = path => {
-  return `${env.apiUrl}/rest/counter/${path}`
-}
-
 class component extends React.PureComponent {
+  url = path => {
+    return `${this.props.api.url}/counter/${path}`
+  }
+
   onIncrementRedux = () => {
     this.props.increment()
   }

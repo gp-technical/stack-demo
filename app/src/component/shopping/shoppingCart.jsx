@@ -1,21 +1,19 @@
 import React from 'react'
-import Dialog from 'material-ui/Dialog'
+import Dialog from '@material-ui/core/Dialog'
 import { connect } from 'react-redux'
-import FlatButton from 'material-ui/FlatButton'
-import FontIcon from 'material-ui/FontIcon'
-import { red500 } from 'material-ui/styles/colors'
-import CircularProgress from 'material-ui/CircularProgress'
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-  TableFooter
-} from 'material-ui/Table'
-
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
+import red from '@material-ui/core/colors/red'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Table from '@material-ui/core/Table'
+import TableHeader from '@material-ui/core/TableHead'
+import TableBody from '@material-ui/core/TableBody'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
+import TableFooter from '@material-ui/core/TableFooter'
 import { services, actionHub } from '../../loader'
+
+const red500 = red[500]
 
 const style = {
   noProduct: {
@@ -24,8 +22,7 @@ const style = {
 }
 
 class component extends React.PureComponent {
-
-  onProductCartRemove = (product) => {
+  onProductCartRemove = product => {
     this.props.productCartRemove(product)
   }
 
@@ -44,20 +41,24 @@ class component extends React.PureComponent {
     var { productsInCart } = this.props
     if (productsInCart && productsInCart.length > 0) {
       return [
-        <FlatButton label="Back Shopping" onClick={this.props.cartClose} />,
-        <FlatButton
-          label="Checkout"
-          primary={true}
-          onClick={ () => { this.onCartCheckout() }}
-        />
+        <Button onClick={this.props.cartClose} key={1}>
+          Back Shopping
+        </Button>,
+        <Button
+          primary
+          onClick={() => {
+            this.onCartCheckout()
+          }}
+          key={2}
+        >
+          Checkout
+        </Button>
       ]
     } else {
       return [
-        <FlatButton
-          label="Back Shopping"
-          primary={true}
-          onClick={this.props.cartClose}
-        />
+        <Button primary onClick={this.props.cartClose} key={1}>
+          Back Shopping
+        </Button>
       ]
     }
   }
@@ -67,43 +68,39 @@ class component extends React.PureComponent {
     if (productsInCart && productsInCart.length > 0) {
       return (
         <Table selectable={false}>
-          <TableHeader
-            displaySelectAll={false}
-            adjustForCheckbox={false}
-            enableSelectAll={false}
-          >
+          <TableHeader displaySelectAll={false} adjustForCheckbox={false} enableSelectAll={false}>
             <TableRow>
-              <TableHeaderColumn>Name</TableHeaderColumn>
-              <TableHeaderColumn>Price</TableHeaderColumn>
-              <TableHeaderColumn>Description</TableHeaderColumn>
-              <TableHeaderColumn>Acions</TableHeaderColumn>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Acions</TableCell>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {productsInCart.map((product, index) => (
               <TableRow key={index}>
-                <TableRowColumn>{product.name}</TableRowColumn>
-                <TableRowColumn>$ {product.price}</TableRowColumn>
-                <TableRowColumn>{product.description}</TableRowColumn>
-                <TableRowColumn>
-                  <FlatButton
+                <TableCell>{product.name}</TableCell>
+                <TableCell>$ {product.price}</TableCell>
+                <TableCell>{product.description}</TableCell>
+                <TableCell>
+                  <Button
                     onClick={() => {
                       this.onProductCartRemove(product)
                     }}
                   >
-                    <FontIcon className="material-icons" color={red500}>
+                    <Icon className="material-icons" color={red500}>
                       delete
-                    </FontIcon>
-                  </FlatButton>
-                </TableRowColumn>
+                    </Icon>
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter adjustForCheckbox={false}>
             <TableRow>
-              <TableRowColumn colSpan="4" style={{ textAlign: 'right' }}>
+              <TableCell colSpan="4" style={{ textAlign: 'right' }}>
                 Total: ${this.cartTotal()}
-              </TableRowColumn>
+              </TableCell>
             </TableRow>
           </TableFooter>
         </Table>
@@ -124,13 +121,13 @@ class component extends React.PureComponent {
         </div>
       )
     } else if (isCheckoutCompleted) {
-      return (<div style={{textAlign: 'center'}}> Checkout completed </div>)
+      return <div style={{ textAlign: 'center' }}> Checkout completed </div>
     } else {
       return this.renderProductsInCart()
     }
   }
 
-  render () {
+  render() {
     var { isCartOpen } = this.props
     return (
       <Dialog
@@ -157,7 +154,10 @@ const mapDispatchToProps = dispatch => ({
   cartOpen: () => dispatch(actionHub.SHOPPING_CART_OPEN()),
   cartClose: () => dispatch(actionHub.SHOPPING_CART_CLOSE()),
   cartCheckout: () => dispatch(actionHub.SHOPPING_CART_CHECKOUT()),
-  productCartRemove: (product) => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product))
+  productCartRemove: product => dispatch(actionHub.SHOPPING_PRODUCT_CART_REMOVE(product))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

@@ -8,8 +8,9 @@ import todos from './todos'
 import sphere from './sphere'
 import shopping from './shopping'
 import dialogSimple from './dialogSimple'
-import dialogForm from './dialogForm'
-import dialogStepper from './dialogStepper'
+import analyticsDemo from './analyticsDemo'
+import chat from './chat'
+import ratingBar from './ratingBar'
 
 export default {
   counter,
@@ -21,7 +22,8 @@ export default {
   todos,
   sphere,
   dialogSimple,
-  dialogForm,
   shopping,
-  dialogStepper
+  chat,
+  ratingBar,
+  analyticsDemo
 }

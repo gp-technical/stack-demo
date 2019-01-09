@@ -12,8 +12,10 @@ import productList from './shopping/productList'
 import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import dialogSimple from './dialogSimple'
-import dialogForm from './dialogForm'
-import dialogStepper from './dialogStepper'
+import analyticsDemo from './analyticsDemo'
+import chat from './chat'
+import ratingBar from './ratingBar'
+import componentError from './componentError'
 
 export default {
   counter,
@@ -26,10 +28,12 @@ export default {
   todos,
   sphere,
   dialogSimple,
-  dialogForm,
   productList,
   shopping,
   shoppingCart,
   shoppingFilter,
-  dialogStepper
+  chat,
+  ratingBar,
+  analyticsDemo,
+  componentError
 }
