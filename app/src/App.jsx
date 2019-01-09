@@ -31,16 +31,8 @@ class component extends React.PureComponent {
                 <components.counter />
                 <components.errors />
                 <components.thunks />
-                <components.todos />
                 <components.gp />
-                <components.sphere />
-                <components.dialogSimple />
-                <components.analyticsDemo />
                 <components.shopping />
-                <components.ratingBar />
-                <components.chat />
-                <components.mail />
-                <components.componentError />
               </Grid>
             </Grid>
           </div>
