@@ -11,13 +11,11 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "lint": "sp-lint",
-    "precommit": "sp-lint-staged",
+    "lint": "eslint --ext .js,.jsx .",
     "start:debug": "nodemon --exec yarn start --inspect --source-maps inline",
     "start": "env-cmd .env babel-node src/index.js --silent",
     "production": "babel --presets env,stage-2 src --out-dir /build"
   },
-  "standard-engine": "@gp-technical/stack-pack-standard",
   "nodemonConfig": {
     "watch": [
       "src",
@@ -45,7 +43,7 @@
     "stack-pack-gpapi": "2.1.3"
   },
   "devDependencies": {
-    "@gp-technical/stack-pack-standard": "^2.3.6",
+    "@gp-technical/eslint-config-stack": "^1.0.0",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",

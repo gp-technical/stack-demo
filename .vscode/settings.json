@@ -1,0 +1,11 @@
+{
+    "eslint.options": {
+        "eslint.autoFixOnSave": true,
+        "ignorePattern": [
+            "!.*.js",
+            "build/*"
+        ],
+        "key": "ctrl+alt+f",
+        "command": "eslint.executeAutofix",
+    }
+}

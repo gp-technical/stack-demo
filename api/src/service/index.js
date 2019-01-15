@@ -11,5 +11,5 @@ export default {
   fetch,
   gp,
   thunks,
-  shopping,
+  shopping
 }
