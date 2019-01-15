@@ -33,6 +33,7 @@ class component extends React.PureComponent {
                 <components.thunks />
                 <components.gp />
                 <components.shopping />
+                <components.messages />
               </Grid>
             </Grid>
           </div>

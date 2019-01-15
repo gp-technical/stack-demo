@@ -4,6 +4,7 @@ import fetch from './fetch'
 import gp from './gp'
 import thunks from './thunks'
 import shopping from './shopping'
+import messages from './messages'
 
 export default {
   counter,
@@ -11,5 +12,6 @@ export default {
   fetch,
   gp,
   thunks,
-  shopping
+  shopping,
+  messages
 }
