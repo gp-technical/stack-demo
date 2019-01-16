@@ -9,8 +9,9 @@ const processor = async (action, app) => {
       message.info('text from message info', app)
       return 'text from api info'
     case types.messagesProgress:
-      message.progress(`text from message progress. API will respond in 3 seconds.`, app)
+      message.progress(`API will respond in 3 seconds.`, app)
       await sleep(3000)
+      message.progress(`text from message progress.`, app)
       return 'text from api progress'
     case types.messagesError:
       message.error('text from message error', app)

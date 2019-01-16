@@ -5,17 +5,8 @@ import { services, components, actionHub } from '../../loader'
 import { Button, Typography } from '@material-ui/core'
 
 const style = {
-  btnInfo: {
-    backgroundColor: 'lightblue'
-  },
-  btnProgress: {
-    backgroundColor: 'lightgreen'
-  },
-  btnError: {
-    backgroundColor: 'red'
-  },
-  btnCustom: {
-    backgroundColor: 'yellow'
+  buttons: {
+    margin: 10
   }
 }
 
@@ -43,9 +34,12 @@ class Messages extends React.PureComponent {
         <h2>
           Feature: <i>Messages</i>
         </h2>
+        <p>Sends intermediate messages from the API to the APP.</p>
+        <p>Multiple types of messages can be sent: info, progress, error and custom.</p>
         <div>
           <Button
-            style={style.btnInfo}
+            variant="outlined"
+            style={style.buttons}
             onClick={() => {
               this.handleInfo()
             }}
@@ -53,7 +47,8 @@ class Messages extends React.PureComponent {
             Info
           </Button>
           <Button
-            style={style.btnProgress}
+            variant="outlined"
+            style={style.buttons}
             onClick={() => {
               this.handleProgress()
             }}
@@ -61,7 +56,8 @@ class Messages extends React.PureComponent {
             Progress
           </Button>
           <Button
-            style={style.btnError}
+            variant="outlined"
+            style={style.buttons}
             onClick={() => {
               this.handleError()
             }}
@@ -69,7 +65,8 @@ class Messages extends React.PureComponent {
             Error
           </Button>
           <Button
-            style={style.btnCustom}
+            variant="outlined"
+            style={style.buttons}
             onClick={() => {
               this.handleCustom()
             }}
@@ -77,10 +74,16 @@ class Messages extends React.PureComponent {
             Custom
           </Button>
         </div>
-        <Typography variant="h5">API Response:</Typography>
-        <Typography>{apiText}</Typography>
-        <Typography variant="h5">API Message Response:</Typography>
-        <Typography>{messageText}</Typography>
+        <div style={{ display: 'inline' }}>
+          <div>
+            <Typography variant="h5">API Response:</Typography>
+            <Typography style={{ margin: 10 }}>{apiText}</Typography>
+          </div>
+          <div>
+            <Typography variant="h5">API Message Response:</Typography>
+            <Typography style={{ margin: 10 }}>{messageText}</Typography>
+          </div>
+        </div>
       </components.Box>
     )
   }
