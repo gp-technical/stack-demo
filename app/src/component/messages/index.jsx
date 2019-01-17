@@ -3,10 +3,38 @@ import { connect } from 'react-redux'
 
 import { services, components, actionHub } from '../../loader'
 import { Button, Typography } from '@material-ui/core'
+import Chip from '@material-ui/core/Chip'
 
 const style = {
   buttons: {
     margin: 10
+  },
+  info: {
+    margin: 10,
+    backgroundColor: '#A098D9',
+    padding: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    color: 'white'
+  },
+  progress: {
+    color: 'green'
+  },
+  error: {
+    margin: 10,
+    backgroundColor: '#FF4747',
+    padding: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    color: 'white'
+  },
+  custom: {
+    margin: 10,
+    backgroundColor: '#FFE86F',
+    padding: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    color: 'white'
   }
 }
 
@@ -28,7 +56,7 @@ class Messages extends React.PureComponent {
   }
 
   render() {
-    let { apiText, messageText } = this.props
+    let { result, message } = this.props
     return (
       <components.Box>
         <h2>
@@ -77,12 +105,20 @@ class Messages extends React.PureComponent {
         <div style={{ display: 'inline' }}>
           <div>
             <Typography variant="h5">API Response:</Typography>
-            <Typography style={{ margin: 10 }}>{apiText}</Typography>
+            <Typography style={{ margin: 10 }}>{result.text}</Typography>
           </div>
-          <div>
-            <Typography variant="h5">API Message Response:</Typography>
-            <Typography style={{ margin: 10 }}>{messageText}</Typography>
-          </div>
+          {message && message.type && message.type === 'info' && (
+            <Chip label={message.text} style={style.info} />
+          )}
+          {message && message.type && message.type === 'progress' && (
+            <Chip label={message.progress} />
+          )}
+          {message && message.type && message.type === 'error' && (
+            <Chip label={message.text} style={style.error} />
+          )}
+          {message && message.type && message.type === 'custom' && (
+            <Chip label={message.text} style={style.custom} />
+          )}
         </div>
       </components.Box>
     )
@@ -90,8 +126,8 @@ class Messages extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  apiText: services.messages.selector.getApiData(state),
-  messageText: services.messages.selector.getMessageData(state)
+  result: services.messages.selector.getApiData(state),
+  message: services.messages.selector.getMessageData(state)
 })
 
 const mapDispatchToProps = dispatch => ({

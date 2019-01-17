@@ -1,24 +1,25 @@
-const reducer = (state = { apiText: '', messageText: '' }, action) => {
+const reducer = (state = { result: {}, message: {} }, action) => {
   const { type, types, data } = action
   switch (type) {
     case types.messages_init:
-      return { ...state, apiText: data }
+      return { ...state, result: data.result }
     case types.messagesInfoResponse:
-      return { ...state, apiText: data }
+      return { ...state, result: data.result }
     case types.messagesProgressResponse:
-      return { ...state, apiText: data }
+      console.log(data)
+      return { ...state, result: data.result }
     case types.messagesErrorResponse:
-      return { ...state, apiText: data }
+      return { ...state, result: data.result }
     case types.messagesCustomResponse:
-      return { ...state, apiText: data }
+      return { ...state, result: data.result }
     case types.apiInfo:
-      return { ...state, messageText: data }
+      return { ...state, message: data.message }
     case types.apiProgress:
-      return { ...state, messageText: data }
+      return { ...state, message: data.message }
     case types.apiError:
-      return { ...state, messageText: data }
+      return { ...state, message: data.message }
     case types.apiCustom:
-      return { ...state, messageText: data }
+      return { ...state, message: data.message }
     default:
       return state
   }

@@ -3,22 +3,23 @@ import { sleep } from '@gp-technical/stack-pack-util'
 
 const processor = async (action, app) => {
   var { types, type } = action
-
   switch (type) {
     case types.messagesInfo:
-      message.info('text from message info', app)
-      return 'text from api info'
+      message.info({ message: { text: 'message info', type: 'info' } }, app)
+      return { result: { text: 'Result returned from the API info action' } }
     case types.messagesProgress:
-      message.progress(`API will respond in 3 seconds.`, app)
-      await sleep(3000)
-      message.progress(`text from message progress.`, app)
-      return 'text from api progress'
+      for (let i = 0; i <= 100; i++) {
+        message.progress({ message: { progress: i, type: 'progress' } }, app)
+        // eslint-disable-next-line no-await-in-loop
+        await sleep(200)
+      }
+      return { result: { text: 'End of progress action.' } }
     case types.messagesError:
-      message.error('text from message error', app)
-      return 'text from api error'
+      message.error({ message: { text: 'message error', type: 'error' } }, app)
+      return { result: { text: 'Return from the API error action' } }
     case types.messagesCustom:
-      message.custom('apiCustom', 'text from message custom', app)
-      return 'text from api custom'
+      message.custom('apiCustom', { message: { text: 'message custom', type: 'custom' } }, app)
+      return { result: { text: 'Return from the API custom' } }
   }
 }
 

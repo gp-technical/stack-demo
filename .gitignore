@@ -7,3 +7,4 @@ node_modules/
 .idea
 save-commands.json
 VAULT_VERSION_*
+.vscode/settings.json

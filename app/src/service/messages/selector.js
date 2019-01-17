@@ -5,11 +5,11 @@ const get = state => {
 }
 
 const getApiData = state => {
-  return get(state).apiText
+  return get(state).result
 }
 
 const getMessageData = state => {
-  return get(state).messageText
+  return get(state).message
 }
 
 export default {
