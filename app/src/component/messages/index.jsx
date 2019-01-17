@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { services, components, actionHub } from '../../loader'
 import { Button, Typography } from '@material-ui/core'
 import Chip from '@material-ui/core/Chip'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 const style = {
   buttons: {
@@ -16,9 +17,6 @@ const style = {
     textAlign: 'center',
     borderRadius: 5,
     color: 'white'
-  },
-  progress: {
-    color: 'green'
   },
   error: {
     margin: 10,
@@ -35,6 +33,9 @@ const style = {
     textAlign: 'center',
     borderRadius: 5,
     color: 'white'
+  },
+  root: {
+    flexGrow: 1
   }
 }
 
@@ -111,7 +112,9 @@ class Messages extends React.PureComponent {
             <Chip label={message.text} style={style.info} />
           )}
           {message && message.type && message.type === 'progress' && (
-            <Chip label={message.progress} />
+            <div style={style.root}>
+              <LinearProgress variant="determinate" value={message.progress} />
+            </div>
           )}
           {message && message.type && message.type === 'error' && (
             <Chip label={message.text} style={style.error} />

@@ -6,7 +6,6 @@ const reducer = (state = { result: {}, message: {} }, action) => {
     case types.messagesInfoResponse:
       return { ...state, result: data.result }
     case types.messagesProgressResponse:
-      console.log(data)
       return { ...state, result: data.result }
     case types.messagesErrorResponse:
       return { ...state, result: data.result }
@@ -15,7 +14,7 @@ const reducer = (state = { result: {}, message: {} }, action) => {
     case types.apiInfo:
       return { ...state, message: data.message }
     case types.apiProgress:
-      return { ...state, message: data.message }
+      return { ...state, message: data.message, result: data.result }
     case types.apiError:
       return { ...state, message: data.message }
     case types.apiCustom:

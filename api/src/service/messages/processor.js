@@ -5,20 +5,26 @@ const processor = async (action, app) => {
   var { types, type } = action
   switch (type) {
     case types.messagesInfo:
-      message.info({ message: { text: 'message info', type: 'info' } }, app)
+      message.info({ message: { text: 'info message', type: 'info' } }, app)
       return { result: { text: 'Result returned from the API info action' } }
     case types.messagesProgress:
       for (let i = 0; i <= 100; i++) {
-        message.progress({ message: { progress: i, type: 'progress' } }, app)
+        message.progress(
+          {
+            message: { progress: i, type: 'progress' },
+            result: { text: 'Waiting for process to finish...' }
+          },
+          app
+        )
         // eslint-disable-next-line no-await-in-loop
-        await sleep(200)
+        await sleep(50)
       }
       return { result: { text: 'End of progress action.' } }
     case types.messagesError:
-      message.error({ message: { text: 'message error', type: 'error' } }, app)
+      message.error({ message: { text: 'error message', type: 'error' } }, app)
       return { result: { text: 'Return from the API error action' } }
     case types.messagesCustom:
-      message.custom('apiCustom', { message: { text: 'message custom', type: 'custom' } }, app)
+      message.custom('apiCustom', { message: { text: 'custom message', type: 'custom' } }, app)
       return { result: { text: 'Return from the API custom' } }
   }
 }
