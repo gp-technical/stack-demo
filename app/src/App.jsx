@@ -28,12 +28,12 @@ class component extends React.PureComponent {
               <Grid item className={styles.main} xs={12} sm={12} md={8} lg={12}>
                 <components.hello />
                 <components.fetch />
+                <components.messages />
                 <components.counter />
                 <components.errors />
                 <components.thunks />
                 <components.gp />
                 <components.shopping />
-                <components.messages />
               </Grid>
             </Grid>
           </div>

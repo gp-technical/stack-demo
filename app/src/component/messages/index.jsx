@@ -104,10 +104,12 @@ class Messages extends React.PureComponent {
           </Button>
         </div>
         <div style={{ display: 'inline' }}>
-          <div>
-            <Typography variant="h5">API Response:</Typography>
-            <Typography style={{ margin: 10 }}>{result.text}</Typography>
-          </div>
+          {result &&  (
+            <div>
+              <Typography variant="h6">API Response:</Typography>
+              <Typography style={{ margin: 10 }}>{result}</Typography>
+            </div>
+          )}
           {message && message.type && message.type === 'info' && (
             <Chip label={message.text} style={style.info} />
           )}

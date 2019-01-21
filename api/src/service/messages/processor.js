@@ -4,28 +4,22 @@ import { sleep } from '@gp-technical/stack-pack-util'
 const processor = async (action, app) => {
   var { types, type } = action
   switch (type) {
-    case types.messagesInfo:
-      message.info({ message: { text: 'info message', type: 'info' } }, app)
-      return { result: { text: 'Result returned from the API info action' } }
     case types.messagesProgress:
       for (let i = 0; i <= 100; i++) {
-        message.progress(
-          {
-            message: { progress: i, type: 'progress' },
-            result: { text: 'Waiting for process to finish...' }
-          },
-          app
-        )
+        message.progress({ progress: i, type: 'progress' }, app)
         // eslint-disable-next-line no-await-in-loop
-        await sleep(50)
+        await sleep(25)
       }
-      return { result: { text: 'End of progress action.' } }
+      return 'End of progress action.'
+    case types.messagesInfo:
+      message.info({ text: 'info message', type: 'info' }, app)
+      break
     case types.messagesError:
-      message.error({ message: { text: 'error message', type: 'error' } }, app)
-      return { result: { text: 'Return from the API error action' } }
+      message.error({ text: 'error message', type: 'error' }, app)
+      break
     case types.messagesCustom:
-      message.custom('apiCustom', { message: { text: 'custom message', type: 'custom' } }, app)
-      return { result: { text: 'Return from the API custom' } }
+      message.custom('apiCustom', { text: 'custom message', type: 'custom' }, app)
+      break
   }
 }
 
