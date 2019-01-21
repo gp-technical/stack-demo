@@ -104,7 +104,7 @@ class Messages extends React.PureComponent {
           </Button>
         </div>
         <div style={{ display: 'inline' }}>
-          {result &&  (
+          {result && (
             <div>
               <Typography variant="h6">API Response:</Typography>
               <Typography style={{ margin: 10 }}>{result}</Typography>
