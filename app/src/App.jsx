@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { components, services } from './loader'
 import { MuiThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import { muiTheme } from './theme'
 import styles from './index.scss'
@@ -17,6 +18,7 @@ class component extends React.PureComponent {
     return (
       <components.Loader show={!!user} branding={branding}>
         <MuiThemeProvider theme={muiTheme}>
+          <CssBaseline />
           <div>
             <components.App
               title={branding.appName}
