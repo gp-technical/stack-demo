@@ -7,7 +7,7 @@ const processor = async action => {
 
   switch (type) {
     case types.gpGetDocuments:
-      return await gpapi.get(`folder/${data}/items/simple`)
+      return gpapi.get(`folder/${data}/items/simple`)
   }
 }
 

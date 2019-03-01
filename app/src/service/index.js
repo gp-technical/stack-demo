@@ -3,13 +3,8 @@ import errors from './errors'
 import fetch from './fetch'
 import gp from './gp'
 import thunks from './thunks'
-import mail from './mail'
-import todos from './todos'
-import sphere from './sphere'
 import shopping from './shopping'
-import dialogSimple from './dialogSimple'
-import dialogForm from './dialogForm'
-import dialogStepper from './dialogStepper'
+import messages from './messages'
 
 export default {
   counter,
@@ -17,11 +12,6 @@ export default {
   fetch,
   gp,
   thunks,
-  mail,
-  todos,
-  sphere,
-  dialogSimple,
-  dialogForm,
   shopping,
-  dialogStepper
+  messages
 }

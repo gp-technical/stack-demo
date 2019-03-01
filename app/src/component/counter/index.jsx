@@ -1,18 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
-import RaisedButton from 'material-ui/RaisedButton'
-import { env, actionHub, services, components } from '../../loader'
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
+import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
   margin: 12
 }
 
-const url = path => {
-  return `${env.apiUrl}/rest/counter/${path}`
-}
-
 class component extends React.PureComponent {
+  url = path => {
+    return `${this.props.api.url}/counter/${path}`
+  }
   onIncrementRedux = () => {
     this.props.increment()
   }
@@ -23,15 +22,15 @@ class component extends React.PureComponent {
     this.props.getTotal()
   }
   onIncrementRest = () => {
-    window.open(url('increment'), '_blank')
+    window.open(this.url('increment'), '_blank')
   }
   onDecrementRest = () => {
-    window.open(url('decrement'), '_blank')
+    window.open(this.url('decrement'), '_blank')
   }
   onGetTotalRest = () => {
-    window.open(url('total'), '_blank')
+    window.open(this.url('total'), '_blank')
   }
-  render () {
+  render() {
     var { total } = this.props
 
     return (
@@ -41,32 +40,25 @@ class component extends React.PureComponent {
         </h2>
         <h3>Working with an API Service</h3>
         <p>
-          Demonstrates how to update your local state by dispatching REDUX
-          actions that are processed by the API.
+          Demonstrates how to update your local state by dispatching REDUX actions that are
+          processed by the API.
         </p>
         <p>
-          It also shows how to expose selected aspects of the API service though
-          REST endpoints.
+          It also shows how to expose selected aspects of the API service though REST endpoints.
         </p>
         <Divider />
         <h1>Total = {total}</h1>
         <Divider />
         <h3>Dispatch REDUX Actions</h3>
-        <RaisedButton
-          label="Increment ++"
-          onClick={this.onIncrementRedux}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Decrement --"
-          onClick={this.onDecrementRedux}
-          style={buttonStyle}
-        />
-        <RaisedButton
-          label="Get Total"
-          onClick={this.onGetTotalRedux}
-          style={buttonStyle}
-        />
+        <Button variant="contained" onClick={this.onIncrementRedux} style={buttonStyle}>
+          Increment ++
+        </Button>
+        <Button variant="contained" onClick={this.onDecrementRedux} style={buttonStyle}>
+          Decrement --
+        </Button>
+        <Button variant="contained" onClick={this.onGetTotalRedux} style={buttonStyle}>
+          Get Total
+        </Button>
         <Divider />
         <h3>Access the Equivalent REST Endpoints</h3>
         <ul>
@@ -92,7 +84,8 @@ class component extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  total: services.counter.selector.getTotal(state)
+  total: services.counter.selector.getTotal(state),
+  api: services.api.selector.getApi(state)
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -101,4 +94,7 @@ const mapDispatchToProps = dispatch => ({
   decrement: () => dispatch(actionHub.COUNTER_DECREMENT())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

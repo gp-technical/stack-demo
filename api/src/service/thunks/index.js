@@ -1,3 +1,3 @@
 import processor from './processor'
 
-export default { processor}
+export default { processor }

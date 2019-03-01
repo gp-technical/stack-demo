@@ -1,22 +1,21 @@
-import {
-  makeActionHub,
-  sharedServices,
-  sharedComponents,
-  sharedHelper
-} from '@gp-technical/stack-pack-app'
-import { Box, FileUpload, Table } from '@gp-technical/stack-pack-components'
+import { actions, makeActionHub, sharedServices, sharedHelper } from '@gp-technical/stack-pack-app'
+import { featureServices, featureComponents } from '@gp-technical/stack-feature-app'
 import localComponents from './component'
 import localServices from './service'
-import env from './env'
 
-const services = { ...localServices, ...sharedServices }
-const actionHub = makeActionHub(services)
+// Want everything other than assets
+const { assets, uiComponents, ...otherComponents } = featureComponents
 
 const components = {
   ...localComponents,
-  ...sharedComponents,
-  ...{ Box, FileUpload, Table }
+  ...uiComponents,
+  ...otherComponents
 }
+
+const services = { ...localServices, ...featureServices, ...sharedServices }
+
+const actionHub = makeActionHub(services)
+
 const helper = { ...sharedHelper }
 
-export { actionHub, env, components, services, helper }
+export { actions, actionHub, components, services, helper }

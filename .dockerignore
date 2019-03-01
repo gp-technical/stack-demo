@@ -2,3 +2,5 @@
 README.md
 .gitignore
 *.swp
+**/save-commands.json
+VAULT_VERSION_*

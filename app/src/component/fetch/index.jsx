@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Divider from 'material-ui/Divider'
-import RaisedButton from 'material-ui/RaisedButton'
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
 import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
@@ -25,25 +25,29 @@ class component extends React.PureComponent {
   onReload = () => {
     window.location.reload()
   }
-  render () {
-    var {source, data} = this.props
+  render() {
+    var { source, data } = this.props
     return (
       <components.Box>
-        <h2>Feature: <i>fetch</i></h2>
+        <h2>
+          Feature: <i>fetch</i>
+        </h2>
         <h3>Fetching and Displaying Data</h3>
-        <p>
-          Shows the various ways data can make its way to your feature's REACT component:
-        </p>
+        <p>Shows the various ways data can make its way to your feature&apos;s REACT component:</p>
         <ul>
           <li>
-            <h4>Initialisation Data from the API</h4>At application start-up the feature's state can be initialised from the API. This is useful when you want to initialise your component state from a database
-            or from a third party source.
+            <h4>Initialisation Data from the API</h4>
+            At application start-up the feature&apos;s state can be initialised from the API. This
+            is useful when you want to initialise your component state from a database or from a
+            third party source.
           </li>
           <li>
-            <h4>Fetched Locally</h4>Local data fetched from the browser-side app.
+            <h4>Fetched Locally</h4>
+            Local data fetched from the browser-side app.
           </li>
           <li>
-            <h4>Fetched From the API</h4>Remote data fetched from the server-side api as required
+            <h4>Fetched From the API</h4>
+            Remote data fetched from the server-side api as required
           </li>
         </ul>
         <Divider />
@@ -59,24 +63,35 @@ class component extends React.PureComponent {
           </li>
         </ul>
         <Divider />
-        <RaisedButton label='Fetch Data Locally' onClick={this.onFetchFromLocal} style={buttonStyle} />
-        <RaisedButton label='Fetch Data from the API' onClick={this.onFetchFromApi} style={buttonStyle} />
-        <RaisedButton label='Fetch Data from Both' onClick={this.onFetchFromBoth} style={buttonStyle} />
-        <RaisedButton label='Restart the App' onClick={this.onReload} style={buttonStyle} />
+        <Button onClick={this.onFetchFromLocal} style={buttonStyle}>
+          Fetch Data Locally
+        </Button>
+        <Button onClick={this.onFetchFromApi} style={buttonStyle}>
+          Fetch Data from the API
+        </Button>
+        <Button onClick={this.onFetchFromBoth} style={buttonStyle}>
+          Fetch Data from Both
+        </Button>
+        <Button variant="contained" onClick={this.onReload} style={buttonStyle}>
+          Restart the App
+        </Button>
       </components.Box>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   source: services.fetch.selector.getSource(state),
   data: services.fetch.selector.getData(state)
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  fromLocal: (data) => dispatch(actionHub.FETCH_FROM_LOCAL(data)),
+const mapDispatchToProps = dispatch => ({
+  fromLocal: data => dispatch(actionHub.FETCH_FROM_LOCAL(data)),
   fromApi: () => dispatch(actionHub.FETCH_FROM_API()),
-  fromBoth: (data) => dispatch(actionHub.FETCH_FROM_BOTH(data))
+  fromBoth: data => dispatch(actionHub.FETCH_FROM_BOTH(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(component)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(component)

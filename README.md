@@ -235,26 +235,6 @@ The first few are essential reading if you want to use the stack at all, the res
 
   The table used is the shared table component supplied by the `stack-pack-app` package.
 
-## Additional Features
-
-The following features have been added to flesh out the example set and are offered here without any additional help. You can use these features to further enhance your understanding of the stack with
-examples contributed by team members.
-
-If you write your own demo-feature then please submit it for inclusion in this list.
-
-* ## todos
-
-Recreates the canonical REDUX demo application. This feature allows you to add / edit and delete list items to a todo list. It also shows how to use a material-ui input form when editing a todo item.
-
-* ## sphere
-
-Calculates the volume of a sphere. This feature shows simple `app` <-> `api` communication as well as a neat _debounce_ text box that throttles the user input to prevent excessive calls to the api
-
-* ## mail
-
-Uses goodpractice email provider to send mail
-
-
 # Feature: `hello`
 
 This is the simplest feature in the demo. It is just a dumb REACT app component and too simple to require an api or app service. It is here to show you that you don't need to do anything special if
@@ -855,17 +835,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
-import { env, actionHub, services, components } from '../../loader'
+import { actionHub, services, components } from '../../loader'
 
 const buttonStyle = {
   margin: 12
 }
 
-const url = path => {
-  return `${env.apiUrl}/rest/counter/${path}`
-}
-
 class component extends React.PureComponent {
+  url = path => {
+    return `${this.props.api.url}/counter/${path}`
+  }
+
   onIncrementRedux = () => {
     this.props.increment()
   }
@@ -1297,6 +1277,10 @@ dispatches the `GP_GET_DOCUMENTS` action via the `getDocuments` function.
 
 The `components.Table` is a shared component supplied by the `stack-pack-app` package. The columns of this table are defined using a plain `js` object called `columns`. You can see here that the
 table component supports custom column contents and the custom formatting of column values.
+
+
+# Feature: `shopping`
+Now that you have seen how to implement the simple generic features, feel free to explore the `shopping` feature, which provides a bigger picture view into the capabilities of the stack.
 
 ## Example API Environment file
 

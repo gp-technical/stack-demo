@@ -1,4 +1,3 @@
-
 var productsInCart = []
 
 const getProductsInCart = () => {
@@ -10,12 +9,12 @@ const productCartAdd = product => {
     return current.inCartId + accumulator
   }, 1)
   let addedProduct = { ...product, inCartId: inCartId }
-  productsInCart = [ ...productsInCart, addedProduct ]
+  productsInCart = [...productsInCart, addedProduct]
   return addedProduct
 }
 
 const productCartRemove = productToRemove => {
-  productsInCart = productsInCart.filter((product) => {
+  productsInCart = productsInCart.filter(product => {
     return product.inCartId !== productToRemove.inCartId
   })
 }
