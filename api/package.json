@@ -28,9 +28,9 @@
     ]
   },
   "dependencies": {
-    "@gp-technical/stack-auth-api": "^2.1.0",
+    "@gp-technical/stack-auth-api": "^2.2.0",
     "@gp-technical/stack-feature-api": "^2.0.0",
-    "@gp-technical/stack-pack-api": "2.2.0",
+    "@gp-technical/stack-pack-api": "2.3.0",
     "@gp-technical/stack-pack-aws": "2.0.0",
     "@gp-technical/stack-pack-file": "2.0.0",
     "@gp-technical/stack-pack-mongo": "2.0.0",
@@ -40,7 +40,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "sparkpost": "^2.1.3",
-    "stack-pack-gpapi": "2.1.3"
+    "stack-pack-gpapi": "2.2.0"
   },
   "devDependencies": {
     "@gp-technical/eslint-config-stack": "^1.0.0",
