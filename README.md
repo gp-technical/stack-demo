@@ -24,7 +24,7 @@ own stack-application.
 
 You will probably need some devops help getting set up to run this demo. The stack does a number of complex tasks for you, for example it ensures your application is capable of Single Sign On (SSO)
 and it also performs a security handshake with the main GP API so your applications have access to the GP content and data. All this requires setup and so you should contact
-[Jonny](janderson@goodpractice.com) or [Daniel](ddeak@goodpractice) to see about getting everything working.
+[Arthur](aseaton@goodpractice.com) or [Marcelo](marcelo@devsquad.email) to see about getting everything working.
 
 ## The stack-application Folder Structure
 
