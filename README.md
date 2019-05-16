@@ -4,8 +4,7 @@ Get started with the GP stack using this introductory demo application
 
 ## What is the stack?
 
-The stack exists to allow you to quickly build single page applications using the REACT and REDUX technologies. It demands a specific way of writing your code, as well as helper features, that
-together take away much of the boilerplate and leave you with more time to create innovative and useful applications.
+The stack exists to allow you to quickly build single page applications using the REACT and REDUX technologies. It takes away much of the boilerplate to leave you with more time to create innovative and useful applications.
 
 The stack consists of the following two packages:
 
