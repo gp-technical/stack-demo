@@ -8,3 +8,7 @@ node_modules/
 save-commands.json
 VAULT_VERSION_*
 .vscode/settings.json
+selenium*.png
+log.html
+output.xml
+report.html
