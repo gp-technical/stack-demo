@@ -2,7 +2,7 @@ build
 node_modules/
 *.log*
 *.swp
-*.env
+*.env*
 .DS_Store
 .idea
 save-commands.json

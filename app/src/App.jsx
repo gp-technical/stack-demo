@@ -36,6 +36,7 @@ class component extends React.PureComponent {
                 <components.thunks />
                 <components.gp />
                 <components.shopping />
+                <components.testForm />
               </Grid>
             </Grid>
           </div>
