@@ -8,6 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
+import Button from '@material-ui/core/Button'
 
 const style = {
   margin: 20,
@@ -31,18 +32,24 @@ class component extends React.PureComponent {
   }
 
   dataTestIsChecked = target => {
-    return this.state.value === target ? 'checked' : ''
+    return this.state.value === target ? ' checked' : ''
   }
 
   isCheckBoxChecked = () => {
-    return this.state.checked ? 'checked' : ''
+    return this.state.checked ? ' checked' : ''
   }
 
   render() {
     return (
       <div style={style}>
         <h2>Example for form testing</h2>
-        <form noValidate autoComplete="off">
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={() => {
+            console.log('Form sent')
+          }}
+        >
           <TextField
             inputProps={{ 'data-test': 'text-input' }}
             id="standard-name"
@@ -62,7 +69,7 @@ class component extends React.PureComponent {
               value="female"
               control={
                 <Radio
-                  inputProps={{ 'data-test': `option1 ${this.dataTestIsChecked('female')}` }}
+                  inputProps={{ 'data-test': `radio-option1${this.dataTestIsChecked('female')}` }}
                 />
               }
               label="Female"
@@ -70,14 +77,18 @@ class component extends React.PureComponent {
             <FormControlLabel
               value="male"
               control={
-                <Radio inputProps={{ 'data-test': `option2 ${this.dataTestIsChecked('male')}` }} />
+                <Radio
+                  inputProps={{ 'data-test': `radio-option2${this.dataTestIsChecked('male')}` }}
+                />
               }
               label="Male"
             />
             <FormControlLabel
               value="other"
               control={
-                <Radio inputProps={{ 'data-test': `option3 ${this.dataTestIsChecked('other')}` }} />
+                <Radio
+                  inputProps={{ 'data-test': `radio-option3${this.dataTestIsChecked('other')}` }}
+                />
               }
               label="Other"
             />
@@ -88,7 +99,7 @@ class component extends React.PureComponent {
               checked={this.state.checkedF}
               onChange={this.handleChange('checked')}
               value="checked"
-              inputProps={{ 'data-test': `check-box ${this.isCheckBoxChecked()}` }}
+              inputProps={{ 'data-test': `check-box${this.isCheckBoxChecked()}` }}
             />
           </div>
 
@@ -98,7 +109,8 @@ class component extends React.PureComponent {
               <Select
                 value={this.state.age}
                 onChange={this.handleChange('age')}
-                inputProps={{
+                // data-test="select"
+                SelectDisplayProps={{
                   'data-test': 'select'
                 }}
               >
@@ -117,6 +129,11 @@ class component extends React.PureComponent {
               </Select>
             </FormControl>
           </div>
+
+          <Button type="submit" data-test="submit">
+            {' '}
+            Send{' '}
+          </Button>
         </form>
       </div>
     )
