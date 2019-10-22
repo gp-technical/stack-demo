@@ -1382,13 +1382,120 @@ free to give it a try, otherwise it is better to follow this templates.
 
 ## React code added Highlights ##
 
+We have created a component called TestForm that has a form with the common types of inputs for a webapp.
+Below we have all the examples based on what we have created:
+
 ### Input ###
+```
+<TextField
+inputProps={{ 'data-test': 'text-input' }}
+id="standard-name"
+label="Name"
+value={this.state.name}
+onChange={this.handleChange('name')}
+margin="normal"
+/>
+```
+The inputProps is resposible for creating the data-test tag inside the DOM and assigning "text-input" to it.
+
 ### Radio ###
+For Radio and CheckBox we have created the helper function that will help us assign the "checked" value when an item is clicked
+```
+  dataTestIsChecked = target => {
+    return this.state.value === target ? ' checked' : ''
+  }
+
+  isCheckBoxChecked = () => {
+    return this.state.checked ? ' checked' : ''
+  }
+```
+
+So the code can be like this for two options, male and female:
+```
+<FormControlLabel
+  value="female"
+  control={
+    <Radio
+      inputProps={{ 'data-test': `radio-option1${this.dataTestIsChecked('female')}` }}
+    />
+  }
+  label="Female"
+/>
+<FormControlLabel
+  value="male"
+  control={
+    <Radio
+      inputProps={{ 'data-test': `radio-option2${this.dataTestIsChecked('male')}` }}
+    />
+  }
+  label="Male"
+/>
+```
+
 ### Checkbox ###
+Also using the helper function, the checkbox will look like this:
+```
+<Checkbox
+  checked={this.state.checkedF}
+  onChange={this.handleChange('checked')}
+  value="checked"
+  inputProps={{ 'data-test': `check-box${this.isCheckBoxChecked()}` }}
+/>
+```
+
 ### Select ###
+Selects require Robot(Selenium) to click them prior to interact with them, so Material can render the proper tags:
+```
+<Select
+  value={this.state.age}
+  onChange={this.handleChange('age')}
+  // data-test="select"
+  SelectDisplayProps={{
+    'data-test': 'select'
+  }}
+>
+  <MenuItem value="" data-test="select-option-1">
+    <em>None</em>
+  </MenuItem>
+  <MenuItem value={10} data-test="select-option-2">
+    Ten
+  </MenuItem>
+  <MenuItem value={20} data-test="select-option-3">
+    Twenty
+  </MenuItem>
+  <MenuItem value={30} data-test="select-option-4">
+    Thirty
+  </MenuItem>
+</Select>
+```
 ### Button ###
+```
+<Button type="submit" data-test="submit">
+  {' '}
+  Send{' '}
+</Button>
+```
 
 ## Test Robot Framework code Highligths ##
 
 ### Click before interact ###
-### Follow your locators ###
+Selects require a previous interaction so Material + React can render the expected DOM inside the place where you see when doing Exploratory testing.
+So basically we will have two locators, one for the parent object and one for the option itself, depending on the need the first one is enough.
+```
+Material Select Template Test
+    Click Element    ${locator_select_parent}
+    Click Element    ${locator_select_option}
+```
+
+### Locators with relative XPATH ###
+Here you can see the clean approach to the xpath referencing, this helps the automation code break less then frequent,
+because we aren't using specific types of tags, we are using * instead (that will match any HTML/DOM element)
+We are also using the tag we created inside React+Material, that gives us a lot of power when searching and interacting with DOM objects.
+```
+${locator_text}      xpath://*[@data-test='text-input']
+${locator_checkbox}  xpath://*[@data-test='check-box']
+${locator_radio}    xpath://*[@data-test='radio-option3']
+${locator_select_parent}  xpath://*[@data-test='select']
+${locator_select_option}  xpath://*[@data-test='select-option-3']
+${locator_button}    xpath://*[@data-test='submit']
+```
