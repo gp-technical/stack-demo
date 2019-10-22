@@ -1330,3 +1330,65 @@ GP_API_PUBLIC=xxxxxxxxxxxxxxxxxxxxxxxx
 GP_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxx
 GP_API_ADMIN=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
+
+# Testing with Robot Framework #
+
+## Installation ##
+First you will need to install the Selenium Library and Robot Framework:
+```
+pip install --upgrade robotframework-seleniumlibrary
+```
+
+Then if you are on a MAC and using Chrome run the line below (for other OS or Browser this will change):
+```
+brew cask install chromedriver
+```
+
+Add the current credentials for Google Login sites and the URL of Stack Demo when running the tests:
+```
+robot --variable GOO_LOGIN:<login> --variable GOO_PASS:<password> --variable URL_STACK_DEMO:<url of stack demo> form_test.robot
+```
+
+Then you should see something like this:
+```
+==============================================================================
+Form Test
+==============================================================================
+Material Input Template Test                                          | PASS |
+------------------------------------------------------------------------------
+Material Checkbox Template Test                                       | PASS |
+------------------------------------------------------------------------------
+Material Radio Template Test                                          | PASS |
+------------------------------------------------------------------------------
+Material Select Template Test                                         | PASS |
+------------------------------------------------------------------------------
+Material Button Template Test                                         | PASS |
+------------------------------------------------------------------------------
+Form Test                                                             | PASS |
+5 critical tests, 5 passed, 0 failed
+5 tests total, 5 passed, 0 failed
+==============================================================================
+Output:  /stack-demo/output.xml
+Log:     /stack-demo/log.html
+Report:  /stack-demo/report.html
+```
+
+This means that the tests ranned and eveything is running smoothly.
+So you should refer to the way it was implemented on the React and also the way it was tested on the Robot file.
+There is no major complexity here, but trust me, if you don't follow those simple steps, testing can get really painfull.
+The place where the DATA-TEST locators where placed where already tested, that doesn't mean you can't change, but means that you
+will be wondering in dark places when it comes to testing Material UI + React + Robot Framework. So if you know how to adapt feel
+free to give it a try, otherwise it is better to follow this templates.
+
+## React code added Highlights ##
+
+### Input ###
+### Radio ###
+### Checkbox ###
+### Select ###
+### Button ###
+
+## Test Robot Framework code Highligths ##
+
+### Click before interact ###
+### Follow your locators ###

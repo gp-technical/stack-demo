@@ -4,7 +4,7 @@ Suite Setup       Open Browser    ${url}    Chrome
 Suite Teardown    Close All Browser
 
 *** Variable ***
-${url}    http://localhost:3000
+${url}    ${URL_STACK_DEMO}
 ${locator_text}    xpath://*[@data-test='xpot']
 ${locator_checkbox}    
 ${locator_radio}    
