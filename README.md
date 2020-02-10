@@ -22,9 +22,13 @@ own stack-application.
 
 ## Getting Started
 
-You will probably need some devops help getting set up to run this demo. The stack does a number of complex tasks for you, for example it ensures your application is capable of Single Sign On (SSO)
-and it also performs a security handshake with the main GP API so your applications have access to the GP content and data. All this requires setup and so you should contact
-[Arthur](aseaton@goodpractice.com) or [Marcelo](marcelo@devsquad.email) to see about getting everything working.
+You need the following to proceed:
+* VPN Access: You need to be able to connect to de Dev Environment. Ask [Tiago](tiago@devsquad.email) or [Marcelo](marcelo@devsquad.email) for access.
+* Docker: You need to install docker on your local environment (unix based is preferred) - https://www.docker.com/products/docker-desktop
+* EW CLI: You need to install and setup the EW CLI - Read this post on Slack: https://slack-files.com/T71KNG77C-FM1AGF2CR-98165d36ee
+
+If you need any assistance, ask for help:
+[Arthur](aseaton@goodpractice.com), [Tiago](tiago@devsquad.email) or [Marcelo](marcelo@devsquad.email)
 
 ## The stack-application Folder Structure
 
