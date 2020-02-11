@@ -9,6 +9,7 @@ import productList from './shopping/productList'
 import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import messages from './messages'
+import sharedToDo from './sharedTodo'
 
 export default {
   counter,
@@ -21,5 +22,6 @@ export default {
   shopping,
   shoppingCart,
   shoppingFilter,
-  messages
+  messages,
+  sharedToDo
 }

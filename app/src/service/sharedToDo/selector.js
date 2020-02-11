@@ -8,6 +8,18 @@ const getTodos = state => {
   return get(state).todos
 }
 
+const getTodosFromUser = state => {
+  const { todos, ownerId } = get(state)
+  const newTodos = todos.filter(
+    todo => todo.ownerId === ownerId || (todo.shared.includes(ownerId) && todo)
+  )
+  return newTodos
+}
+
+const getOwnerId = state => get(state).ownerId
+
 export default {
-  getTodos
+  getTodos,
+  getTodosFromUser,
+  getOwnerId
 }

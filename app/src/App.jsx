@@ -36,6 +36,7 @@ class component extends React.PureComponent {
                 <components.thunks />
                 <components.gp />
                 <components.shopping />
+                <components.sharedToDo />
               </Grid>
             </Grid>
           </div>

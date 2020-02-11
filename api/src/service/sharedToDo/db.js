@@ -11,6 +11,7 @@ class db {
 
   static createTodo(todo) {
     const newTodos = [...this.todos, todo]
+    this.todos = newTodos
     return newTodos
   }
 
