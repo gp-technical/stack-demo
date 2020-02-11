@@ -5,6 +5,7 @@ import gp from './gp'
 import thunks from './thunks'
 import shopping from './shopping'
 import messages from './messages'
+import sharedToDo from './sharedToDo'
 
 export default {
   counter,
@@ -13,5 +14,6 @@ export default {
   gp,
   thunks,
   shopping,
-  messages
+  messages,
+  sharedToDo
 }
