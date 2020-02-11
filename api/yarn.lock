@@ -110,10 +110,10 @@
     lint-staged "^8.1.0"
     prettier "^1.14.2"
 
-"@gp-technical/stack-auth-api@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.1.0.tgz#fc4760acea59ba4acd726a1dac2eb190d285c7a5"
-  integrity sha512-+qqZ9VRt7CFu916QvTNC5DUcpSjix1/69trPNuwlfdf7sjXXxz7QdRI1OHgHxyA6Z81Ax6pYtw+MrZ+fb9s25w==
+"@gp-technical/stack-auth-api@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-auth-api/-/stack-auth-api-2.2.0.tgz#ee39d2cbfaec815a026a085b9562889cd6379241"
+  integrity sha512-Gg0AAeZwDeFVXqsWdGhd7kODADOrDFsMrHi5Ok4NJ4vJ3BzxiAllDiWq9Yp6pYs+sDleBFg3yqtMWjYXYl+4DQ==
   dependencies:
     "@gp-technical/stack-pack-util" "2.0.1"
     stack-pack-request "2.2.0"
@@ -133,10 +133,10 @@
     imgix-core-js "^1.2.0"
     moment "^2.22.2"
 
-"@gp-technical/stack-pack-api@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.2.0.tgz#bb4ef747473587ace50c60fa9635f05f384bda46"
-  integrity sha512-Mkh0Eu+JKt/IzESpAjnPs7dnahoTPU0juFiSFABLAnSCx9jGWsOVNZmgzxHpV5WUJuntAZla/MG6vG12eKiehA==
+"@gp-technical/stack-pack-api@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@gp-technical/stack-pack-api/-/stack-pack-api-2.3.0.tgz#52d69d278494a26f7f37eff87f596fa92e6eb351"
+  integrity sha512-ztJQNAFWTgtxkiFF2a5YAonVIwW7W4IOvjZT0Uq/AjniGpX0dyJvgAyn2nZU6ogmKCezMh7oVHzDw9610LP/qQ==
   dependencies:
     "@gp-technical/stack-pack-util" "2.0.1"
     cookie-parser "^1.4.3"
@@ -148,7 +148,7 @@
     socket.io "^2.1.1"
     socket.io-client "^2.1.1"
     socket.io-redis "^5.2.0"
-    stack-pack-gpapi "2.1.3"
+    stack-pack-gpapi "2.2.0"
     uuid "^3.3.2"
 
 "@gp-technical/stack-pack-aws@2.0.0":
@@ -5565,25 +5565,25 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
-stack-pack-gpapi@2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.1.3.tgz#c941c6a28a4a954810461b70094fb7b9e7b5e6d6"
-  integrity sha512-FvC7p2/8QguHj5YL3YtKhul6l8uJ+3YxpVMoPihXk6A7WKNGME3zOhnvqk+6jHA/9k4VD3Nz0bPphMpYbxih2A==
+stack-pack-gpapi@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/stack-pack-gpapi/-/stack-pack-gpapi-2.2.0.tgz#3309b7bf870640c843f282b3639702c8e12545ed"
+  integrity sha512-FxIHINMmvFSQGa4ai9ZpTS26YWQXLbAfb5v1u15WUhmJnQXu6Ly4pWar4w5VL8ykUxEa9EKCyY3eI2GE4WQPhQ==
   dependencies:
     "@gp-technical/stack-pack-util" "^2.0.1"
-    stack-pack-request "2.1.4"
-
-stack-pack-request@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.1.4.tgz#738d7c9f5b964c03edb2fee0e9830605b833c4b2"
-  integrity sha512-1sJQxTI9xzGnLxRIdbTkmcNM8/GGOJdhxGpJV6+1XEhL1RCY1n5cG3L8VlSj/pD6f1nm+N/Fftjl9ydxMQ1uoQ==
-  dependencies:
-    unirest "^0.5.1"
+    stack-pack-request "2.2.2"
 
 stack-pack-request@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.2.0.tgz#1331aefe7761d7f36d594ac0549a5284defcc613"
   integrity sha512-WDeaMKaxPrqRwr9UnwhFeSP5DtW3MTlKVsWG0zhLlnkSyW3pw7RtiF9UrkyuRjBWA/QSHBHTB+2X8w2KsHpM9Q==
+  dependencies:
+    unirest "^0.5.1"
+
+stack-pack-request@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/stack-pack-request/-/stack-pack-request-2.2.2.tgz#4d6f16d89bf53ae4c933d5ce480e0ee8d630f112"
+  integrity sha512-Xa9sLSvCdbVf/nN2l1m2Qyg03le/ddlb1ASGj7MAJTMROXUrgu2e7RGFSIugE3+qjgwgegGt61XfAlBG1L1wkg==
   dependencies:
     unirest "^0.5.1"
 

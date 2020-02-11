@@ -2,9 +2,13 @@ build
 node_modules/
 *.log*
 *.swp
-*.env
+*.env*
 .DS_Store
 .idea
 save-commands.json
 VAULT_VERSION_*
 .vscode/settings.json
+selenium*.png
+log.html
+output.xml
+report.html

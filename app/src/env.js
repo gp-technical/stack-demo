@@ -2,7 +2,7 @@
 
 module.exports = {
   appName: 'stack-demo',
-  websocketUrl: 'wss://stack-demo.local.goodpractice.net:3001',
-  host: 'stack-demo.local.goodpractice.net',
+  websocketUrl: 'wss://localhost:3001',
+  host: 'localhost',
   port: 3000
 }
