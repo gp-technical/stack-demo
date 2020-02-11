@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -f index.html ]; then
   echo 'moving files to app folder'
