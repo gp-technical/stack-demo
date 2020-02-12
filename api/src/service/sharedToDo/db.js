@@ -16,6 +16,12 @@ class db {
     return newTodos
   }
 
+  static editTodo(todo) {
+    const newTodos = this.todos.map(item => (item.id === todo.id ? todo : item))
+    this.todos = newTodos
+    return newTodos
+  }
+
   static getTodosFromUser(socketId) {
     const todos = this.todos.filter(
       todo => todo.ownerId === socketId || (todo.shared.includes(socketId) && todo)

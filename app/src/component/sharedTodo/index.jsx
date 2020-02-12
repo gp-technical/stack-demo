@@ -30,6 +30,7 @@ const sharedTodo = () => {
   const addToDo = () => {
     dispatch(
       actionHub.SHARED_TO_DO_ADD_TO_DO({
+        id: Date.now(),
         ownerId,
         ...localToDo,
         done: false
@@ -37,6 +38,11 @@ const sharedTodo = () => {
     )
     dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ text: '', shared: [] }))
   }
+
+  const editToDo = todo => {
+    dispatch(actionHub.SHARED_TO_DO_EDIT_TO_DO(todo))
+  }
+
   const renderLoggedUsers = useCallback(
     () => (
       <List style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -79,9 +85,14 @@ const sharedTodo = () => {
     () => (
       <List>
         {todos.map((todo, idx) => (
-          <ListItem divider key={idx}>
+          <ListItem
+            button
+            onClick={() => editToDo({ ...todo, done: !todo.done })}
+            divider
+            key={idx}
+          >
             <ListItemIcon>
-              <Checkbox edge='start' />
+              <Checkbox checked={todo.done} edge='start' />
             </ListItemIcon>
             <ListItemText primary={todo.text} />
             <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
@@ -120,6 +131,8 @@ const sharedTodo = () => {
     ),
     [todos]
   )
+
+  console.log(todos)
 
   return (
     <components.Box>

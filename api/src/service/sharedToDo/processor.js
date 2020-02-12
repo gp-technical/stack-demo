@@ -28,6 +28,15 @@ const processor = async action => {
       // don't need to send a sharedToDoAddToDoResponse here
       break
     }
+
+    case types.sharedToDoEditToDo: {
+      db.editTodo(data)
+      message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, data.ownerId)
+      data.shared.map(sharedId =>
+        message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, sharedId)
+      )
+      break
+    }
   }
 }
 
