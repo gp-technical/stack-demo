@@ -35,8 +35,7 @@ const sharedTodo = () => {
         done: false
       })
     )
-    setLocalToDoContent('')
-    setLocalToDoShared([])
+    dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ text: '', shared: [] }))
   }
   const renderLoggedUsers = useCallback(
     () => (
@@ -85,6 +84,36 @@ const sharedTodo = () => {
               <Checkbox edge='start' />
             </ListItemIcon>
             <ListItemText primary={todo.text} />
+            <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+              <Typography>shared with</Typography>
+              <div
+                style={{
+                  display: 'flex',
+                  flexFlow: 'column wrap',
+                  width: '100%',
+                  height: '121px',
+                  overflowX: 'auto'
+                }}
+              >
+                {todo.shared.map(userId => (
+                  <div
+                    key={userId}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      width: '250px',
+                      height: '43px',
+                      background: '#2980b9',
+                      borderRadius: '10px',
+                      margin: '5px'
+                    }}
+                  >
+                    <Typography style={{ color: 'white' }}>{userId}</Typography>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ListItem>
         ))}
       </List>
