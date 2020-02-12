@@ -1,12 +1,10 @@
 import name from './name'
 
-const get = state => {
-  return state[name]
-}
+const get = state => state[name]
 
-const getTodos = state => {
-  return get(state).todos
-}
+const getLocalToDo = state => get(state).localToDo
+
+const getTodos = state => get(state).todos
 
 const getTodosFromUser = state => {
   const { todos, ownerId } = get(state)
@@ -18,8 +16,12 @@ const getTodosFromUser = state => {
 
 const getOwnerId = state => get(state).ownerId
 
+const getLoggedUsers = state => get(state).loggedUsers
+
 export default {
+  getLocalToDo,
   getTodos,
   getTodosFromUser,
-  getOwnerId
+  getOwnerId,
+  getLoggedUsers
 }

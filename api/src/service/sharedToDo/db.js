@@ -28,6 +28,12 @@ class db {
     this.loggedUsers = newUsers
     return newUsers
   }
+
+  static removeUserFromLoggedList(userId) {
+    const newUsers = this.loggedUsers.filter(item => item !== userId)
+    this.loggedUsers = newUsers
+    return newUsers
+  }
 }
 
 export default db

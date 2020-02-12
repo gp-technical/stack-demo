@@ -15,6 +15,9 @@ const reducer = (state = initialState, action) => {
     case types.sharedToDo_init:
       return { ...state, ownerId: data.socketId }
 
+    case types.sharedToDoSetLocalToDo:
+      return { ...state, localToDo: data }
+
     case types.sharedToDoAddToDoResponse:
       return { ...state, todos: data.todos }
 

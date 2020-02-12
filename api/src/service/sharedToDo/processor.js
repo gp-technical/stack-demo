@@ -12,6 +12,12 @@ const processor = async action => {
       break
     }
 
+    case types.disconnect: {
+      db.removeUserFromLoggedList(app)
+      message.custom('sharedToDoLoggedUsers', { loggedUsers: db.loggedUsers })
+      break
+    }
+
     case types.sharedToDoAddToDo: {
       db.createTodo(data)
       message.custom('sharedToDoAddToDoResponse', { todos: db.todos }, data.ownerId)
