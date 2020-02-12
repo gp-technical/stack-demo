@@ -28,9 +28,12 @@ const processor = async action => {
     }
 
     case types.sharedToDoEditToDo: {
+      const clientsToListen = db.getSingleToDo(data.id).shared
+      clientsToListen.push(...data.shared)
+      const ClientsToListenSet = [...new Set(clientsToListen)]
       db.editTodo(data)
       message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, data.ownerId)
-      data.shared.map(sharedId =>
+      ClientsToListenSet.map(sharedId =>
         message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, sharedId)
       )
       break

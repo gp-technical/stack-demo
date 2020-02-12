@@ -22,6 +22,10 @@ class db {
     return newTodos
   }
 
+  static getSingleToDo(id) {
+    return this.todos.find(i => i.id === id)
+  }
+
   static getTodosFromUser(socketId) {
     const todos = this.todos.filter(
       todo => todo.ownerId === socketId || (todo.shared.includes(socketId) && todo)
