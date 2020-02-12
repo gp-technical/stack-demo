@@ -1,7 +1,7 @@
 import name from './name'
 import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
-const api = makeTypes(name, ['addTodo', 'editTodo', 'deleteTodo', 'setShared'])
+const api = makeTypes(name, ['addToDo', 'editToDo', 'deleteToDo', 'setShared'])
 
 const local = makeTypes(name, ['setLocalToDo'])
 

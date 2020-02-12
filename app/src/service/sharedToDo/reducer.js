@@ -4,19 +4,22 @@ const initialState = {
   localToDo: {
     text: '',
     shared: []
-  }
+  },
+  loggedUsers: []
 }
 
 const reducer = (state = initialState, action) => {
   const { type, types, data } = action
+  console.log(action)
   switch (type) {
     case types.sharedToDo_init:
-      console.log('Init! socket id:', data.socketId)
       return { ...state, ownerId: data.socketId }
 
-    case types.sharedToDoAddTodoResponse:
-      console.log(data)
+    case types.sharedToDoAddToDoResponse:
       return { ...state, todos: data.todos }
+
+    case types.sharedToDoLoggedUsers:
+      return { ...state, loggedUsers: data.loggedUsers }
 
     default:
       return state

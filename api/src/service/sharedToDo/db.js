@@ -8,6 +8,7 @@ class db {
     //   shared: [] of socketId that can see it
     // }
   ]
+  static loggedUsers = []
 
   static createTodo(todo) {
     const newTodos = [...this.todos, todo]
@@ -20,6 +21,12 @@ class db {
       todo => todo.ownerId === socketId || (todo.shared.includes(socketId) && todo)
     )
     return todos
+  }
+
+  static addUserToLoggedList(userId) {
+    const newUsers = [...this.loggedUsers, userId]
+    this.loggedUsers = newUsers
+    return newUsers
   }
 }
 
