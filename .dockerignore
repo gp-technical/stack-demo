@@ -4,4 +4,5 @@ README.md
 *.swp
 **/save-commands.json
 VAULT_VERSION_*
-.npmrc
+api/.npmrc
+app/.npmrc
