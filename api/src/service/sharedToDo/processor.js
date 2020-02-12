@@ -2,9 +2,7 @@ import { makeProcessor, message } from '@gp-technical/stack-pack-api'
 import db from './db'
 
 const processor = async action => {
-  // eslint-disable-next-line no-unused-vars
-  const { types, type, user, data, app } = action
-  console.log(action)
+  const { types, type, data, app } = action
   switch (type) {
     case types.authenticate: {
       db.addUserToLoggedList(app)

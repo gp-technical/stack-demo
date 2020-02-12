@@ -5,12 +5,19 @@ const initialState = {
     text: '',
     shared: []
   },
+  editedToDoDialogOpen: false,
+  editedToDo: {
+    id: '',
+    text: '',
+    shared: [],
+    ownerId: '',
+    done: false
+  },
   loggedUsers: []
 }
 
 const reducer = (state = initialState, action) => {
   const { type, types, data } = action
-  console.log(action)
   switch (type) {
     case types.sharedToDo_init:
       return { ...state, ownerId: data.socketId }
@@ -18,8 +25,13 @@ const reducer = (state = initialState, action) => {
     case types.sharedToDoSetLocalToDo:
       return { ...state, localToDo: data }
 
+    case types.sharedToDoSetEditedToDo:
+      return { ...state, editedToDo: data }
+
+    case types.sharedToDoToggleEditDialog:
+      return { ...state, editedToDoDialogOpen: !state.editedToDoDialogOpen }
+
     case types.sharedToDoAddToDoResponse: {
-      console.log(data.todos)
       return { ...state, todos: data.todos }
     }
 

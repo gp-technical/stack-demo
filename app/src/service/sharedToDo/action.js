@@ -3,7 +3,7 @@ import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
 
 const api = makeTypes(name, ['addToDo', 'editToDo', 'deleteToDo', 'setShared'])
 
-const local = makeTypes(name, ['setLocalToDo'])
+const local = makeTypes(name, ['setLocalToDo', 'setEditedToDo', 'toggleEditDialog'])
 
 const actions = {
   ...makeActions(api, { local: false }),

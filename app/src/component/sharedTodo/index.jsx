@@ -11,7 +11,9 @@ import {
   ListItemIcon,
   Typography
 } from '@material-ui/core'
+import { Edit } from '@material-ui/icons'
 import { services, components, actionHub } from '../../loader'
+import EditDialog from './editDialog'
 
 const sharedTodo = () => {
   const dispatch = useDispatch()
@@ -41,6 +43,11 @@ const sharedTodo = () => {
 
   const editToDo = todo => {
     dispatch(actionHub.SHARED_TO_DO_EDIT_TO_DO(todo))
+  }
+
+  const openToDoEditDialog = todo => {
+    dispatch(actionHub.SHARED_TO_DO_TOGGLE_EDIT_DIALOG())
+    dispatch(actionHub.SHARED_TO_DO_SET_EDITED_TO_DO(todo))
   }
 
   const renderLoggedUsers = useCallback(
@@ -85,17 +92,40 @@ const sharedTodo = () => {
     () => (
       <List>
         {todos.map((todo, idx) => (
-          <ListItem
-            button
-            onClick={() => editToDo({ ...todo, done: !todo.done })}
-            divider
-            key={idx}
-          >
+          <ListItem divider key={idx}>
             <ListItemIcon>
-              <Checkbox checked={todo.done} edge='start' />
+              <div>
+                <Checkbox
+                  onClick={() => editToDo({ ...todo, done: !todo.done })}
+                  checked={todo.done}
+                  edge='start'
+                />
+                {todo.ownerId === ownerId ? (
+                  <Button onClick={() => openToDoEditDialog(todo)}>
+                    <Edit />
+                  </Button>
+                ) : null}
+              </div>
             </ListItemIcon>
             <ListItemText primary={todo.text} />
-            <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'flex-start' }}>
+              <Typography>Owner</Typography>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '250px',
+                  height: '43px',
+                  background: '#9b59b6',
+                  borderRadius: '10px',
+                  margin: '5px'
+                }}
+              >
+                <Typography style={{ color: 'white' }}>{todo.ownerId}</Typography>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', width: '40%' }}>
               <Typography>shared with</Typography>
               <div
                 style={{
@@ -120,7 +150,9 @@ const sharedTodo = () => {
                       margin: '5px'
                     }}
                   >
-                    <Typography style={{ color: 'white' }}>{userId}</Typography>
+                    <Typography style={{ color: 'white' }}>
+                      {userId === ownerId ? 'You' : userId}
+                    </Typography>
                   </div>
                 ))}
               </div>
@@ -132,10 +164,9 @@ const sharedTodo = () => {
     [todos]
   )
 
-  console.log(todos)
-
   return (
     <components.Box>
+      <EditDialog />
       <h2>Shared todo</h2>
       <div>
         <h3>Who am i?</h3>
@@ -147,7 +178,8 @@ const sharedTodo = () => {
             width: '250px',
             height: '43px',
             background: '#2980b9',
-            borderRadius: '10px'
+            borderRadius: '10px',
+            marginBottom: '10px'
           }}
         >
           <Typography style={{ color: 'white' }}>{ownerId}</Typography>

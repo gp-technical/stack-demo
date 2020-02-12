@@ -3,6 +3,8 @@ import name from './name'
 const get = state => state[name]
 
 const getLocalToDo = state => get(state).localToDo
+const getEditedToDo = state => get(state).editedToDo
+const getEditedToDoDialogOpen = state => get(state).editedToDoDialogOpen
 
 const getTodos = state => get(state).todos
 
@@ -20,6 +22,8 @@ const getLoggedUsers = state => get(state).loggedUsers
 
 export default {
   getLocalToDo,
+  getEditedToDo,
+  getEditedToDoDialogOpen,
   getTodos,
   getTodosFromUser,
   getOwnerId,
