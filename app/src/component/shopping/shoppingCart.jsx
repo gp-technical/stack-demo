@@ -88,7 +88,7 @@ class component extends React.PureComponent {
                       this.onProductCartRemove(product)
                     }}
                   >
-                    <Icon className="material-icons" color={red500}>
+                    <Icon className='material-icons' color={red500}>
                       delete
                     </Icon>
                   </Button>
@@ -98,7 +98,7 @@ class component extends React.PureComponent {
           </TableBody>
           <TableFooter adjustForCheckbox={false}>
             <TableRow>
-              <TableCell colSpan="4" style={{ textAlign: 'right' }}>
+              <TableCell colSpan='4' style={{ textAlign: 'right' }}>
                 Total: ${this.cartTotal()}
               </TableCell>
             </TableRow>
@@ -131,7 +131,7 @@ class component extends React.PureComponent {
     var { isCartOpen } = this.props
     return (
       <Dialog
-        title="Shopping Cart - Checkout"
+        title='Shopping Cart - Checkout'
         modal={false}
         open={isCartOpen}
         onRequestClose={this.props.cartClose}

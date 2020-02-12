@@ -45,8 +45,8 @@ class component extends React.PureComponent {
       ))
       return (
         <div>
-          <InputLabel htmlFor="items">Filter by Category</InputLabel>
-          <Select onChange={this.onFilterByCategory} id="items" value={this.state.value}>
+          <InputLabel htmlFor='items'>Filter by Category</InputLabel>
+          <Select onChange={this.onFilterByCategory} id='items' value={this.state.value}>
             {menuItems}
           </Select>
           <p>Filter by price range</p>

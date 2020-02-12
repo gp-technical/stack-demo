@@ -27,7 +27,7 @@ class Shopping extends React.PureComponent {
             element={TextField}
             minLength={0}
             debounceTimeout={500}
-            placeholder="Search by name, category..."
+            placeholder='Search by name, category...'
             onChange={this.onSearchInput}
           />
           <Button style={{ color: '#54647a' }} onClick={this.props.cartOpen}>{`Cart(${

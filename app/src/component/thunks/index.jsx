@@ -32,7 +32,7 @@ class component extends React.PureComponent {
         <h1>{answer}</h1>
         <Divider />
         <h3>Dispatch a Synchronouse Sequence of REDUX Actions</h3>
-        <Button variant="contained" onClick={this.onGetAnswer} style={buttonStyle}>
+        <Button variant='contained' onClick={this.onGetAnswer} style={buttonStyle}>
           Get The Answer
         </Button>
       </components.Box>

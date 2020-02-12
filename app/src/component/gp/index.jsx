@@ -42,7 +42,7 @@ class GpApi extends React.PureComponent {
     upload: {
       label: 'custom action',
       custom: row => (
-        <components.FileUpload label="select" row={row} onFileSelected={this.onFileSelected} />
+        <components.FileUpload label='select' row={row} onFileSelected={this.onFileSelected} />
       )
     }
   }

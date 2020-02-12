@@ -61,10 +61,10 @@ class component extends React.PureComponent {
                   title={product.name}
                   image={product.imageURL}
                   style={{ display: 'block', margin: 'auto' }}
-                  component="img"
+                  component='img'
                 />
-                <Typography variant="h6">{`$ ${product.price}`}</Typography>
-                <Typography variant="subtitle1">{product.categories.join()}</Typography>
+                <Typography variant='h6'>{`$ ${product.price}`}</Typography>
+                <Typography variant='subtitle1'>{product.categories.join()}</Typography>
               </CardContent>
               <CardActions>
                 <Button
@@ -79,7 +79,7 @@ class component extends React.PureComponent {
           ))}
           <Snackbar
             open={isSnackBarOpen}
-            action="Remove"
+            action='Remove'
             message={this.productAddedSnackText()}
             autoHideDuration={4000}
             onRequestClose={this.onSnackbarClose}

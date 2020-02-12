@@ -67,7 +67,7 @@ class Messages extends React.PureComponent {
         <p>Multiple types of messages can be sent: info, progress, error and custom.</p>
         <div>
           <Button
-            variant="outlined"
+            variant='outlined'
             style={style.buttons}
             onClick={() => {
               this.handleInfo()
@@ -76,7 +76,7 @@ class Messages extends React.PureComponent {
             Info
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             style={style.buttons}
             onClick={() => {
               this.handleProgress()
@@ -85,7 +85,7 @@ class Messages extends React.PureComponent {
             Progress
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             style={style.buttons}
             onClick={() => {
               this.handleError()
@@ -94,7 +94,7 @@ class Messages extends React.PureComponent {
             Error
           </Button>
           <Button
-            variant="outlined"
+            variant='outlined'
             style={style.buttons}
             onClick={() => {
               this.handleCustom()
@@ -106,7 +106,7 @@ class Messages extends React.PureComponent {
         <div style={{ display: 'inline' }}>
           {result && (
             <div>
-              <Typography variant="h6">API Response:</Typography>
+              <Typography variant='h6'>API Response:</Typography>
               <Typography style={{ margin: 10 }}>{result}</Typography>
             </div>
           )}
@@ -115,7 +115,7 @@ class Messages extends React.PureComponent {
           )}
           {message && message.type && message.type === 'progress' && (
             <div style={style.root}>
-              <LinearProgress variant="determinate" value={message.progress} />
+              <LinearProgress variant='determinate' value={message.progress} />
             </div>
           )}
           {message && message.type && message.type === 'error' && (
