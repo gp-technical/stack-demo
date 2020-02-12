@@ -6,6 +6,7 @@ const initialState = {
     shared: []
   },
   editedToDoDialogOpen: false,
+  onlyMyToDo: false,
   editedToDo: {
     id: '',
     text: '',
@@ -30,6 +31,9 @@ const reducer = (state = initialState, action) => {
 
     case types.sharedToDoToggleEditDialog:
       return { ...state, editedToDoDialogOpen: !state.editedToDoDialogOpen }
+
+    case types.sharedToDoToggleOnlyMyToDo:
+      return { ...state, onlyMyToDo: !state.onlyMyToDo }
 
     case types.sharedToDoAddToDoResponse: {
       return { ...state, todos: data.todos }

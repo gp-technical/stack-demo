@@ -15,11 +15,12 @@ import { Edit } from '@material-ui/icons'
 import { services, components, actionHub } from '../../loader'
 import EditDialog from './editDialog'
 
-const sharedTodo = () => {
+const sharedToDo = () => {
   const dispatch = useDispatch()
   const { selector } = services.sharedToDo
-  const todos = useSelector(state => selector.getTodosFromUser(state))
+  const todos = useSelector(state => selector.getToDosFromUser(state))
   const localToDo = useSelector(state => selector.getLocalToDo(state))
+  const onlyMyToDo = useSelector(state => selector.getOnlyMyToDo(state))
   const ownerId = useSelector(state => selector.getOwnerId(state))
   const loggedUsers = useSelector(state => selector.getLoggedUsers(state))
 
@@ -49,6 +50,8 @@ const sharedTodo = () => {
     dispatch(actionHub.SHARED_TO_DO_TOGGLE_EDIT_DIALOG())
     dispatch(actionHub.SHARED_TO_DO_SET_EDITED_TO_DO(todo))
   }
+
+  const toggleOnlyMyToDo = () => dispatch(actionHub.SHARED_TO_DO_TOGGLE_ONLY_MY_TO_DO())
 
   const renderLoggedUsers = useCallback(
     () => (
@@ -88,77 +91,86 @@ const sharedTodo = () => {
     [loggedUsers, localToDo]
   )
 
-  const renderMyTodos = useCallback(
+  const renderMyToDos = useCallback(
     () => (
       <List>
-        {todos.map((todo, idx) => (
-          <ListItem divider key={idx}>
-            <ListItemIcon>
-              <div>
-                <Checkbox
-                  onClick={() => editToDo({ ...todo, done: !todo.done })}
-                  checked={todo.done}
-                  edge='start'
-                />
-                {todo.ownerId === ownerId ? (
-                  <Button onClick={() => openToDoEditDialog(todo)}>
-                    <Edit />
-                  </Button>
-                ) : null}
+        {todos
+          .filter(todo => {
+            if (onlyMyToDo) {
+              return todo.ownerId === ownerId
+            }
+            return todo
+          })
+          .map((todo, idx) => (
+            <ListItem divider key={idx}>
+              <ListItemIcon>
+                <div>
+                  <Checkbox
+                    onClick={() => editToDo({ ...todo, done: !todo.done })}
+                    checked={todo.done}
+                    edge='start'
+                  />
+                  {todo.ownerId === ownerId ? (
+                    <Button onClick={() => openToDoEditDialog(todo)}>
+                      <Edit />
+                    </Button>
+                  ) : null}
+                </div>
+              </ListItemIcon>
+              <ListItemText primary={todo.text} />
+              <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'flex-start' }}>
+                <Typography>Owner</Typography>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '250px',
+                    height: '43px',
+                    background: '#9b59b6',
+                    borderRadius: '10px',
+                    margin: '5px'
+                  }}
+                >
+                  <Typography style={{ color: 'white' }}>
+                    {todo.ownerId === ownerId ? 'You' : todo.ownerId}
+                  </Typography>
+                </div>
               </div>
-            </ListItemIcon>
-            <ListItemText primary={todo.text} />
-            <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'flex-start' }}>
-              <Typography>Owner</Typography>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '250px',
-                  height: '43px',
-                  background: '#9b59b6',
-                  borderRadius: '10px',
-                  margin: '5px'
-                }}
-              >
-                <Typography style={{ color: 'white' }}>{todo.ownerId}</Typography>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '40%' }}>
+                <Typography>shared with</Typography>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexFlow: 'column wrap',
+                    width: '100%',
+                    height: '121px',
+                    overflowX: 'auto'
+                  }}
+                >
+                  {todo.shared.map(userId => (
+                    <div
+                      key={userId}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '250px',
+                        height: '43px',
+                        background: '#2980b9',
+                        borderRadius: '10px',
+                        margin: '5px'
+                      }}
+                    >
+                      <Typography style={{ color: 'white' }}>
+                        {userId === ownerId ? 'You' : userId}
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', width: '40%' }}>
-              <Typography>shared with</Typography>
-              <div
-                style={{
-                  display: 'flex',
-                  flexFlow: 'column wrap',
-                  width: '100%',
-                  height: '121px',
-                  overflowX: 'auto'
-                }}
-              >
-                {todo.shared.map(userId => (
-                  <div
-                    key={userId}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      width: '250px',
-                      height: '43px',
-                      background: '#2980b9',
-                      borderRadius: '10px',
-                      margin: '5px'
-                    }}
-                  >
-                    <Typography style={{ color: 'white' }}>
-                      {userId === ownerId ? 'You' : userId}
-                    </Typography>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ListItem>
-        ))}
+            </ListItem>
+          ))}
       </List>
     ),
     [todos]
@@ -186,8 +198,17 @@ const sharedTodo = () => {
         </div>
       </div>
       <Divider />
-      <h2>My todos</h2>
-      {renderMyTodos()}
+      <div>
+        <h2>My todos</h2>
+        <Button
+          variant={onlyMyToDo ? 'outlined' : 'text'}
+          onClick={toggleOnlyMyToDo}
+          color={onlyMyToDo ? 'primary' : 'default'}
+        >
+          Only my todo
+        </Button>
+      </div>
+      {renderMyToDos()}
       <Divider />
       <div>
         <div style={{ width: '300px', margin: '20px' }}>
@@ -213,4 +234,4 @@ const sharedTodo = () => {
   )
 }
 
-export default sharedTodo
+export default sharedToDo

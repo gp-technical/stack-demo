@@ -5,15 +5,15 @@ const get = state => state[name]
 const getLocalToDo = state => get(state).localToDo
 const getEditedToDo = state => get(state).editedToDo
 const getEditedToDoDialogOpen = state => get(state).editedToDoDialogOpen
+const getOnlyMyToDo = state => get(state).onlyMyToDo
+const getToDos = state => get(state).todos
 
-const getTodos = state => get(state).todos
-
-const getTodosFromUser = state => {
+const getToDosFromUser = state => {
   const { todos, ownerId } = get(state)
-  const newTodos = todos.filter(
+  const newToDos = todos.filter(
     todo => todo.ownerId === ownerId || (todo.shared.includes(ownerId) && todo)
   )
-  return newTodos
+  return newToDos
 }
 
 const getOwnerId = state => get(state).ownerId
@@ -24,8 +24,9 @@ export default {
   getLocalToDo,
   getEditedToDo,
   getEditedToDoDialogOpen,
-  getTodos,
-  getTodosFromUser,
+  getOnlyMyToDo,
+  getToDos,
+  getToDosFromUser,
   getOwnerId,
   getLoggedUsers
 }

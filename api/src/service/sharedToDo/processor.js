@@ -17,7 +17,7 @@ const processor = async action => {
     }
 
     case types.sharedToDoAddToDo: {
-      db.createTodo(data)
+      db.createToDo(data)
       message.custom('sharedToDoAddToDoResponse', { todos: db.todos }, data.ownerId)
       data.shared.map(sharedId =>
         message.custom('sharedToDoAddToDoResponse', { todos: db.todos }, sharedId)
@@ -31,7 +31,7 @@ const processor = async action => {
       const clientsToListen = db.getSingleToDo(data.id).shared
       clientsToListen.push(...data.shared)
       const ClientsToListenSet = [...new Set(clientsToListen)]
-      db.editTodo(data)
+      db.editToDo(data)
       message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, data.ownerId)
       ClientsToListenSet.map(sharedId =>
         message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, sharedId)

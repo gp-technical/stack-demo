@@ -10,23 +10,23 @@ class db {
   ]
   static loggedUsers = []
 
-  static createTodo(todo) {
-    const newTodos = [...this.todos, todo]
-    this.todos = newTodos
-    return newTodos
+  static createToDo(todo) {
+    const newToDos = [...this.todos, todo]
+    this.todos = newToDos
+    return newToDos
   }
 
-  static editTodo(todo) {
-    const newTodos = this.todos.map(item => (item.id === todo.id ? todo : item))
-    this.todos = newTodos
-    return newTodos
+  static editToDo(todo) {
+    const newToDos = this.todos.map(item => (item.id === todo.id ? todo : item))
+    this.todos = newToDos
+    return newToDos
   }
 
   static getSingleToDo(id) {
     return this.todos.find(i => i.id === id)
   }
 
-  static getTodosFromUser(socketId) {
+  static getToDosFromUser(socketId) {
     const todos = this.todos.filter(
       todo => todo.ownerId === socketId || (todo.shared.includes(socketId) && todo)
     )
