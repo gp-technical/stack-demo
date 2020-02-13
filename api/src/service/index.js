@@ -5,6 +5,8 @@ import gp from './gp'
 import thunks from './thunks'
 import shopping from './shopping'
 import messages from './messages'
+import testando from './testando'
+import ticTacToe from './ticTacToe'
 
 export default {
   counter,
@@ -13,5 +15,7 @@ export default {
   gp,
   thunks,
   shopping,
-  messages
+  messages,
+  testando,
+  ticTacToe
 }
