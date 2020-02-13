@@ -2,40 +2,29 @@ import { makeProcessor, message } from '@gp-technical/stack-pack-api'
 import db from './db'
 
 const processor = async action => {
-  const { types, type, data, app } = action
+  const { types, type, data } = action
   switch (type) {
-    case types.authenticate: {
-      db.addUserToLoggedList(app)
+    case types.sharedToDoAddToLoggedUsers: {
+      db.addUserToLoggedList(data)
       message.custom('sharedToDoLoggedUsers', { loggedUsers: db.loggedUsers })
       break
     }
 
-    case types.disconnect: {
-      db.removeUserFromLoggedList(app)
+    case types.sharedToDoRemoveFromLoggedUsers: {
+      db.removeUserFromLoggedList(data)
       message.custom('sharedToDoLoggedUsers', { loggedUsers: db.loggedUsers })
       break
     }
 
     case types.sharedToDoAddToDo: {
       db.createToDo(data)
-      message.custom('sharedToDoAddToDoResponse', { todos: db.todos }, data.ownerId)
-      data.shared.map(sharedId =>
-        message.custom('sharedToDoAddToDoResponse', { todos: db.todos }, sharedId)
-      )
-      // already messaging everyone that matters about the todos
-      // don't need to send a sharedToDoAddToDoResponse here
+      message.custom('sharedToDoAddToDoResponse', { todos: db.todos })
       break
     }
 
     case types.sharedToDoEditToDo: {
-      const clientsToListen = db.getSingleToDo(data.id).shared
-      clientsToListen.push(...data.shared)
-      const ClientsToListenSet = [...new Set(clientsToListen)]
       db.editToDo(data)
-      message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, data.ownerId)
-      ClientsToListenSet.map(sharedId =>
-        message.custom('sharedToDoEditToDoResponse', { todos: db.todos }, sharedId)
-      )
+      message.custom('sharedToDoEditToDoResponse', { todos: db.todos })
       break
     }
   }

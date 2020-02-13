@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   Divider,
@@ -7,28 +7,34 @@ import {
   List,
   ListItem,
   ListItemText,
-  Checkbox,
-  ListItemIcon,
   Typography
 } from '@material-ui/core'
-import { Edit } from '@material-ui/icons'
 import { services, components, actionHub } from '../../loader'
 import EditDialog from './editDialog'
+import { getCookie } from '../../utils'
+import WhoAmI from './fragments/whoAmI'
+import MyTodos from './fragments/myTodos'
 
 const sharedToDo = () => {
   const dispatch = useDispatch()
   const { selector } = services.sharedToDo
-  const todos = useSelector(state => selector.getToDosFromUser(state))
   const localToDo = useSelector(state => selector.getLocalToDo(state))
-  const onlyMyToDo = useSelector(state => selector.getOnlyMyToDo(state))
   const ownerId = useSelector(state => selector.getOwnerId(state))
   const loggedUsers = useSelector(state => selector.getLoggedUsers(state))
+
+  const disconnect = token => dispatch(actionHub.SHARED_TO_DO_REMOVE_FROM_LOGGED_USERS(token))
+  const connect = token => dispatch(actionHub.SHARED_TO_DO_ADD_TO_LOGGED_USERS(token))
 
   const setLocalToDoContent = text =>
     dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ ...localToDo, text }))
 
   const setLocalToDoShared = sharedList =>
-    dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ ...localToDo, shared: sharedList }))
+    dispatch(
+      actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({
+        ...localToDo,
+        shared: sharedList
+      })
+    )
 
   const addToDo = () => {
     dispatch(
@@ -41,17 +47,6 @@ const sharedToDo = () => {
     )
     dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ text: '', shared: [] }))
   }
-
-  const editToDo = todo => {
-    dispatch(actionHub.SHARED_TO_DO_EDIT_TO_DO(todo))
-  }
-
-  const openToDoEditDialog = todo => {
-    dispatch(actionHub.SHARED_TO_DO_TOGGLE_EDIT_DIALOG())
-    dispatch(actionHub.SHARED_TO_DO_SET_EDITED_TO_DO(todo))
-  }
-
-  const toggleOnlyMyToDo = () => dispatch(actionHub.SHARED_TO_DO_TOGGLE_ONLY_MY_TO_DO())
 
   const renderLoggedUsers = useCallback(
     () => (
@@ -78,7 +73,9 @@ const sharedToDo = () => {
               <ListItemText
                 primary={
                   <Typography
-                    style={{ color: localToDo.shared.includes(userId) ? 'white' : 'black' }}
+                    style={{
+                      color: localToDo.shared.includes(userId) ? 'white' : 'black'
+                    }}
                   >
                     {userId}
                   </Typography>
@@ -91,124 +88,28 @@ const sharedToDo = () => {
     [loggedUsers, localToDo]
   )
 
-  const renderMyToDos = useCallback(
-    () => (
-      <List>
-        {todos
-          .filter(todo => {
-            if (onlyMyToDo) {
-              return todo.ownerId === ownerId
-            }
-            return todo
-          })
-          .map((todo, idx) => (
-            <ListItem divider key={idx}>
-              <ListItemIcon>
-                <div>
-                  <Checkbox
-                    onClick={() => editToDo({ ...todo, done: !todo.done })}
-                    checked={todo.done}
-                    edge='start'
-                  />
-                  {todo.ownerId === ownerId ? (
-                    <Button onClick={() => openToDoEditDialog(todo)}>
-                      <Edit />
-                    </Button>
-                  ) : null}
-                </div>
-              </ListItemIcon>
-              <ListItemText primary={todo.text} />
-              <div style={{ display: 'flex', flexDirection: 'column', alignSelf: 'flex-start' }}>
-                <Typography>Owner</Typography>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '250px',
-                    height: '43px',
-                    background: '#9b59b6',
-                    borderRadius: '10px',
-                    margin: '5px'
-                  }}
-                >
-                  <Typography style={{ color: 'white' }}>
-                    {todo.ownerId === ownerId ? 'You' : todo.ownerId}
-                  </Typography>
-                </div>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', width: '40%' }}>
-                <Typography>shared with</Typography>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexFlow: 'column wrap',
-                    width: '100%',
-                    height: '121px',
-                    overflowX: 'auto'
-                  }}
-                >
-                  {todo.shared.map(userId => (
-                    <div
-                      key={userId}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '250px',
-                        height: '43px',
-                        background: '#2980b9',
-                        borderRadius: '10px',
-                        margin: '5px'
-                      }}
-                    >
-                      <Typography style={{ color: 'white' }}>
-                        {userId === ownerId ? 'You' : userId}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ListItem>
-          ))}
-      </List>
-    ),
-    [todos]
-  )
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const token = getCookie('sharedToDoUuid')
+      if (token.length) {
+        connect(token)
+        clearInterval(interval)
+      }
+    }, 500)
+
+    window.addEventListener('beforeunload', () => {
+      const token = getCookie('sharedToDoUuid')
+      disconnect(token)
+    })
+  }, [])
 
   return (
     <components.Box>
       <EditDialog />
       <h2>Shared todo</h2>
-      <div>
-        <h3>Who am i?</h3>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '250px',
-            height: '43px',
-            background: '#2980b9',
-            borderRadius: '10px',
-            marginBottom: '10px'
-          }}
-        >
-          <Typography style={{ color: 'white' }}>{ownerId}</Typography>
-        </div>
-      </div>
+      <WhoAmI />
       <Divider />
-      <div>
-        <h2>My todos</h2>
-        <Button
-          variant={onlyMyToDo ? 'outlined' : 'text'}
-          onClick={toggleOnlyMyToDo}
-          color={onlyMyToDo ? 'primary' : 'default'}
-        >
-          Only my todo
-        </Button>
-      </div>
-      {renderMyToDos()}
+      <MyTodos />
       <Divider />
       <div>
         <div style={{ width: '300px', margin: '20px' }}>

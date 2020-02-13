@@ -1,3 +1,5 @@
+import { getCookie } from '../../utils'
+
 const initialState = {
   todos: [],
   ownerId: '',
@@ -20,8 +22,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   const { type, types, data } = action
   switch (type) {
-    case types.sharedToDo_init:
-      return { ...state, ownerId: data.socketId }
+    case types.sharedToDo_init: {
+      if (!document.cookie.includes('sharedToDoUuid')) {
+        document.cookie = `sharedToDoUuid=${data.uuid}`
+        return { ...state, ownerId: data.uuid }
+      } else {
+        return { ...state, ownerId: getCookie('sharedToDoUuid') }
+      }
+    }
 
     case types.sharedToDoSetLocalToDo:
       return { ...state, localToDo: data }

@@ -33,14 +33,16 @@ class db {
     return todos
   }
 
-  static addUserToLoggedList(userId) {
-    const newUsers = [...this.loggedUsers, userId]
+  static addUserToLoggedList(token) {
+    if (this.loggedUsers.includes(token)) return this.loggedUsers
+
+    const newUsers = [...this.loggedUsers, token]
     this.loggedUsers = newUsers
     return newUsers
   }
 
-  static removeUserFromLoggedList(userId) {
-    const newUsers = this.loggedUsers.filter(item => item !== userId)
+  static removeUserFromLoggedList(token) {
+    const newUsers = this.loggedUsers.filter(item => item !== token)
     this.loggedUsers = newUsers
     return newUsers
   }

@@ -4,7 +4,6 @@ import { components, services } from './loader'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
-import { actions } from '@gp-technical/stack-pack-app'
 import { muiTheme } from './theme'
 import styles from './index.scss'
 
@@ -14,11 +13,6 @@ const styling = {
 }
 
 class component extends React.PureComponent {
-  componentDidMount() {
-    window.addEventListener('beforeunload', () => {
-      this.props.disconnect()
-    })
-  }
   render() {
     const { user, branding } = this.props
     return (
@@ -57,11 +51,4 @@ const mapStateToProps = state => ({
   user: services.auth.selector.getProfile(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-  disconnect: () => dispatch(actions.disconnect())
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(component)
+export default connect(mapStateToProps)(component)
