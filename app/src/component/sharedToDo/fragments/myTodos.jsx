@@ -11,6 +11,7 @@ import {
   Typography
 } from '@material-ui/core'
 import { Edit } from '@material-ui/icons'
+import { UserCard, SharedWithArea, SharedWIthContainer } from './styles'
 
 const MyTodos = () => {
   const dispatch = useDispatch()
@@ -65,61 +66,24 @@ const MyTodos = () => {
                 }}
               >
                 <Typography>Owner</Typography>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '250px',
-                    height: '43px',
-                    background: '#9b59b6',
-                    borderRadius: '10px',
-                    margin: '5px'
-                  }}
-                >
-                  <Typography style={{ color: 'white' }}>
+                <UserCard selected>
+                  <Typography style={{ color: 'white', textAlign: 'center' }}>
                     {todo.ownerId === ownerId ? 'You' : todo.ownerId}
                   </Typography>
-                </div>
+                </UserCard>
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '40%'
-                }}
-              >
+              <SharedWIthContainer>
                 <Typography>shared with</Typography>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexFlow: 'column wrap',
-                    width: '100%',
-                    height: '121px',
-                    overflowX: 'auto'
-                  }}
-                >
+                <SharedWithArea>
                   {todo.shared.map(userId => (
-                    <div
-                      key={userId}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: '250px',
-                        height: '43px',
-                        background: '#2980b9',
-                        borderRadius: '10px',
-                        margin: '5px'
-                      }}
-                    >
-                      <Typography style={{ color: 'white' }}>
+                    <UserCard key={userId}>
+                      <Typography style={{ color: 'white', textAlign: 'center' }}>
                         {userId === ownerId ? 'You' : userId}
                       </Typography>
-                    </div>
+                    </UserCard>
                   ))}
-                </div>
-              </div>
+                </SharedWithArea>
+              </SharedWIthContainer>
             </ListItem>
           ))}
       </List>

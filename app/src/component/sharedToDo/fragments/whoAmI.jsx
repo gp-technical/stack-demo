@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { services } from '../../../loader'
+import { UserCard } from './styles'
 
 const WhoAmI = () => {
   const { selector } = services.sharedToDo
@@ -10,20 +11,9 @@ const WhoAmI = () => {
   return (
     <div>
       <h3>Who am i?</h3>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '400px',
-          height: '43px',
-          background: '#2980b9',
-          borderRadius: '10px',
-          marginBottom: '10px'
-        }}
-      >
+      <UserCard>
         <Typography style={{ color: 'white' }}>{ownerId}</Typography>
-      </div>
+      </UserCard>
     </div>
   )
 }

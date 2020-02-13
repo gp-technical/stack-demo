@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         document.cookie = `sharedToDoUuid=${data.uuid}`
         return { ...state, ownerId: data.uuid }
       } else {
-        return { ...state, ownerId: getCookie('sharedToDoUuid') }
+        return { ...state, ownerId: getCookie('sharedToDoUuid'), todos: data.todos }
       }
     }
 

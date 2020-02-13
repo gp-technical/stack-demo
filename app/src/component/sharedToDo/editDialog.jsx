@@ -1,15 +1,8 @@
 import React, { useCallback } from 'react'
-import {
-  Dialog,
-  ListItem,
-  List,
-  ListItemText,
-  Typography,
-  TextField,
-  Button
-} from '@material-ui/core'
+import { Dialog, List, ListItemText, Typography, TextField, Button } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { services, actionHub } from '../../loader'
+import { UserCardAsListItem } from './fragments/styles'
 
 const EditDialog = () => {
   const dispatch = useDispatch()
@@ -40,15 +33,9 @@ const EditDialog = () => {
         {loggedUsers
           .filter(userId => userId !== ownerId)
           .map(userId => (
-            <ListItem
+            <UserCardAsListItem
               button
-              style={{
-                width: '250px',
-                background: editedToDo.shared.includes(userId) ? '#9b59b6' : 'white',
-                margin: '5px',
-                borderRadius: '10px',
-                border: '1px solid black'
-              }}
+              selected={editedToDo.shared.includes(userId)}
               key={userId}
               onClick={() =>
                 editedToDo.shared.includes(userId)
@@ -58,14 +45,10 @@ const EditDialog = () => {
             >
               <ListItemText
                 primary={
-                  <Typography
-                    style={{ color: editedToDo.shared.includes(userId) ? 'white' : 'black' }}
-                  >
-                    {userId}
-                  </Typography>
+                  <Typography style={{ color: 'white', textAlign: 'center' }}>{userId}</Typography>
                 }
               />
-            </ListItem>
+            </UserCardAsListItem>
           ))}
       </List>
     ),
