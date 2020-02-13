@@ -8,7 +8,9 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { actionHub, services, components } from '../../loader'
 import styled from 'styled-components'
+import Switch from '@material-ui/core/Switch'
 
+import Game from './game'
 
 const localData = 'Essa veio localmente.'
 
@@ -19,14 +21,16 @@ export default () =>
 
     const { selector } = services.ticTacToe
 
-    const data = useSelector(state => selector.getData(state))
-    const myId = useSelector(state => selector.getId(state))
+    const user = useSelector(state => selector.getUser(state))
+
     // const topics = Object.keys(data)
-    console.log('DATA:', data)
+    console.log('DATA:', user)
 
 
 
-    const onFetchFromApi = () => dispatch(actionHub.TIC_TAC_TOE_FROM_API())
+    // const onFetchFromApi = () => dispatch(actionHub.TIC_TAC_TOE_FROM_API())
+
+    const [checked, setChecked] = useState(false)
 
 
 
@@ -35,56 +39,28 @@ export default () =>
             <Wrapper>
 
                 <h3> TIC TAC TOE </h3>
-                <p> User: {myId}</p>
+                <Subtitle>
+                    <p> User: {user}</p>
+                    <XOBox>
+                        <p> X </p>
+                        <Switch
+                            checked={checked}
+                            onChange={() => setChecked(!checked)}
+                            value='checkedA'
+                            color='primary'
+                        />
+                        <p> O </p>
+                    </XOBox>
+                </Subtitle>
 
                 <Main>
+                    <GameBoard>
 
-                    <Panel>
-                        <List>
-                            {
-                                ['sala1','sala2', 'sala3'].map(topic => 
+                        <Game />
 
-                                    <ListItem 
-                                        key={topic} 
-                                        button
-                                        onClick={e => setActiveTopic(e.target.innerText)}
-                                    >
-                                        <ListItemText primary={topic} />
-                                    </ListItem>
-                                    
-                                )
-                            }
-                        </List>
-                    </Panel>
-
-                    <Game>
-
-                    </Game>
-
+                    </GameBoard>
                 </Main>
 
-                <NewRoom>
-                    <ChatBox 
-                        id='standard-basic' 
-                        label='Create a room' 
-                        value={textValue}
-                        onChange={e => setTextValue(e.target.value)}
-                    />
-
-                    <SButton 
-                        variant='contained' 
-                        color='primary'
-                        onClick={() => 
-                            {
-                                // sendChatAction({ from: user, msg: textValue, topic: activeTopic })
-                                onFetchFromApi()
-                                setTextValue('')
-                            }
-                        }
-                    >
-                        Send
-                    </SButton>
-                </NewRoom>
 
             </Wrapper>
         </components.Box>
@@ -94,7 +70,7 @@ export default () =>
 const Wrapper = styled.div`
     height: 35vw;
     width: 100%;
-    /* border: 1px solid black; */
+    border: 1px solid black;
 
     display: flex;
     flex-direction: column;
@@ -102,6 +78,19 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
 `   
+
+const Subtitle = styled.div`
+    width: 30%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
+const XOBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
 
 const Main = styled.div`
     height: 80%;
@@ -118,10 +107,16 @@ const Panel = styled.div`
     padding-right: 1.5%;
 `
 
-const Game = styled.div`
-    /* border: 1px solid black; */
+const GameBoard = styled.div`
+    border: 1px solid orange;
     height: 100%;
     flex: 1.3;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 `
 
 const NewRoom = styled.div`

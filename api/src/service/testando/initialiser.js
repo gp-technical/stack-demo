@@ -1,7 +1,14 @@
+const XO = 'X'
+
 const initialiser = async () => {
-  const token = 'user' + Math.floor(Math.random() * Math.floor(100))
-  console.log('TOKEN', token)
-  return token
+  const user = 'user' + Math.floor(Math.random() * Math.floor(100))
+
+  const data =
+  {
+    user,
+    XO
+  }
+  return data
 }
 
 export default initialiser

@@ -4,12 +4,14 @@ const get = state => {
   return state[name]
 }
 
-const getData = state => {
-  return get(state).data
+const getUser = state => {
+  return get(state).user
 }
 
-const getSource = state => {
-  return get(state).source
+const getXO = state => {
+  return get(state).XO
 }
 
-export default { getData, getSource }
+
+
+export default { getUser, getXO }

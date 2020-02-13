@@ -1,3 +1,9 @@
+const getCookie = name => 
+{
+  const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)')
+  return v ? v[2] : null
+}
+
 const reducer = (state = {}, action) => {
   const { type, types, data } = action
 
@@ -5,24 +11,18 @@ const reducer = (state = {}, action) => {
 
     case types.testando_init:
       {
-        if (!document.cookie.includes('myToken'))
+        if (!document.cookie.includes('user'))
         {
-          const token = data
-          document.cookie = `myToken=${token}`
-          console.log(document.cookie)
-          
-          return { ...state, data }
+          const user = data.user
+          document.cookie = `user=${user}`    
+          const XO = data.XO 
+          document.cookie = `XO=${XO}`    
+               
+          return { ...state, user: getCookie('user'), XO: getCookie('XO') }
         }
         else
         {
-          const getCookie = name => 
-          {
-            const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)')
-            return v ? v[2] : null
-          }
-
-          console.log('TOKEN:', getCookie('myToken'))
-          return { ...state, data: getCookie('myToken') }
+          return { ...state, user: getCookie('user'), XO: getCookie('XO') }
         }
       }
 

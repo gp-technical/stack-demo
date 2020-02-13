@@ -36,8 +36,8 @@ class component extends React.PureComponent {
                 <components.thunks />
                 <components.gp />
                 <components.shopping /> */}
-                <components.testando />
-                {/* <components.ticTacToe /> */}
+                {/* <components.testando /> */}
+                <components.ticTacToe />
               </Grid>
             </Grid>
           </div>

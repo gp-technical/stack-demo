@@ -4,11 +4,13 @@ const get = state => {
   return state[name]
 }
 
-const getData = state => {
-  return get(state).data
+const getUser = state => {
+  return get(state).user
 }
 
-const getId = state => get(state).myId
+const getXO = state => {
+  return get(state).XO
+}
 
 
-export default { getData, getId }
+export default { getUser, getXO }

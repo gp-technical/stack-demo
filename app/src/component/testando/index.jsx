@@ -14,8 +14,9 @@ export default () =>
     const dispatch = useDispatch()
     const { selector } = services.testando
 
-    // const source = useSelector(state => selector.getSource(state))
-    const data = useSelector(state => selector.getData(state))
+
+    const user = useSelector(state => selector.getUser(state))
+    const XO = useSelector(state => selector.getXO(state))
 
     const onFetchFromLocal = () => dispatch(actionHub.TESTANDO_FROM_LOCAL(localData))
     const onFetchFromApi = () => dispatch(actionHub.TESTANDO_FROM_API())
@@ -29,12 +30,12 @@ export default () =>
             <h3> Data </h3>
             <ul>
                 <li>
-                    <h4> Source </h4>
-                    {/* {source} */}
+                    <h4> User </h4>
+                    {user}
                 </li>
                 <li>
-                    <h4> Data </h4>
-                    {data}
+                    <h4> XO </h4>
+                    {XO}
                 </li>
             </ul>
 
