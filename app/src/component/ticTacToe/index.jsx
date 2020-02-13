@@ -17,6 +17,7 @@ export default () =>
 
 
     const [checked, setChecked] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     return (
         <components.Box>
@@ -29,9 +30,10 @@ export default () =>
                         <p> X </p>
                         <Switch
                             checked={checked}
-                            onChange={() => setChecked(!checked)}
+                            onChange={() => { setChecked(!checked); setDisabled(true) }}
                             value='checkedA'
                             color='primary'
+                            disabled={disabled}
                         />
                         <p> O </p>
                     </XOBox>
