@@ -1,107 +1,112 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import styled from 'styled-components'
 
-const Cell = ({ value, clicked, cellNum }) => 
 
-    <SCell onClick={() => clicked(cellNum)}> {value} </SCell>
+const Square = ({ value, onClick }) => 
+    
+    <SSquare onClick={onClick}> 
+        <Color type={value}>
+            {value} 
+        </Color>
+    </SSquare>
 
 
-export default () => 
+export default ({ isX }) =>
 {
-    const initData =
+    const [boardSquares, setBoardSquares] = useState(Array(9).fill(null))
+    const [xIsNext, setXIsNext] = useState(true)
+
+    const handleClick = (i, isX) =>
     {
-        cells: Array.apply(null, {length: 9}).map(x => ''),
-        symbol: 'X'
-    }
+        if (isX === xIsNext) {
+            const squares = [...boardSquares]
 
-    const [cells, setCells] = useState(initData.cells)
-    const [symbol, setSymbol] = useState(initData.symbol)
+            if (calculateWinner(boardSquares) || squares[i]) return 
 
+            squares[i] = xIsNext ? 'X' : 'O'
 
-
-    const winningStates = 
-    [
-        '111000000',
-        '000111000',
-        '000000111',
-        '100100100',
-        '010010010',
-        '100010001',
-        '001010100'
-    ]
-
-    const moveBitmap = symbol => cells.map(x => x === symbol ? 1: 0).join('')
-
-    const checkWinner = symbol =>
-    {
-        for (let i of winningStates)
-        {
-            if ( (parseInt(moveBitmap(symbol), 2) & parseInt(i, 2)) === parseInt(i, 2) )
-            {
-                alert(`${symbol} won! New Game?`)
-                newGame( )
-            }
+            setBoardSquares(squares)
+            setXIsNext(!xIsNext)
         }
     }
 
+    const renderSquare = i => <Square value={boardSquares[i]} onClick={() => handleClick(i, isX)} />
 
-
-
-    const clicked = x => 
-    {
-        const newCellData = Array(...cells)
-        if (!newCellData[x])
-        {
-            newCellData[x] = symbol
-            setCells(newCellData)
-            setSymbol(symbol === 'X' ? 'O' : 'X')
-        }
-    }
-
-    const newGame = () => // reseting board
-    {
-        setCells(initData.cells)
-        setSymbol(initData.symbol)
-    }
-
-    const vCells = []
-    for(let i=0; i<9; i++)
-    {
-        vCells.push(
-            <Cell 
-                value={cells[i]} 
-                cellNum={i}
-                clicked={clicked}
-            />
-        )
-    }
-
-
-    useEffect(() => checkWinner(symbol === 'X' ? 'O' : 'X'))
-
+    let status 
+    const winner = calculateWinner(boardSquares)
+    status = winner ? `Winner is ${winner}` : `Next: ${xIsNext ? 'X' : 'O'}`
 
     return (
-        <div>  
+        <Fragment>
+            <p> {status} </p>
+            <Board>
+                <div>
+                    {renderSquare(0)}
+                    {renderSquare(1)}
+                    {renderSquare(2)}
+                </div>
+                <div>
+                    {renderSquare(3)}
+                    {renderSquare(4)}
+                    {renderSquare(5)}
+                </div>
+                <div>
+                    {renderSquare(6)}
+                    {renderSquare(7)}
+                    {renderSquare(8)}
+                </div>
 
-            <SBoard>
-                {vCells}
-            </SBoard>
-
-            <p> Next Move: {symbol} </p>
-
-        </div>
+            </Board>
+        </Fragment>
     )
 }
 
+const calculateWinner = squares => {
+    const winningLines = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+    ]
 
-const SCell = styled.div`
-    border: 1px solid #bbb;
-    height: 50px;
-    width: 50px;
-`   
+    for (let i = 0; i < winningLines.length; i++)
+    {
+        const [a, b, c] = winningLines[i]
 
-const SBoard = styled.div`
+        if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c])
+        {
+            return squares[a]
+        }
+    }
+    return null
+}
+
+
+const px = n => `${(n * 100) / 1440}vw`
+
+const Board = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 156px;
+
+    width: ${px(210)};
 `   
+
+const SSquare = styled.div`
+    border: 1px solid gray;
+
+    height: ${px(70)};
+    width: ${px(70)};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`  
+
+const Color = styled.div`
+    color: ${props => props.type === 'X' ? 'red' : 'blue'};
+    font-size: ${px(40)};
+`

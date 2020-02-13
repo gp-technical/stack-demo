@@ -1,9 +1,5 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Divider from '@material-ui/core/Divider'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { actionHub, services, components } from '../../loader'
@@ -12,27 +8,15 @@ import Switch from '@material-ui/core/Switch'
 
 import Game from './game'
 
-const localData = 'Essa veio localmente.'
 
 export default () =>
 {
-    const dispatch = useDispatch()
-    const [textValue, setTextValue] = useState('')
-
     const { selector } = services.ticTacToe
 
     const user = useSelector(state => selector.getUser(state))
 
-    // const topics = Object.keys(data)
-    console.log('DATA:', user)
-
-
-
-    // const onFetchFromApi = () => dispatch(actionHub.TIC_TAC_TOE_FROM_API())
 
     const [checked, setChecked] = useState(false)
-
-
 
     return (
         <components.Box>
@@ -56,7 +40,7 @@ export default () =>
                 <Main>
                     <GameBoard>
 
-                        <Game />
+                        <Game isX={!checked} />
 
                     </GameBoard>
                 </Main>
@@ -70,7 +54,7 @@ export default () =>
 const Wrapper = styled.div`
     height: 35vw;
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
     display: flex;
     flex-direction: column;
@@ -108,7 +92,7 @@ const Panel = styled.div`
 `
 
 const GameBoard = styled.div`
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     height: 100%;
     flex: 1.3;
 
