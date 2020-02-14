@@ -8,3 +8,5 @@ node_modules/
 save-commands.json
 VAULT_VERSION_*
 .vscode/settings.json
+.env*
+vault.json
