@@ -43,10 +43,7 @@ const reducer = (state = initialState, action) => {
     case types.sharedToDoToggleOnlyMyToDo:
       return { ...state, onlyMyToDo: !state.onlyMyToDo }
 
-    case types.sharedToDoAddToDoResponse: {
-      return { ...state, todos: data.todos }
-    }
-
+    case types.sharedToDoAddToDoResponse:
     case types.sharedToDoEditToDoResponse:
       return { ...state, todos: data.todos }
 
