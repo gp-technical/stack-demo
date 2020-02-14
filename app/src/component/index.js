@@ -9,8 +9,10 @@ import productList from './shopping/productList'
 import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import messages from './messages'
+import fibo from './fibo'
 
 export default {
+  fibo,
   counter,
   errors,
   fetch,

@@ -5,6 +5,7 @@ import gp from './gp'
 import thunks from './thunks'
 import shopping from './shopping'
 import messages from './messages'
+import fibo from './fibo'
 
 export default {
   counter,
@@ -13,5 +14,6 @@ export default {
   gp,
   thunks,
   shopping,
-  messages
+  messages,
+  fibo
 }
