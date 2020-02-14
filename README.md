@@ -528,14 +528,22 @@ The feature service is then further exported through the `app/src/service/index.
 ### _api/src/service/fetch/initialiser.js_
 
 ```javascript
-const initialiser = async () => {
+const initialiser = async (user, socketId, socketOpts) => {
+  console.log(`receiving data from user: ${user}`);
+  console.log(`His socketId is: ${socketId}`);
+  console.log(`Socket options: ${socketOpts}`);
   return `This is the initial value for the data. It was sent by the stack-demo API, specifically the 'fetch' service initialiser, at startup.`
 }
 
 export default initialiser
 ```
 
-This file is optional. If present the `initialiser` function must be marked as `async`. The function can then directly return whatever data is required by the feature at start-up. A benefit of being
+This file is optional. If present the `initialiser` function must be marked as `async`. The function can receive three arguments:
+  - user -> User object containing information about the logged user
+  - socketId -> Connection id of the client that calls the initialiser
+  - socketOpts -> general socket options
+
+It also can directly return whatever data is required by the feature at start-up. A benefit of being
 an `async` function is the ability to `await` the results of any database or third-party api calls you might need when gathering initialisation data.
 
 The data returned, in common with all data returned by the api, can be normal javascript types or plain objects, it does not need to be JSON. The stack takes care of transmitting the data for you
