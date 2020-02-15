@@ -47,6 +47,7 @@ const reducer = (state = initialState, action) => {
     case types.sharedToDoEditToDoResponse:
       return { ...state, todos: data.todos }
 
+    // that's a custom message from the api
     case types.sharedToDoLoggedUsers:
       return { ...state, loggedUsers: data.loggedUsers }
 

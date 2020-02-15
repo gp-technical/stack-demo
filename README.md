@@ -1277,6 +1277,151 @@ dispatches the `GP_GET_DOCUMENTS` action via the `getDocuments` function.
 The `components.Table` is a shared component supplied by the `stack-pack-app` package. The columns of this table are defined using a plain `js` object called `columns`. You can see here that the
 table component supports custom column contents and the custom formatting of column values.
 
+# Feature: `sharedToDo`
+
+### _app/src/service/sharedToDo/action.js_
+
+```javascript
+  import name from './name'
+  import { makeActions, makeTypes } from '@gp-technical/stack-pack-app'
+
+  const api = makeTypes(name, ['addToDo', 'editToDo', 'addToLoggedUsers', 'removeFromLoggedUsers'])
+
+  const local = makeTypes(name, [
+    'setLocalToDo',
+    'setEditedToDo',
+    'toggleEditDialog',
+    'toggleOnlyMyToDo'
+  ])
+
+  const actions = {
+    ...makeActions(api, { local: false }),
+    ...makeActions(local, { local: true })
+  }
+
+  const types = {
+    ...api,
+    ...local
+  }
+
+  export { actions, types }
+```
+
+The shared todo feature uses four actions for api communication:
+  * addToDo - tells the api that someone is adding a todo
+  * editToDo - tells the api that someone is editing a todo
+  * addToLoggedUsers - tells the api that someone is online
+  * removeFromLoggedUsers - tells the api that someone is not online anymore
+
+On the local level, there are more four actions:
+  * setLocalToDo - defines the value of the local to do fullfilled in the form
+  * setEditedToDo - defines the value of the local to do fullfilled in the edit form
+  * toggleEditDialog - defines if the edit dialog is open or not
+  * toggleOnlyMyToDo - defines if the user wants to show only his todos
+
+## The `api` Service Files
+
+### _api/src/service/sharedToDo/initialiser.js_
+```javascript
+import db from './db'
+const uuid = require('uuid/v4')
+
+const initialiser = async user => {
+  return { user, uuid: uuid(), todos: db.todos }
+}
+
+export default initialiser
+```
+
+When the client connects, we send him an uuid and all the todos. This uuid, if not already, will be stored in a cookie on the client's browser. The client handles the message:
+
+### _app/src/service/sharedToDo/reducer.js_
+
+```javascript
+    case types.sharedToDo_init: {
+      if (!document.cookie.includes('sharedToDoUuid')) {
+        document.cookie = `sharedToDoUuid=${data.uuid}`
+        return { ...state, ownerId: data.uuid }
+      } else {
+        return { ...state, ownerId: getCookie('sharedToDoUuid'), todos: data.todos }
+      }
+    }
+```
+
+From this, the server needs to know what's the client uuid. It could be the uuid that the server just sent, or it could be another already stored.
+
+```javascript
+
+const disconnect = token => dispatch(actionHub.SHARED_TO_DO_REMOVE_FROM_LOGGED_USERS(token))
+const connect = token => dispatch(actionHub.SHARED_TO_DO_ADD_TO_LOGGED_USERS(token))
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    const token = getCookie('sharedToDoUuid')
+    if (token.length) {
+      connect(token)
+      clearInterval(interval)
+    }
+  }, 500)
+
+  window.addEventListener('beforeunload', () => {
+    const token = getCookie('sharedToDoUuid')
+    disconnect(token)
+  })
+}, [])
+```
+When the main `sharedToDo` component mounts, it checks if the cookie was already instantiated. This check needs to be done, because sometimes the component renders first than the server request to set the cookie. Lastly, a "beforeunload" event handles when the user closes or updates the tab, disconnecting him from the service and removing him from the logged users list.
+
+## The `app` Component Files
+
+### _app/src/component/sharedToDo/fragments/todoForm.js_
+
+```javascript
+const dispatch = useDispatch()
+const { selector } = services.sharedToDo
+const localToDo = useSelector(state => selector.getLocalToDo(state))
+const ownerId = useSelector(state => selector.getOwnerId(state))
+const loggedUsers = useSelector(state => selector.getLoggedUsers(state))
+
+const setLocalToDoContent = text =>
+  dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ ...localToDo, text }))
+
+const setLocalToDoShared = sharedList =>
+  dispatch(
+    actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({
+      ...localToDo,
+      shared: sharedList
+    })
+  )
+
+const addToDo = () => {
+  dispatch(
+    actionHub.SHARED_TO_DO_ADD_TO_DO({
+      id: Date.now(),
+      ownerId,
+      ...localToDo,
+      done: false
+    })
+  )
+  dispatch(actionHub.SHARED_TO_DO_SET_LOCAL_TO_DO({ text: '', shared: [] }))
+}
+```
+
+Made some dispatch customizations inside the component file. First, there's a dispatch that sets the local todo contents. Second, the `setLocalToDoShared` can edit the shared list of our local todo. Last, there's the addToDo, the only dispatch to the server. It sends the todo to be added in the server's todo list.
+
+### _api/src/service/sharedToDo/processor.js_
+
+```javascript
+case types.sharedToDoAddToDo: {
+  db.createToDo(data),
+  message.custom('sharedToDoAddToDoResponse', { todos: db.todos })
+  break
+}
+``` 
+
+When the api receives this message, the todo is added to the todo list, and a custom message is sent to all users connected, even if they don't own or share the todo. To add more security, in the case of sensitive data, for example, this behaviour could change to only the owner and the shared users get the message (this also need to be changed in the initializer).
+
+The edit todo action is pretty similar to the add, it just do a different data processing on the database.
 
 # Feature: `shopping`
 Now that you have seen how to implement the simple generic features, feel free to explore the `shopping` feature, which provides a bigger picture view into the capabilities of the stack.
