@@ -4,6 +4,7 @@ import { actionHub, services, components } from '../../loader'
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import Game from './game'
+import { direction, alignment, px, font } from './styles'
 
 export default () => {
   const dispatch = useDispatch()
@@ -15,8 +16,6 @@ export default () => {
   const userId = useSelector(state => selector.getUserId(state))
   const users = useSelector(state => selector.getUsers(state))
   const isFull = useSelector(state => selector.getFull(state))
-
-  console.log('USERS: ', users)
 
   useEffect(() => {
     if (users && users.length > 1) {
@@ -54,32 +53,26 @@ export default () => {
 
 const H1 = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 27px;
-  font-weight: bold;
+  ${direction()};
+  ${alignment()};
+  ${font({ size: 30, weight: 'bold' })};
 `
 const Container = styled.div`
-  display: flex;
+  ${direction()};
+  ${alignment()};
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  height: 35vw;
+  height: ${px(450)};
 `
 const MessageBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 5vw;
-
+  ${direction('column')};
+  ${alignment({ main: 'space-between' })};
+  height: ${px(65)};
   & h3 {
-    font-weight: normal;
-    font-size: 1.8vw;
+    ${font({ size: 27 })};
     margin: 0;
   }
   & p {
+    ${font()};
     margin: 0;
-    font-size: 1.2vw;
   }
 `

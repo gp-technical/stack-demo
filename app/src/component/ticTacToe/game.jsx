@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { actionHub, services } from '../../loader'
+import { px, direction, alignment, font } from './styles'
 
 const Square = ({ value, onClick }) => (
   <SSquare onClick={onClick}>
@@ -72,10 +73,8 @@ const calculateWinner = squares => {
   return null
 }
 
-const px = n => `${(n * 100) / 1440}vw`
-
 const Board = styled.div`
-  display: flex;
+  ${direction()};
   flex-wrap: wrap;
   width: ${px(300)};
 `
@@ -83,16 +82,14 @@ const SSquare = styled.div`
   border: 1px solid gray;
   height: ${px(100)};
   width: ${px(100)};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${direction()};
+  ${alignment()};
 `
 const Color = styled.div`
   color: ${props => (props.type === 'X' ? 'red' : 'blue')};
-  font-size: ${px(45)};
+  ${font({ size: 45 })};
 `
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${direction('column')};
+  ${alignment()};
 `
