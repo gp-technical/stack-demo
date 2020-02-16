@@ -1,16 +1,11 @@
 import name from './name'
 
-const get = state => {
-  return state[name]
-}
-
-const getUser = state => {
-  return get(state).user
-}
-
-const getXO = state => {
-  return get(state).XO
-}
+const get = state => state[name]
+const getUserId = state => get(state).userId
+const getUsers = state => get(state).users
+const getFull = state => get(state).full
+const getBoardSquares = state => get(state).boardSquares
+const getXIsNext = state => get(state).xIsNext
 
 
-export default { getUser, getXO }
+export default { getUserId, get, getUsers, getFull, getBoardSquares, getXIsNext }

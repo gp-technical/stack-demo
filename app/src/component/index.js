@@ -9,7 +9,6 @@ import productList from './shopping/productList'
 import shoppingCart from './shopping/shoppingCart'
 import shoppingFilter from './shopping/shoppingFilter'
 import messages from './messages'
-import testando from './testando'
 import ticTacToe from './ticTacToe'
 
 export default {
@@ -24,6 +23,5 @@ export default {
   shoppingCart,
   shoppingFilter,
   messages,
-  testando,
   ticTacToe
 }

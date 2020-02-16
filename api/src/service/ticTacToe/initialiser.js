@@ -1,11 +1,14 @@
-const initialiser = async () => {
-  const user = 'user' + Math.floor(Math.random() * Math.floor(100))
+import db from './db'
+import crypto from 'crypto'
 
-  const data =
-  {
-    user
+const initialiser = async () => {
+  return { 
+    userId: crypto.randomBytes(3*4).toString('base64'),
+    full: db.full,
+    users: db.users,
+    boardSquares: db.boardSquares,
+    xIsNext: db.xIsNext
   }
-  return data
 }
 
 export default initialiser
