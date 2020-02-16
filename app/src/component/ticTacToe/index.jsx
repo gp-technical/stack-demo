@@ -16,6 +16,7 @@ export default () => {
   const userId = useSelector(state => selector.getUserId(state))
   const users = useSelector(state => selector.getUsers(state))
   const isFull = useSelector(state => selector.getFull(state))
+  const reenablePlay = useSelector(state => selector.getReenablePlay(state))
 
   useEffect(() => {
     if (users && users.length > 1) {
@@ -24,8 +25,14 @@ export default () => {
     }
   }, [users])
 
+  useEffect(() => {
+    reenablePlay && setXO('')
+    setDisablePlay(false)
+  }, [reenablePlay])
+
   const handlePlay = () => {
     dispatch(actionHub.TIC_TAC_TOE_ENTER_GAME({ userId }))
+    dispatch(actionHub.TIC_TAC_TOE_RESET_PLAY())
     setDisablePlay(true)
   }
 
@@ -41,7 +48,7 @@ export default () => {
   return (
     <components.Box>
       <H1> TIC-TAC-TOE </H1>
-      <Button onClick={handlePlay} disabled={isFull || disablePlay} color="primary">
+      <Button onClick={handlePlay} disabled={!reenablePlay && disablePlay} color="primary">
         {' '}
         PLAY{' '}
       </Button>

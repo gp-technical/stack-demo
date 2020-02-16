@@ -25,6 +25,23 @@ const processor = async action => {
       break
     }
 
+    case types.ticTacToeResetGame: {
+      db.reset()
+      message.custom('ticTacToeGetReset', { 
+        boardSquares: db.boardSquares,
+        users: db.users,
+        full: db.full,
+        xIsNext: db.xIsNext,
+        reenablePlay: db.reenablePlay
+      })
+      break
+    }
+
+    case types.ticTacToeResetPlay: {
+      db.resetPlay()
+      message.custom('ticTacToeGetPlay', { reenablePlay: db.reenablePlay })
+    }
+
   }
 }
 

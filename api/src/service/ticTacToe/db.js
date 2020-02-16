@@ -4,6 +4,7 @@ class db {
   static full = false
   static xIsNext = true
   static lastPlayer = ''
+  static reenablePlay = false
 
   static enterGame(data) 
   {
@@ -31,6 +32,19 @@ class db {
   static setXIsNext(x) {
     this.xIsNext = x
     return this.xIsNext
+  }
+
+  static reset() {
+    this.boardSquares = Array(9).fill(null)
+    this.users = []
+    this.full = false
+    this.xIsNext = true
+    this.lastPlayer = ''
+    this.reenablePlay = true
+  }
+
+  static resetPlay() {
+    this.reenablePlay = false
   }
 }
 

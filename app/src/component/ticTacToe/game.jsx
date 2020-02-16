@@ -32,10 +32,16 @@ export default ({ isX }) => {
   }
 
   const renderSquare = i => <Square key={i} value={board[i]} onClick={() => handleClick(i, isX)} />
+  const renderWinner = winner => {
+    setTimeout(() => {
+      dispatch(actionHub.TIC_TAC_TOE_RESET_GAME())
+    }, 5000)
+    return `Winner is ${winner}`
+  }
 
   let status
   const winner = newBoard && calculateWinner(newBoard)
-  status = winner ? `Winner is ${winner}` : `Next: ${xIsNext ? 'X' : 'O'}`
+  status = winner ? renderWinner(winner) : `Next: ${xIsNext ? 'X' : 'O'}`
 
   return (
     <Wrapper>
