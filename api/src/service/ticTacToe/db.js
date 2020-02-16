@@ -3,21 +3,23 @@ class db {
   static users = []
   static full = false
   static xIsNext = true
+  static lastPlayer = ''
 
   static enterGame(data) 
   {
-    if (this.users.length !== 2) 
-    {
-      if (this.users.length === 0) 
-      {
-        this.users = [ ...this.users, { id: data.userId, XO: 'X' } ]
+    if (data.userId !== this.lastPlayer) {
+      if (this.users.length !== 2) {
+        if (this.users.length === 0) {
+          this.users = [ ...this.users, { id: data.userId, XO: 'X' } ]
+        } else {
+          this.users = [ ...this.users, { id: data.userId, XO: 'O' } ]
+          this.full = true
+        }
       } 
-      else 
-      {
-        this.users = [ ...this.users, { id: data.userId, XO: 'O' } ]
-        this.full = true
-      }
+
+      this.lastPlayer = data.userId
     } 
+
     return this.users
   }
 

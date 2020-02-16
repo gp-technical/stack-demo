@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { actionHub, services } from '../../loader'
+import { actionHub, services, components } from '../../loader'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
@@ -33,7 +33,7 @@ export default () => {
 
 
   return (
-    <SPaper>
+    <components.Box>
       <H1> TIC-TAC-TOE </H1>
       <Button onClick={handlePlay} disabled={isFull || disablePlay} color='primary'> PLAY </Button>
 
@@ -49,20 +49,10 @@ export default () => {
 
       <p> You are: {XO} </p>
 
-    </SPaper>
+    </components.Box>
   )
 }
 
-const px = n => `${(n * 100) / 1440}vw`
-
-
-const SPaper = styled(Paper)`
-  padding: 2%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
 const H1 = styled.div`
   width: 100%;
 
