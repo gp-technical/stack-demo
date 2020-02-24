@@ -1,0 +1,51 @@
+config:
+  phases:
+    - duration: 1
+      arrivalRate: 1
+      name: "Workflow test"
+scenarios:
+  - engine: "socketio"
+    flow:
+      # Emit a message and validate the acknowledgement.
+      # We expect the second data argument to be an object,
+      # with an "answer" attribute which equals 42:
+      - emit:
+          channel: "echo"
+          data: "ping"
+          acknowledge:
+            match:
+              json: "$.1.answer"
+              value: 42
+      # Emit a message, and validate the response coming back:
+      - emit:
+          channel: "echo"
+          data: "world"
+          response:
+            channel: "echoed"
+            data: "world"
+      - think: 1
+      # Emit a message and proceed onto the next step:
+      - emit:
+          channel: "echo"
+          data: "do not care about the response"
+      - emit:
+          channel: "echo"
+          data: "still do not care about the response"
+      - think: 1
+      - emit:
+          channel: "echo"
+          data: "emit data to namespace /nsp1"
+          namespace: "/nsp1"
+      - emit:
+          channel: "echo"
+          data: "emit data to namespace /nsp2"
+          namespace: "/nsp2"
+      - think: 1
+      - emit:
+          channel: "echo"
+          data: "hello"
+          namespace: "/nsp1"
+          response:
+            channel: "echoed"
+            data: "hello in /nsp1"
+      

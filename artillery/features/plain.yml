@@ -1,0 +1,47 @@
+config:
+    target: wss://stack-demo.local.goodpractice.net:3001
+    # socketio:
+        # transports: ["websocket"]
+    phases:
+    - duration: 1
+      arrivalRate: 1
+    processor: "./../artillery-hooks.js"
+    ensure:
+        maxErrorRate: 1
+scenarios:
+- engine: socketio
+  flow:      
+    # - function: "setMessage"
+    # - emit:
+    #     channel: "sso_initiate"
+    #     acknowledge: true
+    #     data: https://stack-demo.local.goodpractice.net:3000/
+    # - emit:
+    #     channel: "sso_complete"
+    #     acknowledge: true
+    #     data: "s:d551ea96-e999-40ef-963a-f54f18a9f961.i+5E5dfqQ0W5+LIZggAZFSPs5rdjbwlUjKOTcDF+Kj0"
+    # - emit:
+    #     channel: "app_dispatch"
+    #     data: { "type": "AUTHENTICATE", "local": "true", "types": { "disconnect": "DISCONNECT", "authenticate": "AUTHENTICATE", "clearError": "CLEAR_ERROR", "error": "ERROR"}, "data": { "firstname": 'manage-star', "lastname": "developer", "email": "manage-star@goodpractice.com", "nameId": "manage-star@goodpractice.com" } }
+    # - think: 5
+    - emit:
+        channel: "app_dispatch"
+        data: {"types":{"fiboNext":"FIBO_NEXT","fiboBigNumber":"FIBO_BIG_NUMBER","fiboNextResponse":"FIBO_NEXT_RESPONSE"},"type":"FIBO_NEXT"}
+        acknowledge:
+            match:
+                json: "$.0.sequence"
+                value: "1"
+    - emit:
+        channel: "app_dispatch"
+        data: {"types":{"fiboNext":"FIBO_NEXT","fiboBigNumber":"FIBO_BIG_NUMBER","fiboNextResponse":"FIBO_NEXT_RESPONSE"},"type":"FIBO_NEXT"}
+        acknowledge:
+            match:
+                json: "$.0.sequence"
+                value: "1 2"
+    - emit:
+        channel: "app_dispatch"
+        data: {"types":{"fiboNext":"FIBO_NEXT","fiboBigNumber":"FIBO_BIG_NUMBER","fiboBigNumberResponse":"FIBO_BIG_NUMBER_RESPONSE"},"type":"FIBO_BIG_NUMBER"}
+        acknowledge:
+            match:
+                json: "$.0.sequence"
+                value: "1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165580141"

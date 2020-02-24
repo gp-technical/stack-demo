@@ -13,9 +13,7 @@ const services = { branding, ...localServices }
 const run = async () => {
   try {
     await stack.connect({
-      services,
-      gpapi: true,
-      authenticator: saml
+      services
     })
   } catch (inner) {
     log.error(inner, `An error occurred whilst starting the ${process.env.API_NAME} API`)

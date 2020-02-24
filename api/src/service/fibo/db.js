@@ -1,6 +1,6 @@
 class db {
-  static sequence = ''
-  static last = 1
+  static sequence = {}
+  static last = {}
 
   static fibo(n) {
     if (n < 2) {
@@ -10,25 +10,28 @@ class db {
     }
   }
 
-  static next() {
-    if (this.last < 2) {
-      this.sequence = '1';
-    } else {
-      const result = this.fibo(this.last - 2) + this.fibo(this.last - 1)
-      this.sequence += ` ${result}`;
+  static next(sid) {
+    if(!this.last[sid]){
+      this.last[sid] = 1
     }
-    this.last++
+    if (this.last[sid] < 2) {
+      this.sequence[sid] = '1';
+    } else {
+      const result = this.fibo(this.last[sid] - 2) + this.fibo(this.last[sid] - 1)
+      this.sequence[sid] += ` ${result}`;
+    }
+    this.last[sid]++
   }
 
-  static bigNumber() {
-    this.last = 1
-    while (this.last < 41) {
-      this.next()
+  static bigNumber(sid) {
+    this.last[sid] = 1
+    while (this.last[sid] < 41) {
+      this.next(sid)
     }
   }
   
-  static getSequence() {
-    return this.sequence
+  static getSequence(sid) {
+    return this.sequence[sid]
   }
 }
 
