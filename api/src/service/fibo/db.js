@@ -25,7 +25,7 @@ class db {
 
   static bigNumber(sid) {
     this.last[sid] = 1
-    while (this.last[sid] < 41) {
+    while (this.last[sid] < 31) {
       this.next(sid)
     }
   }
