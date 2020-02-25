@@ -10,3 +10,4 @@ VAULT_VERSION_*
 .vscode/settings.json
 .env*
 vault.json
+report.json*

@@ -32,6 +32,7 @@ class component extends React.PureComponent {
                 <components.fetch />
                 <components.messages />
                 <components.counter />
+                <components.fibo />
                 <components.errors />
                 <components.thunks />
                 <components.gp />

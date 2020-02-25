@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:3000"
+  environments:
+    # stg:
+    #   target: "http://localhost:3000"
+    # dev:
+    #   target: "http://localhost:3000"
+    # ngrok:
+    #   target: "http://localhost:3000"
+    local:
+      target: "https://stack-demo.local.goodpractice.net:3000"
+  plugins:
+    expect: {}
+  processor: "./../artillery-hooks.js"
+  defaults:
+    headers:
+      "User-Agent": "marcelo (https://artillery.io)"
